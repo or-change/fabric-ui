@@ -1,5 +1,10 @@
-import Label from './label/Label.vue';
+import DefaultButton from './Button/Default';
+import CompoundButton from './Button/Compound';
+
+import Label from './label/Label';
 
 export default {
-	FLabel: Label
+	FLabel: Label,
+	FButton: DefaultButton,
+	FCompoundButton: CompoundButton
 };

@@ -4,11 +4,20 @@ export default {
 			type: Boolean,
 			default: false
 		},
-		theme: {
+		variant: {
 			validator: function (value) {
-        return ['dark', 'light'].indexOf(value) !== -1
+        return ['standard', 'primary'].indexOf(value) !== -1
 			},
-			default: 'dark'
+			default: 'standard'
+		},
+		type: {
+			type: String,
+			default: 'button'
+		}
+	},
+	computed: {
+		isStandard() {
+			return this.variant === 'standard';
 		}
 	}
 }

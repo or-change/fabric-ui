@@ -57,5 +57,6 @@ module.exports = {
 			template: path.resolve(__dirname, './template/index.html'),
 			inject: 'head'
 		})
-	]
+	],
+	devtool: "source-map"
 };

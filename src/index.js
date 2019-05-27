@@ -1,4 +1,4 @@
-import './global.scss';
+import './style/index.scss';
 
 import componentCollection from './components';
 import directiveCollection from './directives';

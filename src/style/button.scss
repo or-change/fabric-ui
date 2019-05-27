@@ -1,0 +1,51 @@
+@import 'scss/_References.scss';
+
+.ms-button {
+	font: inherit;
+	outline: transparent none medium;
+	border: none;
+	font-size: $ms-font-size-14;
+	font-weight: $ms-font-weight-semibold;
+	display: inline-block;
+	text-decoration: none;
+	text-align: center;
+	cursor: pointer;
+	vertical-align: top;
+	padding: 0px 16px;
+	margin: 0px;
+	user-select: none;
+	border: 1px solid transparent;
+	border-radius: 2px;
+}
+
+.ms-button-standard {
+	border-color: $ms-color-gray110;
+	background-color: $ms-color-white;
+	color: $ms-color-gray160;
+	&:hover {
+		background-color: $ms-color-gray20;
+		color: $ms-color-gray190;
+	}
+	&:active {
+		background-color: rgb(200, 200, 200);
+		color: $ms-color-gray190;
+	}
+}
+
+.ms-button-primary {
+	background-color: $ms-color-blue;
+	color: $ms-color-white;
+	&:hover {
+		background-color: $ms-color-communicationShade10;
+    color: $ms-color-white;
+	}
+	&:active {
+		background-color: $ms-color-communicationShade20;
+    color: $ms-color-white;
+	}
+}
+
+.ms-button-disable {
+	background-color: darken($ms-color-white, 4.5%);
+	color: darken($ms-color-white, 35%);
+}
