@@ -1,0 +1,25 @@
+@import 'scss/_References.scss';
+
+.ms-label {
+	font-size: $ms-font-size-14;
+	font-weight: $ms-font-weight-semibold;
+	display: block;
+	padding: 5px 0px;
+	overflow-wrap: break-word;
+}
+
+.ms-label-default {
+	color: $ms-color-gray160;
+}
+
+.ms-label-disabled {
+	color: $ms-color-neutralTertiary;
+}
+
+.ms-label-required {
+	color: $ms-color-gray160;
+	&::after {
+    content: ' *';
+    color: $ms-color-error;
+  }
+}

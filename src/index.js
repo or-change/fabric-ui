@@ -1,4 +1,4 @@
-import './sass/index.scss';
+import './global.scss';
 
 import componentCollection from './components';
 import directiveCollection from './directives';
