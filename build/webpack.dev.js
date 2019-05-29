@@ -46,7 +46,7 @@ module.exports = {
 		extensions: ['.js', '.vue'],
 		alias: {
 			'scss': path.resolve(__dirname, '../node_modules/office-ui-fabric-core/src/sass'),
-			'@': path.resolve('src')
+			'@': path.resolve('src/components')
 		}
 	},
 	plugins: [

@@ -4,7 +4,7 @@
 
 <script>
 export default {
-	name: 'f-command-button',
+	name: 'f-contextual-button',
 	install(Vue) {
 		Vue.component(this.name, this);
 	}
@@ -12,11 +12,6 @@ export default {
 </script>
 
 <style lang="scss">
-@import 'scss/_References.scss';
 
-button {
-	background: $ms-icon-code-Airplane
-}
 </style>
-
 

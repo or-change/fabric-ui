@@ -22,6 +22,14 @@ export default {
 			type: Boolean,
 			default: false
 		}
+	},
+	install(Vue) {
+		Vue.component(this.name, this);
 	}
 }
 </script>
+
+<style lang="scss">
+@import './label.scss';
+</style>
+

@@ -1,10 +1,15 @@
-import DefaultButton from './Button/Default';
-import CompoundButton from './Button/Compound';
+import buttonList from './Button';
+import label from './label/Label.vue';
+import menuList from './Menu';
 
-import Label from './label/Label';
+export default concatComponentList(buttonList, [label], menuList);
 
-export default {
-	FLabel: Label,
-	FButton: DefaultButton,
-	FCompoundButton: CompoundButton
-};
+function concatComponentList(...list) {
+	let result = [];
+
+	list.forEach(componentList => {
+		result = result.concat(componentList);
+	});
+
+	return result;
+}

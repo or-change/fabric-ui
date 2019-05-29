@@ -14,8 +14,28 @@
 	padding: 0px 16px;
 	margin: 0px;
 	user-select: none;
-	border: 1px solid transparent;
+	border: $ms-focus-border-width $ms-focus-border-style transparent;
 	border-radius: 2px;
+
+	i {
+    font-size: $ms-icon-size-m;
+    margin-top: 0px;
+    margin-right: 4px;
+    margin-bottom: 0px;
+    margin-left: 4px;
+    height: $ms-icon-size-m;
+    line-height: $ms-icon-size-m;
+    text-align: center;
+    vertical-align: middle;
+	}
+}
+
+.ms-button-default {
+	min-width: 80px;
+	height: 32px;
+	&.ms-button-disabled  {
+		background-color: darken($ms-color-white, 4.5%);
+	}
 }
 
 .ms-button-standard {
@@ -45,7 +65,7 @@
 	}
 }
 
-.ms-button-disable {
-	background-color: darken($ms-color-white, 4.5%);
+.ms-button-disabled {
 	color: darken($ms-color-white, 35%);
+	cursor: default;
 }

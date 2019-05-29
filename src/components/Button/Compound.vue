@@ -1,7 +1,8 @@
 <template>
 	<button :type="type" class="ms-button ms-button-compound"
+		:disabled="disabled"
 		:class="{
-			'ms-button-disable': disabled,
+			'ms-button-disabled': disabled,
 			'ms-button-standard': isStandard && !disabled,
 			'ms-button-primary': !isStandard && !disabled
 			}">
@@ -16,6 +17,7 @@
 import mixin from './mixin';
 
 export default {
+	name: 'f-compound-button',
 	mixins: [mixin],
 	props: {
 		label: {
@@ -26,6 +28,9 @@ export default {
 			type: String,
 			default: 'description'
 		}
+	},
+	install(Vue) {
+		Vue.component(this.name, this);
 	}
 }
 </script>
@@ -46,8 +51,7 @@ export default {
 	}
 
 	.description {
-		font-family: "Segoe UI", "Segoe UI Web (West European)", "Segoe UI", -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif;
-    -webkit-font-smoothing: antialiased;
+		font-family: $ms-font-family-west-european;
     font-size: $ms-font-size-12;
     font-weight: $ms-font-weight-regular;
 	}
@@ -60,8 +64,12 @@ export default {
 
 	&.ms-button-standard {
 		.description {
-			color: rgb(96, 94, 92);
+			color: $ms-color-gray130;
 		}
+	}
+
+	&.ms-button-disabled  {
+		background-color: darken($ms-color-white, 4.5%);
 	}
 }
 </style>
