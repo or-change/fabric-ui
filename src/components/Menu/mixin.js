@@ -1,64 +1,64 @@
 export default {
 	data() {
 		return {
-			isChecked: false,
+			isSelect: false,
 			isActive: false
 		}
 	},
 	props: {
-		icon: {
-			type: String,
+		options: {
+			type: Object,
 			default: null
-		},
-		text: {
-			type: String,
-			default: ''
-		},
-		secondaryText: {
-			type: String,
-			default: ''
-		},
-		href: {
-			type: String
-		},
-		target: {
-			type: String,
-			default: '_self'
-		},
-		disabled: {
-			type: Boolean,
-			default: false
 		}
 	},
 	computed: {
 		link() {
-			if (this.disabled) {
+			if (this.options.disabled) {
 				return;
 			}
 
-			return this.href;
+			return this.options.href;
+		},
+		disabled() {
+			return this.options.disabled;
+		},
+		target() {
+			return this.options.target;
+		},
+		icon() {
+			return this.options.icon;
+		},
+		text() {
+			return this.options.text;
+		},
+		subMenu() {
+			return this.options.subMenu;
 		}
 	},
 	methods: {
-		checkItem() {
-			if (this.disabled) {
+		select() {
+			if (this.options.disabled) {
 				return;
 			}
 
-			this.isChecked = true;
+			this.isSelect = true;
+			this.$emit('selected', this);
 		},
-		unCheckItem() {
-			this.isChecked = false;
+		unSelect() {
+			this.isSelect = false;
+			this.$emit('unSelect', this);
 		},
-		activeItem() {
-			if (this.disabled) {
+		active() {
+			if (this.options.disabled) {
 				return;
 			}
 
 			this.isActive = true;
+			this.$emit('actived', this);
 		},
-		unActiveItem() {
+		unActive() {
 			this.isActive = false;
+			this.$emit('unActive', this);
 		}
 	}
 }

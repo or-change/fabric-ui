@@ -1,111 +1,117 @@
 @import 'scss/_References.scss';
 
-.ms-menu {
-	font: inherit;
-	font-size: $ms-font-size-14;
-	font-weight: $ms-font-weight-regular;
-	position: absolute;
-	box-shadow: rgba(0, 0, 0, 0.133) 0px 3.2px 7.2px 0px,
-		rgba(0, 0, 0, 0.11) 0px 0.6px 1.8px 0px;
-	outline: none;
-	border: none;
-	border-radius: 2px;
+ul {
+	list-style-type: none; 
+	margin: 0;
+	padding: 0;
 	min-width: 180px;
 	max-height: 959px;
-	background-color: $ms-color-white;
-	top: 0;
-	left: 0;
 
-	ul {
-		list-style-type: none;
-		margin: 0;
-		padding: 0;
+	&.ms-menu {
+		font: inherit;
+		font-size: $ms-font-size-14;
+		font-weight: $ms-font-weight-regular;
+		position: absolute;
+		box-shadow: rgba(0, 0, 0, 0.133) 0px 3.2px 7.2px 0px,
+			rgba(0, 0, 0, 0.11) 0px 0.6px 1.8px 0px;
+		outline: none;
+		border: none;
+		border-radius: 2px;
+		background-color: $ms-color-white;
+		top: 0;
+		left: 0;
 	}
 
 	li {
+		position: relative;
 		display: block;
 		cursor: pointer;
 		text-align: left;
 		white-space: nowrap;
-		position: relative;
 
-		.ms-menu-item {
-			color: $ms-color-gray160;
-			height: 36px;
-			line-height: 1;
-			padding: 11px 8px 11px 4px;
-			width: 100%;
-			display: block;
-
-			&.ms-menu-sub {
-				padding-right: 0px;
-
-				.ms-menu {
-					top: 0;
-					left: 100%;
-				}
-			}
-		
-			i {
-				color: $ms-color-blue;
-				float: left;
-
-				&.ms-ChevronRight {
-					font-size: 12px;
-					color: rgb(96, 94, 92);
-					float: right;
-					padding: 1px 0;
-				}
-			}
-		
-			.text {
-				margin: 0 4px;
-				vertical-align: middle;
-				text-overflow: ellipsis;
-				white-space: nowrap;
-				overflow: hidden;
-				float: left;
-			}
-		
-			.secondary-text {
-				color: $ms-color-gray130;
-				padding-left: 20px;
-				float: right;
-			}
-			
-			&.ms-menu-item-disabled {
-				cursor: default;
-		
-				i, .text, .secondary-text {
-					color: $ms-color-gray90;
-				}
-			}
-		
-			&.select {
-				background-color: rgb(243, 242, 241);
-				color: rgb(32, 31, 30);
-			}
-		
-			&.active {
-				background-color: $ms-color-gray30;
-			}
+		.ms-menu {
+			top: 0;
+			left: 99%;
 		}
 
+		.hidden {
+			display: none;
+		}
+	}
+
+	i {
+		display: inline-block;
+		font-style: normal;
+		font-weight: normal;
+		font-family: FabricMDL2Icons;
+		vertical-align: middle;
+	}
+
+	.ms-menu-item {
+		padding: 0 8px 0 4px;
+
+		.secondary-text {
+			color: $ms-color-gray130;
+			padding-left: 20px;
+			float: right;
+			text-overflow: ellipsis;
+			white-space: nowrap;
+			overflow: hidden;
+			width: 40%;
+		}
+	}
+
+	.ms-menu-sub {
+		i.ms-ChevronRight {
+			font-size: 12px;
+			color: $ms-color-gray130;
+			float: right;
+			margin: 0;
+			padding: 0 8px;
+			width: auto;
+		}
+	}
+
+	.ms-menu-item, .ms-menu-sub {
+		display: block;
+		width: 100%;
+		height: 36px;
+		color: $ms-color-gray160;
+		line-height: 36px;
+
 		i {
-			display: inline-block;
-			font-style: normal;
-			font-weight: normal;
-			font-family: FabricMDL2Icons;
-			min-height: 1px;
-			max-height: 36px;
 			width: 16px;
-			margin-top: 0px;
-			margin-right: 4px;
-			margin-bottom: 0px;
-			margin-left: 4px;
-			vertical-align: middle;
-			flex-shrink: 0;
+			min-height: 1px;
+			margin: 0 4px;
 			font-size: 16px;
+			color: $ms-color-blue;
+		}
+
+		.text {
+			display: inline-block;
+			max-width: 45%;
+			margin: 0 4px;
+			vertical-align: middle;
+			text-overflow: ellipsis;
+			white-space: nowrap;
+			overflow: hidden;
+		}
+
+		&.select, .select {
+			background-color: $ms-color-gray20;
+			color: rgb(32, 31, 30);
+		}
+	
+		&.active, .active {
+			background-color: $ms-color-gray30;
+		}
+		
+		&.ms-menu-item-disabled, .ms-menu-item-disabled {
+			cursor: default;
+	
+			i, .text, .secondary-text {
+				color: $ms-color-gray90;
+			}
 		}
 	}
 }

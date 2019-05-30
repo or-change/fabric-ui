@@ -1,21 +1,23 @@
 <template>
-	<a
-		:href="link" :target="target"
-		class="ms-menu-item"
-		@mouseover="checkItem"
-		@mouseout="unCheckItem"
-		@mousedown="activeItem"
-		@mouseup="unActiveItem"
-		:class="{
-			'ms-menu-item-disabled': disabled,
-			'select': isChecked,
-			'active': isActive
-		}">
+	<li
+		@mouseover="select"
+		@mouseout="unSelect"
+		@mousedown="active"
+		@mouseup="unActive">
+		<a
+			:href="link" :target="target"
+			class="ms-menu-item"
+			:class="{
+				'ms-menu-item-disabled': disabled,
+				'select': isSelect,
+				'active': isActive
+			}">
 
-		<i v-if="icon !== null" :class="`ms-Icon ms-Icon--${icon}`"></i>
-		<span class="text">{{ text }}</span>
-		<span v-if="secondaryText" class="secondary-text">{{ secondaryText }}</span>
-	</a>
+			<i v-if="icon !== null" :class="`ms-Icon ms-Icon--${icon}`"></i>
+			<span class="text">{{ text }}</span>
+			<span v-if="secondaryText" class="secondary-text">{{ secondaryText }}</span>
+		</a>
+	</li>
 </template>
 
 <script>
@@ -24,10 +26,9 @@ import mixin from './mixin';
 export default {
 	name: 'f-menu-item',
 	mixins: [mixin],
-	props: {
-		secondaryText: {
-			type: String,
-			default: ''
+	computed: {
+		secondaryText() {
+			return this.options.secondaryText;
 		}
 	},
 	install(Vue) {

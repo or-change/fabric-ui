@@ -25,8 +25,8 @@
 		<f-aria-button aria-describedby="id__10482" aria-labelledby="id__10480">Aria description</f-aria-button>
 		<f-aria-button disabled aria-describedby="id__10482" aria-labelledby="id__10480">Aria description</f-aria-button>
 		<h2>menu</h2>
-		<div style="position: relative;margin: 20px 0">
-			<f-menu :menu="menu"></f-menu>
+		<div style="position: relative;height: 300px">
+			<f-menu :menu="menu" style="display:block"></f-menu>
 		</div>
 	</div>
 </template>
@@ -37,7 +37,7 @@ export default {
 		return {
 			menu: [
 				{
-					text: '111',
+					text: '1111111111111',
 					secondaryText: '111111111111',
 					icon: 'Emoji',
 					href: 'http://www.baidu.com',
@@ -53,14 +53,41 @@ export default {
 					secondaryText: 'test',
 					hasIcon: true,
 					icon: 'Emoji',
-					subMenu: []
+					subMenu: [
+						{
+							text: '111',
+							secondaryText: 'test',
+							hasIcon: true,
+							icon: 'Emoji',
+							subMenu: [
+								{
+							text: '111',
+							secondaryText: 'test',
+							hasIcon: true,
+							icon: 'Emoji',
+							subMenu: [],
+							split: true
+						}
+							],
+							split: true
+						}
+					]
 				},
 				{
 					text: '111',
 					secondaryText: 'test',
 					hasIcon: true,
 					icon: 'Emoji',
-					subMenu: [],
+					subMenu: [
+						{
+							text: '111',
+							secondaryText: 'test',
+							hasIcon: true,
+							icon: 'Emoji',
+							subMenu: [],
+							split: true
+						}
+					],
 					split: true
 				},
 				null,
@@ -69,6 +96,7 @@ export default {
 					secondaryText: 'test',
 					hasIcon: true,
 					icon: 'Emoji',
+					disabled: true,
 					subMenu: [
 						{
 							text: '111',

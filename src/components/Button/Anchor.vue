@@ -1,18 +1,16 @@
 <template>
-	<a :href="href" :target="target"
+	<a
+		:href="link"
+		:target="target"
 		:title="title"
-		v-if="!disabled"
 		class="ms-button ms-button-default
-			ms-button-anchor ms-button-standard">
+			ms-button-anchor"
+		:class="{
+			'ms-button-disabled': disabled,
+			'ms-button-standard': !disabled
+		}">
 		<slot></slot>
 	</a>
-	<button
-		:title="title"
-		v-else
-		class="ms-button ms-button-default
-			ms-button-anchor ms-button-disabled">
-		<slot></slot>
-	</button>
 </template>
 
 <script>
@@ -33,6 +31,15 @@ export default {
 		title :{
 			type: String,
 			default: ''
+		}
+	},
+	computed: {
+		link() {
+			if (this.disabled) {
+				return;
+			}
+
+			return this.href;
 		}
 	},
 	install(Vue) {

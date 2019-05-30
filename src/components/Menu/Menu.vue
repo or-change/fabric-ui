@@ -1,20 +1,17 @@
 <template>
-	<ul class="ms-menu">
-		<li
-			v-for="(item, index) in menu"
-			:key="index"
-			:class="{
-				'ms-menu-divider': !item
-			}">
-
-			<component v-if="item" :is="getComponent(item)"
-				:href="item.href"
-				:icon="item.icon"
-				:text="item.text"
-				:sub-menu="item.subMenu"
-				:disabled="item.disabled">
+	<ul
+		v-show="isShow"
+		@mouseover="show"
+		class="ms-menu">
+		<slot name="menu-header"></slot>
+		<slot name="menu-body">
+			<component
+				v-for="(item, index) in menu"
+				:key="index"
+				:is="getComponent(item)"
+				:options="item">
 			</component>
-		</li>
+		</slot>
 	</ul>
 </template>
 
@@ -22,6 +19,7 @@
 import MenuItem from './Item';
 import MenuSub from './Sub';
 import MenuSubSplit from './SubSplit';
+import MenuDivide from './Divide';
 
 export default {
 	name: 'f-menu',
@@ -34,17 +32,34 @@ export default {
 			default: 'default'
 		}
 	},
+	data() {
+		return {
+			isShow: false
+		};
+	},
 	methods: {
 		getComponent(data) {
+			if (!data) {
+				return MenuDivide;
+			}
+
 			if (!data.subMenu) {
-				return 'f-menu-item';
+				return MenuItem;
 			}
 
 			if (data.split) {
-				return 'f-menu-sub-split';
+				return MenuSubSplit;
 			}
 
-			return 'f-menu-sub';
+			return MenuSub;
+		},
+		show() {
+			this.isShow = true;
+			this.$emit('shown', this);
+		},
+		hide() {
+			this.isShow = false;
+			this.$emit('hidden', this);
 		}
 	},
 	install(Vue) {
@@ -52,14 +67,3 @@ export default {
 	}
 }
 </script>
-
-<style lang="scss">
-@import 'scss/_References.scss';
-
-.ms-menu-divider {
-	display: block;
-	height: $ms-focus-border-width;
-	background-color: $ms-color-gray30;
-	position: relative;
-}
-</style>
