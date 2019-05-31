@@ -30,9 +30,6 @@ export default {
 		secondaryText() {
 			return this.options.secondaryText;
 		}
-	},
-	install(Vue) {
-		Vue.component(this.name, this);
 	}
 }
 </script>

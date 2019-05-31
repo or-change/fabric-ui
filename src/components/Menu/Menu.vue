@@ -17,8 +17,8 @@
 
 <script>
 import MenuItem from './Item';
-import MenuSub from './Sub';
-import MenuSubSplit from './SubSplit';
+import MenuSubItem from './Sub';
+import MenuSubSplitItem from './SubSplit';
 import MenuDivide from './Divide';
 
 export default {
@@ -48,10 +48,10 @@ export default {
 			}
 
 			if (data.split) {
-				return MenuSubSplit;
+				return MenuSubSplitItem;
 			}
 
-			return MenuSub;
+			return MenuSubItem;
 		},
 		show() {
 			this.isShow = true;
@@ -61,9 +61,6 @@ export default {
 			this.isShow = false;
 			this.$emit('hidden', this);
 		}
-	},
-	install(Vue) {
-		Vue.component(this.name, this);
 	}
 }
 </script>

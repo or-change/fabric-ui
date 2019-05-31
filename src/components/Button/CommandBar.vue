@@ -4,10 +4,7 @@
 
 <script>
 export default {
-	name: 'f-command-bar',
-	install(Vue) {
-		Vue.component(this.name, this);
-	}
+	name: 'f-command-bar'
 }
 </script>
 

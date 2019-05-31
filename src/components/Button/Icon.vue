@@ -19,9 +19,6 @@ export default {
 		iconName: {
 			type: String
 		}
-	},
-	install(Vue) {
-		Vue.component(this.name, this);
 	}
 }
 </script>

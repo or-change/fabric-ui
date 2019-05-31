@@ -1,13 +1,17 @@
 import './menu.scss';
 
-import MenuDivide from './Divide.vue';
-import Menu from './Menu.vue';
-import MenuItem from './Item.vue';
-import SubMenu from './Sub.vue';
-import SubSplitMenu from './SubSplit.vue';
+import MenuDivide from './Divide';
+import Menu from './Menu';
+import MenuItem from './Item';
+import MenuSubItem from './Sub';
+import MenuSubSplitItem from './SubSplit';
 
-export default [
+const menuList = [
 	MenuDivide,
 	Menu, MenuItem,
-	SubMenu, SubSplitMenu,
+	MenuSubItem, MenuSubSplitItem,
 ];
+
+export default function install(Vue) {
+	menuList.forEach(menu => Vue.component(menu.name, menu));
+}

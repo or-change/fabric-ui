@@ -1,9 +1,11 @@
 import './global.scss';
 
-import componentList from './components';
+import buttonPlugin from './components/Button';
+import labelPlugin from './components/Label';
+import menuPlugin from './components/Menu';
 
-export default {
-	install(Vue) {
-		componentList.forEach(component => Vue.use(component));
-	}
+const pluginList = [buttonPlugin, labelPlugin, menuPlugin];
+
+export default function install(Vue) {
+	pluginList.forEach(plugin => Vue.use(plugin));
 };

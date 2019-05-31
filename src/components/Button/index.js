@@ -6,9 +6,20 @@ import IconButton from './Icon';
 import ActionButton from './Action';
 import AnchorButton from './Anchor';
 import AriaButton from './Aria';
+import CommandButton from './Command';
+import Contextual from './Contextual';
+import SplitButton from './Split';
+import ToggleButton from './Toggle.vue';
 
-export default [
+const buttonList = [
 	DefaultButton, CompoundButton,
 	IconButton, ActionButton,
-	AnchorButton, AriaButton
+	AnchorButton, AriaButton, CommandButton,
+	Contextual, SplitButton, ToggleButton
 ];
+
+export default function install(Vue) {
+	buttonList.forEach(button => {
+		Vue.component(button.name, button)
+	});
+};

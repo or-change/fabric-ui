@@ -15,15 +15,8 @@ import mixin from './mixin';
 
 export default {
 	name: 'f-button',
-	mixins: [mixin],
-	install(Vue) {
-		Vue.component(this.name, this);
-	}
+	mixins: [mixin]
 }
 </script>
-
-<style lang="scss">
-@import 'scss/_References.scss';
-</style>
 
 

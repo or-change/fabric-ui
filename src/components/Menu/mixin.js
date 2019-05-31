@@ -23,7 +23,7 @@ export default {
 			return this.options.disabled;
 		},
 		target() {
-			return this.options.target;
+			return this.options.target ? this.options.target : '_self';
 		},
 		icon() {
 			return this.options.icon;

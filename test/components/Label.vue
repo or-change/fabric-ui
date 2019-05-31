@@ -1,0 +1,8 @@
+<template>
+	<div>
+		<h2>label</h2>
+		<f-label>I'm a Label</f-label>
+		<f-label disabled>I'm a Label</f-label>
+		<f-label required>I'm a Label</f-label>
+	</div>
+</template>

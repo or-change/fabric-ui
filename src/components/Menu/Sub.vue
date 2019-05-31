@@ -27,7 +27,7 @@
 import mixin from './mixin';
 
 export default {
-	name: 'f-menu-sub',
+	name: 'f-menu-sub-item',
 	mixins: [mixin],
 	methods: {
 		show() {
@@ -42,9 +42,6 @@ export default {
 			this.unSelect();
 			this.$refs.subMenu.hide();
 		}
-	},
-	install(Vue) {
-		Vue.component(this.name, this);
 	}
 }
 </script>

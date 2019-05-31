@@ -41,9 +41,6 @@ export default {
 
 			return this.href;
 		}
-	},
-	install(Vue) {
-		Vue.component(this.name, this);
 	}
 }
 </script>

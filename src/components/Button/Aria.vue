@@ -27,9 +27,6 @@ export default {
 			type: String,
 			default: ''
 		}
-	},
-	install(Vue) {
-		Vue.component(this.name, this);
 	}
 }
 </script>

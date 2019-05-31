@@ -39,7 +39,7 @@
 import mixin from './mixin';
 
 export default {
-	name: 'f-menu-sub-split',
+	name: 'f-menu-sub-split-item',
 	mixins: [mixin],
 	data() {
 		return {
@@ -59,9 +59,6 @@ export default {
 			this.isShow = false;
 			this.$refs.splitSubMenu.hide();
 		}
-	},
-	install(Vue) {
-		Vue.component(this.name, this);
 	}
 }
 </script>
