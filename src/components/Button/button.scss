@@ -1,70 +1,213 @@
 @import 'scss/_References.scss';
 
 .ms-button {
-	font: inherit;
-	outline: transparent none medium;
-	font-size: $ms-font-size-14;
-	font-weight: $ms-font-weight-semibold;
 	display: inline-block;
+}
+
+.ms-button-content {
+	font: inherit;
+	font-size: $ms-font-size-14;
+	position: relative;
+	outline: transparent none medium;
 	text-decoration: none;
 	text-align: center;
 	cursor: pointer;
 	vertical-align: top;
-	padding: 0px 16px;
-	margin: 0px;
 	user-select: none;
-	border: $ms-focus-border-width $ms-focus-border-style transparent;
-	border-radius: 2px;
+	border: none;
+	padding: 0px;
+	float: left;
+}
 
-	i {
-    font-size: $ms-icon-size-m;
-    margin-top: 0px;
-    margin-right: 4px;
-    margin-bottom: 0px;
-    margin-left: 4px;
-    height: $ms-icon-size-m;
-    line-height: $ms-icon-size-m;
-    text-align: center;
-    vertical-align: middle;
+.ms-button-md {
+	font-weight: $ms-font-weight-regular;
+	min-width: 80px;
+
+	.ms-button-content {
+		height: 100%;
+		padding: 8px 8px;
+
+		&.ms-compound-button {
+			padding: 16px 12px;
+			max-width: 280px;
+			min-height: 72px;
+			height: auto;
+			text-align: left;
+			line-height: 100%;
+
+			.ms-button-label {
+				margin-top: 0px;
+				margin-right: 0px;
+				margin-bottom: 5px;
+				margin-left: 0px;
+				line-height: 100%;
+			}
+		}
+	}
+
+	i.ms-icon, i.ms-dropdown {
+		margin-top: 0px;
+		margin-right: 4px;
+		margin-bottom: 0px;
+		margin-left: 4px;
+		height: $ms-icon-size-m;
+		line-height: $ms-icon-size-m;
+		vertical-align: middle;
+	}
+
+	i.ms-icon {
+		font-size: $ms-icon-size-m;
+	}
+
+	i.ms-dropdown {
+		font-size: 12px;
+	}
+
+	&.ms-button-border .ms-button-content {
+		font-weight: $ms-font-weight-semibold;
+	}
+
+	&.ms-button-icon {
+		width: 2 * $ms-icon-size-m;
+		min-width: 2 * $ms-icon-size-m;
+		height: 2 * $ms-icon-size-m;
+		padding: 0px;
+		text-align: center;
+
+		i.ms-icon {
+			margin: 0px;
+		}
+	}
+
+	.ms-split-right {
+		padding: 8px 6px;
+	}
+
+	.split {
+		position: absolute;
+		height: 50%;
+		left: 0;
+		top: 25%;
+		width: 1px;
+		background-color: rgb(222, 236, 249);
 	}
 }
 
-.ms-button-default {
-	min-width: 80px;
-	height: 32px;
-	&.ms-button-disabled  {
-		background-color: darken($ms-color-white, 4.5%);
-	}
+.ms-button-label {
+	display: inline-block;
+
+}
+.ms-description {
+	font-family: $ms-font-family-west-european;
+	font-size: $ms-font-size-12;
+	font-weight: $ms-font-weight-regular;
+	text-align: left;
 }
 
 .ms-button-standard {
-	border-color: $ms-color-gray110;
 	background-color: $ms-color-white;
 	color: $ms-color-gray160;
-	&:hover {
-		background-color: $ms-color-gray20;
-		color: $ms-color-gray190;
+
+	.ms-description {
+		color: $ms-color-gray130;
 	}
+
+	&:hover {
+		color: $ms-color-communicationShade10;
+	}
+
 	&:active {
-		background-color: rgb(200, 200, 200);
-		color: $ms-color-gray190;
+		color: $ms-color-communicationShade20;
+	}
+
+	.ms-icon {
+		color: $ms-color-blue;
+	}
+
+	.split {
+		background-color: rgb(200, 198, 196);
 	}
 }
 
 .ms-button-primary {
 	background-color: $ms-color-blue;
 	color: $ms-color-white;
+
+	.ms-description {
+		color: $ms-color-white;
+	}
+
 	&:hover {
 		background-color: $ms-color-communicationShade10;
-    color: $ms-color-white;
+		color: $ms-color-white;
 	}
 	&:active {
 		background-color: $ms-color-communicationShade20;
-    color: $ms-color-white;
+		color: $ms-color-white;
 	}
+
+	.ms-icon, .ms-dropdown {
+		i {
+			color: $ms-color-white;
+		}
+	}
+
+	.split {
+		background-color: rgb(222, 236, 249);
+	}
+}
+
+.ms-button-border {
+	.ms-button-content {
+		border-radius: 2px;
+		border: $ms-focus-border-width $ms-focus-border-style transparent;
+	}
+
+	.ms-button-standard {
+		border-color: $ms-color-gray110;
+	}
+}
+
+.ms-bar {
+	.ms-button-standard {
+		&:hover {
+			background-color: $ms-color-gray20;
+			color: $ms-color-gray190;
+		}
+		&:active {
+			background-color: rgb(200, 200, 200);
+			color: $ms-color-gray190;
+		}
+	}
+}
+
+.ms-split-button {
+	.ms-split-left {
+		border-right: none;
+		border-top-right-radius: 0px;
+		border-bottom-right-radius: 0px
+	}
+
+	.ms-split-right {
+		border-left: none;
+		border-top-left-radius: 0px;
+		border-bottom-left-radius: 0px
+	}
+}
+
+.ms-icon {
+	text-align: center;
+	vertical-align: middle;
 }
 
 .ms-button-disabled {
 	color: darken($ms-color-white, 35%);
 	cursor: default;
+
+}
+
+.ms-button-border, .ms-bar {
+	.ms-button-disabled {
+		background-color: darken($ms-color-white, 4.5%);
+	}
 }
