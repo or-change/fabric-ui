@@ -15,7 +15,7 @@
 			<a
 				:href="link" :target="target">
 
-				<i v-if="icon !== null" :class="`ms-Icon ms-Icon--${icon}`"></i>
+				<i v-if="icon !== null" :class="icon"></i>
 				<span class="text">{{ text }}</span>
 			</a>
 
@@ -26,7 +26,7 @@
 					'split-selected': isShow
 				}">
 				<i class="ms-Icon ms-Icon--ChevronRight ms-ChevronRight"></i>
-				<span class="split"></span>
+				<span class="menu-split"></span>
 			</span>
 		</div>
 		<f-menu
@@ -75,8 +75,9 @@ export default {
 		width: 28px;
 		display: block;
 		float: right;
+		position: relative;
 
-		.split{
+		.menu-split{
 			border-left: 1px solid $ms-color-gray60;
 		}
 

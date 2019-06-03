@@ -11,7 +11,7 @@
 				'active': isActive
 			}">
 
-			<i v-if="icon !== null" :class="`ms-Icon ms-Icon--${icon}`"></i>
+			<i v-if="icon !== null" :class="icon"></i>
 			<span class="text">{{ text }}</span>
 			<i class="ms-Icon ms-Icon--ChevronRight ms-ChevronRight"></i>
 		</a>

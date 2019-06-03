@@ -2,68 +2,46 @@
 
 .ms-button {
 	display: inline-block;
-}
-
-.ms-button-content {
-	font: inherit;
-	font-size: $ms-font-size-14;
 	position: relative;
-	outline: transparent none medium;
-	text-decoration: none;
-	text-align: center;
-	cursor: pointer;
-	vertical-align: top;
-	user-select: none;
-	border: none;
-	padding: 0px;
-	float: left;
 }
 
 .ms-button-md {
-	font-weight: $ms-font-weight-regular;
-	min-width: 80px;
-
 	.ms-button-content {
 		height: 100%;
-		padding: 8px 8px;
+		padding: 8px;
 
 		&.ms-compound-button {
-			padding: 16px 12px;
 			max-width: 280px;
 			min-height: 72px;
 			height: auto;
+			padding: 16px 12px;
 			text-align: left;
 			line-height: 100%;
 
 			.ms-button-label {
-				margin-top: 0px;
-				margin-right: 0px;
 				margin-bottom: 5px;
-				margin-left: 0px;
-				line-height: 100%;
 			}
 		}
 	}
 
 	i.ms-icon, i.ms-dropdown {
-		margin-top: 0px;
-		margin-right: 4px;
-		margin-bottom: 0px;
-		margin-left: 4px;
-		height: $ms-icon-size-m;
-		line-height: $ms-icon-size-m;
+		height: 100%;
+		line-height: 100%;
 		vertical-align: middle;
+		// display: inline;
 	}
 
 	i.ms-icon {
-		font-size: $ms-icon-size-m;
+		margin: 0 4px;
+		font-weight: $ms-font-weight-semibold
 	}
 
 	i.ms-dropdown {
 		font-size: 12px;
+		margin: 1px 4px;
 	}
 
-	&.ms-button-border .ms-button-content {
+	&.ms-bar .ms-button-content, &.ms-button-border .ms-button-content {
 		font-weight: $ms-font-weight-semibold;
 	}
 
@@ -82,21 +60,39 @@
 	.ms-split-right {
 		padding: 8px 6px;
 	}
+}
 
-	.split {
-		position: absolute;
-		height: 50%;
-		left: 0;
-		top: 25%;
-		width: 1px;
-		background-color: rgb(222, 236, 249);
-	}
+.split {
+	position: absolute;
+	width: 1px;
+	height: 50%;
+	left: 0;
+	top: 25%;
+	background-color: rgb(222, 236, 249);
+}
+
+.ms-button-content {
+	position: relative;
+	font: inherit;
+	font-size: $ms-font-size-14;
+	font-weight: $ms-font-weight-regular;
+	outline: transparent none medium;
+	text-decoration: none;
+	text-align: center;
+	cursor: pointer;
+	user-select: none;
+	border: none;
+	padding: 0px;
+	float: left;
+	background-color: $ms-color-white;
 }
 
 .ms-button-label {
 	display: inline-block;
-
+	line-height: 100%;
+	vertical-align: middle;
 }
+
 .ms-description {
 	font-family: $ms-font-family-west-european;
 	font-size: $ms-font-size-12;
@@ -105,11 +101,18 @@
 }
 
 .ms-button-standard {
-	background-color: $ms-color-white;
 	color: $ms-color-gray160;
 
 	.ms-description {
 		color: $ms-color-gray130;
+	}
+
+	.ms-icon {
+		color: $ms-color-blue;
+	}
+
+	.split {
+		background-color: $ms-color-gray60;
 	}
 
 	&:hover {
@@ -119,41 +122,18 @@
 	&:active {
 		color: $ms-color-communicationShade20;
 	}
-
-	.ms-icon {
-		color: $ms-color-blue;
-	}
-
-	.split {
-		background-color: rgb(200, 198, 196);
-	}
 }
 
 .ms-button-primary {
 	background-color: $ms-color-blue;
 	color: $ms-color-white;
 
-	.ms-description {
-		color: $ms-color-white;
-	}
-
 	&:hover {
 		background-color: $ms-color-communicationShade10;
-		color: $ms-color-white;
 	}
+
 	&:active {
 		background-color: $ms-color-communicationShade20;
-		color: $ms-color-white;
-	}
-
-	.ms-icon, .ms-dropdown {
-		i {
-			color: $ms-color-white;
-		}
-	}
-
-	.split {
-		background-color: rgb(222, 236, 249);
 	}
 }
 
@@ -168,15 +148,23 @@
 	}
 }
 
-.ms-bar {
+.ms-bar, .ms-button-border {
 	.ms-button-standard {
 		&:hover {
 			background-color: $ms-color-gray20;
 			color: $ms-color-gray190;
+
+			.ms-description {
+				color: $ms-color-gray190;
+			}
 		}
 		&:active {
 			background-color: rgb(200, 200, 200);
 			color: $ms-color-gray190;
+
+			.ms-description {
+				color: $ms-color-gray190;
+			}
 		}
 	}
 }
@@ -195,15 +183,9 @@
 	}
 }
 
-.ms-icon {
-	text-align: center;
-	vertical-align: middle;
-}
-
 .ms-button-disabled {
 	color: darken($ms-color-white, 35%);
 	cursor: default;
-
 }
 
 .ms-button-border, .ms-bar {

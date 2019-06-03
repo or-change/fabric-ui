@@ -1,20 +1,26 @@
 <template>
 	<div id="app">
 		<label-test></label-test>
-		<button-test></button-test>
+		<default-button></default-button>
+		<compound-button></compound-button>
+		<icon-button></icon-button>
+		<action-button></action-button>
+		<command-button></command-button>
+		<achor-button></achor-button>
+		<contextual-button></contextual-button>
+		<split-button></split-button>
+		<command-bar></command-bar>
+		<custom-split-button></custom-split-button>
+		<toggle-button></toggle-button>
 		<menu-test></menu-test>
 	</div>
 </template>
 
 <script>
-import LabelTest from './components/Label';
-import ButtonTest from './components/Button';
-import MenuTest from './components/Menu';
+import mixin from './mixin';
 
 export default {
-	components: {
-		ButtonTest, MenuTest, LabelTest
-	}
+	mixins: [mixin]
 }
 </script>
 

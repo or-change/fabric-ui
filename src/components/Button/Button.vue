@@ -21,7 +21,7 @@
 			}">
 
 			<i v-if="icon" class="ms-icon" :class="icon"></i>
-			<div class="ms-button-label">{{ text }}</div>
+			<div v-if="text" class="ms-button-label">{{ text }}</div>
 			<i v-if="menu && !split" class="ms-Icon ms-Icon--ChevronDown ms-dropdown"></i>
 
 			<div v-if="description" class="ms-description">{{ description }} </div>
@@ -40,7 +40,7 @@
 				'ms-split-left': split
 			}">
 			<i v-if="icon" class="ms-icon" :class="icon"></i>
-			<div class="ms-button-label">{{ text }}</div>
+			<div v-if="text" class="ms-button-label">{{ text }}</div>
 			<i v-if="menu && !split" class="ms-Icon ms-Icon--ChevronDown ms-dropdown"></i>
 
 			<div v-if="description" class="ms-description">{{ description }} </div>
@@ -49,13 +49,13 @@
 		<button
 			@click="emitCustomEvent('dropdown')"
 			v-if="menu && split"
-			:type="type" :disabled="disabledDropdown"
+			:type="type" :disabled="dropdownDisabled"
 			class="ms-button-content ms-split-right"
 			:class="{
 				'ms-compound-button': description,
-				'ms-button-standard': isStandard && !disabledDropdown,
-				'ms-button-primary': !isStandard && !disabledDropdown,
-				'ms-button-disabled': disabledDropdown
+				'ms-button-standard': isStandard && !dropdownDisabled,
+				'ms-button-primary': !isStandard && !dropdownDisabled,
+				'ms-button-disabled': dropdownDisabled
 			}">
 
 			<span class="split"></span>
@@ -67,11 +67,8 @@
 </template>
 
 <script>
-import mixin from './mixin';
-
 export default {
 	name: 'f-button',
-	mixins: [mixin],
 	props: {
 		tag: {
 			type: String,
@@ -128,14 +125,17 @@ export default {
 			type: Boolean,
 			default: false
 		},
-		disabledDropdown: {
+		dropdownDisabled: {
 			type: Boolean,
 			default: false
 		}
 	},
 	computed: {
 		isIcon() {
-			return this.icon && !this.text && !this.description
+			return this.icon && !this.text && !this.description && !this.menu
+		},
+		isStandard() {
+			return this.theme === 'standard';
 		}
 	},
 	methods: {
