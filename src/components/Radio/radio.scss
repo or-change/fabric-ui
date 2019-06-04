@@ -1,0 +1,244 @@
+@import 'scss/_References.scss';
+
+.ms-radio {
+	font-family: inherit;
+	font-size: $ms-font-size-14;
+	font-weight: $ms-font-weight-regular;
+	color: rgb(50, 49, 48);
+	position: relative;
+
+	label {
+		position: relative;
+		height: 100%;
+		display: inline-block;
+    margin: 0px;
+    vertical-align: middle;
+    user-select: none;
+		
+		&::before {
+			content: "";
+			position: absolute;
+			display: inline-block;
+			border-width: 1px;
+			border-style: solid;
+			border-radius: 50%;
+		}
+
+		&::after {
+			content: "";
+			position: absolute;
+			border-radius: 50%;
+			border-style: solid;
+		}
+
+		span {
+			height: 100%;
+			font-size: 14px;
+			display: inline-block;
+		}
+
+	}
+
+	&.ms-radio-default {
+		display: block;
+
+		label {
+			&::before {
+				top: 0px;
+				left: 0px;
+				border-color: rgb(50, 49, 48);
+			}
+	
+			&::after {
+				border-color: transparent;
+				background-color: rgb(255, 255, 255);
+			}
+		}
+	}
+
+	&.ms-radio-icon {
+		display: inline-block;
+		background-color: rgb(243, 242, 241);
+
+		img, i {
+			display: block;
+			opacity: 1;
+		}
+
+		.ms-icon-description {
+			display: block;
+			white-space: pre-wrap;
+			text-overflow: ellipsis;
+			font-size: 14px;
+			font-weight: 400;
+			overflow: hidden;
+		}
+
+		label {
+			border-color: transparent;
+
+			&::before {
+				border-color: transparent;
+			}
+	
+			&::after {
+				border-color: transparent;
+				background-color: transparent;
+			}
+		}
+	}
+
+	input[type="radio"] {
+		position: absolute;
+		height: 100%;
+		width: 100%;
+    top: 0px;
+    left: 0px;
+		padding: 0px;
+    margin: 0px;
+		opacity: 0;
+		z-index: 300;
+	}
+
+	&.ms-radio-disabled {
+		cursor: default;
+
+		&.ms-radio-default label, &.ms-radio-icon label {
+			i, span {
+				color: rgb(161, 159, 157);
+			}
+		}
+
+		&.ms-radio-default label {
+			&::before {
+				border-color: rgb(161, 159, 157);
+			}
+		}
+	}
+}
+
+.ms-radio-md {
+	
+	&.ms-radio-default {
+		margin-top: 8px;
+		height: 20px;
+
+		label span {
+			padding-left: 26px;
+			height: 100%;
+			line-height: 20px;
+		}
+
+		label {
+			&::after {
+				left: 5px;
+				top: 5px;
+			}
+		}
+	}
+
+	&.ms-radio-icon {
+		margin: 8px 4px 4px 0px;
+		padding: 0px;
+
+		img, i {
+			height: 32px;
+			width: 32px;	
+		}
+
+		.ms-radio-content {
+			padding-left: 30px;
+			padding-right: 30px;
+			font-size: 32px;
+			line-height: 32px;
+		}
+
+		.ms-icon-description {
+			margin: 4px 8px;
+			height: 30px;
+			line-height: 15px;
+		}
+
+		label {
+			padding-top: 22px;
+			text-align: center;
+			border-style: solid;
+			border-width: 1px;
+
+			&::before {
+				top: 3px;
+				right: 3px;
+			}
+
+			&::after {
+				top: 8px;
+				right: 8px;
+			}
+		}
+	}
+
+	label {
+		&::before {
+			width: 20px;
+			height: 20px;
+		}
+
+		&::after {
+			width: 10px;
+			height: 10px;
+			border-width: 5px;
+		}
+	}
+}
+
+.ms-radio-enabled {
+	label, input[type="radio"] {
+		cursor: pointer;
+	}
+
+	&.ms-radio-default .ms-radio-checked, &.ms-radio-icon .ms-radio-checked {
+		&::before, &::after {
+			border-color: rgb(0, 120, 212);
+		}
+	
+		&:hover::after {
+			border-color: rgb(0, 90, 158);
+		}
+	}
+	
+	&.ms-radio-default {
+		.ms-radio-unchecked {
+			&:hover::after {
+				border-color: rgb(96, 94, 92);;
+			}
+		}
+	}
+
+	&.ms-radio-icon {
+		.ms-radio-checked {
+			border-color: rgb(0, 120, 212);
+			
+			i {
+				color: rgb(0, 120, 212);
+			}
+
+			&:hover {
+				border-color: rgb(0, 90, 158);
+				i {
+					color: rgb(0, 90, 158);
+				}
+			}
+		}
+	
+		.ms-radio-unchecked {
+			&:hover {
+				border-color: rgb(50, 49, 48);
+
+				&::before {
+					border-color: rgb(50, 49, 48);
+				}
+			}
+		}
+	}
+}
+

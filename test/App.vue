@@ -14,6 +14,7 @@
 		<toggle-button />
 		<menu-test />
 		<checkbox />
+		<radio />
 	</div>
 </template>
 

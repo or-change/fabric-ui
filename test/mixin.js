@@ -15,6 +15,8 @@ import ToggleButton from './components/Button/Toggle.vue';
 
 import Checkbox from './components/Checkbox';
 
+import Radio from './components/Radio';
+
 export default {
 	components: {
 		LabelTest,
@@ -30,6 +32,7 @@ export default {
 		CommandBar,
 		CustomSplitButton,
 		ToggleButton,
-		Checkbox
+		Checkbox,
+		Radio
 	}
 }
