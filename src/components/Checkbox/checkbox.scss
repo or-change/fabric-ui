@@ -1,0 +1,158 @@
+@import 'scss/_References.scss';
+
+.ms-checkbox {
+	color: rgb(50, 49, 48);
+	height: 100%;
+
+	&.ms-checkbox-md {
+		margin-top: 10px;
+		
+		label {
+			display: inline-block;
+			font-size: $ms-font-size-14;
+			line-height: 20px;
+			height: 20px;
+	
+			.ms-virtual-checkbox {
+				height: 20px;
+				width: 20px;
+				margin-right: 4px;
+				border-width: 1px;
+				text-align: center;
+			}
+	
+			span {
+				font-size: $ms-font-size-14;
+				// margin-left: 4px;
+			}
+		}
+
+		input[type="checkbox"] {
+			height: 20px;
+			width: 20px;
+		}
+	}
+
+	input[type="checkbox"] {
+		box-sizing: border-box;
+		position: absolute;
+		margin: 0px;
+		opacity: 0;
+		z-index: 200;
+    background: transparent;
+		padding: 0;
+		cursor: pointer;
+	}
+
+	label {
+		position: relative;
+		line-height: 100%;
+		font-family: $ms-font-family-west-european;
+		font-weight: $ms-font-weight-regular;
+		text-align: left;
+		vertical-align: middle;
+		user-select: none;
+
+		.ms-virtual-checkbox {
+			position: relative;
+			display: inline-block;
+			vertical-align: middle;
+			line-height: 100%;
+			border-style: solid;
+			overflow: hidden;
+			border-radius: 2px;
+
+			&.box-right {
+				float: right;
+				margin-left: 10px;
+		
+				&:after {
+					clear: both;
+				}
+			}
+
+			i {
+				display: inline-block;
+				height: 100%;
+				vertical-align: middle;
+				-webkit-font-smoothing: antialiased;
+				font-style: normal;
+				font-weight: normal;
+				font-family: FabricMDL2Icons;
+			}
+		}
+
+		span {
+			display: inline-block;
+			height: 100%;
+		}
+	}
+
+	&.ms-checkbox-unchecked {
+		.ms-virtual-checkbox {
+			border-color: rgb(50, 49, 48);
+	
+			i  {
+				opacity: 0;
+				color: rgb(255, 255, 255);
+			}
+		}
+	}
+	
+
+	&.ms-checkbox-checked {
+		.ms-virtual-checkbox {
+			border-color: rgb(0, 120, 212);
+			background: rgb(0, 120, 212);
+			
+			i  {
+				color: rgb(255, 255, 255);
+			}
+		}
+	}
+
+	&.ms-checkbox-enabled {
+		label {
+			cursor: pointer;
+		}
+
+		&.ms-checkbox-unchecked {
+			label:hover .ms-virtual-checkbox i {
+				color: rgb(161, 159, 157);
+				opacity: 1;
+			}
+		}
+		
+	
+		&.ms-checkbox-checked {
+			label:hover .ms-virtual-checkbox {
+				background: rgb(16, 110, 190);
+				border-color: rgb(16, 110, 190);
+			}
+		}
+	}
+
+	&.ms-checkbox-disabled {
+		&.ms-checkbox-unchecked {
+			.ms-virtual-checkbox {
+				border-color: rgb(200, 198, 196);
+			}
+		}
+
+		&.ms-checkbox-checked {
+			.ms-virtual-checkbox {
+				border-color: rgb(200, 198, 196);
+				background: rgb(200, 198, 196);
+			}
+		}
+
+		input[type="checkbox"] {
+			cursor: default;
+		}
+
+		label span {
+			color: rgb(161, 159, 157);
+			cursor: default;
+		}
+	}
+}

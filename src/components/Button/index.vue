@@ -58,7 +58,7 @@
 				'ms-button-disabled': dropdownDisabled
 			}">
 
-			<span class="split"></span>
+			<span class="split" v-if="disabled === dropdownDisabled"></span>
 			<i class="ms-Icon ms-Icon--ChevronDown ms-dropdown"></i>
 		</button>
 

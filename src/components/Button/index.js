@@ -1,7 +1,7 @@
 import './button.scss';
 
-import Button from './Button';
+import Button from './index.vue';
 
 export default function install(Vue) {
-	Vue.component(Button.name, Button)
+	Vue.component(Button.name, Button);
 };
