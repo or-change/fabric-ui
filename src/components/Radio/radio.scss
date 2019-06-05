@@ -4,8 +4,7 @@
 	font-family: inherit;
 	font-size: $ms-font-size-14;
 	font-weight: $ms-font-weight-regular;
-	color: rgb(50, 49, 48);
-	position: relative;
+	color: $ms-color-gray160;
 
 	label {
 		position: relative;
@@ -19,7 +18,7 @@
 			content: "";
 			position: absolute;
 			display: inline-block;
-			border-width: 1px;
+			border-width: $ms-focus-border-width;
 			border-style: solid;
 			border-radius: 50%;
 		}
@@ -32,8 +31,7 @@
 		}
 
 		span {
-			height: 100%;
-			font-size: 14px;
+			font-size: $ms-font-size-14;
 			display: inline-block;
 		}
 
@@ -46,19 +44,19 @@
 			&::before {
 				top: 0px;
 				left: 0px;
-				border-color: rgb(50, 49, 48);
+				border-color: $ms-color-gray160;
 			}
 	
 			&::after {
 				border-color: transparent;
-				background-color: rgb(255, 255, 255);
+				background-color: $ms-color-white;
 			}
 		}
 	}
 
 	&.ms-radio-icon {
 		display: inline-block;
-		background-color: rgb(243, 242, 241);
+		background-color: $ms-color-gray20;
 
 		img, i {
 			display: block;
@@ -69,8 +67,6 @@
 			display: block;
 			white-space: pre-wrap;
 			text-overflow: ellipsis;
-			font-size: 14px;
-			font-weight: 400;
 			overflow: hidden;
 		}
 
@@ -97,7 +93,7 @@
 		padding: 0px;
     margin: 0px;
 		opacity: 0;
-		z-index: 300;
+		z-index: $ms-zIndex-2;
 	}
 
 	&.ms-radio-disabled {
@@ -105,13 +101,13 @@
 
 		&.ms-radio-default label, &.ms-radio-icon label {
 			i, span {
-				color: rgb(161, 159, 157);
+				color: $ms-color-gray90;
 			}
 		}
 
 		&.ms-radio-default label {
 			&::before {
-				border-color: rgb(161, 159, 157);
+				border-color: $ms-color-gray90;
 			}
 		}
 	}
@@ -149,8 +145,8 @@
 		.ms-radio-content {
 			padding-left: 30px;
 			padding-right: 30px;
-			font-size: 32px;
-			line-height: 32px;
+			font-size: $ms-font-size-32;
+			line-height: $ms-font-size-32;
 		}
 
 		.ms-icon-description {
@@ -163,7 +159,7 @@
 			padding-top: 22px;
 			text-align: center;
 			border-style: solid;
-			border-width: 1px;
+			border-width: $ms-focus-border-width;
 
 			&::before {
 				top: 3px;
@@ -179,8 +175,8 @@
 
 	label {
 		&::before {
-			width: 20px;
-			height: 20px;
+			width: $ms-icon-size-l;
+			height: $ms-icon-size-l;
 		}
 
 		&::after {
@@ -198,44 +194,44 @@
 
 	&.ms-radio-default .ms-radio-checked, &.ms-radio-icon .ms-radio-checked {
 		&::before, &::after {
-			border-color: rgb(0, 120, 212);
+			border-color: $ms-color-blue;
 		}
 	
 		&:hover::after {
-			border-color: rgb(0, 90, 158);
+			border-color: $ms-color-communicationShade20;
 		}
 	}
 	
 	&.ms-radio-default {
 		.ms-radio-unchecked {
 			&:hover::after {
-				border-color: rgb(96, 94, 92);;
+				border-color: $ms-color-gray130;
 			}
 		}
 	}
 
 	&.ms-radio-icon {
 		.ms-radio-checked {
-			border-color: rgb(0, 120, 212);
+			border-color: $ms-color-blue;
 			
 			i {
-				color: rgb(0, 120, 212);
+				color: $ms-color-blue;
 			}
 
 			&:hover {
-				border-color: rgb(0, 90, 158);
+				border-color: $ms-color-communicationShade20;
 				i {
-					color: rgb(0, 90, 158);
+					color: $ms-color-communicationShade20;
 				}
 			}
 		}
 	
 		.ms-radio-unchecked {
 			&:hover {
-				border-color: rgb(50, 49, 48);
+				border-color: $ms-color-gray160;
 
 				&::before {
-					border-color: rgb(50, 49, 48);
+					border-color: $ms-color-gray160;
 				}
 			}
 		}

@@ -1,7 +1,7 @@
 @import 'scss/_References.scss';
 
 .ms-checkbox {
-	color: rgb(50, 49, 48);
+	color: $ms-color-gray160;
 	height: 100%;
 
 	&.ms-checkbox-md {
@@ -14,10 +14,10 @@
 			height: 20px;
 	
 			.ms-virtual-checkbox {
-				height: 20px;
-				width: 20px;
+				height: $ms-icon-size-l;
+				width: $ms-icon-size-l;
 				margin-right: 4px;
-				border-width: 1px;
+				border-width: $ms-focus-border-width;
 				text-align: center;
 			}
 	
@@ -28,8 +28,8 @@
 		}
 
 		input[type="checkbox"] {
-			height: 20px;
-			width: 20px;
+			height: $ms-icon-size-l;
+			width: $ms-icon-size-l;
 		}
 	}
 
@@ -38,7 +38,7 @@
 		position: absolute;
 		margin: 0px;
 		opacity: 0;
-		z-index: 200;
+		z-index: $ms-zIndex-3;
     background: transparent;
 		padding: 0;
 		cursor: pointer;
@@ -90,11 +90,11 @@
 
 	&.ms-checkbox-unchecked {
 		.ms-virtual-checkbox {
-			border-color: rgb(50, 49, 48);
+			border-color: $ms-color-gray160;
 	
 			i  {
 				opacity: 0;
-				color: rgb(255, 255, 255);
+				color: $ms-color-white;
 			}
 		}
 	}
@@ -102,11 +102,11 @@
 
 	&.ms-checkbox-checked {
 		.ms-virtual-checkbox {
-			border-color: rgb(0, 120, 212);
-			background: rgb(0, 120, 212);
+			border-color: $ms-color-blue;
+			background: $ms-color-blue;
 			
 			i  {
-				color: rgb(255, 255, 255);
+				color: $ms-color-white;
 			}
 		}
 	}
@@ -118,7 +118,7 @@
 
 		&.ms-checkbox-unchecked {
 			label:hover .ms-virtual-checkbox i {
-				color: rgb(161, 159, 157);
+				color: $ms-color-gray90;
 				opacity: 1;
 			}
 		}
@@ -126,8 +126,8 @@
 	
 		&.ms-checkbox-checked {
 			label:hover .ms-virtual-checkbox {
-				background: rgb(16, 110, 190);
-				border-color: rgb(16, 110, 190);
+				background: $ms-color-communicationShade10;
+				border-color: $ms-color-communicationShade10;
 			}
 		}
 	}
@@ -135,14 +135,14 @@
 	&.ms-checkbox-disabled {
 		&.ms-checkbox-unchecked {
 			.ms-virtual-checkbox {
-				border-color: rgb(200, 198, 196);
+				border-color: $ms-color-gray60;
 			}
 		}
 
 		&.ms-checkbox-checked {
 			.ms-virtual-checkbox {
-				border-color: rgb(200, 198, 196);
-				background: rgb(200, 198, 196);
+				border-color: $ms-color-gray60;
+				background: $ms-color-gray60;
 			}
 		}
 
@@ -151,7 +151,7 @@
 		}
 
 		label span {
-			color: rgb(161, 159, 157);
+			color: $ms-color-gray90;
 			cursor: default;
 		}
 	}

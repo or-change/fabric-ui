@@ -21,7 +21,7 @@
 				:checked="checked"
 				:name="name"
 				:value="value"
-				@input="select"
+				@change="select"
 			/>
 			
 			<div class="ms-radio-content">
@@ -88,31 +88,32 @@ export default {
 	},
 	watch: {
 		selected(newValue, oldValue) {
-			if (newValue === this.value) {
+			this.isChecked(newValue);
+		}
+	},
+	methods: {
+		select(event) {
+			if (this.disabled) {
+				return;
+			}
+
+			this.checked = event.target.checked;
+
+			if (this.checked) {
+				this.$emit('input', this.value);
+				// this.$emit('change');
+			}
+		},
+		isChecked(selected) {
+			if (selected === this.value) {
 				this.checked = true;
 			} else {
 				this.checked = false;
 			}
 		}
 	},
-	methods: {
-		select() {
-			if (this.disabled) {
-				return;
-			}
-
-
-			this.checked = !this.checked;
-
-			if (this.checked) {
-				this.$emit('input', this.value);
-			}
-		}
-	},
 	mounted() {
-		if (this.selected === this.value) {
-			this.checked = true;
-		}
+		this.isChecked(this.selected);
 	}
 }
 </script>

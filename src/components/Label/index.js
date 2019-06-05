@@ -1,4 +1,4 @@
-import Label from './Label';
+import Label from './index.vue';
 
 
 export default function install(Vue) {

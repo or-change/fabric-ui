@@ -19,8 +19,7 @@
 					:id="id"
 					:disabled="disabled"
 					:checked="checked"
-					@input="select"
-					@change="$emit('change')"
+					@change="select"
 				/>
 				<i class="ms-Icon ms-Icon--CheckMark"></i>
 			</div>
@@ -93,6 +92,7 @@ export default {
 			}
 			
 			this.$emit('input', this.selected);
+			// this.$emit('change');
 		},
 		isChecked(selected) {
 			if (selected.indexOf(this.value) === -1) {
