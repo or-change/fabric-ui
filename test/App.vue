@@ -15,6 +15,7 @@
 		<menu-test />
 		<checkbox />
 		<radio />
+		<dropdown />
 	</div>
 </template>
 

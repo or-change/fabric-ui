@@ -22,7 +22,7 @@
 
 			<i v-if="icon" class="ms-icon" :class="icon"></i>
 			<div v-if="text" class="ms-button-label">{{ text }}</div>
-			<i v-if="menu && !split" class="ms-Icon ms-Icon--ChevronDown ms-dropdown"></i>
+			<i v-if="menu && !split" class="ms-Icon ms-Icon--ChevronDown ms-icon-dropdown"></i>
 
 			<div v-if="description" class="ms-description">{{ description }} </div>
 		</a>
@@ -41,7 +41,7 @@
 			}">
 			<i v-if="icon" class="ms-icon" :class="icon"></i>
 			<div v-if="text" class="ms-button-label">{{ text }}</div>
-			<i v-if="menu && !split" class="ms-Icon ms-Icon--ChevronDown ms-dropdown"></i>
+			<i v-if="menu && !split" class="ms-Icon ms-Icon--ChevronDown ms-icon-dropdown"></i>
 
 			<div v-if="description" class="ms-description">{{ description }} </div>
 		</button>
@@ -59,7 +59,7 @@
 			}">
 
 			<span class="split" v-if="disabled === dropdownDisabled"></span>
-			<i class="ms-Icon ms-Icon--ChevronDown ms-dropdown"></i>
+			<i class="ms-Icon ms-Icon--ChevronDown ms-icon-dropdown"></i>
 		</button>
 
 		<slot name="menu"></slot>

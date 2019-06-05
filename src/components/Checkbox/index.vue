@@ -92,7 +92,8 @@ export default {
 			}
 			
 			this.$emit('input', this.selected);
-			// this.$emit('change');
+
+			this.$emit('change', this.selected);
 		},
 		isChecked(selected) {
 			if (selected.indexOf(this.value) === -1) {

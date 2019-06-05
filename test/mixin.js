@@ -17,6 +17,8 @@ import Checkbox from './components/Checkbox';
 
 import Radio from './components/Radio';
 
+import Dropdown from './components/Dropdown';
+
 export default {
 	components: {
 		LabelTest,
@@ -33,6 +35,6 @@ export default {
 		CustomSplitButton,
 		ToggleButton,
 		Checkbox,
-		Radio
+		Radio, Dropdown
 	}
 }
