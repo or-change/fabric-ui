@@ -1,16 +1,21 @@
 <template>
-	<div id="dropdown">
+	<div>
 		<h2>Dropdown</h2>
 
 		<f-dropdown
 			:options="options"
 			v-model="value"
 		/>
+		<f-button
+			text="show dropdown"
+			v-f-dropdown.test
+		/>
 
 		<f-dropdown
 			:options="options"
 			v-model="value"
 			error
+			data-dropdown-name="test"
 		/>
 
 		<f-dropdown
@@ -79,8 +84,8 @@ export default {
 
 
 <style lang="scss">
-#dropdown {
-	height: 200px;
+.ms-dropdown {
+	margin-bottom: 200px;
 }
 </style>
 

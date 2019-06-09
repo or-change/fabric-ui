@@ -7,20 +7,20 @@
 			'ms-checkbox-enabled': !disabled
 		}">
 		<label :for="id">
+			<input 
+				type="checkbox"
+				:name="name"
+				:value="value"
+				:id="id"
+				:disabled="disabled"
+				:checked="checked"
+				@change="select"
+			/>
 			<div
 				class="ms-virtual-checkbox"
 				:class="{
 					'box-right': boxPosition === 'right'
 				}">
-				<input 
-					type="checkbox"
-					:name="name"
-					:value="value"
-					:id="id"
-					:disabled="disabled"
-					:checked="checked"
-					@change="select"
-				/>
 				<i class="ms-Icon ms-Icon--CheckMark"></i>
 			</div>
 			<span>{{ label }}</span>

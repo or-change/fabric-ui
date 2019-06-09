@@ -27,16 +27,15 @@
 				// margin-left: 4px;
 			}
 		}
-
-		input[type="checkbox"] {
-			height: $ms-icon-size-l;
-			width: $ms-icon-size-l;
-		}
 	}
 
 	input[type="checkbox"] {
 		box-sizing: border-box;
+		width: 100%;
+		height: 100%;
 		position: absolute;
+		top: 0;
+		left: 0;
 		margin: 0px;
 		opacity: 0;
 		z-index: $ms-zIndex-3;

@@ -11,6 +11,7 @@
 		<slot name="dropdown-controller">
 			<div class="ms-dropdown-controller"
 				@click="toggle"
+				ref="dropdownController"
 			>
 				<div class="ms-dropdown-content">
 					<span
@@ -37,7 +38,7 @@
 		</slot>
 
 		<slot name="dropdown-options">	
-			<div class="ms-dropdown-options">
+			<div class="ms-dropdown-options" ref="dropdownOptions">
 				<f-dropdown-item
 					v-for="(item, index) in options"
 					:key="index"
@@ -52,8 +53,8 @@
 </template>
 
 <script>
+const EVENT_TOGGLE = 'fv::toggle::dropdown';
 
-// 绑定指令
 export default {
 	name: 'f-dropdown',
 	data() {
@@ -62,6 +63,9 @@ export default {
 		}
 	},
 	props: {
+		dataDropdownName: {
+			type: String
+		},
 		value: {
 			type: [String, Array],
 			default: null
@@ -104,7 +108,13 @@ export default {
 				return;
 			}
 
+			this.$emit('show');
 			this.isShow = true;
+			this.$emit('shown');
+
+			this.$nextTick(() => {
+				this.computedPosition();
+			});
 		},
 		hide() {
 			if (this.disabled) {
@@ -112,6 +122,7 @@ export default {
 			}
 
 			this.isShow = false;
+			this.$emit('hidden');
 		},
 		toggle() {
 			if (this.isShow) {
@@ -120,50 +131,90 @@ export default {
 				this.show();
 			}
 		},
+		toggleHandler(target, ele) {
+			if (target === this.dataDropdownName) {
+				this.toggle();
+			}
+		},
 		select(value) {
 			if (this.disabled) {
 				return;
 			}
 
 			this.$emit('input', value);
+		},
+		getInfo(value = null) {
+			const item = this.options.filter(item => item && item.value === value)
+				.map(({icon, image, text}) => {
+					return {icon, image, text};
+				});
+				
+
+			return item.length === 0 ? [{
+					text: this.placeholder
+				}] : item;
+		},
+		setPosition(top, left) {
+			const optionsEle = this.$refs.dropdownOptions;
+			const controllerEle = this.$refs.dropdownController;
+
+			optionsEle.style.top = `${top}px`;
+			optionsEle.style.left = `${left}px`;
+		},
+		computedPosition() {
+			const optionsEle = this.$refs.dropdownOptions;
+			const controllerEle = this.$refs.dropdownController;
+
+			if (!this.ajustable) {
+					return;
+			}
+
+			const optionsInfo = optionsEle.getBoundingClientRect();
+			const controllerInfo = controllerEle.getBoundingClientRect();
+			const { clientHeight, clientWidth } = document.documentElement;
+
+			const height = optionsInfo.height + controllerInfo.height;
+			const width = controllerInfo.width + optionsInfo.width;
+
+			if (clientHeight >= controllerInfo.top + optionsInfo.height) {
+				this.setPosition(controllerInfo.height, 0);
+			}	else if (controllerInfo.top >= optionsInfo.height) {
+				this.setPosition(-optionsInfo.height, 0);
+			} else if (clientWidth >= width + controllerInfo.left) {
+				this.setPosition(clientHeight - controllerInfo.top - optionsInfo.height, controllerInfo.width)
+			} else if (controllerInfo.left >= optionsInfo.width) {
+				this.setPosition(clientHeight - controllerInfo.top - optionsInfo.height, -optionsInfo.width);
+			} else {
+				this.setPosition(controllerInfo.height, 0);
+			}
 		}
 	},
 	computed: {
 		result() {
-			if (this.value === null || this.value.length === 0) {
-				return [{
-					text: this.placeholder
-				}];
-			}
-			// 改
-			if (typeof this.value === 'string') {
-				const item = this.options.filter(item => item && item.value === this.value);
-				const { icon, image, text} = item[0];
-
-				return [{
-					icon,
-					image,
-					text
-				}];
+			if (!this.multiSelect) {
+				return this.getInfo(this.value);
 			}
 
-			if (Array.isArray(this.value)) {
-				const result = [];
+			if (this.multiSelect) {
+				let result = [];
+
+				if (this.value.length === 0) {
+					return this.getInfo();
+				}
 
 				this.value.forEach(value => {
-					const item = this.options.filter(item => item && item.value === value);
-					const { icon, image, text} = item[0];
-
-					result.push({
-						icon,
-						image,
-						text
-					});
-				})
+					result = result.concat(this.getInfo(value));
+				});
 
 				return result;
 			}
 		}
+	},
+	mounted() {
+		this.$root.$on(EVENT_TOGGLE, this.toggleHandler);
+	},
+	beforeDestroy() {
+		this.$root.$off(EVENT_TOGGLE, this.toggleHandler);
 	}
 }
 </script>

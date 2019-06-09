@@ -162,7 +162,7 @@
 		}
 
 		.ms-dropdown-item-icon {
-			top: 8px;
+			top: 10px;
 			right: 8px;
 		}
 	}
@@ -186,7 +186,8 @@
 		color: rgb(164, 38, 44);
     font-family: inherit;
     font-size: $ms-font-size-12;
-    padding-top: 5px;
+		padding-top: 5px;
+		position: absolute;
 	}
 }
 
