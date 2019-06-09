@@ -11,14 +11,15 @@
 			display: inline-block;
 			font-size: $ms-font-size-14;
 			line-height: 20px;
-			height: 20px;
+			height: 100%;
 	
 			.ms-virtual-checkbox {
 				height: $ms-icon-size-l;
 				width: $ms-icon-size-l;
-				margin-right: 4px;
+				margin-right: 10px;
 				border-width: $ms-focus-border-width;
 				text-align: center;
+				float: left;
 			}
 	
 			span {
@@ -65,6 +66,7 @@
 			&.box-right {
 				float: right;
 				margin-left: 10px;
+				margin-right: 0;
 		
 				&:after {
 					clear: both;
@@ -73,7 +75,7 @@
 
 			i {
 				display: inline-block;
-				height: 100%;
+				box-sizing: border-box;
 				vertical-align: middle;
 				-webkit-font-smoothing: antialiased;
 				font-style: normal;

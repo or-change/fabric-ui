@@ -16,6 +16,8 @@
 </template>
 
 <script>
+// 绑定指令
+
 import MenuItem from './Item';
 import MenuSubItem from './Sub';
 import MenuSubSplitItem from './SubSplit';

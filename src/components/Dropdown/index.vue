@@ -9,64 +9,56 @@
 		}"
 	>
 		<slot name="dropdown-controller">
-			<div class="ms-dropdown-controller">
-				<span>{{ text }}</span>
+			<div class="ms-dropdown-controller"
+				@click="toggle"
+			>
+				<div class="ms-dropdown-content">
+					<span
+						v-for="(item, index) in result" :key="index"
+					>
+						<i
+							v-if="item.icon" class="ms-dropdown-item-icon" :class="item.icon"
+						></i>
+						<img
+							v-if="item.image" class="ms-dropdown-item-icon" :src="item.image"
+						/>
+						<span>{{ item.text }}</span>
+						<span v-if="result[index + 1]">,</span>
+					</span>
+				</div>
+
 				<span class="ms-dropdown-icon">
 					<i class="ms-Icon ms-Icon--ChevronDown"></i>
 				</span>
 			</div>
+			<div
+				v-if="error && !isShow"
+				class="ms-dropdown-error-message">{{ errorMessage }}</div>
 		</slot>
 
-		<div class="ms-dropdown-options">
-			<slot name="dropdown-options">
-				<div
+		<slot name="dropdown-options">	
+			<div class="ms-dropdown-options">
+				<f-dropdown-item
 					v-for="(item, index) in options"
 					:key="index"
-				>
-					<div class="ms-dropdown-divider"
-						v-if="!item"
-					></div>
-
-					<div
-						v-if="item && isHeader(item)"
-						class="ms-dropdown-header">{{ item.text }}</div>
-
-					<div v-if="item && !isHeader(item)"
-						class="ms-dropdown-item"
-						:class="{
-							'ms-dropdown-item-active': value === item.value
-						}">
-
-						<div
-							v-if="!multiSelect"
-							@click="select(item.value)">
-							<i class="ms-dropdown-item-icon" :class="icon"></i>
-							<img class="ms-dropdown-item-icon" :src="image" />
-							<span>{{ item.text }}</span>
-						</div>
-
-						<f-checkbox
-							v-if="multiSelect"
-							:label="item.text"
-							:value="item.value"
-							:disabled="item.disabled"
-							v-model="value"
-						/>	
-					</div>
-				</div>
-			</slot>
-		</div>
+					:item="item"
+					:multi-select="multiSelect"
+					:value="value"
+					@change="select"
+				/>
+			</div>
+		</slot>
 	</div>
 </template>
 
 <script>
+
+// 绑定指令
 export default {
 	name: 'f-dropdown',
 	data() {
 		return {
-			isShow: false,
-			defaultText: 'Select Options',
-			
+			isShow: false
 		}
 	},
 	props: {
@@ -77,11 +69,15 @@ export default {
 		options: {
 			type: Array
 		},
-		multiSelect: {
-			type: Boolean,
-			default: false
+		placeholder: {
+			type: String,
+			default: 'Select Option'
 		},
-		icon: {
+		errorMessage: {
+			type: String,
+			default: 'This dropdown has an error.'
+		},
+		multiSelect: {
 			type: Boolean,
 			default: false
 		},
@@ -103,11 +99,26 @@ export default {
 		}
 	},
 	methods: {
-		focus() {
+		show() {
+			if (this.disabled) {
+				return;
+			}
 
+			this.isShow = true;
 		},
-		blur() {
+		hide() {
+			if (this.disabled) {
+				return;
+			}
 
+			this.isShow = false;
+		},
+		toggle() {
+			if (this.isShow) {
+				this.hide();
+			} else {
+				this.show();
+			}
 		},
 		select(value) {
 			if (this.disabled) {
@@ -115,22 +126,43 @@ export default {
 			}
 
 			this.$emit('input', value);
-		},
-		isHeader(item) {
-			return !item.value;
 		}
 	},
 	computed: {
-		text() {
-			if (this.value === null) {
-				return this.defaultText;
+		result() {
+			if (this.value === null || this.value.length === 0) {
+				return [{
+					text: this.placeholder
+				}];
+			}
+			// 改
+			if (typeof this.value === 'string') {
+				const item = this.options.filter(item => item && item.value === this.value);
+				const { icon, image, text} = item[0];
+
+				return [{
+					icon,
+					image,
+					text
+				}];
 			}
 
 			if (Array.isArray(this.value)) {
-				return this.value.join(',');
-			}
+				const result = [];
 
-			return this.value;
+				this.value.forEach(value => {
+					const item = this.options.filter(item => item && item.value === value);
+					const { icon, image, text} = item[0];
+
+					result.push({
+						icon,
+						image,
+						text
+					});
+				})
+
+				return result;
+			}
 		}
 	}
 }
