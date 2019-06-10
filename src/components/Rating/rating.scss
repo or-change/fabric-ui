@@ -1,0 +1,103 @@
+@import 'scss/_References.scss';
+
+.ms-rating {
+	font-family: inherit;
+	font-size: $ms-font-size-14;
+	font-weight: $ms-font-weight-regular;
+
+	button {
+		position: relative;
+		display: inline-block;
+		box-sizing: content-box;
+    background-color: transparent;
+    padding: 8px 2px;
+    margin: 0px;
+    outline: transparent;
+    border: none;
+	}
+
+	.ms-rating-container {
+		position: relative;
+	}
+
+	i {
+		display: inline-block;
+    -webkit-font-smoothing: antialiased;
+    font-style: normal;
+    font-weight: normal;
+    font-family: FabricMDL2Icons;
+		overflow: hidden;
+
+		&.ms-rating-front {
+			position: absolute;
+			left: 0px;
+			top: 0px;
+			text-align: center;
+			vertical-align: middle;
+		}
+	}
+}
+
+.ms-rating-lg {
+	button {
+		font-size: $ms-font-size-20;
+    line-height: $ms-font-size-20;
+    height: $ms-font-size-20;
+	}
+}
+
+.ms-rating-sm {
+	button {
+		font-size: $ms-font-size-16;
+    line-height: $ms-font-size-16;
+    height: $ms-font-size-16;
+	}
+}
+
+.ms-rating-enabled {
+	button {
+		cursor: pointer;
+
+		.ms-rating-hover {
+			color: $ms-color-gray160;
+		}
+		
+		&:hover {
+			i.ms-rating-back {
+				color: $ms-color-communicationPrimary;
+			}
+
+			.ms-rating-front {
+				color: $ms-color-communicationShade20;
+			}
+
+			&~button .ms-rating-front {
+				color: $ms-color-gray90;
+			}
+		}
+	}
+}
+
+.ms-rating-enabled, .ms-rating-readonly {
+	i {
+    color: $ms-color-gray90;
+
+		&.ms-rating-front {
+			color: $ms-color-gray160;
+		}
+	}
+}
+
+.ms-rating-disabled {
+	button {
+		i {
+			color: $ms-color-gray60;
+		}
+	}
+}
+
+.ms-rating-disabled, .ms-rating-readonly {
+	button {
+		cursor: default
+	}
+}

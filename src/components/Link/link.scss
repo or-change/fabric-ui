@@ -1,0 +1,30 @@
+@import 'scss/_References.scss';
+
+.ms-link {
+	font-family: inherit;
+	font-size: $ms-font-size-16;
+	font-weight: $ms-font-weight-regular;
+	color: $ms-color-blue;
+	display: inline;
+	margin: 0;
+	padding: 0;
+	text-align: left;
+	background: none;
+	border: none;
+	outline: none;
+	text-decoration: none;
+	cursor: pointer;
+
+	&:hover, &:active {
+		color: $ms-color-communicationShade30;
+		text-decoration: underline;
+	}
+
+	&.ms-link-disabled {
+		cursor: default;
+
+		&:hover, &:active {
+			text-decoration: none;
+		}
+	}
+}

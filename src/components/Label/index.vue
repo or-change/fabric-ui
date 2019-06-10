@@ -26,7 +26,3 @@ export default {
 }
 </script>
 
-<style lang="scss">
-@import './label.scss';
-</style>
-

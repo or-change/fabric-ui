@@ -19,22 +19,25 @@ import Radio from './components/Radio';
 
 import Dropdown from './components/Dropdown';
 
-export default {
-	components: {
-		LabelTest,
-		MenuTest,
-		DefaultButton,
-		CompoundButton,
-		IconButton,
-		ActionButton,
-		CommandButton,
-		AchorButton,
-		ContextualButton,
-		SplitButton,
-		CommandBar,
-		CustomSplitButton,
-		ToggleButton,
-		Checkbox,
-		Radio, Dropdown
-	}
-}
+import Link from './components/Link';
+
+import Rating from './components/Rating';
+
+export default [
+	LabelTest,
+	MenuTest,
+	DefaultButton,
+	CompoundButton,
+	IconButton,
+	ActionButton,
+	CommandButton,
+	AchorButton,
+	ContextualButton,
+	SplitButton,
+	CommandBar,
+	CustomSplitButton,
+	ToggleButton,
+	Checkbox,
+	Radio, Dropdown,
+	Link, Rating
+];

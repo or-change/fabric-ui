@@ -85,7 +85,7 @@ export default {
 
 <style lang="scss">
 .ms-dropdown {
-	margin-bottom: 200px;
+	margin-bottom: 20px;
 }
 </style>
 

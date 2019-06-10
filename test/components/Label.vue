@@ -6,3 +6,9 @@
 		<f-label required>I'm a Label</f-label>
 	</div>
 </template>
+
+<script>
+export default {
+	name: 'custom-label'
+}
+</script>

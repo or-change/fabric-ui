@@ -11,6 +11,7 @@
 
 <script>
 export default {
+	name: 'custom-menu',
 	data() {
 		return {
 			menu: [

@@ -1,29 +1,19 @@
 <template>
 	<div id="app">
-		<label-test />
-		<default-button />
-		<compound-button />
-		<icon-button />
-		<action-button />
-		<command-button />
-		<achor-button />
-		<contextual-button />
-		<split-button />
-		<command-bar />
-		<custom-split-button />
-		<toggle-button />
-		<menu-test />
-		<checkbox />
-		<radio />
-		<dropdown />
+		<component v-for="(component, index) in componentList"
+			:key="index" :is="component" />
 	</div>
 </template>
 
 <script>
-import mixin from './mixin';
+import componentList from './mixin';
 
 export default {
-	mixins: [mixin]
+	data() {
+		return {
+			componentList
+		}
+	}
 }
 </script>
 
