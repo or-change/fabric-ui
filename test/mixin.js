@@ -23,6 +23,10 @@ import Link from './components/Link';
 
 import Rating from './components/Rating';
 
+import SearchBox from './components/SearchBox';
+
+import SpinButton from './components/SpinButton';
+
 export default [
 	LabelTest,
 	MenuTest,
@@ -39,5 +43,6 @@ export default [
 	ToggleButton,
 	Checkbox,
 	Radio, Dropdown,
-	Link, Rating
+	Link, Rating,
+	SearchBox, SpinButton
 ];

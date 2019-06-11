@@ -1,0 +1,135 @@
+@import 'scss/_References.scss';
+
+.ms-search-box {
+	position: relative;
+	display: table;
+	width: 100%;
+	font-family: inherit;
+	font-size: $ms-font-size-14;
+	font-weight: $ms-font-weight-regular;
+	box-shadow: none;
+	margin: 0px;
+	box-sizing: border-box;
+	color: $ms-color-gray160;
+	background-color: $ms-color-white;
+	border-style: solid;
+	border-color: $ms-color-gray110;
+	border-radius: 2px;
+	border-bottom-width: 1px;
+
+	i {
+    font-size: $ms-font-size-16;
+    text-align: center;
+	}
+
+	button {
+    text-align: center;
+    cursor: pointer;
+    padding: 0px;
+    margin: 0px;
+    background-color: transparent;
+    user-select: none;
+    outline: transparent;
+		border: none;
+		text-align: center;
+
+		i {
+			font-size: $ms-font-size-12;
+		}
+	}
+
+	i, button {
+		width: 100%;
+	}
+
+	.icon-search, .icon-clear, input[type=text] {
+		display: table-cell;
+		vertical-align: top;
+	}
+
+	input[type=text] {
+		font-family: inherit;
+		box-shadow: none;
+		width: 100%;
+    margin: 0px;
+		padding: 0px;
+    background-color: transparent;
+    color: $ms-color-gray160;
+    text-overflow: ellipsis;
+    border: none;
+    outline: none;
+    overflow: hidden;
+		cursor: text;
+	}
+}
+
+.ms-search-box-md {
+	height: 32px;
+	padding: 1px 0px 1px 4px;
+
+	i, button {
+		height: 28px;
+		line-height: 28px;
+	}
+
+	.icon-search, .icon-clear {
+		width: 32px;
+	}
+
+	input[type=text] {
+		height: 28px;
+		line-height: 28px;
+	}
+
+	&.ms-search-box-enabled.ms-search-box-active {
+		input[type="text"] {
+			padding-left: 4px;
+		}
+	}
+}
+
+.ms-search-box-enabled {
+	&:hover {
+		border-color: $ms-color-gray190;
+	}
+
+	&.ms-search-box-active {
+		&:hover {
+			border-color: $ms-color-blue;
+		}
+	}
+
+	i {
+		color: $ms-color-blue;
+	}
+
+	.icon-clear {
+		&:hover {
+			background-color: $ms-color-gray20;
+		}
+	}
+
+	&.ms-search-box-active {
+		.icon-search {
+			display: none;
+		}
+	}
+}
+
+.ms-search-box-disabled {
+	i {
+		color: $ms-color-gray90;
+	}
+
+	&.ms-search-box-border {
+		background-color: $ms-color-gray20;
+	}
+
+	input[type=text] {
+		cursor: default;
+	}
+}
+
+.ms-search-box-border {
+	border-width: 1px;
+}
