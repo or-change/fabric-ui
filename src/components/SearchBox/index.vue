@@ -7,20 +7,23 @@
 			'ms-search-box-active': active,
 			'ms-search-box-border': border
 		}"
-		@click="active = true"
+		@click="active = true; $refs.input.focus()"
 		@mouseover="isSearch = true"
 		@mouseout="isSearch = false">
 
-		<i :class="[icon, 'icon-wrapper', 'icon-search']"></i>
+		<i :class="[icon, 'icon-search']"></i>
 		
-		<input
-			ref="input"
-			type="text"
-			:placeholder="placeholder"
-			v-model="text"
-			:disabled="disabled"
-			@input="input"
-			@blur="blur" />
+		<div class="input-wrapper">
+			<input
+				ref="input"
+				type="text"
+				:placeholder="placeholder"
+				v-model="text"
+				:disabled="disabled"
+				@input="input"
+				@blur="blur" />
+			<span>{{ value ? value : placeholder }}</span>
+		</div>
 
 		<div
 			class="icon-clear"
