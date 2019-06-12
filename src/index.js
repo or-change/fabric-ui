@@ -10,12 +10,15 @@ import linkPlugin from './components/Link';
 import ratingPlugin from './components/Rating';
 import searchBoxPlugin from './components/SearchBox';
 import spinButtonPlugin from './components/SpinButton';
+import togglePlugin from './components/Toggle';
+import sliderPlugin from './components/Slider';
 
 const pluginList = [
 	buttonPlugin, labelPlugin, menuPlugin,
 	checkboxPlugin, radioPlugin, dropdownPlugin,
 	linkPlugin, ratingPlugin,
-	searchBoxPlugin, spinButtonPlugin
+	searchBoxPlugin, spinButtonPlugin,
+	togglePlugin, sliderPlugin
 ];
 
 export default function install(Vue) {

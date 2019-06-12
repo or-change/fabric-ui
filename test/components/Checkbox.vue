@@ -6,8 +6,18 @@
 			value="test"
 			name="test1"
 			v-model="selected"
-			box-position="right"
+			right
 			@change="test"
+		/>
+
+		<f-checkbox
+			label="Standard checkbox"
+			value="test"
+			name="test1"
+			v-model="selected"
+			right
+			@change="test"
+			toggle
 		/>
 		<f-checkbox
 			name="test1"

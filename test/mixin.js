@@ -14,18 +14,14 @@ import CustomSplitButton from './components/Button/CustomSplit';
 import ToggleButton from './components/Button/Toggle.vue';
 
 import Checkbox from './components/Checkbox';
-
 import Radio from './components/Radio';
-
 import Dropdown from './components/Dropdown';
-
 import Link from './components/Link';
-
 import Rating from './components/Rating';
-
 import SearchBox from './components/SearchBox';
-
 import SpinButton from './components/SpinButton';
+import Toggle from './components/Toggle';
+import Slider from './components/Slider';
 
 export default [
 	LabelTest,
@@ -44,5 +40,6 @@ export default [
 	Checkbox,
 	Radio, Dropdown,
 	Link, Rating,
-	SearchBox, SpinButton
+	SearchBox, SpinButton,
+	Toggle, Slider
 ];

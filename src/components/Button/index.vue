@@ -104,7 +104,7 @@ export default {
 		},
 		theme: {
 			type: String,
-			validator: function (value) {
+			validator(value) {
 				return ['standard', 'primary'].indexOf(value) !== -1
 			},
 			default: 'standard'

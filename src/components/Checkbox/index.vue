@@ -1,12 +1,14 @@
 <template>
-	<div class="ms-checkbox ms-checkbox-md"
+	<div
+		class="ms-checkbox ms-checkbox-md"
 		:class="{
 			'ms-checkbox-unchecked': !checked,
 			'ms-checkbox-checked': checked,
 			'ms-checkbox-disabled': disabled,
 			'ms-checkbox-enabled': !disabled
 		}">
-		<label :for="id">
+		<label :for="id"
+			v-if="!toggle">
 			<input 
 				type="checkbox"
 				:name="name"
@@ -14,17 +16,26 @@
 				:id="id"
 				:disabled="disabled"
 				:checked="checked"
-				@change="select"
+				@change="change"
 			/>
 			<div
 				class="ms-virtual-checkbox"
 				:class="{
-					'box-right': boxPosition === 'right'
+					'box-right': right
 				}">
 				<i class="ms-Icon ms-Icon--CheckMark"></i>
 			</div>
 			<span>{{ label }}</span>
 		</label>
+
+		<f-toggle 
+			v-if="toggle"
+			:disabled="disabled"
+			v-model="checked"
+			:label="label"
+			@change="select(checked)"
+			end inline
+		/>
 	</div>
 </template>
 
@@ -66,12 +77,13 @@ export default {
 			type: String,
 			default: ''
 		},
-		boxPosition: {
-			type: String,
-			validator: function (value) {
-				return ['left', 'right'].indexOf(value) !== -1
-			},
-			default: 'left'
+		right: {
+			type: Boolean,
+			default: false
+		},
+		toggle: {
+			type: Boolean,
+			default: false
 		}
 	},
 	watch: {
@@ -80,12 +92,12 @@ export default {
 		}
 	},
 	methods: {
-		select(event) {
+		select(checked) {
 			if (this.disabled || !this.selected) {
 				return;
 			}
 
-			if (event.target.checked) {
+			if (checked) {
 				this.selected.push(this.value);
 			} else {
 				this.selected.splice(this.selected.indexOf(this.value), 1);
@@ -94,6 +106,9 @@ export default {
 			this.$emit('input', this.selected);
 
 			this.$emit('change', this.selected);
+		},
+		change(event) {
+			this.select(event.target.checked);
 		},
 		isChecked(selected) {
 			if (selected.indexOf(this.value) === -1) {
@@ -108,3 +123,12 @@ export default {
 	}
 }
 </script>
+
+<style lang="scss">
+.ms-checkbox {
+	.ms-toggle .ms-toggle-label {
+    font-weight: 400;
+	}
+}
+</style>
+

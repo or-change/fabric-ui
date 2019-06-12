@@ -1,0 +1,173 @@
+@import 'scss/_References.scss';
+
+.ms-toggle {
+	font-family: inherit;
+	font-size: $ms-font-size-14;
+	font-weight: $ms-font-weight-regular;
+	color: $ms-color-gray160;
+
+	.ms-toggle-label, .ms-toggle-status {
+		vertical-align: top;
+		font-family: inherit;
+		font-size: inherit;
+		color: inherit;
+	}
+
+	.ms-toggle-label {
+		display: block;
+    font-weight: $ms-font-weight-semibold;
+		box-shadow: none;
+	}
+
+	.ms-toggle-lable-inline {
+		display: inline-block;
+	}
+
+	.ms-toggle-button {
+		position: relative;
+    font-size: $ms-font-size-20;
+    box-sizing: border-box;
+    display: inline-block;
+    cursor: pointer;
+    border: 1px solid transparent;
+		outline: transparent;
+
+		&::after {
+			content: '';
+			position: absolute;
+		}
+	}
+
+	.ms-toggle-status {
+		display: inline-block;
+		padding: 0px;
+    user-select: none;
+	}
+
+	&.ms-toggle-off {
+		.ms-toggle-button {
+			background: $ms-color-white;
+		}
+	}
+}
+
+.ms-toggle-md {
+	.ms-toggle-label, .ms-toggle-status {
+		height: 20px;
+		line-height: 20px;
+	}
+
+	.ms-toggle-lable-end {
+		margin: 7px 0px 7px 16px;
+	}
+
+	.ms-toggle-label {
+		margin: 7px 16px 7px 0px;
+	}
+
+	.ms-toggle-lable-inline {
+		margin-top: 0px;
+		margin-bottom: 0px;
+	}
+
+	.ms-toggle-button {
+		width: 40px;
+		height: 20px;
+		border-radius: 10px;
+
+		&::after {
+			width: 12px;
+			height: 12px;
+			top: 3px;
+			border-radius: 12px;
+			box-sizing: border-box;
+			border: 0.28em solid transparent;
+		}
+	}
+
+	&.ms-toggle-off .ms-toggle-button {
+		&::after {
+			left: 3px;
+		}
+	}
+
+	&.ms-toggle-on .ms-toggle-button {
+		&::after {
+			right: 3px;
+		}
+	}
+
+	.ms-toggle-status {
+		margin: 0px 8px;
+	}
+}
+
+.ms-toggle-enabled {
+	&.ms-toggle-on {
+		.ms-toggle-button {
+			background: $ms-color-blue;
+
+			&::after {
+				background-color: $ms-color-white;
+			}
+		}
+	}
+
+	&.ms-toggle-off {
+		.ms-toggle-button {
+			border-color: $ms-color-gray130;
+
+			&::after {
+				background-color: $ms-color-gray130;
+			}
+		}
+	}
+
+	&:hover {
+		&.ms-toggle-on {
+			.ms-toggle-button {
+				background-color: $ms-color-communicationShade20;
+			}
+		}
+	
+		&.ms-toggle-off {
+			.ms-toggle-button {
+				border-color: $ms-color-gray160;
+	
+				&::after {
+					background-color: $ms-color-gray160;
+				}
+			}
+		}
+	}
+}
+
+.ms-toggle-disabled {
+	.ms-toggle-label, .ms-toggle-status {
+		color: $ms-color-gray90;
+	}
+
+	.ms-toggle-button {
+		cursor: default;
+	}
+
+	&.ms-toggle-on {
+		.ms-toggle-button {
+			background: $ms-color-gray60;
+
+			&::after {
+				background-color: $ms-color-gray20;
+			}
+		}
+	}
+
+	&.ms-toggle-off {
+		.ms-toggle-button {
+			border-color: $ms-color-gray60;
+
+			&::after {
+				background-color: $ms-color-gray60;
+			}
+		}
+	}
+}
