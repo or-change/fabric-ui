@@ -23,10 +23,10 @@
 			<f-spin-button 
 				label="Decimal SpinButton"
 				icon="ms-Icon ms-Icon--IncreaseIndentLegacy"
-				v-model="value"
-				:min="-5"
-				:max="100"
-				disabled
+				v-model="minValue"
+				:min="0"
+				:max="1"
+				:step="0.1"
 			/>
 		</div>
 	</div>
@@ -37,7 +37,8 @@
 export default {
 	data() {
 		return {
-			value: 5
+			value: 5,
+			minValue: 0
 		}
 	}
 }

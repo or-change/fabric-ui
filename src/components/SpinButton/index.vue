@@ -60,7 +60,8 @@ export default {
 			text: null,
 			active: false,
 			timer: null,
-			interval: 65
+			interval: 65,
+			precision: 100
 		}
 	},
 	watch: {
@@ -101,19 +102,21 @@ export default {
 	methods: {
 		plus() {
 			this.timer = setInterval(() =>{
-				const newValue = this.value + this.step;
+				const newValue = Math.round(this.value * this.precision + this.step * this.precision) / this.precision;
 
 				if (!this.max || newValue <= this.max) {
 					this.$emit('input', newValue);
+					this.$emit('change');
 				}
 			}, this.interval);
 		},
 		reduce() {
 			this.timer = setInterval(() => {
-				const newValue = this.value - this.step;
+				const newValue = Math.round(this.value * this.precision - this.step * this.precision) / this.precision;
 
 				if (newValue >= this.min) {
-					this.$emit('input', this.value - this.step);
+					this.$emit('input', newValue);
+					this.$emit('change');
 				}
 			}, this.interval);
 		},
@@ -134,6 +137,7 @@ export default {
 			}
 
 			this.$emit('input', Number(this.text));
+			this.$emit('change');
 		}
 	},
 	mounted() {

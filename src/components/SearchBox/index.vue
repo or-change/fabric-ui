@@ -84,6 +84,7 @@ export default {
 		},
 		input() {
 			this.$emit('input', this.text);
+			this.$emit('change');
 		},
 		blur() {
 			if (!this.isSearch) {
