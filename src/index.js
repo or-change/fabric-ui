@@ -12,13 +12,15 @@ import searchBoxPlugin from './components/SearchBox';
 import spinButtonPlugin from './components/SpinButton';
 import togglePlugin from './components/Toggle';
 import sliderPlugin from './components/Slider';
+import calendarPlugin from './components/Calendar';
 
 const pluginList = [
 	buttonPlugin, labelPlugin, menuPlugin,
 	checkboxPlugin, radioPlugin, dropdownPlugin,
 	linkPlugin, ratingPlugin,
 	searchBoxPlugin, spinButtonPlugin,
-	togglePlugin, sliderPlugin
+	togglePlugin, sliderPlugin,
+	calendarPlugin
 ];
 
 export default function install(Vue) {

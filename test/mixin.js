@@ -22,6 +22,7 @@ import SearchBox from './components/SearchBox';
 import SpinButton from './components/SpinButton';
 import Toggle from './components/Toggle';
 import Slider from './components/Slider';
+import Calendar from './components/Calendar';
 
 export default [
 	LabelTest,
@@ -41,5 +42,6 @@ export default [
 	Radio, Dropdown,
 	Link, Rating,
 	SearchBox, SpinButton,
-	Toggle, Slider
+	Toggle, Slider,
+	Calendar
 ];

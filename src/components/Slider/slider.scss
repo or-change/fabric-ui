@@ -39,7 +39,7 @@
 			display: block;
 			position: absolute;
 			border: 2px solid transparent;
-			background: rgb(255, 255, 255);
+			background: $ms-color-white;
 			z-index: $ms-zIndex-3;
 		}
 	}
@@ -47,9 +47,9 @@
 
 .ms-slider-md {
 	.ms-slider-inline .ms-slider-handler {
-		width: 16px;
-		height: 16px;
-		border-radius: 10px;
+		width: $ms-icon-size-m;
+		height: $ms-icon-size-m;
+		border-radius: $ms-icon-size-xs;
 	}
 
 	.ms-slider-label {
@@ -89,7 +89,7 @@
 
 		.ms-slider-zero {
 			width: 1px;
-			height: 16px;
+			height: $ms-icon-size-m;
 			left: 0;
 			top: -6px;
 		}
@@ -106,8 +106,8 @@
 
 		.ms-slider-container .ms-slider-label {
 			display: inline-block;
-			line-height: 28px;
-			height: 28px;
+			line-height: $ms-font-size-28;
+			height: $ms-font-size-28;
 			width: 40px;
 			text-align: center;
 		}
@@ -134,12 +134,13 @@
 			margin: 8px 0;
 
 			.ms-slider-label {
-				padding-top: 8px;
+				margin-top: 8px;
 			}
 		}
 
 		.ms-slider-inline {
 			height: 100%;
+			min-height: 200px;
 			width: 4px;
 			margin: 0 auto;
 			padding: 8px 0 0 0;
@@ -147,6 +148,7 @@
 			.ms-slider-inline-container {
 				height: 100%;
 				width: 4px;
+				height: 200px;
 			}
 
 			.ms-slider-zero {
@@ -171,39 +173,39 @@
 .ms-slider-enabled {
 	.ms-slider-inline {
 		.ms-slider-zero {
-			background: rgb(200, 198, 196);
+			background: $ms-color-gray60;
 		}
 
 		.ms-slider-inactive {
-			background: rgb(200, 198, 196);
+			background: $ms-color-gray60;
 		}
 
 		.ms-slider-handler {
-			border-color: rgb(96, 94, 92);
+			border-color: $ms-color-gray130;
 			cursor: pointer;
 		}
 
 		.ms-slider-active {
-			background: rgb(96, 94, 92);
+			background: $ms-color-gray130;
 		}
 	}
 
 	&.ms-slider-active, &:hover {
 		.ms-slider-zero {
-			background: rgb(199, 224, 244);
+			background: $ms-color-communicationTint20;
 		}
 
 		.ms-slider-inactive {
-			background: rgb(199, 224, 244);
+			background: $ms-color-communicationTint20;
 		}
 
 		.ms-slider-handler {
-			border-color: rgb(0, 120, 212);
+			border-color: $ms-color-blue;
 			cursor: pointer;
 		}
 
 		.ms-slider-active {
-			background: rgb(0, 120, 212);
+			background: $ms-color-blue;
 		}
 	}
 }
@@ -211,19 +213,19 @@
 .ms-slider-disabled {
 	.ms-slider-inline {
 		.ms-slider-zero {
-			background: rgb(200, 198, 196);
+			background: $ms-color-gray60;
 		}
 		
 		.ms-slider-inactive {
-			background: rgb(237, 235, 233);
+			background: $ms-color-gray30;
 		}
 
 		.ms-slider-handler {
-			border-color: rgb(200, 198, 196);
+			border-color: $ms-color-gray60;
 		}
 
 		.ms-slider-active {
-			background: rgb(161, 159, 157);
+			background: $ms-color-gray90;
 		}
 	}
 }

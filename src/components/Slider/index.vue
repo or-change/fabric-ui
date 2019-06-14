@@ -213,11 +213,13 @@ export default {
 			this.setSlider(activeWidth, inactiveWidth, inactiveZeroWidth, value);
 
 			if (value > this.value) {
-				this.$emit('input', Math.round(value - this.value) * this.step + this.value); 
+				this.$emit('input', Math.round(value - this.value) * this.step + this.value);
+				this.$emit('change');
 			}
 
 			if (value < this.value) {
 				this.$emit('input', this.value - Math.round(this.value - value) * this.step); 
+				this.$emit('change');
 			}
 		},
 		setSlider(activeWidth, inactiveWidth, inactiveZeroWidth, value = this.value) {
