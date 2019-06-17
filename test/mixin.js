@@ -23,6 +23,8 @@ import SpinButton from './components/SpinButton';
 import Toggle from './components/Toggle';
 import Slider from './components/Slider';
 import Calendar from './components/Calendar';
+import TextField from './components/TextField';
+import Datepicker from './components/Datepicker';
 
 export default [
 	LabelTest,
@@ -43,5 +45,6 @@ export default [
 	Link, Rating,
 	SearchBox, SpinButton,
 	Toggle, Slider,
-	Calendar
+	Calendar,
+	TextField, Datepicker
 ];

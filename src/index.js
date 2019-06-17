@@ -13,6 +13,8 @@ import spinButtonPlugin from './components/SpinButton';
 import togglePlugin from './components/Toggle';
 import sliderPlugin from './components/Slider';
 import calendarPlugin from './components/Calendar';
+import textFieldPlugin from './components/TextField';
+import datePickerPlugin from './components/DatePicker';
 
 const pluginList = [
 	buttonPlugin, labelPlugin, menuPlugin,
@@ -20,7 +22,8 @@ const pluginList = [
 	linkPlugin, ratingPlugin,
 	searchBoxPlugin, spinButtonPlugin,
 	togglePlugin, sliderPlugin,
-	calendarPlugin
+	calendarPlugin,
+	textFieldPlugin, datePickerPlugin
 ];
 
 export default function install(Vue) {

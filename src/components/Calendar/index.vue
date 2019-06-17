@@ -1,20 +1,33 @@
 <template>
-	<div class="ms-calendar ms-calendar-md"
+	<div
+		 class="ms-calendar ms-calendar-md"
 		:class="{
-			'ms-calendar-outline': outline
+			'ms-calendar-outline': outline,
+			'ms-calendar-range': range,
+			'ms-calendar-overlaid': overlaid
 		}"
-	>	
+	>
 		<div class="ms-calendar-wrapper">
-			<div class="ms-calendar-datepicker">
+			<div class="ms-calendar-datepicker" v-if="!monthOnly"
+				v-show="!overlaid || isShow"
+			>
 				<div class="ms-calendar-header">
-					<div class="ms-header-text">
-						{{ monthText }} {{ year }}
+					<div class="ms-header-text"
+						@click="isShow = false"
+					>
+						{{ monthList[month] }} {{ year }}
 					</div>
 					<div class="ms-header-tool">
-						<button class="ms-calendar-prev" @click="prev">
+						<button class="ms-calendar-prev"
+							@click="prev"
+							:disabled="prevDisabled"
+						>
 							<i class="ms-Icon ms-Icon--Up"></i>
 						</button>
-						<button class="ms-calendar-next" @click="next">
+						<button class="ms-calendar-next"
+							@click="next"
+							:disabled="nextDisabled"	
+						>
 							<i class="ms-Icon ms-Icon--Down"></i>
 						</button>
 					</div>
@@ -36,7 +49,8 @@
 									v-for="(date, index) in dates"
 									:key="`col-${index}`"
 									:class="{
-										'ms-date-selected': date.isSelected
+										'ms-date-selected': date.isSelected,
+										'ms-data-enabled': !date.isDisabled
 									}"
 									>
 									<button
@@ -44,6 +58,7 @@
 											'ms-today': date.isToday
 										}"
 										@click="input(date)"
+										:disabled="date.isDisabled"
 									>{{ date.date }}</button>
 								</td>
 							</tr>
@@ -52,117 +67,68 @@
 				</div>
 			</div>
 
-			<div class="ms-calendar-divider"></div>
-	
-			<div class="ms-calendar-monthpicker">
-				<div class="ms-calendar-header">
-					<div class="ms-header-text">{{ this.year }}</div>
-					<div class="ms-header-tool">
-						<button class="ms-calendar-prev" @click="">
-							<i class="ms-Icon ms-Icon--Up"></i>
-						</button>
-						<button class="ms-calendar-next" @click="next">
-							<i class="ms-Icon ms-Icon--Down"></i>
-						</button>
-					</div>
-				</div>
+			<div class="ms-calendar-divider" v-if="!monthOnly && !overlaid"></div>
 
-				<div class="ms-calendar-zone">
-					<table class="ms-calendar-datepicker-table">
-						<tbody>
-							<tr v-for="(monthRow, index) in monthList"
-								:key="`row-${index}`">
-								<td 
-									v-for="(month, index) in monthRow"
-									:key="`col-${index}`"
-									>
-									<button
-										:class="{
-											'ms-date-selected': month.isSelected
-										}"
-										@click=""
-									>{{ month.text.substring(0, 3) }}</button>
-								</td>
-							</tr>
-						</tbody>
-					</table>
-				</div>
-			</div>
+			<f-month-picker
+				:month="month"
+				:year="year"
+				:overlaid="overlaid"
+				:month-list="monthList"
+				@change="change"
+				@hide="isShow = true"
+				:min-date="minDate"
+				:max-date="maxDate"
+				v-show="!overlaid || !isShow"
+			/>
 
-			<!-- <div class="ms-calendar-yearpicker">
-				<div class="ms-calendar-header">
-					<div class="ms-header-text"></div>
-					<div class="ms-header-tool">
-						<button class="ms-calendar-prev"></button>
-						<button class="ms-calendar-next"></button>
-					</div>
-				</div>
-
-				<div class="ms-calendar-zone">
-					<table class="ms-calendar-datepicker-table">
-						<thead>
-
-						</thead>
-						<tbody>
-							<tr>
-								<td>
-									<button></button>
-								</td>
-							</tr>
-						</tbody>
-					</table>
-				</div>
-			</div> -->
-
-			<button class="ms-calendar-goto" :disabled="gotoTodayDisabled"
+			<button v-if="!range" class="ms-calendar-goto" :disabled="gotoTodayDisabled"
 				@click="setValue(new Date())">
 				Go to today
 			</button>
 		</div>
-		<!-- <div class="ms-select-tool">
-			<button class="ms-select-prev"></button>
-			<button class="ms-select-next"></button>
-		</div> -->
 	</div>
 </template>
 
 <script>
-const monthList = [
-	'January', 'February ', 'March', 'April',
-	'May', 'June', 'July', 'August',
-	'September', 'October', 'November', 'December'
-];
+import FMonthPicker from './MonthPicker';
 
 const dayList = [
 	'Sunday', 'Monday', 'Tuesday', 'Wednesday',
 	'Thursday', 'Friday', 'Saturday'
 ];
 
+const monthList = [
+	'January', 'February ', 'March', 'April',
+	'May', 'June', 'July', 'August',
+	'September', 'October', 'November', 'December'
+];
+
 export default {
 	name: 'f-calendar',
+	components: {
+		FMonthPicker
+	},
 	data() {
 		return {
 			date: null,
 			year: null,
 			month: null,
-			dayList
+			today: new Date(),
+			monthList,
+			from: null,
+			to: null,
+			isRange: false,
+			isShow: true
 		}
 	},
 	props: {
 		value: {
-			type: Date,
-			validator(value) {
-				return value instanceof Date;
-			},
+			type: [Object, Date],
 			default: () => new Date()
 		},
 		monthOnly: {
 			type: Boolean,
 			default: false
-		},
-		yearPicker: {
-			type: Boolean,
-			default: true
 		},
 		monthPicker: {
 			type: Boolean,
@@ -170,15 +136,39 @@ export default {
 		},
 		overlaid: {
 			type: Boolean,
-			default: false
+			default: false //实现overlaid
+		},
+		startDay: {
+			type: Number,
+			validator(value) {
+				return value >= 0 && value <= 6;
+			},
+			default: 2
 		},
 		minDate: {
-			type: Boolean
+			type: Date,
+			default: null
 		},
 		maxDate: {
-			type: Boolean
+			type: Date,
+			default: null
 		},
-		select: {
+		disabledDate: {
+			type: Array,
+			validator(value) {
+				let validate = true;
+
+				value.forEach(date => {
+					validate = date instanceof Date
+				});
+
+				return validate;
+			},
+			default: () => {
+				return [];
+			}
+		},
+		range: {
 			type: Boolean,
 			default: false
 		},
@@ -186,16 +176,18 @@ export default {
 			type: Boolean,
 			default: true
 		},
-		selectTool: {
-			type: Boolean,
-			default: true
-		},
 		outline: {
 			type: Boolean,
 			default: false
-		}
+		},
 	},
 	computed: {
+		dayList() {
+			return dayList.slice(this.startDay).concat(dayList.slice(0, this.startDay))
+		},
+		dayValue() {
+			return this.dayList.map(day => dayList.indexOf(day));
+		},
 		dateList() {
 			const currentDates = new Date(this.year, this.month + 1, '').getDate();
 			let prevDates;
@@ -218,14 +210,14 @@ export default {
 			const prevYear = this.month === 0 ? this.year - 1 : this.year;
 			const preMonth = this.month === 0 ? 11 : this.month - 1;
 
-			for (let date = 0; date < firstDay; date++) {
+			for (let date = 0; date < this.dayValue.indexOf(firstDay); date++) {
 				dateList.unshift(this.dateFactory(prevYear, preMonth, prevDates - date));
 			}
 
 			const nextYear = this.month === 11 ? this.year + 1 : this.year;
 			const nextMonth = this.month === 11 ? 0 : this.month + 1;
 
-			for (let date = 0; date < 6 - lastDay; date++) {
+			for (let date = 0; date < 6 - this.dayValue.indexOf(lastDay); date++) {
 				dateList.push(this.dateFactory(nextYear, nextMonth, 1 + date));
 			}
 
@@ -235,44 +227,22 @@ export default {
 
 			return result;
 		},
-		monthList() {
-			const result = [];
-
-			const list = monthList.map((month, index) => {
-				return {
-					text: month,
-					value: index,
-					isSelected: this.month === index
-				}
-			});
-
-			for(let i = 0; i < list.length; i+=4){
-				result.push(list.slice(i,i+4));
+		gotoTodayDisabled() {
+			return this.year === this.today.getFullYear() && this.month === this.today.getMonth();
+		},
+		prevDisabled() {
+			if (!this.minDate) {
+				return false;
 			}
 
-			return result;
+			return this.year <= this.minDate.getFullYear() && this.month <= this.minDate.getMonth();
 		},
-		yearList() {
-			const startYear = 12 * Math.floor(this.year / 12) + 1;
-			const result = new Array(12).fill('');
+		nextDisabled() {
+			if (!this.maxDate) {
+				return false;
+			}
 
-			return result.map((item, index) => startYear + index);
-		},
-		monthText() {
-			let text;
-
-			this.monthList.forEach(month => {
-				if (this.month === month.value) {
-					text = month.text;
-				}
-			});
-
-			return text;
-		},
-		gotoTodayDisabled() {
-			const today = new Date();
-
-			return this.year === today.getFullYear() && this.month === today.getMonth();
+			return this.year >= this.maxDate.getFullYear() && this.month >= this.maxDate.getMonth(); 
 		}
 	},
 	watch: {
@@ -282,12 +252,24 @@ export default {
 	},
 	methods: {
 		setValue(date) {
-			this.year = date.getFullYear();
-			this.month = date.getMonth();
-			this.date = date.getDate();
+			if (this.range) {
+				this.from = date && date.from ? date.from : null;
+				this.to = date && date.to ? date.to : null;
+			} else {
+				this.year = date.getFullYear();
+				this.month = date.getMonth();
+				this.date = date.getDate();
+			}
 		},
 		dateFactory(year, month, date) {
-			const today = new Date();
+			const dateObj = new Date(year, month, date);
+			let isDisabled = false;
+
+			this.disabledDate.forEach(date => {
+				if (date.getTime() === dateObj.getTime()) {
+					isDisabled = true;
+				}
+			})
 
 			function isEqual(dateObj) {
 				return dateObj.getFullYear() === year && dateObj.getMonth() === month && dateObj.getDate() === date;
@@ -295,8 +277,9 @@ export default {
 
 			return {
 				year, month, date,
-				isToday: isEqual(today),
-				isSelected: isEqual(this.value)
+				isToday: isEqual(this.today),
+				isSelected: !this.range ? isEqual(this.value) : (this.from && dateObj.getTime() >= this.from.getTime() && this.to && dateObj.getTime() <= this.to.getTime()),
+				isDisabled: (this.minDate && dateObj.getTime() < this.minDate.getTime()) || (this.maxDate && dateObj.getTime() > this.maxDate.getTime()) || isDisabled
 			}
 		},
 		prev() {
@@ -315,12 +298,88 @@ export default {
 				this.month = 0;
 			}
 		},
+		change({year, month}) {
+			this.year = year;
+			this.month = month;
+
+			if (this.monthOnly) {
+				return this.$emit('input', new Date(this.year, this.month, this.date));
+			}
+		},
 		input(dateObj) {
-			this.$emit('input', new Date(dateObj.year, dateObj.month, dateObj.date));
+			if (!this.range) {
+				return this.$emit('input', new Date(dateObj.year, dateObj.month, dateObj.date));
+			}
+
+			if (!this.isRange) {
+				this.from = new Date(dateObj.year, dateObj.month, dateObj.date);
+				this.to = null;
+
+				this.isRange = true;
+			} else {
+				const to = new Date(dateObj.year, dateObj.month, dateObj.date);
+				
+				this.from.getTime() < to.getTime() ? this.to = to : (this.to = this.from,this.from = to);
+
+				this.isRange = false;
+
+				this.$emit('selected');
+				return this.$emit('input', {
+					from: this.from, to: this.to
+				});
+			}
 		}
 	},
 	mounted() {
 		this.setValue(this.value);
+
+		if (this.range) {
+			this.year = this.today.getFullYear();
+			this.month = this.today.getMonth();
+			this.date = this.today.getDate();
+		}
 	}
 }
 </script>
+
+<style lang="scss">
+@import 'scss/_References.scss';
+
+.ms-calendar-wrapper {
+	.ms-calendar-datepicker table tr td.ms-data-enabled:hover {
+		cursor: pointer;
+		background: #edebe9;
+		color: $ms-color-gray190;
+	}
+
+	.ms-calendar-divider {
+		border-right: 1px solid #edebe9;
+		top: 0;
+		position: relative;
+	}
+}
+
+.ms-calendar-md {
+	.ms-calendar-datepicker, .ms-calendar-divider {
+		margin: -10px 0;
+		padding: 10px 0;
+	}
+
+	.ms-calendar-datepicker {
+		thead tr th, tr td {
+			width: $ms-font-size-28;
+			height: $ms-font-size-28;
+			line-height: $ms-font-size-28;
+		}
+
+		tr td button {
+			width: $ms-font-size-24;
+			height: $ms-font-size-24;
+			line-height: $ms-font-size-24;
+			margin-top: 2px;
+		}
+	}
+}
+</style>
+
+

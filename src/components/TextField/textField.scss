@@ -1,0 +1,296 @@
+.ms-text-field {
+	font-family: inherit;
+	color: rgb(50, 49, 48);
+	width: 100%;
+
+	label {
+		color: rgb(50, 49, 48);
+	}
+
+	i {
+		font-family: "FabricMDL2Icons";
+    font-style: normal;
+    font-weight: normal;
+    speak: none;
+	}
+
+	.ms-text-field-group-inline {
+		width: 100%;
+		height: 100%;
+    background: rgb(255, 255, 255);
+		box-sizing: border-box;
+
+		.ms-text-field-icon {
+			font-size: 16px;
+		}
+
+	}
+
+	.ms-text-field-group-multi {
+		height: auto;
+		width: auto;
+    background: rgb(255, 255, 255);
+		
+		.ms-text-area-unresize {
+			resize: none;
+		}
+	}
+
+
+	textarea, input {
+		font-size: 14px;
+		font-weight: 400;
+		font-family: inherit;
+		width: 100%;
+		max-width: 100%;
+		height: 100%;
+    box-sizing: border-box;
+    box-shadow: none;
+    margin: 0px;
+    color: rgb(32, 31, 30);
+		outline: none;
+		cursor: text;
+		border: none;
+	}
+
+	input {
+    border-radius: 0px;
+		background: none transparent;
+		white-space: nowrap;
+		text-overflow: ellipsis;
+		overflow: hidden;
+	}
+
+	textarea {
+    padding-top: 6px;
+    padding-right: 8px;
+    padding-bottom: 6px;
+    padding-left: 8px;
+		line-height: 17px;
+		overflow: auto;
+	}
+
+	.ms-text-field-msg {
+		font-size: 12px;
+    font-weight: 400;
+	}
+}
+
+.ms-text-field-md {
+	&.ms-text-field-standard{
+		.ms-text-field-group-inline {
+			height: 30px;
+			
+			.ms-text-field-fix {
+				span {
+					display: inline-block;
+					height: 30px;
+					line-height: 30px;
+					vertical-align: middle;
+				}
+			}
+	
+			.ms-text-field-icon i {
+				display: inline-block;
+				height: 100%;
+				line-height: 30px;
+			}
+	
+			.ms-text-field-fix, .ms-text-field-icon {
+				padding: 0px 10px;
+			}
+		}
+	
+		input {
+			display: inline-block;
+			padding: 0px 8px;
+			vertical-align: middle;
+			line-height: 30px;
+			height: 30px;
+		}
+	
+		.ms-text-field-msg {
+			margin: 0px;
+			padding-top: 5px;
+		}
+	}
+
+	&.ms-text-field-underline {
+		height: 32px;
+
+		.ms-text-field-label,
+		.ms-text-field-group-inline,
+		.ms-text-field-input input {
+			height: 32px;
+		}
+
+		.ms-text-field-input input {
+			line-height: 22px;
+		}
+
+		.ms-text-field-label {
+			height: 32px;
+			width: auto;
+			padding: 4px 0;
+
+			label {
+				min-width: 1em;
+				margin: 0px 8px 0 0;
+				padding: 5px 12px 5px 12px;
+				position: relative;
+			}
+
+			.ms-label-required::after {
+				position: absolute;
+				top: 0;
+				right: 0
+			}
+		}
+	}
+}
+
+.ms-text-field-standard {
+	.ms-text-field-group-inline {
+		display: table;
+		border: 1px solid rgb(138, 136, 134);
+		border-radius: 2px;
+
+		.ms-text-field-fix {
+			color: rgb(96, 94, 92);
+			white-space: nowrap;
+			background: rgb(243, 242, 241);
+		}
+
+		.ms-text-field-fix, .ms-text-field-input {
+			vertical-align: top;
+		}
+
+		.ms-text-field-fix, .ms-text-field-icon {
+			display: table-cell;
+			height: 100%;
+			font-size: 14px;
+			padding: 0px 10px;
+		}
+
+		.ms-text-field-icon {
+			font-size: 16px;
+		}
+
+		.ms-text-field-input {
+			display: table-cell;
+			width: 100%;
+			height: 100%;
+			cursor: text;
+		}
+	}
+
+	.ms-text-field-group-multi {
+		height: auto;
+		width: auto;
+    border: 1px solid rgb(138, 136, 134);
+    background: rgb(255, 255, 255);
+		border-radius: 2px;
+		box-sizing: border-box;
+		
+		.ms-text-area-unresize {
+			resize: none;
+		}
+	}
+}
+
+.ms-text-field-enabled {
+	.ms-text-field-group-inline, .ms-text-field-group-multi {
+		&:hover {
+			border-color: rgb(50, 49, 48);
+		}
+	}
+
+	.ms-text-field-msg {
+		color: rgb(96, 94, 92);
+	}
+}
+
+.ms-text-field-disabled {
+	label {
+		color: rgb(161, 159, 157);
+	}
+
+	.ms-text-field-group-inline {
+		.ms-text-field-fix {
+			color: rgb(161, 159, 157);
+		}
+
+		.ms-text-field-icon, input {
+			color: rgb(161, 159, 157);
+			background-color: rgb(243, 242, 241);
+		}
+	}
+
+	.ms-text-field-group-multi, .ms-text-field-group-multi textarea {
+		color: rgb(161, 159, 157);
+		background-color: rgb(243, 242, 241);
+	}
+
+	.ms-text-field-group-multi textarea {
+		resize: none;
+	}
+}
+
+.ms-text-field-primary {
+	.ms-text-field-label label {
+		color: rgb(0, 120, 212);
+	}
+
+	.ms-text-field-group-inline, .ms-text-field-group-multi {
+		border-top-color: rgb(164, 38, 44);
+	}
+}
+
+.ms-text-field-underline {
+	border-bottom: 1px solid rgb(138, 136, 134);
+	width: 100%;
+	display: table;
+
+	.ms-text-field-label, .ms-text-field-group-inline, .ms-text-field-group-multi {
+		display: table-cell;
+		height: 100%;
+		vertical-align: top;
+	}
+
+	&.ms-text-field-disabled input, .ms-text-field-disabled textarea {
+		background-color: rgb(255, 255, 255)
+	}
+
+	&.ms-text-field-multi {
+		.ms-text-field-label, .ms-text-field-group-multi {
+			display: block;
+			width: auto;
+			height: auto;
+		}
+	}
+}
+
+.ms-text-field-borderless {
+	.ms-text-field-group-inline, .ms-text-field-group-multi {
+		border-color: transparent;
+
+		&:hover {
+			border-color: transparent;
+		}
+	}
+}
+
+.ms-text-field-error {
+	.ms-text-field-group-inline,  .ms-text-field-group-multi {
+		border-color: rgb(209, 52, 56);
+
+		&:hover {
+			border-color: rgb(164, 38, 44);
+		}
+	}
+
+	.ms-text-field-msg {
+    color: rgb(209, 52, 56);
+	}
+}
+
