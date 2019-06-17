@@ -1,0 +1,24 @@
+@import 'scss/_References.scss';
+
+.ms-datepicker {
+	position: relative;
+
+	.ms-text-field-enabled .ms-text-field-group-inline .ms-text-field-input input  {
+		cursor: pointer;
+	}
+
+	.ms-calendar {
+		position: absolute;
+		z-index: 300;
+	}
+}
+
+.ms-datepicker-md {
+	.ms-calendar {
+		margin-top: -4px;
+	}
+
+	.ms-calendar-wrapper-overlaid {
+		padding-top: 18px;
+	}
+}

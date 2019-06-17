@@ -1,3 +1,5 @@
+@import 'scss/_References.scss';
+
 .ms-text-field {
 	font-family: inherit;
 	color: rgb(50, 49, 48);
@@ -11,7 +13,6 @@
 		font-family: "FabricMDL2Icons";
     font-style: normal;
     font-weight: normal;
-    speak: none;
 	}
 
 	.ms-text-field-group-inline {
@@ -223,6 +224,7 @@
 		.ms-text-field-icon, input {
 			color: rgb(161, 159, 157);
 			background-color: rgb(243, 242, 241);
+			cursor: default;
 		}
 	}
 

@@ -36,6 +36,8 @@
 					:placeholder="placeholder"
 					@input="input"
 					v-model="text"
+					@focus="focus"
+					@blur="blur"
 				 />
 			</div>
 			<div class="ms-text-field-icon" v-if="icon">
@@ -196,6 +198,12 @@ export default {
 			}
 
 			this.text = this.value;
+		},
+		focus() {
+			this.$emit('focus');
+		},
+		blur() {
+			this.$emit('blur');
 		}
 	},
 	mounted() {

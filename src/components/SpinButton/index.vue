@@ -24,7 +24,7 @@
 				<button
 					type="button"
 					:disabled="disabled"
-					@mousedown="plus"
+					@mousedown="isMousedown = true;plus()"
 					@click="remove"
 					@mouseout="remove"
 				>
@@ -33,7 +33,7 @@
 				<button
 					:disabled="disabled"
 					type="button"
-					@mousedown="reduce"
+					@mousedown="isMousedown = true;reduce()"
 					@click="remove"
 					@mouseout="remove"
 				>
@@ -52,7 +52,7 @@
 </template>
 
 <script>
-import { setInterval, clearInterval } from 'timers';
+import { setTimeout, clearTimeout } from 'timers';
 export default {
 	name: 'f-spin-button',
 	data() {
@@ -61,7 +61,8 @@ export default {
 			active: false,
 			timer: null,
 			interval: 65,
-			precision: 100
+			precision: 100,
+			isMousedown: false
 		}
 	},
 	watch: {
@@ -101,27 +102,37 @@ export default {
 	},
 	methods: {
 		plus() {
-			this.timer = setInterval(() =>{
-				const newValue = Math.round(this.value * this.precision + this.step * this.precision) / this.precision;
+			if (this.isMousedown) {
+				this.timer = setTimeout(() =>{
+					const newValue = Math.round(this.value * this.precision + this.step * this.precision) / this.precision;
 
-				if (!this.max || newValue <= this.max) {
-					this.$emit('input', newValue);
-					this.$emit('change');
-				}
-			}, this.interval);
+					if (!this.max || newValue <= this.max) {
+						this.$emit('input', newValue);
+						this.$emit('change');
+					}
+
+					this.plus();
+				}, this.interval);
+			}
 		},
 		reduce() {
-			this.timer = setInterval(() => {
-				const newValue = Math.round(this.value * this.precision - this.step * this.precision) / this.precision;
+			if (this.isMousedown) {
+				this.timer = setTimeout(() => {
+					const newValue = Math.round(this.value * this.precision - this.step * this.precision) / this.precision;
+	
+					if (newValue >= this.min) {
+						this.$emit('input', newValue);
+						this.$emit('change');
+					}
 
-				if (newValue >= this.min) {
-					this.$emit('input', newValue);
-					this.$emit('change');
-				}
-			}, this.interval);
+					this.reduce();
+				}, this.interval);
+			}
 		},
 		remove() {
-			clearInterval(this.timer);
+			this.isMousedown = false;
+
+			clearTimeout(this.timer);
 		},
 		input(value) {
 			if (this.text === '-' || this.text === '+' || this.text === '') {

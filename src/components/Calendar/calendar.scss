@@ -6,12 +6,13 @@
 	font-family: inherit;
 	display: inline-block;
 	width: auto;
+	background-color: $ms-color-white;
 
 	&.ms-calendar-range .ms-calendar-wrapper .ms-calendar-zone table.ms-calendar-datepicker-table tr td {
 		border-radius: 0px;
 	}
 
-	&.ms-calendar-outline .ms-calendar-wrapper {
+	&.ms-calendar-outline .ms-calendar-wrapper{
 		box-shadow: rgba(0, 0, 0, 0.133) 0px 6.4px 14.4px 0px, rgba(0, 0, 0, 0.11) 0px 1.2px 3.6px 0px;
 	}
 	
@@ -114,12 +115,12 @@
 			width: 100%;
 		}
 
-		thead tr th, tr td {
+		thead tr th, tr td, tbody tr th {
 			font-size: $ms-font-size-12;
 			font-weight: $ms-font-weight-regular;
 		}
 
-		thead tr th {
+		thead tr th, tbody tr th {
 			color: #323130;
 			font-weight: 500;
 		}
@@ -163,6 +164,10 @@
 		padding: $ms-font-size-12;
 	}
 
+	.ms-calendar-wrapper-overlaid {
+		padding-bottom: 28px;
+	}
+
 	.ms-calendar-header {
 		height: $ms-font-size-28;
 		line-height: $ms-font-size-28;
@@ -186,10 +191,14 @@
 		width: 200px;
 	}
 
+	.ms-calendar-monthpicker-goto.ms-calendar-goto {
+		bottom: 22px;
+	}
+
 	.ms-calendar-goto {
 		right: 20px;
-		bottom: 3px;
 		height: 30px;
+		bottom: -10px;
     line-height: 30px;
 	}
 }

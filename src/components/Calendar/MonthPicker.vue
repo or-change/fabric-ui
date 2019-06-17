@@ -270,6 +270,12 @@ export default {
 }
 
 .ms-calendar-md {
+	&.ms-calendar-overlaid {
+		.ms-calendar-monthpicker, .ms-calendar-yearpicker {
+			margin-left: 0px;
+		}
+	}
+
 	.ms-calendar-monthpicker, .ms-calendar-yearpicker {
 		margin-left: 12px;
 

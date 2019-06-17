@@ -7,7 +7,11 @@
 			'ms-calendar-overlaid': overlaid
 		}"
 	>
-		<div class="ms-calendar-wrapper">
+		<div class="ms-calendar-wrapper"
+			:class="{
+				'ms-calendar-wrapper-overlaid': overlaid || !monthPicker
+			}"
+		>
 			<div class="ms-calendar-datepicker" v-if="!monthOnly"
 				v-show="!overlaid || isShow"
 			>
@@ -37,6 +41,7 @@
 					<table class="ms-calendar-datepicker-table">
 						<thead>
 							<tr>
+								<th v-if="weekNumber"></th>
 								<th
 									v-for="(day, index) in dayList" :key="index"
 									:title="day">{{ day.substring(0, 1) }}</th>
@@ -45,6 +50,9 @@
 						<tbody>
 							<tr v-for="(dates, index) in dateList"
 								:key="`row-${index}`">
+								<th v-if="weekNumber">
+									{{ getWeekNumber(dates[dates.length - 1].year, dates[dates.length - 1].month, dates[dates.length - 1].date) }}
+								</th>
 								<td 
 									v-for="(date, index) in dates"
 									:key="`col-${index}`"
@@ -82,7 +90,11 @@
 			/>
 
 			<button v-if="!range" class="ms-calendar-goto" :disabled="gotoTodayDisabled"
-				@click="setValue(new Date())">
+				@click="setValue(new Date())"
+				:class="{
+					'ms-calendar-monthpicker-goto': !overlaid || !isShow
+				}"
+				>
 				Go to today
 			</button>
 		</div>
@@ -143,7 +155,11 @@ export default {
 			validator(value) {
 				return value >= 0 && value <= 6;
 			},
-			default: 2
+			default: 0
+		},
+		weekNumber: {
+			type: Boolean,
+			default: false
 		},
 		minDate: {
 			type: Date,
@@ -179,7 +195,7 @@ export default {
 		outline: {
 			type: Boolean,
 			default: false
-		},
+		}
 	},
 	computed: {
 		dayList() {
@@ -251,6 +267,9 @@ export default {
 		}
 	},
 	methods: {
+		getWeekNumber(year, month, date) {
+			return Math.ceil((new Date(year, month, date) - new Date(year, 0, 1)) / 86400000 / 7);
+		},
 		setValue(date) {
 			if (this.range) {
 				this.from = date && date.from ? date.from : null;
@@ -308,7 +327,11 @@ export default {
 		},
 		input(dateObj) {
 			if (!this.range) {
-				return this.$emit('input', new Date(dateObj.year, dateObj.month, dateObj.date));
+				
+				this.$emit('input', new Date(dateObj.year, dateObj.month, dateObj.date));
+				this.$emit('selected');
+
+				return;
 			}
 
 			if (!this.isRange) {
@@ -323,10 +346,12 @@ export default {
 
 				this.isRange = false;
 
-				this.$emit('selected');
-				return this.$emit('input', {
+				this.$emit('input', {
 					from: this.from, to: this.to
 				});
+
+				this.$emit('selected');
+				return;
 			}
 		}
 	},
@@ -370,6 +395,10 @@ export default {
 			width: $ms-font-size-28;
 			height: $ms-font-size-28;
 			line-height: $ms-font-size-28;
+		}
+
+		tbody tr th {
+			border-right: 1px solid #edebe9;
 		}
 
 		tr td button {

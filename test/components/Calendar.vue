@@ -6,6 +6,8 @@
 		<f-calendar v-model="range" :min-date="new Date(2019, 4, 1)" :range="true" />
 		<f-calendar v-model="range" :min-date="new Date(2019, 4, 1)" :range="true" :overlaid="true" />
 		<f-calendar v-model="date" :min-date="new Date(2019, 4, 1)" :overlaid="true" />
+
+		<f-calendar v-model="date" :week-number="true" />
 	</div>
 </template>
 
