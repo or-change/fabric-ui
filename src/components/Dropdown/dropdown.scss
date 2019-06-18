@@ -21,7 +21,7 @@
     cursor: pointer;
     border-width: 1px;
     border-style: solid;
-    border-color: rgb(138, 136, 134);
+    border-color: $ms-color-gray110;
 		border-radius: 2px;
 		
 		.ms-dropdown-icon {
@@ -63,7 +63,7 @@
 		}
 
 		.ms-dropdown-header {
-			color: rgb(0, 120, 212);
+			color: $ms-color-blue;
 			cursor: default;
 			font-size: $ms-font-size-m-plus;
 			font-weight: $ms-font-weight-semibold;
@@ -89,8 +89,8 @@
 			}
 			
 			&.ms-dropdown-item-active {
-				background-color: rgb(237, 235, 233);
-				color: rgb(32, 31, 30);
+				background-color: $ms-color-gray30;
+				color: $ms-color-gray190;
 			}
 		}
 
@@ -171,19 +171,19 @@
 .ms-dropdown-disabled {
 	.ms-dropdown-controller {
 		border-color: transparent;
-		color: rgb(161, 159, 157);
-		background-color: rgb(243, 242, 241);
+		color: $ms-color-gray90;
+		background-color: $ms-color-gray20;
 		cursor: default;
 	}
 }
 
 .ms-dropdown-error {
 	.ms-dropdown-controller {
-		border-color: rgb(209, 52, 56);
+		border-color: $ms-color-sharedRed10;
 	}
 
 	.ms-dropdown-error-message {
-		color: rgb(164, 38, 44);
+		color: $ms-color-sharedRed20;
     font-family: inherit;
     font-size: $ms-font-size-12;
 		padding-top: 5px;
@@ -193,7 +193,7 @@
 
 .ms-dropdown-active {
 	.ms-dropdown-controller {
-		border-color: rgb(0, 120, 212);
+		border-color: $ms-color-blue;
 	}
 
 	.ms-dropdown-options {
@@ -204,7 +204,7 @@
 .ms-dropdown-required {
 	.ms-dropdown-controller::after {
     content: "*";
-    color: rgb(164, 38, 44);
+    color: $ms-color-sharedRed20;
     position: absolute;
     top: -5px;
     right: -10px;

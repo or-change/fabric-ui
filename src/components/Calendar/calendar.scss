@@ -63,7 +63,7 @@
 		}
 
 		.ms-header-text {
-			color: #323130;
+			color: $ms-color-gray160;
 			font-weight: $ms-font-weight-semibold;
 			font-size: $ms-font-size-14;
 			cursor: pointer;
@@ -73,7 +73,7 @@
 			button {
 				float: left;
 				font-family: inherit;
-				color: #323130;
+				color: $ms-color-gray160;
 				border-radius: 2px;
 				position: relative;
 				background-color: transparent;
@@ -101,8 +101,8 @@
 
 		.ms-calendar-datepicker-table tr td.ms-date-selected.ms-data-enabled,
 		.ms-calendar-datepicker-table tr td button.ms-data-enabled.ms-date-selected {
-			background: #c7e0f4;
-			color: #323130;
+			background: $ms-color-communicationTint20;
+			color: $ms-color-gray160;
 			font-weight: $ms-font-weight-semibold;
 		}
 
@@ -121,7 +121,7 @@
 		}
 
 		thead tr th, tbody tr th {
-			color: #323130;
+			color: $ms-color-gray160;
 			font-weight: 500;
 		}
 
@@ -129,7 +129,7 @@
 			border-radius: 2px;
 
 			button {
-				color: #605e5c;
+				color: $ms-color-gray130;
 
 				&[disabled="disabled"] {
 					color: $ms-color-gray60;
@@ -137,7 +137,7 @@
 				}
 
 				&.ms-today {
-					color: #ffffff;
+					color: $ms-color-white;
 					font-weight: $ms-font-weight-semibold;
 					background: $ms-color-blue;
 				}
@@ -151,7 +151,7 @@
 		font-size: $ms-font-size-12;
 		font-weight: $ms-font-weight-regular;
 		position: absolute;
-		color: #323130;
+		color: $ms-color-gray160;
 	}
 }
 

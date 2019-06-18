@@ -373,12 +373,12 @@ export default {
 .ms-calendar-wrapper {
 	.ms-calendar-datepicker table tr td.ms-data-enabled:hover {
 		cursor: pointer;
-		background: #edebe9;
+		background: $ms-color-gray30;
 		color: $ms-color-gray190;
 	}
 
 	.ms-calendar-divider {
-		border-right: 1px solid #edebe9;
+		border-right: 1px solid $ms-color-gray30;
 		top: 0;
 		position: relative;
 	}
@@ -398,7 +398,7 @@ export default {
 		}
 
 		tbody tr th {
-			border-right: 1px solid #edebe9;
+			border-right: 1px solid $ms-color-gray30;
 		}
 
 		tr td button {

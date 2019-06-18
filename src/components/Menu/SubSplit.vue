@@ -82,8 +82,8 @@ export default {
 		}
 
 		&.split-selected {
-			color: rgb(0, 0, 0);
-    	background-color: rgb(237, 235, 233);
+			color: $ms-color-black;
+    	background-color: $ms-color-gray30;
 		}
 	}
 }

@@ -125,9 +125,11 @@ export default {
 </script>
 
 <style lang="scss">
+@import 'scss/_References.scss';
+
 .ms-checkbox {
 	.ms-toggle .ms-toggle-label {
-    font-weight: 400;
+    font-weight: $ms-font-weight-regular;
 	}
 }
 </style>
