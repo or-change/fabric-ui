@@ -1,0 +1,76 @@
+@import 'scss/_References.scss';
+
+.ms-progress {
+	font-family: inherit;
+	font-size: $ms-font-size-14;
+	font-weight: $ms-font-weight-regular;
+
+	.ms-progress-bar {
+		position: relative;
+		overflow: hidden;
+		background-color: $ms-color-gray30;
+		border-radius: 3px;
+	}
+
+	.ms-progress-default {
+		float: left;
+		height: 100%;
+		vertical-align: middle;
+		text-align: center;
+		color: $ms-color-white;
+	}
+
+	@each $variant, $color in (primary, $ms-color-blue),
+		(success, $ms-color-green),
+		(info, $ms-color-themeTertiary),
+		(warning, $ms-color-yellow),
+		(danger, $ms-color-redDark),
+		(secondary, $ms-color-neutralSecondaryAlt),
+		(dark, $ms-color-black),
+		 {
+			.ms-progress-#{$variant} {
+				background-color: $color;
+			}
+		}
+
+	.ms-progress-indicator-progress {
+		height: 100%;
+		position: absolute;
+		width: 0px;
+		min-width: 33%;
+
+		@each $variant, $color in (primary, $ms-color-blue),
+		(success, $ms-color-green),
+		(info, $ms-color-themeTertiary),
+		(warning, $ms-color-yellow),
+		(danger, $ms-color-redDark),
+		(secondary, $ms-color-neutralSecondaryAlt),
+		(dark, $ms-color-black),
+		 {
+			&.ms-progress-#{$variant} {
+				filter: progid:DXImageTransform.Microsoft.Gradient(startColorstr="#EDEBE9", endColorstr="#{$color}", gradientType="1");
+				background: linear-gradient(to right, $ms-color-gray30 0%, $color 50%, $ms-color-gray30 100%);
+				background: -webkit-linear-gradient(to right, $ms-color-gray30 0%, $color 50%, $ms-color-gray30 100%);
+				background: -moz-linear-gradient(to right, $ms-color-gray30 0%, $color 50%, $ms-color-gray30 100%);
+			}
+		}
+	}
+
+	.ms-progress-title {
+		color: $ms-color-gray160;
+		overflow: hidden;
+		white-space: nowrap;
+		text-overflow: ellipsis;
+	}
+
+	.ms-progress-description {
+		color: $ms-color-gray130;
+		font-size: $ms-font-size-xs;
+	}
+}
+
+.ms-progress-md {
+	.ms-progress-bar {
+		margin: 8px 0;
+	}
+}

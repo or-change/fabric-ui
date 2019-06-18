@@ -25,6 +25,7 @@ import Slider from './components/Slider';
 import Calendar from './components/Calendar';
 import TextField from './components/TextField';
 import Datepicker from './components/Datepicker';
+import Progress from './components/Progress';
 
 export default [
 	LabelTest,
@@ -46,5 +47,6 @@ export default [
 	SearchBox, SpinButton,
 	Toggle, Slider,
 	Calendar,
-	TextField, Datepicker
+	TextField, Datepicker,
+	Progress
 ];
