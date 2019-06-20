@@ -20,19 +20,6 @@
 		color: $ms-color-white;
 	}
 
-	@each $variant, $color in (primary, $ms-color-blue),
-		(success, $ms-color-green),
-		(info, $ms-color-themeTertiary),
-		(warning, $ms-color-yellow),
-		(danger, $ms-color-redDark),
-		(secondary, $ms-color-neutralSecondaryAlt),
-		(dark, $ms-color-black),
-		 {
-			.ms-progress-#{$variant} {
-				background-color: $color;
-			}
-		}
-
 	.ms-progress-indicator-progress {
 		height: 100%;
 		position: absolute;

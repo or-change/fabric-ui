@@ -1,0 +1,101 @@
+@import 'scss/_References.scss';
+
+.ms-modal {
+	font-family: inherit;
+	font-size: $ms-font-size-14;
+	font-weight: $ms-font-weight-regular;
+	color: #323130;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+	outline: 0;
+
+	button {
+		outline: none;
+		border: none;
+	}
+		
+	.ms-modal-main {
+		position: relative;
+    width: auto;
+		max-height: 100%;
+    overflow-y: auto;
+    border-radius: 2px;
+		background-color: #fff;
+		box-shadow: rgba(0, 0, 0, 0.22) 0px 25.6px 57.6px 0px, rgba(0, 0, 0, 0.18) 0px 4.8px 14.4px 0px;
+		outline: transparent solid 3px;
+		text-align: left;
+		cursor: move;
+	}
+
+	.ms-modal-header {
+		font-size: 28px;
+		font-weight: 600;
+		color: #fff;
+	}
+
+	.ms-modal-body {
+		padding: 5px 28px;
+		overflow-y: hidden;
+		
+		p {
+			font-size: 16px;
+		}
+	}
+
+	.ms-variant-default {
+		background-color: #fff;
+		color: rgb(50, 49, 48);
+	
+		&.ms-modal-header {
+			color: rgb(50, 49, 48);
+		}
+	}
+
+	.ms-modal-overlay {
+		position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    width: 100%;
+		height: 100%;
+		opacity: .5;
+		background-color: transparent;
+		overflow: hidden;
+
+		&.ms-modal-overlay-light {
+			background-color: #fff;
+		}
+		
+		&.ms-modal-overlay-dark {
+			background-color: #000;
+		}
+	}
+}
+
+.ms-modal-md {
+	.ms-modal-center {
+		&.ms-modal-main {
+			margin: 17% auto;
+		}
+	}
+
+	.ms-modal-main {
+		margin: 28px auto;
+	}
+
+	.ms-modal-header {
+    padding: 16px 28px;
+	}
+
+	.ms-modal-body {
+		padding: 5px 28px;
+
+		p {
+			line-height: 22px;
+		}
+	}
+}

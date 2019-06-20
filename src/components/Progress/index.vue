@@ -15,7 +15,7 @@
 					v-for="(progress, index) in progressbar"
 					class="ms-progress-default"
 					:class="[
-						`ms-progress-${progress.variant}`
+						`ms-variant-${progress.variant}`
 					]"
 					:style="{
 						'width': `${progress.precision * 100}%`,
@@ -28,7 +28,7 @@
 				ref="ms-progress-indeterminate"
 				class="ms-progress-default ms-progress-indicator-progress"
 				:class="[
-					`ms-progress-${progressbar.variant}`
+					`ms-variant-${progressbar.variant}`
 				]"
 				:style="{
 					'width': `${progressbar.precision * 100}%`,

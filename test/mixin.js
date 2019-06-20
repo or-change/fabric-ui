@@ -26,6 +26,9 @@ import Calendar from './components/Calendar';
 import TextField from './components/TextField';
 import Datepicker from './components/Datepicker';
 import Progress from './components/Progress';
+import Modal from './components/Modal';
+import Dialog from './components/Dialog';
+import Panel from './components/Panel';
 
 export default [
 	LabelTest,
@@ -48,5 +51,7 @@ export default [
 	Toggle, Slider,
 	Calendar,
 	TextField, Datepicker,
-	Progress
+	// Progress,
+	Modal,
+	Dialog, Panel
 ];

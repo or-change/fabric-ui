@@ -65,3 +65,16 @@ input[type=text] {
 		display: none;
 	}
 }
+
+@each $variant, $color in (primary, $ms-color-blue),
+	(success, $ms-color-green),
+	(info, $ms-color-themeTertiary),
+	(warning, $ms-color-yellow),
+	(danger, $ms-color-redDark),
+	(secondary, $ms-color-neutralSecondaryAlt),
+	(dark, $ms-color-black),
+	{
+	.ms-variant-#{$variant} {
+		background-color: $color;
+	}
+}
