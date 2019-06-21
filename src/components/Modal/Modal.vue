@@ -11,7 +11,7 @@
 				}
 			]"
 			:style="{
-				'width': width
+				'width': width ? width: '80vw'
 			}"
 			@mousedown.prevent="dragStart"
 			@mouseup="dragEnd"
@@ -52,71 +52,22 @@
 </template>
 
 <script>
-import parameter from './parameter.js';
+import mixin from './mixin';
+import parameter from './parameter';
 
 export default {
 	name: 'f-modal',
+	mixins: [mixin],
 	data() {
 		return {
-			visible: false,
 			outer: null,
 			startPosition: null
 		}
 	},
 	props: {
-		id: {
-			type: String,
-			required: true
-		},
-		value: {
-			type: Boolean,
-			default: false
-		},
-		width: {
-			type: String,
-			default: '80vw'
-		},
-		draggable: {
-			type: Boolean,
-			default: false
-		},
-		overlay: {
-			type: Boolean,
-			default: true
-		},
-		overlayTheme: {
-			type: String,
-			default: 'dark'
-		},
-		closeOnBackdrop: {
-			type: Boolean,
-			default: true
-		},
-		title: {
-			type: String
-		},
-		text: {
-			type: String
-		},
-		centered: {
-			type: Boolean,
-			default: true
-		},
-		hideHeader: {
-			type: Boolean,
-			default: false
-		},
 		closeTitle: {
 			type: String,
 			default: 'Close'
-		},
-		variant: {
-			type: String,
-			default: 'default'
-		},
-		stacking: {
-			type: Boolean,
-			default: true
 		}
 	},
 	computed: {
@@ -155,6 +106,7 @@ export default {
 				}
  
 				parameter.count = ++parameter.count;
+				
 				this.$root.$emit('f::modal::show', this.id);
 
 				this.$emit('shown');
@@ -179,11 +131,8 @@ export default {
 				this.$emit('hidden');
 			}
 		},
-		close() {
-			this.$emit('input', false);
-		},
 		modalListener(id) {
-			if (!this.stacking && id !== this.id) {
+			if (this.visible && !this.stacking && id !== this.id) {
 				this.close();
 			}
 		},
@@ -197,7 +146,7 @@ export default {
 				return;
 			}
 
-			const { x, y } = event;
+			const { clientX, clientY } = event;
 			const modal = this.$refs['f-modal'];
 			const { left, top } = modal.getBoundingClientRect();
 
@@ -207,7 +156,7 @@ export default {
 			modal.style.left = `${left}px`;
 
 			this.startPosition = {
-				offsetX: x- left , offsetY: y-top
+				offsetX: clientX - left , offsetY: clientY - top
 			};
 		},
 		dragging(event) {

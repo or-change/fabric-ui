@@ -1,7 +1,15 @@
 import './modal.scss';
 
-import Modal from './index.vue';
+import Modal from './Modal.vue';
+import Dialog from './Dialog.vue';
+import Panel from './Panel.vue';
+
+const modalList = [
+	Modal, Dialog, Panel
+];
 
 export default function install(Vue) {
-	Vue.component(Modal.name, Modal);
+	modalList.forEach(modal => {
+		Vue.component(modal.name, modal);
+	});
 }

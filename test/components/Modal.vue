@@ -7,7 +7,7 @@
 			variant="primary" :text="text" overlay-theme="light"
 			:draggable="true" :stacking="false"
 		 />
-		<f-modal id="modal-2" v-model="show3" title="123"
+		<f-modal id="modal-3" v-model="show3" title="123"
 			variant="primary" :text="text" overlay-theme="light"
 			:draggable="true" :centered="false"
 		 />
