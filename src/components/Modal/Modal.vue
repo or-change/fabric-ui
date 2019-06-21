@@ -1,6 +1,17 @@
 <template>
-	<div class="ms-modal ms-modal-md" :id="id" v-if="visible"
+	<div :id="id" v-if="visible"
 		@mousemove="dragging"
+		:class="[
+			`ms-panel-${size}`,
+			`ms-panel-${position}`,
+			{
+				'ms-modal': !type,
+				'ms-modal-md': !type,
+				'ms-dialog': type === 'dialog',
+				'ms-dialog-md': type === 'dialog',
+				'ms-panel': type === 'panel'
+			}
+		]"
 	>
 		<div
 			ref="f-modal"
@@ -11,33 +22,59 @@
 				}
 			]"
 			:style="{
-				'width': width ? width: '80vw'
+				'width': computedWidth
 			}"
 			@mousedown.prevent="dragStart"
 			@mouseup="dragEnd"
 		>
 			<slot name="ms-modal-header">
-				<div class="ms-modal-header" v-if="!hideHeader"
+				<div class="ms-modal-header"
 					:class="[
 						`ms-variant-${variant}`
 					]"
 				>
-					<span>{{ title }}</span>
+					<p v-if="type !== 'panel'">{{ title }}</p>
+					<div class="button-close" v-if="closeButton && type">
+						<f-button icon="ms-Icon ms-Icon--Cancel" :border="false"
+							@click="close"
+						/>
+					</div>
+				</div>
+
+				<div
+					class="ms-panel-title"
+					v-if="type === 'panel'">
+					<p>
+						{{ title }}
+					</p>
 				</div>
 			</slot>
 
-			<slot>
+			<slot name="ms-modal-body">
 				<div class="ms-modal-body">
 					<f-button 
 						:text="closeTitle"
 						@click="close"
+						v-if="!type"
 					/>
 
-					<p>{{ text }}</p>
+					<p class="ms-modal-content">{{ text }}</p>
 				</div>
 			</slot>
 
-			<slot name="ms-modal-footer"></slot>
+			<slot name="ms-modal-footer">
+				<div class="ms-modal-footer" v-if="type">
+					<div class="ms-modal-action">
+						<f-button 
+							theme="primary"
+							:text="okText"
+							@click="ok" />
+						<f-button
+							:text="cancelText"
+							@click="cancel" />
+					</div>
+				</div>
+			</slot>
 		</div>
 
 		<button v-if="overlay"
@@ -52,27 +89,107 @@
 </template>
 
 <script>
-import mixin from './mixin';
 import parameter from './parameter';
 
 export default {
 	name: 'f-modal',
-	mixins: [mixin],
 	data() {
 		return {
 			outer: null,
-			startPosition: null
+			startPosition: null,
+			visible: false
 		}
 	},
 	props: {
+		id: {
+			type: String,
+			required: true
+		},
+		value: {
+			type: Boolean,
+			default: false
+		},
+		width: {
+			type: String
+		},
+		size: {
+			type: String,
+			default: 'sm'
+		},
+		position: {
+			type: String,
+			default: 'right'
+		},
+		scrollable: {
+			type: Boolean,
+			default: false
+		},
+		type: {
+			type: String
+		},
+		draggable: {
+			type: Boolean,
+			default: false
+		},
+		overlay: {
+			type: Boolean,
+			default: true
+		},
+		overlayTheme: {
+			type: String,
+			default: 'dark'
+		},
+		closeOnBackdrop: {
+			type: Boolean,
+			default: true
+		},
+		title: {
+			type: String
+		},
+		text: {
+			type: String
+		},
+		centered: {
+			type: Boolean,
+			default: true
+		},
+		variant: {
+			type: String,
+			default: 'default'
+		},
+		stacking: {
+			type: Boolean,
+			default: true
+		},
 		closeTitle: {
 			type: String,
 			default: 'Close'
+		},
+		closeButton: {
+			type: Boolean,
+			default: true
+		},
+		okText: {
+			type: String,
+			default: 'Save'
+		},
+		cancelText: {
+			type: String,
+			default: 'Cancel'
 		}
 	},
 	computed: {
 		outerId() {
 			return `${this.id}__f_modal_outer`;
+		},
+		computedWidth() {
+			if (this.width) {
+				return this.width;
+			}
+
+			if (!this.type) {
+				return '80vw';
+			}
 		}
 	},
 	watch: {
@@ -94,7 +211,7 @@ export default {
 				document.body.appendChild(this.outer);
 				this.outer.appendChild(this.$el);
 
-				if (parameter.count === 0 && this.overlay) {
+				if (this.overlay) {
 					parameter.isScroll = document.body.scrollHeight > (window.innerHeight || document.documentElement.clientHeight);
 					parameter.overflow = document.body.style.overflow;
 					parameter.paddingRight = document.body.style.paddingRight;
@@ -105,8 +222,6 @@ export default {
 					}
 				}
  
-				parameter.count = ++parameter.count;
-				
 				this.$root.$emit('f::modal::show', this.id);
 
 				this.$emit('shown');
@@ -116,16 +231,16 @@ export default {
 				}
 
 				document.body.removeChild(this.outer);
-				parameter.count = --parameter.count;
-				
-				if (parameter.count === 0 && this.overlay) {
+
+				if (this.overlay) {
 						document.body.style.overflow = parameter.overflow ? parameter.overflow : 'auto';
 
 					if (parameter.isScroll) {
 						document.body.style.paddingRight = parameter.paddingRight ? parameter.paddingRight : '0px';
 					}
 
-					parameter.bodyStyle= null;
+					parameter.overflow = 'auto';
+					parameter.paddingRight = '0px';
 				}
 
 				this.$emit('hidden');
@@ -139,6 +254,7 @@ export default {
 		backdropClose() {
 			if (this.closeOnBackdrop) {
 				this.close();
+				this.$emit('backdropClick');
 			}
 		},
 		dragStart(event) {
@@ -172,6 +288,17 @@ export default {
 		},
 		dragEnd() {
 			this.startPosition = null;
+		},
+		close() {
+			this.$emit('input', false);
+		},
+		ok() {
+			this.$emit('ok');
+			this.close();
+		},
+		cancel() {
+			this.$emit('cancel');
+			this.close();
 		}
 	},
 	mounted() {

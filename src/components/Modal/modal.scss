@@ -1,6 +1,6 @@
 @import 'scss/_References.scss';
 
-.ms-modal {
+.ms-modal, .ms-dialog, .ms-panel {
 	font-family: inherit;
 	font-size: $ms-font-size-14;
 	font-weight: $ms-font-weight-regular;
@@ -10,14 +10,14 @@
 	left: 0;
 	width: 100%;
 	height: 100%;
-	overflow: hidden;
+	overflow-y: hidden;
 	outline: 0;
 
 	button {
 		outline: none;
 		border: none;
 	}
-		
+
 	.ms-modal-main {
 		position: relative;
     width: auto;
@@ -30,31 +30,16 @@
 		text-align: left;
 		cursor: move;
 		z-index: 100;
-	}
 
-	.ms-modal-header {
-		font-size: 28px;
-		font-weight: 600;
-		color: #fff;
-	}
-
-	.ms-modal-body {
-		padding: 5px 28px;
-		overflow-y: hidden;
-		
-		p {
-			font-size: 16px;
-		}
-	}
-
-	.ms-variant-default {
-		background-color: #fff;
-		color: rgb(50, 49, 48);
+		.ms-variant-default {
+			background-color: #fff;
 	
-		&.ms-modal-header {
-			color: rgb(50, 49, 48);
+			p {
+				color: rgb(50, 49, 48);
+			}
 		}
 	}
+
 
 	.ms-modal-overlay {
 		position: fixed;
@@ -76,7 +61,8 @@
 	}
 }
 
-.ms-modal-md {
+.ms-modal-md, .ms-dialog-md, .ms-panel-md {
+
 	.ms-modal-center {
 		&.ms-modal-main {
 			margin: 17% auto; //center如何实现
@@ -86,7 +72,26 @@
 	.ms-modal-main {
 		margin: 28px auto;
 	}
+}
 
+.ms-modal {
+	.ms-modal-header {
+		font-size: 28px;
+		font-weight: 600;
+		color: #fff;
+	}
+
+	.ms-modal-body {
+		padding: 5px 28px;
+		overflow-y: hidden;
+		
+		p {
+			font-size: 16px;
+		}
+	}
+}
+
+.ms-modal-md {
 	.ms-modal-header {
     padding: 16px 28px;
 	}
@@ -96,6 +101,258 @@
 
 		p {
 			line-height: 22px;
+		}
+	}
+}
+
+.ms-dialog, .ms-panel {
+	.ms-modal-header {
+		.button-close {
+			button i {
+				color: #fff;
+				font-size: 16px;
+				font-weight: 400;
+			}
+		}
+
+		&.ms-variant-default {
+			.button-close {
+				button i {
+					color: rgb(96, 94, 92);
+				}
+			}
+		}
+	}
+
+	.ms-modal-footer {
+		.ms-modal-action {
+			position: relative;
+			width: 100%;
+
+			.ms-button button {
+				vertical-align: middle;
+			}
+		}
+	}
+}
+
+.ms-dialog {
+	.ms-modal-header {
+		position: relative;
+		width: 100%;
+		
+		p {
+			font-size: 20px;
+			font-weight: 600;
+			color: #fff;
+			margin: 0px;
+			line-height: normal;
+		}
+
+		.button-close {
+			position: absolute;
+			top: 0px;
+			right: 0px;
+		}
+	}
+
+	.ms-modal-body {
+		.ms-modal-content {
+			font-size: 12px;
+			font-weight: 400;
+			color: rgb(50, 49, 48);
+			line-height: 1.5;
+			overflow-wrap: break-word;
+		}
+	}
+
+	.ms-modal-footer {
+		.ms-modal-action {
+			position: relative;
+			width: 100%;
+			text-align: right;
+
+			.ms-button button {
+				vertical-align: middle;
+			}
+		}
+	}
+
+	&.ms-dialog-md {
+		.ms-modal-main {
+			max-width: 340px;
+			min-width: 288px;
+			padding-bottom: 24px;
+		}
+
+		.ms-modal-header {
+			p {
+				padding-top: 16px;
+				padding-right: 46px;
+				padding-bottom: 24px;
+				padding-left: 24px;
+			}
+
+			.button-close {
+				padding-top: 14px;
+				padding-right: 14px;
+				padding-bottom: 0px;
+				padding-left: 0px;
+			}
+		}
+
+		.ms-modal-body, .ms-modal-footer {
+			padding: 0px 24px;
+		}
+
+		.ms-modal-body {
+			.ms-modal-content {
+				margin-top: 0px;
+				margin-right: 0px;
+				margin-bottom: 20px;
+				margin-left: 0px;
+				padding-top: 8px;
+			}
+		}
+
+		.ms-modal-footer {
+			.ms-modal-action {
+				height: 32px;
+				margin-top: 16px;
+				margin-right: -4px;
+				margin-bottom: 0px;
+				margin-left: 0px;
+			}
+
+			.ms-button .ms-button-label {
+				height: 30px;
+				line-height: 30px;
+			}
+
+			.ms-button button {
+				height: 32px;
+				min-width: 80px;
+				padding: 0px 16px;
+				margin-top: 0px;
+				margin-bottom: 0px;
+				margin-left: 0px;
+				margin-right: 4px;
+			}
+		}
+	}
+}
+
+.ms-panel {
+	.ms-modal-center.ms-modal-main {
+		margin: 0;
+	}
+
+	.ms-modal-main {
+		position: absolute;
+		margin: 0px;
+		overflow-x: hidden;
+		overflow-y: auto;
+		max-height: 977px;
+		height: 100%;
+		width: 272px;
+	}
+
+	.ms-modal-header {
+		padding: 0px 5px;
+    height: 44px;
+	}
+
+	.button-close {
+		float: right;
+
+		button {
+			height: 44px;
+			padding: 0px;
+			i {
+				height: 44px;
+				line-height: 44px;
+			}
+		}
+	}
+
+	.ms-panel-title {
+		padding: 0 32px;
+		margin: 14px 0;
+	}
+
+	.ms-modal-content {
+		padding: 0 32px 20px;
+		line-height: 1.2em;
+	}
+	
+	.ms-panel-title p {
+		font-family: inherit;
+    font-size: 20px;
+    font-weight: 600;
+    color: rgb(50, 49, 48);
+    line-height: 27px;
+    margin: 0px;
+	}
+
+	.ms-modal-footer {
+		.ms-modal-action {
+			margin-top: 0px;
+			width: 100%;
+		}
+
+		padding: 16px 32px;
+
+		.ms-button .ms-button-label {
+			height: 30px;
+			line-height: 30px;
+		}
+	
+		.ms-button button {
+			height: 32px;
+			min-width: 80px;
+			padding: 0px 16px;
+			margin-top: 0px;
+			margin-bottom: 0px;
+			margin-left: 0px;
+		}
+	}
+
+	&.ms-panel-sm {
+		.ms-modal-main {
+			width: 340px;
+		}
+	}
+
+	&.ms-panel-md {
+		.ms-modal-main {
+			width: 644px;
+		}
+	}
+
+	&.ms-panel-lg {
+		.ms-modal-main {
+			width: 940px;
+		}
+	}
+
+	&.ms-panel-fluid {
+		.ms-modal-main {
+			width: 100%;
+		}
+	}
+
+	&.ms-panel-right {
+		.ms-modal-main {
+			top: 0;
+			right: 0;
+		}
+		
+	}
+
+	&.ms-panel-left {
+		.ms-modal-main {
+			top: 0;
+			left: 0;
 		}
 	}
 }

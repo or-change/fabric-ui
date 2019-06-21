@@ -1,12 +1,16 @@
 <template>
 	<div>
 		<h2>Modal</h2>
-		<div @click="show2 = !show2">change visible</div>
+		<div @click="show1 = !show1">default modal</div>
 		<f-modal id="modal-1" v-model="show1" title="123" :stacking="false"/>
+
+		<div @click="show2 = !show2">primary and center modal</div>
 		<f-modal id="modal-2" v-model="show2" title="123"
 			variant="primary" :text="text" overlay-theme="light"
 			:draggable="true" :stacking="false"
 		 />
+
+		<div @click="show3 = !show3">primary modal</div>
 		<f-modal id="modal-3" v-model="show3" title="123"
 			variant="primary" :text="text" overlay-theme="light"
 			:draggable="true" :centered="false"
