@@ -53,7 +53,7 @@ export default {
 			show3: false,
 			show4: false,
 			show5: false,
-			show6: true,
+			show6: false,
 			title: 'Panel - Small, right-aligned, fixed, with footer',
 			text: `Your Inbox has changed. No longer does it include favorites, it is a singular destination for your emails.`,
 			selected: 'test1'

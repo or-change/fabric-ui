@@ -17,6 +17,8 @@ import textFieldPlugin from './components/TextField';
 import datePickerPlugin from './components/DatePicker';
 import progressPlugin from './components/Progress';
 import modalPlugin from './components/modal';
+import listPlugin from './components/List';
+import groupPlugin from './components/Group';
 
 const pluginList = [
 	buttonPlugin, labelPlugin, menuPlugin,
@@ -26,7 +28,8 @@ const pluginList = [
 	togglePlugin, sliderPlugin,
 	calendarPlugin,
 	textFieldPlugin, datePickerPlugin,
-	progressPlugin, modalPlugin
+	progressPlugin, modalPlugin,
+	listPlugin, groupPlugin
 ];
 
 export default function install(Vue) {

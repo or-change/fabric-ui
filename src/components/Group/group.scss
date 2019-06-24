@@ -1,0 +1,107 @@
+@import 'scss/_References.scss';
+
+.ms-group-base {
+	font-family: inherit;
+	font-size: 12px;
+	font-weight: 400;
+	position: relative;
+
+	button {
+		outline: transparent;
+		background: none transparent;
+		border: none;
+	}
+
+	.ms-group-check {
+		position: relative;
+    cursor: default;
+    padding: 1px 0 0 0;
+		margin-top: -1px;
+		// opacity: 0;
+		
+		.ms-group-wrapper {
+			font-size: 14px;
+			vertical-align: top;
+			position: relative;
+			user-select: none;
+
+			&::before {
+				content: "";
+				position: absolute;
+				top: 1px;
+				right: 1px;
+				bottom: 1px;
+				left: 1px;
+				opacity: 1;
+				border-radius: 50%;
+				background: rgb(255, 255, 255);
+			}
+		}
+	}
+
+	i {
+		display: inline-block;
+		-webkit-font-smoothing: antialiased;
+		font-style: normal;
+		font-weight: normal;
+		speak: none;
+		font-family: FabricMDL2Icons;
+		font-size: 18px;
+		position: absolute;
+		left: 0px;
+		top: 0px;
+		text-align: center;
+		vertical-align: middle;
+		color: rgb(96, 94, 92);
+	}
+
+	i.ms-check {
+		font-size: 16px;
+	}
+
+	.ms-group-extend {
+		position: relative;
+    font-size: 18px;
+    color: rgb(96, 94, 92);
+    cursor: default;
+    padding: 0;
+	}
+}
+
+.ms-group-md {
+	&.ms-group {
+		.ms-group-item {
+			height: 42px;
+			border-bottom: 1px solid rgb(255, 255, 255);
+		}
+
+		.ms-group-check {
+			width: 40px;
+			height: 42px;
+
+			.ms-group-wrapper {
+				width: 18px;
+				height: 18px;
+
+				i {
+					width: 18px;
+					height: 18px;
+					line-height: 18px;
+				}
+			}
+		}
+
+		.ms-group-extend {
+			width: 32px;
+			height: 42px;
+		}
+	}
+}
+
+.ms-group {
+	.ms-group-item {
+		border-bottom: 1px solid rgb(255, 255, 255);
+	}
+
+	
+}

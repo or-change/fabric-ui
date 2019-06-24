@@ -1,0 +1,214 @@
+@import 'scss/_References.scss';
+
+.ms-list {
+	position: relative;
+	display: table;
+	width: 100%;
+	font-family: inherit;
+	font-size: 12px;
+	font-weight: 400;
+	color: rgb(50, 49, 48);
+	overflow-x: auto;
+	overflow-y: visible;
+	background: rgb(255, 255, 255);
+
+	.ms-list-header {
+		display: table-header-group;
+	}
+
+	.ms-list-header-row {
+    position: relative;
+    width: 100%;
+    vertical-align: top;
+		display: table-row;
+    white-space: nowrap;
+    box-sizing: content-box;
+    cursor: default;
+    user-select: none;
+    background: rgb(255, 255, 255);
+	}
+	
+	.ms-list-header-row:hover, .ms-list-body .ms-list-row:hover {
+		.ms-list-check .ms-list-check-content .ms-list-check-circle {
+			display: inline-block;
+		}
+	}
+
+	.ms-list-body .ms-list-row:hover {
+		color: rgb(50, 49, 48);
+		background: rgb(243, 242, 241);
+	}
+	
+	.ms-list-check {
+		position: relative;
+    display: table-cell;
+		box-sizing: border-box;
+    color: rgb(50, 49, 48);
+    padding: 0px;
+    line-height: inherit;
+    margin: 0px;
+    vertical-align: top;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    text-align: left;
+    align-items: center;
+    outline: transparent;
+		border: none;
+		border-bottom: 1px solid rgb(237, 235, 233);
+		
+		&:hover {
+			.ms-list-check-content .ms-list-check-check {
+				display: inline-block;
+			}
+		}
+		
+		.ms-list-check-content {
+			position: relative;
+			font-size: 14px;
+			font-weight: 400;
+			line-height: 1;
+			vertical-align: top;
+			user-select: none;
+			
+			&::before {
+				content: "";
+				position: absolute;
+				top: 1px;
+				right: 1px;
+				bottom: 1px;
+				left: 1px;
+				opacity: 1;
+				border-radius: 50%;
+				background: rgb(255, 255, 255);
+			}
+			
+			i {
+				font-style: normal;
+				font-weight: normal;
+				speak: none;
+				font-family: FabricMDL2Icons;
+				position: absolute;
+				text-align: center;
+				vertical-align: middle;
+				color: rgb(96, 94, 92);
+			}
+			
+			.ms-list-check-circle {
+				font-size: 18px;
+				left: 0px;
+				top: 0px;
+				display: none;
+			}
+			
+			.ms-list-check-check {
+				font-size: 16px;
+				left: 0.5px;
+				top: 0px;
+				display: none;
+			}
+		}
+	}
+	
+	.ms-list-header-cell {
+		position: relative;
+		display: table-cell;
+    color: rgb(50, 49, 48);
+    box-sizing: border-box;
+    line-height: inherit;
+    margin: 0px;
+    vertical-align: top;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    text-align: left;
+    font-size: 14px;
+		font-weight: 600;
+		border-bottom: 1px solid rgb(237, 235, 233);
+		
+		&:hover {
+			color: rgb(50, 49, 48);
+			background: rgb(243, 242, 241);
+		}
+	}
+
+	.ms-list-body {
+		display:table-row-group;
+
+		.ms-list-row {
+			position: relative;
+			display: table-row;
+			width: 100%;
+			padding: 0px;
+			color: rgb(96, 94, 92);
+			white-space: nowrap;
+			text-align: left;
+			cursor: default;
+			user-select: none;
+			outline: transparent;
+			background: rgb(255, 255, 255);
+		}
+		
+		.ms-list-row-cell {
+			position: relative;
+			display: table-cell;
+			box-sizing: border-box;
+			vertical-align: top;
+			white-space: nowrap;
+			text-overflow: ellipsis;
+			outline: transparent;
+			overflow: hidden;
+			border-bottom: 1px solid rgb(243, 242, 241);
+		}
+	}
+}
+
+.ms-list-md {
+	.ms-list-header-row {
+    height: 32px;
+    line-height: 32px;
+    padding-bottom: 1px;
+		padding-top: 1px;
+		
+		.ms-list-check {
+			height: 32px;
+		}
+	}
+
+	.ms-list-check {
+		width: 40px;
+		
+		.ms-list-check-content {
+			height: 100%;
+			width: 40px;
+
+			i {
+				width: 18px;
+				height: 18px;
+				padding: 7px 11px;
+			}
+		}
+	}
+
+	.ms-list-header-cell {
+		padding: 0px 8px 0px 12px;
+		height: 32px;
+		line-height: 32px;
+	}
+
+	.ms-list-row {
+		height: 42px;
+
+		.ms-list-check {
+			height: 42px;
+		}
+
+		.ms-list-check .ms-list-check-content i {
+			padding: 12px 11px;
+		}
+
+		.ms-list-row-cell {
+			height: 42px;
+			line-height: 42px;
+			padding: 0 8px 0 12px;
+		}
+	}
+}

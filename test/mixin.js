@@ -29,6 +29,8 @@ import Progress from './components/Progress';
 import Modal from './components/Modal';
 import Dialog from './components/Dialog';
 import Panel from './components/Panel';
+import List from './components/List';
+import Group from './components/Group';
 
 export default [
 	LabelTest,
@@ -53,5 +55,7 @@ export default [
 	TextField, Datepicker,
 	// Progress,
 	Modal,
-	Dialog, Panel
+	Dialog, Panel,
+	// Group,
+	List
 ];
