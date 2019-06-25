@@ -28,15 +28,19 @@
     background: rgb(255, 255, 255);
 	}
 	
-	.ms-list-header-row:hover, .ms-list-body .ms-list-row:hover {
-		.ms-list-check .ms-list-check-content .ms-list-check-circle {
-			display: inline-block;
+	.ms-list-body .ms-list-row:hover, .ms-list-body .ms-list-row.ms-list-row-checked {
+		color: rgb(50, 49, 48);
+		background: rgb(243, 242, 241);
+
+		.ms-list-check, .ms-list-row-cell {
+			border-bottom-color: #fff;
 		}
 	}
 
-	.ms-list-body .ms-list-row:hover {
-		color: rgb(50, 49, 48);
-		background: rgb(243, 242, 241);
+	&.ms-list-compact .ms-list-body .ms-list-row {
+		.ms-list-check, .ms-list-row-cell {
+			border-bottom: none;
+		}
 	}
 	
 	.ms-list-check {
@@ -50,25 +54,40 @@
     vertical-align: top;
     white-space: nowrap;
     text-overflow: ellipsis;
-    text-align: left;
+    text-align: center;
     align-items: center;
     outline: transparent;
 		border: none;
 		border-bottom: 1px solid rgb(237, 235, 233);
-		
-		&:hover {
-			.ms-list-check-content .ms-list-check-check {
-				display: inline-block;
+
+		&.ms-list-check-checked {
+			.ms-list-check-content {
+				&::before {
+					background: rgb(0, 120, 212);
+				}
+	
+				i {
+					color: rgb(255, 255, 255);
+					font-weight: 900;
+				}
+	
+				.ms-list-check-circle, .ms-list-check-check {
+					display: inline-block;
+				}
 			}
 		}
 		
 		.ms-list-check-content {
 			position: relative;
+			display: inline-block;
 			font-size: 14px;
 			font-weight: 400;
 			line-height: 1;
 			vertical-align: top;
 			user-select: none;
+			border: none;
+			background-color: transparent;
+			outline: none;
 			
 			&::before {
 				content: "";
@@ -97,14 +116,12 @@
 				font-size: 18px;
 				left: 0px;
 				top: 0px;
-				display: none;
 			}
 			
 			.ms-list-check-check {
 				font-size: 16px;
 				left: 0.5px;
 				top: 0px;
-				display: none;
 			}
 		}
 	}
@@ -125,8 +142,41 @@
 		border-bottom: 1px solid rgb(237, 235, 233);
 		
 		&:hover {
-			color: rgb(50, 49, 48);
 			background: rgb(243, 242, 241);
+		}
+
+		&.background {
+			background-color: transparent;
+		}
+	}
+
+	.ms-list-resize {
+		display: inline-block;
+    position: absolute;
+    cursor: ew-resize;
+    bottom: 0px;
+		top: 0px;
+		right: 0px;
+    z-index: 1;
+    width: 16px;
+    outline: transparent;
+    overflow: hidden;
+		background: transparent;
+		border: none;
+		
+		&::after {
+			content: "";
+			position: absolute;
+			top: 0px;
+			bottom: 0px;
+			width: 1px;
+			display: none;
+			left: 50%;
+			background: rgb(200, 198, 196);
+		}
+
+		&:hover::after {
+			display: inline-block;
 		}
 	}
 
@@ -159,33 +209,42 @@
 			border-bottom: 1px solid rgb(243, 242, 241);
 		}
 	}
+
+	&.ms-list-row-variable {
+		.ms-list-body .ms-list-row {
+			height: auto;
+		}
+	
+		.ms-list-body .ms-list-row-cell {
+			height: auto;
+			overflow: hidden;
+			text-overflow: inherit;
+			white-space: normal;
+			word-break: break-all;
+			line-height: 1.5;
+		}
+	}
 }
 
 .ms-list-md {
 	.ms-list-header-row {
     height: 32px;
-    line-height: 32px;
     padding-bottom: 1px;
 		padding-top: 1px;
 		
 		.ms-list-check {
 			height: 32px;
+			padding: 7px 14px;
 		}
 	}
 
 	.ms-list-check {
 		width: 40px;
-		
-		.ms-list-check-content {
-			height: 100%;
-			width: 40px;
+	}
 
-			i {
-				width: 18px;
-				height: 18px;
-				padding: 7px 11px;
-			}
-		}
+	.ms-list-check .ms-list-check-content, .ms-list-check .ms-list-check-content i {
+		height: 18px;
+		width: 18px;
 	}
 
 	.ms-list-header-cell {
@@ -199,16 +258,65 @@
 
 		.ms-list-check {
 			height: 42px;
+			padding: 12px 14px;
 		}
+	}
 
-		.ms-list-check .ms-list-check-content i {
-			padding: 12px 11px;
+	.ms-list-row-cell {
+		height: 42px;
+		max-width: 300px;
+		line-height: 42px;
+		padding: 0 8px 0 12px;
+	}
+
+	&.ms-list-compact {
+		.ms-list-row {
+			height: 32px;
+	
+			.ms-list-check {
+				height: 32px;
+				padding: 7px 14px;
+			}
 		}
-
+	
 		.ms-list-row-cell {
-			height: 42px;
-			line-height: 42px;
-			padding: 0 8px 0 12px;
+			height: 32px;
+			line-height: 32px;
 		}
+	}
+
+	&.ms-list-row-variable {
+		.ms-list-row	.ms-list-check {
+			height: 32px;
+			padding: 7px 14px;
+		}
+	
+		.ms-list-row-cell {
+			padding: 7px 14px;
+		}
+	}
+}
+
+.ms-list-selection-hover {
+	.ms-list-check-circle, .ms-list-check-check {
+		display: none;
+	}
+
+	.ms-list-header-row:hover, .ms-list-body .ms-list-row:hover {
+		.ms-list-check .ms-list-check-content .ms-list-check-circle {
+			display: inline-block;
+		}
+	}
+
+	.ms-list-check:hover {
+		.ms-list-check-content .ms-list-check-check {
+			display: inline-block;
+		}
+	}
+}
+
+.ms-list-selection-disabled {
+	.ms-list-check {
+		display: none;
 	}
 }

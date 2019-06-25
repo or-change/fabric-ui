@@ -2,54 +2,76 @@
 	<div class="ms-list ms-list-md"
 		:class="{
 			'ms-list-compact': compact,
-			'ms-list-selection-always': isSelectionAlwaysShow,
 			'ms-list-selection-hover': !isSelectionAlwaysShow,
-			'ms-list-row-variable': rowHeightVariable,
-			'ms-list-shimmer': shimmer
+			'ms-list-selection-disabled': !selectMode,
+			'ms-list-row-variable': rowHeightVariable
 		}"
 	>
 		<div class="ms-list-header">
-			<div class="ms-list-header-row">
+			<div class="ms-list-header-row" ref="head-row">
 				<div class="ms-list-check"
+					ref="head-check"
 					:class="{
-						'ms-list-check-checked': isChecked
+						'ms-list-check-checked': isSelectAll
 					}"
+					@click="selectAll"
 				>
-					<div class="ms-list-check-content">
+					<button class="ms-list-check-content" v-if="isMultiSelect">
 						<i class="ms-Icon ms-Icon--CircleRing ms-list-check-circle"></i>
 						<i class="ms-Icon ms-Icon--StatusCircleCheckmark ms-list-check-check"></i>
+					</button>
+				</div>
+				<slot name="list-header-fields">
+					<div class="ms-list-header-cell"
+						v-for="(field, index) in fields"
+						:ref="`header-${index}-${field.key}`"
+						:class="[field.class, {
+							'background': preventHover
+						}]"
+					>
+						{{ field.label }}
+
+						<button class="ms-list-resize"
+							:ref="`header-${index}-${field.key}-handler`"
+							@mouseenter="preventHover = true"
+							@mousedown="record(index, field.key, $event)"
+							@mousemove="resize"
+							@mouseup="preventHover = false;origin = null"
+							@mouseout="preventHover = false;origin = null"
+						></button>
 					</div>
-				</div>
-				<div class="ms-list-header-cell"
-					v-for="(field, index) in fields"
-					:class="[field.class]"
-				>
-					{{ field.label }}
-				</div>
+				</slot>
 			</div>
 		</div>
 
 		<div class="ms-list-body">
 			<div class="ms-list-row"
 				v-for="(item, index) in items"
+				:class="{
+					'ms-list-row-checked': isChecked(item)
+				}"
 			>
 				<div class="ms-list-check"
 					:class="{
-						'ms-list-check-checked': isChecked
+						'ms-list-check-checked': isChecked(item)
 					}"
+					@click="select(item)"
 				>
-					<div class="ms-list-check-content">
+					<button class="ms-list-check-content">
 						<i class="ms-Icon ms-Icon--CircleRing ms-list-check-circle"></i>
 						<i class="ms-Icon ms-Icon--StatusCircleCheckmark ms-list-check-check"></i>
-					</div>
+					</button>
 				</div>
 
-				<div class="ms-list-row-cell"
-					v-for="(field, index) in fields"
-					:class="[field.class]"
-				>
-					{{ item[field.key] }}
-				</div>
+				<slot name="list-body-row">
+					<div class="ms-list-row-cell"
+						v-for="(field, index) in fields"
+						:class="[field.class]"
+						:ref="`row-${index}-${field.key}`"
+					>
+						{{ item[field.key] }}
+					</div>
+				</slot>
 			</div>
 		</div>
 	</div>
@@ -58,7 +80,20 @@
 <script>
 export default {
 	name: 'f-data-list',
+	data() {
+		const isMulti = this.selectMode === 'multi';
+
+		return {
+			preventHover: false,
+			origin: null,
+			result: isMulti ? [] : null
+		}
+	},
 	props: {
+		value: {
+			type: [Object, Array],
+			default: null
+		},
 		resizeabled: {
 			type: Boolean,
 			default: true
@@ -75,18 +110,14 @@ export default {
 			type: Boolean,
 			default: false
 		},
-		grouped: {
-			type: Boolean,
-			default: false
-		},
 		rowHeightVariable: {
 			type: Boolean,
 			default: false
 		},
-		shimmer: {
-			type: Boolean,
-			default: false
-		},
+		// shimmer: {
+		// 	type: Boolean,
+		// 	default: false
+		// },
 		fields: {
 			type: Array,
 			default: null
@@ -95,14 +126,107 @@ export default {
 			type: Array,
 			default: null
 		},
-		headerLocked: {
-			type: Boolean,
-			default: false
-		}
+		// headerLocked: {
+		// 	type: Boolean,
+		// 	default: false
+		// }
 	},
 	computed: {
-		isChecked() {
+		isSelectAll() {
+			return this.isMultiSelect && this.items && this.result.length === this.items.length;
+		},
+		isMultiSelect() {
+			return this.selectMode === 'multi';
+		}
+	},
+	watch: {
+		value() {
+			this.result = this.value;
+		}
+	},
+	methods: {
+		selectAll() {
+			if (this.isSelectAll) {
+				this.result = [];
 
+				return;
+			}
+			 
+			this.result = [].concat(this.items);
+
+			this.$emit('input', this.result);
+		},
+		select(item) {
+			if (this.isMultiSelect) {
+				if (this.isChecked(item)) {
+					this.result.splice(this.getIndex(item), 1);
+
+					return
+				}
+
+				this.result.push(item);
+			} else {
+				if (this.isChecked(item)) {
+					this.result = null;
+
+					return
+				}
+
+				this.result = item;
+			}
+
+			this.$emit('input', this.result);
+		},
+		getIndex(item) {
+			if (this.isMultiSelect) {
+				let position = -1
+
+				this.result.forEach((selectItem, index) => {
+					if (JSON.stringify(selectItem) === JSON.stringify(item)) {
+						position = index
+					}
+				});
+
+				return position;
+			}
+		},
+		isChecked(item) {
+			if (this.isMultiSelect) {
+				return this.getIndex(item) !== -1;
+			} else {
+				return JSON.stringify(this.result) === JSON.stringify(item);
+			}
+		},
+		record(index, key, event) {
+			const headRow = this.$refs['head-row'].getBoundingClientRect();
+			const headCheck = this.$refs['head-check'].getBoundingClientRect();
+			const headCell = this.$refs[`header-${index}-${key}`][0].getBoundingClientRect();
+			const handler = this.$refs[`header-${index}-${key}-handler`][0].getBoundingClientRect();
+
+			this.origin = {
+				index, key,
+				headCellWidth: headCell.width,
+				handlerLeft: handler.left - headCell.left,
+				x: event.x,
+				availableWidth: headRow.width - headCheck.width
+			}
+		},
+		resize(event) {
+			if (this.origin) {
+				const { index, key, headCellWidth, handlerLeft, x, availableWidth } = this.origin;
+
+				const headCell = this.$refs[`header-${index}-${key}`][0];
+				const handler = this.$refs[`header-${index}-${key}-handler`][0];
+
+				const offsetX = event.x - x;
+
+				const newWidth = headCellWidth + offsetX;
+
+				if (newWidth >= 120 && newWidth <= availableWidth - (this.fields.length - 1) * 100) {
+					headCell.style.width = `${newWidth}px`;
+					handler.style.left = `${handlerLeft + offsetX}px`;
+				}
+			}
 		}
 	}
 }

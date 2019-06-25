@@ -30,7 +30,7 @@ import Modal from './components/Modal';
 import Dialog from './components/Dialog';
 import Panel from './components/Panel';
 import List from './components/List';
-import Group from './components/Group';
+import Pagination from './components/Pagination';
 
 export default [
 	LabelTest,
@@ -56,6 +56,6 @@ export default [
 	// Progress,
 	Modal,
 	Dialog, Panel,
-	// Group,
-	List
+	List,
+	Pagination
 ];

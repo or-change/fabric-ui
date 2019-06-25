@@ -18,7 +18,7 @@ import datePickerPlugin from './components/DatePicker';
 import progressPlugin from './components/Progress';
 import modalPlugin from './components/modal';
 import listPlugin from './components/List';
-import groupPlugin from './components/Group';
+import paginationPlugin from './components/Pagination';
 
 const pluginList = [
 	buttonPlugin, labelPlugin, menuPlugin,
@@ -29,9 +29,12 @@ const pluginList = [
 	calendarPlugin,
 	textFieldPlugin, datePickerPlugin,
 	progressPlugin, modalPlugin,
-	listPlugin, groupPlugin
+	listPlugin,
+	paginationPlugin
 ];
 
 export default function install(Vue) {
 	pluginList.forEach(plugin => Vue.use(plugin));
 };
+
+// Disassembly component
