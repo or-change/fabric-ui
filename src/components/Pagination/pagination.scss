@@ -1,0 +1,86 @@
+@import 'scss/_References.scss';
+
+.ms-pagination {
+	list-style: none;
+	font-size: 0;
+	background: transparent;
+
+	li {
+		display: inline-block;
+		vertical-align: top;
+		margin: 0;
+		
+		button {
+			font-family: inherit;
+			font-weight: $ms-font-weight-semibold;
+			font-size: $ms-font-size-14;
+			color: $ms-color-gray160;
+			background: transparent;
+			outline: none;
+			border: none;
+			padding: 0px;
+			box-sizing: border-box;
+			text-align: center;
+			cursor: pointer;
+			border-radius: 2px;
+			
+			&:hover {
+				color: $ms-color-blue;
+			}
+		}
+
+
+		.ms-button-active {
+			background-color: $ms-color-blue;
+			color: $ms-color-white;
+
+			&:hover {
+				color: $ms-color-white;
+			}
+		}
+	}
+}
+
+.ms-pagination-md {
+	li {
+		button {
+			min-width: $ms-font-size-24;
+			height: $ms-font-size-24;
+			line-height: $ms-font-size-24;
+			padding: 0 2px;
+		}
+	}
+
+	&.ms-pagination-bar {
+		li {
+			padding: 0 2px;
+		}
+	}
+}
+
+.ms-pagination-border {
+	li {
+		border-color: $ms-color-gray20;
+		border-top-width: 1px;
+		border-bottom-width: 1px;
+		border-left-width: 1px;
+		border-style: solid;
+	}
+
+	.ms-button-prev {
+		border-top-left-radius: 2px;
+		border-bottom-left-radius: 2px;
+	}
+
+	.ms-button-next {
+		border-right-width: 1px;
+		border-top-right-radius: 2px;
+		border-bottom-right-radius: 2px;
+	}
+}
+
+.ms-pagination-bar {
+	li button {
+		background-color: $ms-color-gray20;
+	}
+}

@@ -4,7 +4,7 @@
 	font-family: inherit;
 	font-size: $ms-font-size-14;
 	font-weight: $ms-font-weight-regular;
-	color: #323130;
+	color: $ms-color-gray160;
 	position: fixed;
 	top: 0;
 	left: 0;
@@ -24,7 +24,7 @@
 		max-height: 100%;
     overflow-y: auto;
     border-radius: 2px;
-		background-color: #fff;
+		background-color: $ms-color-white;
 		box-shadow: rgba(0, 0, 0, 0.22) 0px 25.6px 57.6px 0px, rgba(0, 0, 0, 0.18) 0px 4.8px 14.4px 0px;
 		outline: transparent solid 3px;
 		text-align: left;
@@ -32,10 +32,10 @@
 		z-index: 100;
 
 		.ms-variant-default {
-			background-color: #fff;
+			background-color: $ms-color-white;
 	
 			p {
-				color: rgb(50, 49, 48);
+				color: $ms-color-gray20;
 			}
 		}
 	}
@@ -52,11 +52,11 @@
 		overflow: hidden;
 
 		&.ms-modal-overlay-light {
-			background-color: #fff;
+			background-color: $ms-color-white;
 		}
 		
 		&.ms-modal-overlay-dark {
-			background-color: #000;
+			background-color: $ms-color-black;
 		}
 	}
 }
@@ -76,9 +76,9 @@
 
 .ms-modal {
 	.ms-modal-header {
-		font-size: 28px;
-		font-weight: 600;
-		color: #fff;
+		font-size: $ms-font-size-28;
+		font-weight: $ms-font-weight-semibold;
+		color: $ms-color-white;
 	}
 
 	.ms-modal-body {
@@ -86,7 +86,7 @@
 		overflow-y: hidden;
 		
 		p {
-			font-size: 16px;
+			font-size: $ms-font-size-16;
 		}
 	}
 }
@@ -109,16 +109,16 @@
 	.ms-modal-header {
 		.button-close {
 			button i {
-				color: #fff;
-				font-size: 16px;
-				font-weight: 400;
+				color: $ms-color-white;
+				font-size: $ms-font-size-16;
+				font-weight: $ms-font-weight-regular;
 			}
 		}
 
 		&.ms-variant-default {
 			.button-close {
 				button i {
-					color: rgb(96, 94, 92);
+					color: $ms-color-gray130;
 				}
 			}
 		}
@@ -142,9 +142,9 @@
 		width: 100%;
 		
 		p {
-			font-size: 20px;
-			font-weight: 600;
-			color: #fff;
+			font-size: $ms-font-size-20;
+			font-weight: $ms-font-weight-semibold;
+			color: $ms-color-white;
 			margin: 0px;
 			line-height: normal;
 		}
@@ -158,9 +158,9 @@
 
 	.ms-modal-body {
 		.ms-modal-content {
-			font-size: 12px;
-			font-weight: 400;
-			color: rgb(50, 49, 48);
+			font-size: $ms-font-size-12;
+			font-weight: $ms-font-weight-regular;
+			color: $ms-color-gray160;
 			line-height: 1.5;
 			overflow-wrap: break-word;
 		}
@@ -217,7 +217,7 @@
 
 		.ms-modal-footer {
 			.ms-modal-action {
-				height: 32px;
+				height: $ms-font-size-32;
 				margin-top: 16px;
 				margin-right: -4px;
 				margin-bottom: 0px;
@@ -230,7 +230,7 @@
 			}
 
 			.ms-button button {
-				height: 32px;
+				height: $ms-font-size-32;
 				min-width: 80px;
 				padding: 0px 16px;
 				margin-top: 0px;
@@ -287,9 +287,9 @@
 	
 	.ms-panel-title p {
 		font-family: inherit;
-    font-size: 20px;
-    font-weight: 600;
-    color: rgb(50, 49, 48);
+    font-size: $ms-font-size-20;
+    font-weight: $ms-font-weight-semibold;
+    color: $ms-color-gray160;
     line-height: 27px;
     margin: 0px;
 	}
@@ -308,7 +308,7 @@
 		}
 	
 		.ms-button button {
-			height: 32px;
+			height: $ms-font-size-32;
 			min-width: 80px;
 			padding: 0px 16px;
 			margin-top: 0px;

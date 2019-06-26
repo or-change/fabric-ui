@@ -32,6 +32,7 @@
 						{{ field.label }}
 
 						<button class="ms-list-resize"
+							v-if="index !== fields.length - 1"
 							:ref="`header-${index}-${field.key}-handler`"
 							@mouseenter="preventHover = true"
 							@mousedown="record(index, field.key, $event)"
@@ -222,7 +223,7 @@ export default {
 
 				const newWidth = headCellWidth + offsetX;
 
-				if (newWidth >= 120 && newWidth <= availableWidth - (this.fields.length - 1) * 100) {
+				if (newWidth >= 120 && newWidth <= availableWidth - (this.fields.length - 1) * 300) {
 					headCell.style.width = `${newWidth}px`;
 					handler.style.left = `${handlerLeft + offsetX}px`;
 				}
