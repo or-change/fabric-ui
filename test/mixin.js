@@ -31,6 +31,7 @@ import Dialog from './components/Dialog';
 import Panel from './components/Panel';
 import List from './components/List';
 import Pagination from './components/Pagination';
+import MessageBar from './components/MessageBar';
 
 export default [
 	LabelTest,
@@ -56,6 +57,6 @@ export default [
 	// Progress,
 	Modal,
 	Dialog, Panel,
-	List,
-	Pagination
+	List,	Pagination,
+	MessageBar
 ];

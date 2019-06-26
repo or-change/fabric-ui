@@ -19,6 +19,7 @@ import progressPlugin from './components/Progress';
 import modalPlugin from './components/modal';
 import listPlugin from './components/List';
 import paginationPlugin from './components/Pagination';
+import messageBarPlugin from './components/MessageBar';
 
 const pluginList = [
 	buttonPlugin, labelPlugin, menuPlugin,
@@ -29,8 +30,8 @@ const pluginList = [
 	calendarPlugin,
 	textFieldPlugin, datePickerPlugin,
 	progressPlugin, modalPlugin,
-	listPlugin,
-	paginationPlugin
+	listPlugin, paginationPlugin,
+	messageBarPlugin
 ];
 
 export default function install(Vue) {

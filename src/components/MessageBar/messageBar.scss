@@ -1,0 +1,207 @@
+@import 'scss/_References.scss';
+
+.ms-message-bar {
+	font-family: inherit;
+	font-size: $ms-font-size-14;
+	font-weight: $ms-font-weight-regular;
+	color: $ms-color-gray160;
+	box-sizing: border-box;
+	width: 100%;
+	word-break: break-word;
+	background: $ms-color-gray20;
+	
+	.ms-message-bar-content {
+		display: table;
+		width: 100%;
+		line-height: normal;
+	}
+
+	.ms-message-bar-icon {
+		display: table-cell;
+		font-size: $ms-font-size-16;
+		color: $ms-color-gray130;
+		
+		i {
+			display: inline-block;
+			font-style: normal;
+			font-weight: normal;
+			speak: none;
+			font-family: FabricMDL2Icons;
+			vertical-align: middle;
+		}
+	}
+
+	.ms-message-bar-text {
+		display: table-cell;
+		font-size: $ms-font-size-12;
+		font-weight: $ms-font-weight-regular;
+	}
+
+	.ms-message-bar-close-button,
+	.ms-message-bar-multi-button
+	{
+		display: none;
+		button {
+			position: relative;
+			width: 100%;
+			font-family: inherit;
+			font-size: $ms-font-size-14;
+			font-weight: $ms-font-weight-regular;
+			box-sizing: border-box;
+			display: inline-block;
+			text-align: center;
+			cursor: pointer;
+			vertical-align: top;
+			background-color: transparent;
+			border: none;
+			outline: none;
+		}
+	}
+
+	.ms-message-bar-action-button {
+		display: none;
+		text-align: right;
+
+		button {
+			position: relative;
+			font-family: inherit;
+			font-size: $ms-font-size-14;
+			font-weight: $ms-font-weight-regular;
+			box-sizing: border-box;
+			display: inline-block;
+			text-align: center;
+			cursor: pointer;
+			vertical-align: top;
+			background-color: $ms-color-gray40;
+			color: $ms-color-gray160;
+			outline: transparent;
+			border: none;
+
+			&:hover {
+				background-color: $ms-color-gray60;
+				color: $ms-color-gray190; 
+			}
+		}
+	}
+
+	&.ms-message-bar-error {
+		background: rgba(232, 17, 35, 0.2);
+
+		.ms-message-bar-icon i {
+			color: $ms-color-red;
+		}
+	}
+
+	&.ms-message-bar-danger {
+		background: rgba(234, 67, 0, 0.2);
+
+		.ms-message-bar-icon i {
+			color: $ms-color-orangeLight;
+		}
+	}
+
+	&.ms-message-bar-warning {
+		background: rgba(255, 185, 0, 0.2);
+
+		.ms-message-bar-icon i {
+			color: $ms-color-yellow;
+		}
+	}
+
+	&.ms-message-bar-success {
+		background: rgba(186, 216, 10, 0.2);
+
+		.ms-message-bar-icon i {
+			color: $ms-color-greenLight;
+		}
+	}
+}
+
+.ms-message-bar-single {
+	.ms-message-bar-text {
+		white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+	}
+}
+
+.ms-message-bar-multi {
+	.ms-message-bar-text {
+		white-space: normal;
+    word-break: break-all;
+    overflow: hidden;
+	}
+}
+
+.ms-message-bar-toggle {
+	.ms-message-bar-multi-button {
+		display: table-cell;
+	}
+
+}
+
+.ms-message-bar-action {
+	.ms-message-bar-action-button {
+		display: block;
+	}
+}
+
+.ms-message-bar-close {
+	.ms-message-bar-close-button
+	{
+		display: table-cell;
+	}
+}
+
+.ms-message-bar-md {
+	&.ms-message-bar-single {
+		.ms-message-bar-content {
+			.ms-message-bar-text {
+				max-width: 100px;
+				min-height: 32px;
+			}
+		}
+	}
+
+	.ms-message-bar-action-button {
+		button {
+			padding: 0px 16px;
+			margin-bottom: 12px;
+			min-width: 80px;
+			height: $ms-font-size-32;
+		}
+
+		.cancel-button {
+			margin: 0px 12px 12px 12px;
+		}
+	}
+
+	.ms-message-bar-icon {
+		width: $ms-font-size-16;
+		height: $ms-font-size-16;
+		padding-left: 16px;
+	}
+
+	.ms-message-bar-multi-button, .ms-message-bar-close-button
+	{
+		width: 40px;
+		height: $ms-font-size-32;
+	}
+
+	.ms-message-bar-text {
+		padding-left: 8px;
+	}
+
+	.ms-message-bar-icon, .ms-message-bar-text {
+		line-height: 16px;
+    padding-top: 16px;
+    padding-right: 0px;
+    padding-bottom: 16px;
+		
+		i {
+			width: $ms-font-size-16;
+			height: $ms-font-size-16;
+			line-height: $ms-font-size-16;
+		}
+	}
+}

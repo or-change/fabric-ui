@@ -176,6 +176,8 @@ export default {
 			if (number > this.numberOfPages) {
 				this.number = this.numberOfPages;
 			}
+			
+			this.$emit('change', this.number);
 
 			this.$emit('input', this.number);
 		}
