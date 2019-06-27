@@ -32,6 +32,7 @@ import Panel from './components/Panel';
 import List from './components/List';
 import Pagination from './components/Pagination';
 import MessageBar from './components/MessageBar';
+import Callout from './components/Callout';
 
 export default [
 	LabelTest,
@@ -58,5 +59,6 @@ export default [
 	Modal,
 	Dialog, Panel,
 	List,	Pagination,
-	MessageBar
+	MessageBar,
+	Callout
 ];

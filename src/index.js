@@ -20,6 +20,7 @@ import modalPlugin from './components/modal';
 import listPlugin from './components/List';
 import paginationPlugin from './components/Pagination';
 import messageBarPlugin from './components/MessageBar';
+import calloutPlugin from './components/Callout';
 
 const pluginList = [
 	buttonPlugin, labelPlugin, menuPlugin,
@@ -31,7 +32,7 @@ const pluginList = [
 	textFieldPlugin, datePickerPlugin,
 	progressPlugin, modalPlugin,
 	listPlugin, paginationPlugin,
-	messageBarPlugin
+	messageBarPlugin, calloutPlugin
 ];
 
 export default function install(Vue) {

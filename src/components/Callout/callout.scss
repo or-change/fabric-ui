@@ -1,0 +1,77 @@
+@import 'scss/_References.scss';
+
+.ms-callout {
+	position: absolute;
+	font-family: inherit;
+	font-size: $ms-font-size-14;
+	font-weight: $ms-font-weight-regular;
+	box-sizing: border-box;
+	box-shadow: rgba(0, 0, 0, 0.133) 0px 6.4px 14.4px 0px, rgba(0, 0, 0, 0.11) 0px 1.2px 3.6px 0px;
+	border-width: 0px;
+	border-style: solid;
+	border-color: $ms-color-gray30;
+	outline: transparent;
+	border-radius: 2px;
+	background-color: $ms-color-white;
+	display: none;
+
+	.ms-callout-triggle {
+		position: absolute;
+    box-shadow: inherit;
+    box-sizing: border-box;
+    transform: rotate(45deg);
+		border: inherit;
+		background-color: $ms-color-white;
+
+	}
+
+	.ms-callout-cover {
+		position: absolute;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    background-color: $ms-color-white;
+    border-radius: 2px;
+	}
+
+	.ms-callout-content {
+		position: relative;
+		width: 100%;
+		height: 100%;
+		background-color: $ms-color-white;
+    overflow-x: hidden;
+    overflow-y: hidden;
+		border-radius: 2px;
+		outline: none;
+
+		p {
+			width: 100%;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			word-wrap: nowrap;
+		}
+	}
+}
+
+.ms-callout-md {
+	&.ms-callout {
+		padding: 16px;
+		min-width: 100px;
+		margin-top: 9px
+	}
+
+	.ms-callout-triggle {
+    height: $ms-font-size-16;
+		width: $ms-font-size-16;
+		margin-left: -8px;
+		top: -8px;
+		left: 50%;
+	}
+}
+
+.ms-callout-show {
+	&.ms-callout {
+		display: block;
+	}
+}
