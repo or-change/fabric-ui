@@ -23,6 +23,13 @@ ul {
 		left: 0;
 	}
 
+	&.ms-menu-left {
+		li .ms-menu {
+			right: 99%;
+			left: auto;
+		}
+	}
+
 	li {
 		position: relative;
 		display: block;

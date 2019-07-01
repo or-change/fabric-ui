@@ -27,7 +27,7 @@
 
 			<div class="ms-message-bar-multi-button">
 				<button @click="isMulti = !isMulti;$emit('toggle', isMulti)">
-					<i v-if="!isMulti" class="ms-Icon ms-Icon--DoubleChevronUp"></i>
+					<i v-if="!isMulti" class="ms-Icon ms-Icon--DoubleChevronDown"></i>
 					<i v-if="isMulti" class="ms-Icon ms-Icon--DoubleChevronUp"></i>
 				</button>
 			</div>

@@ -2,7 +2,11 @@
 	<ul
 		v-show="isShow"
 		@mouseover="show"
-		class="ms-menu">
+		class="ms-menu"
+		:class="{
+			'ms-menu-left': direction === 'left'
+		}"
+		>
 		<slot name="menu-header"></slot>
 		<slot name="menu-body">
 			<component
@@ -16,8 +20,6 @@
 </template>
 
 <script>
-// 绑定指令
-
 import MenuItem from './Item';
 import MenuSubItem from './Sub';
 import MenuSubSplitItem from './SubSplit';
@@ -32,6 +34,10 @@ export default {
 		type: {
 			type: String,
 			default: 'default'
+		},
+		direction: {
+			type: String,
+			default: 'right'
 		}
 	},
 	data() {

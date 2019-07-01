@@ -33,6 +33,7 @@ import List from './components/List';
 import Pagination from './components/Pagination';
 import MessageBar from './components/MessageBar';
 import Callout from './components/Callout';
+import ContextualMenu from './components/ContextualMenu';
 
 export default [
 	LabelTest,
@@ -60,5 +61,6 @@ export default [
 	Dialog, Panel,
 	List,	Pagination,
 	MessageBar,
-	Callout
+	Callout,
+	ContextualMenu
 ];

@@ -1,0 +1,14 @@
+.ms-contextual-menu {
+	position: fixed;
+
+	ul.ms-menu {
+		position: relative;
+		top: auto;
+		left: auto;
+
+		ul.ms-menu {
+			position: absolute;
+			top: 0;
+		}
+	}
+}
