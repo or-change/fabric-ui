@@ -23,6 +23,7 @@ import messageBarPlugin from './components/MessageBar';
 import calloutPlugin from './components/Callout';
 import contextualMenuPlugin from './components/ContextualMenu';
 import tabPlugin from './components/Tab';
+import gridPlugin from './components/Grid';
 
 const pluginList = [
 	buttonPlugin, labelPlugin, menuPlugin,
@@ -36,7 +37,7 @@ const pluginList = [
 	listPlugin, paginationPlugin,
 	messageBarPlugin, calloutPlugin,
 	contextualMenuPlugin,
-	tabPlugin
+	tabPlugin, gridPlugin
 ];
 
 export default function install(Vue) {

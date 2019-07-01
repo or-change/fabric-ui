@@ -36,6 +36,8 @@ import Callout from './components/Callout';
 import ContextualMenu from './components/ContextualMenu';
 import Tab from './components/Tab';
 
+import Grid from './components/Grid';
+
 export default [
 	LabelTest,
 	MenuTest,
@@ -64,5 +66,6 @@ export default [
 	MessageBar,
 	Callout,
 	ContextualMenu,
-	Tab
+	Tab,
+	Grid
 ];

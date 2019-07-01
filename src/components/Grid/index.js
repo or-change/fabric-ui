@@ -1,4 +1,14 @@
-import 'scss/_References.scss';
+import 'scss/Fabric.scss';
 
-import Column from './Col.vue';
+import Column from './Column.vue';
 import Row from './Row.vue';
+
+const grids = [
+	Column, Row
+];
+
+export default function install(Vue) {
+	grids.forEach(grid => {
+		Vue.component(grid.name, grid);
+	});
+}
