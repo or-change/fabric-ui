@@ -34,6 +34,7 @@ import Pagination from './components/Pagination';
 import MessageBar from './components/MessageBar';
 import Callout from './components/Callout';
 import ContextualMenu from './components/ContextualMenu';
+import Tab from './components/Tab';
 
 export default [
 	LabelTest,
@@ -62,5 +63,6 @@ export default [
 	List,	Pagination,
 	MessageBar,
 	Callout,
-	ContextualMenu
+	ContextualMenu,
+	Tab
 ];

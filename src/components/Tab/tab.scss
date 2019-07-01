@@ -1,0 +1,132 @@
+@import 'scss/_References.scss';
+
+.ms-tab {
+	position: relative;
+	width: 100%;
+	font-family: inherit;
+	font-size: $ms-font-size-14;
+	font-weight: $ms-font-weight-regular;
+	box-shadow: none;
+	margin: 0px;
+	padding: 0px;
+	box-sizing: border-box;
+	white-space: nowrap;
+
+	.ms-tab-header {
+		position: relative;
+		width: 100%;
+	}
+
+	.ms-tab-title {
+		position: relative;
+    font-family: inherit;
+    font-size: $ms-font-size-14;
+    font-weight: $ms-font-weight-regular;
+    display: inline-block;
+		text-align: center;
+    cursor: pointer;
+    margin: 0px;
+    user-select: none;
+    outline: transparent;
+    border: none;
+		text-decoration: none;
+		background-color: transparent;
+    border-radius: 0px;
+	}
+
+	.ms-tab-title-icon {
+		i {
+			display: inline-block;
+			font-style: normal;
+			font-weight: normal;
+			font-family: FabricMDL2Icons;
+			vertical-align: middle;
+		}
+	}
+
+	.ms-tab-title-icon, .ms-tab-title-text {
+		display: inline-block;
+		vertical-align: middle;
+	}
+}
+
+.ms-tab-default {
+	.ms-tab-title {
+		background-color: $ms-color-gray20;
+
+		&.ms-tab-title-active {
+			font-weight: 300;
+			color: $ms-color-white;
+			background-color: $ms-color-blue;
+		}
+	}
+
+	&.ms-tab-md, &.ms-tab-lg {
+		.ms-tab-title {
+			padding: 0px 10px;
+		}
+
+		.ms-tab-title-icon, .ms-tab-title-text {
+			line-height: 40px;
+		}
+	}
+
+}
+
+.ms-tab-link {
+	.ms-tab-title {
+		color: $ms-color-gray160;
+
+		&:hover {
+			color: $ms-color-gray190;
+			background-color: $ms-color-gray20; 
+		}
+
+		&::before {
+			content: "";
+			position: absolute;
+			background-color: transparent;
+		}
+
+		&.ms-tab-title-active {
+			font-weight: $ms-font-weight-semibold;
+
+			&::before {
+				border-bottom: 2px solid $ms-color-blue;
+			}
+
+			&:hover {
+				&::before {
+					left: 0;
+					right: 0;
+				}
+			}
+		}
+	}
+
+	&.ms-tab-md, &.ms-tab-lg {
+		.ms-tab-title {
+			padding: 0px 8px;
+			margin-right: 8px;
+
+			&::before {
+				height: 2px;
+				left: 8px;
+				right: 8px;
+				bottom: 0px;
+			}
+		}
+
+		.ms-tab-title-icon, .ms-tab-title-text {
+			line-height: 44px;
+		}
+	}
+}
+
+.ms-tab-lg {
+	font-size: 17px;
+
+	.ms-tab-title {
+		font-size: 17px;
+	}
+}
