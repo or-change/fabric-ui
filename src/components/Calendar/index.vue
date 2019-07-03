@@ -12,70 +12,28 @@
 				'ms-calendar-wrapper-overlaid': overlaid || !monthPicker
 			}"
 		>
-			<div class="ms-calendar-datepicker" v-if="!monthOnly"
+			<f-date-picker
+				v-if="!monthOnly"
 				v-show="!overlaid || isShow"
-			>
-				<div class="ms-calendar-header">
-					<div class="ms-header-text"
-						@click="isShow = false"
-					>
-						{{ monthList[month] }} {{ year }}
-					</div>
-					<div class="ms-header-tool">
-						<button class="ms-calendar-prev"
-							@click="prev"
-							:disabled="prevDisabled"
-						>
-							<i class="ms-Icon ms-Icon--Up"></i>
-						</button>
-						<button class="ms-calendar-next"
-							@click="next"
-							:disabled="nextDisabled"	
-						>
-							<i class="ms-Icon ms-Icon--Down"></i>
-						</button>
-					</div>
-				</div>
+				:month="month"
+				:year="year"
+				:month-list="monthList"
+				:week-number="weekNumber"
+				:disabled-date="disabledDate"
+				:min-date="minDate"
+				:max-date="maxDate"
+				:start-day="startDay"
+				:value="value"
+				:range="range"
+				:from="from"
+				:to="to"
+				@hide="isShow = false"
+				@prev="prev"
+				@next="next"
+				@input="input"
+			/>
 
-				<div class="ms-calendar-zone">
-					<table class="ms-calendar-datepicker-table">
-						<thead>
-							<tr>
-								<th v-if="weekNumber"></th>
-								<th
-									v-for="(day, index) in dayList" :key="index"
-									:title="day">{{ day.substring(0, 1) }}</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr v-for="(dates, index) in dateList"
-								:key="`row-${index}`">
-								<th v-if="weekNumber">
-									{{ getWeekNumber(dates[dates.length - 1].year, dates[dates.length - 1].month, dates[dates.length - 1].date) }}
-								</th>
-								<td 
-									v-for="(date, index) in dates"
-									:key="`col-${index}`"
-									:class="{
-										'ms-date-selected': date.isSelected,
-										'ms-data-enabled': !date.isDisabled
-									}"
-									>
-									<button
-										:class="{
-											'ms-today': date.isToday
-										}"
-										@click="input(date)"
-										:disabled="date.isDisabled"
-									>{{ date.date }}</button>
-								</td>
-							</tr>
-						</tbody>
-					</table>
-				</div>
-			</div>
-
-			<div class="ms-calendar-divider" v-if="!monthOnly && !overlaid"></div>
+			<div class="ms-calendar-divider" v-show="!monthOnly && !overlaid"></div>
 
 			<f-month-picker
 				:month="month"
@@ -103,11 +61,7 @@
 
 <script>
 import FMonthPicker from './MonthPicker';
-
-const dayList = [
-	'Sunday', 'Monday', 'Tuesday', 'Wednesday',
-	'Thursday', 'Friday', 'Saturday'
-];
+import FDatePicker from './DatePicker';
 
 const monthList = [
 	'January', 'February ', 'March', 'April',
@@ -118,7 +72,8 @@ const monthList = [
 export default {
 	name: 'f-calendar',
 	components: {
-		FMonthPicker
+		FMonthPicker,
+		FDatePicker
 	},
 	data() {
 		return {
@@ -198,67 +153,8 @@ export default {
 		}
 	},
 	computed: {
-		dayList() {
-			return dayList.slice(this.startDay).concat(dayList.slice(0, this.startDay))
-		},
-		dayValue() {
-			return this.dayList.map(day => dayList.indexOf(day));
-		},
-		dateList() {
-			const currentDates = new Date(this.year, this.month + 1, '').getDate();
-			let prevDates;
-
-			if (this.month === 0) {
-				prevDates = new Date(this.year - 1, 12, '').getDate()
-			} else {
-				prevDates = new Date(this.year, this.month, '').getDate()
-			}
-
-			const firstDay = new Date(this.year, this.month, 1).getDay();
-			const lastDay = new Date(this.year, this.month, currentDates).getDay();
-			const dateList = [];
-			const result = [];
-
-			for (let date = 1; date <= currentDates; date++) {
-				dateList.push(this.dateFactory(this.year, this.month, date));
-			}
-
-			const prevYear = this.month === 0 ? this.year - 1 : this.year;
-			const preMonth = this.month === 0 ? 11 : this.month - 1;
-
-			for (let date = 0; date < this.dayValue.indexOf(firstDay); date++) {
-				dateList.unshift(this.dateFactory(prevYear, preMonth, prevDates - date));
-			}
-
-			const nextYear = this.month === 11 ? this.year + 1 : this.year;
-			const nextMonth = this.month === 11 ? 0 : this.month + 1;
-
-			for (let date = 0; date < 6 - this.dayValue.indexOf(lastDay); date++) {
-				dateList.push(this.dateFactory(nextYear, nextMonth, 1 + date));
-			}
-
-			for(let i = 0; i < dateList.length; i+=7){
-				result.push(dateList.slice(i,i+7));
-			}
-
-			return result;
-		},
 		gotoTodayDisabled() {
 			return this.year === this.today.getFullYear() && this.month === this.today.getMonth();
-		},
-		prevDisabled() {
-			if (!this.minDate) {
-				return false;
-			}
-
-			return this.year <= this.minDate.getFullYear() && this.month <= this.minDate.getMonth();
-		},
-		nextDisabled() {
-			if (!this.maxDate) {
-				return false;
-			}
-
-			return this.year >= this.maxDate.getFullYear() && this.month >= this.maxDate.getMonth(); 
 		}
 	},
 	watch: {
@@ -267,9 +163,6 @@ export default {
 		}
 	},
 	methods: {
-		getWeekNumber(year, month, date) {
-			return Math.ceil((new Date(year, month, date) - new Date(year, 0, 1)) / 86400000 / 7);
-		},
 		setValue(date) {
 			if (this.range) {
 				this.from = date && date.from ? date.from : null;
@@ -278,27 +171,6 @@ export default {
 				this.year = date.getFullYear();
 				this.month = date.getMonth();
 				this.date = date.getDate();
-			}
-		},
-		dateFactory(year, month, date) {
-			const dateObj = new Date(year, month, date);
-			let isDisabled = false;
-
-			this.disabledDate.forEach(date => {
-				if (date.getTime() === dateObj.getTime()) {
-					isDisabled = true;
-				}
-			})
-
-			function isEqual(dateObj) {
-				return dateObj.getFullYear() === year && dateObj.getMonth() === month && dateObj.getDate() === date;
-			}
-
-			return {
-				year, month, date,
-				isToday: isEqual(this.today),
-				isSelected: !this.range ? isEqual(this.value) : (this.from && dateObj.getTime() >= this.from.getTime() && this.to && dateObj.getTime() <= this.to.getTime()),
-				isDisabled: (this.minDate && dateObj.getTime() < this.minDate.getTime()) || (this.maxDate && dateObj.getTime() > this.maxDate.getTime()) || isDisabled
 			}
 		},
 		prev() {
@@ -392,9 +264,10 @@ export default {
 
 	.ms-calendar-datepicker {
 		thead tr th, tr td {
-			width: $ms-font-size-28;
-			height: $ms-font-size-28;
-			line-height: $ms-font-size-28;
+			width: 24px;
+			height: 24px;
+			line-height: 24px;
+			padding: 2px;
 		}
 
 		tbody tr th {
@@ -405,7 +278,6 @@ export default {
 			width: $ms-font-size-24;
 			height: $ms-font-size-24;
 			line-height: $ms-font-size-24;
-			margin-top: 2px;
 		}
 	}
 }

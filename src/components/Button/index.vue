@@ -28,7 +28,6 @@
 import mixin from './mixin';
 
 import Anchor from './Anchor';
-import AriaDescription from './AriaDescription';
 import Compound from './Compound';
 import Contextual from './ContextualMenu';
 import Default from './Default';
@@ -39,7 +38,6 @@ export default {
 	mixins: [mixin],
 	components: {
 		Anchor,
-		AriaDescription,
 		Compound, Contextual,
 		Default, Split
 	},

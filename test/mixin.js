@@ -13,6 +13,8 @@ import CommandBar from './components/Button/CommandBar';
 import CustomSplitButton from './components/Button/CustomSplit';
 import ToggleButton from './components/Button/Toggle.vue';
 
+import Calendar from './components/Calendar';
+
 export default [
 	DefaultButton,
 	CompoundButton,
@@ -25,5 +27,6 @@ export default [
 	CommandBar,
 	CustomSplitButton,
 	ToggleButton,
+	Calendar
 	// MenuTest
 ];
