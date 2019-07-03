@@ -5,25 +5,29 @@
 		<f-button 
 			text="Create account"
 			description="You can create a new account here"
+			button-type="compound"
 		/>
 
 		<f-button 
 			text="Create account"
-			theme="primary"
+			variant="primary"
 			description="You can create a new account here"
+			button-type="compound"
 		/>
 
 		<f-button
-			theme="primary"
+			variant="primary"
 			disabled
 			text="Create account"
 			description="You can create a new account here"
+			button-type="compound"
 		/>
 
 		<f-button
 			disabled
 			text="Create account"
 			description="You can create a new account here"
+			button-type="compound"
 		/>
 	</div>
 </template>

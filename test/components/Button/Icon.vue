@@ -7,12 +7,12 @@
 		/>
 
 		<f-button
-			theme="primary"
+			variant="primary"
 			icon="ms-Icon ms-Icon--Emoji2"
 		/>
 
 		<f-button
-			theme="primary" disabled
+			variant="primary" disabled
 			icon="ms-Icon ms-Icon--Emoji2"
 		/>
 
@@ -28,13 +28,13 @@
 
 		<f-button
 			:border="false"
-			theme="primary"
+			variant="primary"
 			icon="ms-Icon ms-Icon--Emoji2"
 		/>
 
 		<f-button
 			:border="false"
-			theme="primary" disabled
+			variant="primary" disabled
 			icon="ms-Icon ms-Icon--Emoji2"
 		/>
 	</div>

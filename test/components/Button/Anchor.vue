@@ -6,30 +6,30 @@
 
 		<f-button
 			text="Button"
-			tag="a"
 			href="http://www.baidu.com"
+			button-type="anchor"
 		/>
 
 		<f-button
-			theme="primary"
+			variant="primary"
 			text="Button"
-			tag="a"
 			href="http://www.baidu.com"
 			target="_blank"
+			button-type="anchor"
 		/>
 
 		<f-button
-			theme="primary"
+			variant="primary"
 			disabled
 			text="Button"
-			tag="a"
+			button-type="anchor"
 		/>
 
 		<f-button
-			theme="primary"
+			variant="primary"
 			disabled
 			text="Button"
-			tag="a"
+			button-type="anchor"
 		/>
 	</div>
 </template>

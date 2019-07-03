@@ -13,34 +13,7 @@ import CommandBar from './components/Button/CommandBar';
 import CustomSplitButton from './components/Button/CustomSplit';
 import ToggleButton from './components/Button/Toggle.vue';
 
-import Checkbox from './components/Checkbox';
-import Radio from './components/Radio';
-import Dropdown from './components/Dropdown';
-import Link from './components/Link';
-import Rating from './components/Rating';
-import SearchBox from './components/SearchBox';
-import SpinButton from './components/SpinButton';
-import Toggle from './components/Toggle';
-import Slider from './components/Slider';
-import Calendar from './components/Calendar';
-import TextField from './components/TextField';
-import Datepicker from './components/Datepicker';
-import Progress from './components/Progress';
-import Modal from './components/Modal';
-import Dialog from './components/Dialog';
-import Panel from './components/Panel';
-import List from './components/List';
-import Pagination from './components/Pagination';
-import MessageBar from './components/MessageBar';
-import Callout from './components/Callout';
-import ContextualMenu from './components/ContextualMenu';
-import Tab from './components/Tab';
-
-import Grid from './components/Grid';
-
 export default [
-	LabelTest,
-	MenuTest,
 	DefaultButton,
 	CompoundButton,
 	IconButton,
@@ -52,20 +25,5 @@ export default [
 	CommandBar,
 	CustomSplitButton,
 	ToggleButton,
-	Checkbox,
-	Radio, Dropdown,
-	Link, Rating,
-	SearchBox, SpinButton,
-	Toggle, Slider,
-	Calendar,
-	TextField, Datepicker,
-	// Progress,
-	Modal,
-	Dialog, Panel,
-	List,	Pagination,
-	MessageBar,
-	Callout,
-	ContextualMenu,
-	Tab,
-	Grid
+	// MenuTest
 ];

@@ -7,18 +7,18 @@
 		/>
 
 		<f-button
-			theme="primary"
+			variant="primary"
 			text="Button"
 		/>
 
 		<f-button
-			theme="primary"
+			variant="primary"
 			disabled
 			text="Button"
 		/>
 
 		<f-button
-			theme="primary"
+			variant="primary"
 			disabled
 			text="Button"
 		/>

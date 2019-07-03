@@ -4,20 +4,21 @@
 
 		<f-button
 			icon="ms-Icon ms-Icon--Add"
-			:menu="true"
 			text="New"
 			@click.native="toggleMenu('menu1')"
+			button-type="contextual"
 		>
 			<f-menu slot="menu" :menu="menu" ref="menu1" style="top:100%"  />
 
 		</f-button>
 
 		<f-button
-			theme="primary"
+			variant="primary"
 			icon="ms-Icon ms-Icon--Add"
 			:menu="true"
 			text="New"
 			@click="toggleMenu('menu2')"
+			button-type="contextual"
 		>
 			<f-menu slot="menu" :menu="menu" ref="menu2" style="top:100%" />
 
@@ -25,11 +26,12 @@
 
 		<f-button
 			:disabled="true"
-			theme="primary"
+			variant="primary"
 			icon="ms-Icon ms-Icon--Add"
 			:menu="true"
 			text="New"
 			@click="toggleMenu"
+			button-type="contextual"
 		>
 			<div slot="menu"></div>
 
@@ -41,6 +43,7 @@
 			:menu="true"
 			text="New"
 			@click="toggleMenu"
+			button-type="contextual"
 		>
 			<div slot="menu"></div>
 

@@ -9,14 +9,14 @@
 		/>
 
 		<f-button
-			theme="primary"
+			variant="primary"
 			icon="ms-Icon ms-Icon--AddFriend"
 			text="Create account"
 			:border="false"
 		/>
 
 		<f-button
-			theme="primary"
+			variant="primary"
 			disabled
 			icon="ms-Icon ms-Icon--AddFriend"
 			text="Create account"

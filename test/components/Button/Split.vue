@@ -3,69 +3,51 @@
 		<h2>Split Button</h2>
 
 		<f-button
-			tag="a"
 			href="http://www.baidu.com"
-			target="_blank"
-			:menu="true"
-			:split="true"
 			text="Create account"
 			@dropdown="toggleMenu('menu1')"
+			button-type="split"
 		>
 			<f-menu slot="menu" :menu="menu" ref="menu1" style="top:100%"  />
 
 		</f-button>
 
 		<f-button
-			theme="primary"
-			tag="a"
-			href="http://www.baidu.com"
-			target="_blank"
-			:menu="true"
-			:split="true"
+			variant="primary"
 			text="Create account"
 			@dropdown="toggleMenu('menu2')"
+			button-type="split"
 		>
 			<f-menu slot="menu" :menu="menu" ref="menu2" style="top:100%" />
 
 		</f-button>
 		<f-button
-			theme="primary" disabled :bar="true"
-			href="http://www.baidu.com"
-			target="_blank"
-			:menu="true"
-			:split="true"
+			variant="primary" disabled :bar="true"
 			text="Create account"
 			@dropdown="toggleMenu('menu2')"
+			button-type="split"
 		>
 			<!-- <f-menu slot="menu" :menu="menu" ref="menu2" style="top:100%" /> -->
 
 		</f-button>
 
 		<f-button
-			tag="a"
-			href="http://www.baidu.com"
-			target="_blank"
-			:menu="true"
-			:split="true"
 			:border="false"
 			text="Create account"
 			dropdownDisabled @dropdown="toggleMenu('menu3')"
 			bar
+			button-type="split"
 		>
 			<f-menu slot="menu" :menu="menu" ref="menu3" style="top:100%" />
 
 		</f-button>
 
 		<f-button
-			tag="a"
-			href="http://www.baidu.com"
-			target="_blank"
-			:menu="true"
-			:split="true"
 			:border="false"
 			text="Create account"
 			disabled dropdownDisabled @dropdown="toggleMenu('menu3')"
 			bar
+			button-type="split"
 		>
 			<f-menu slot="menu" :menu="menu" ref="menu3" style="top:100%" />
 
