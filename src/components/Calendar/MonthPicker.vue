@@ -1,5 +1,5 @@
 <template>
-	<div class="ms-calendar-month-wrapper">
+	<div class="ms-calendar-month-wrapper ms-calendar-month-wrapper-md">
 		<div class="ms-calendar-monthpicker" v-show="monthPicker">
 			<div class="ms-calendar-header">
 				<div class="ms-header-text"
@@ -90,42 +90,37 @@
 </template>
 
 <script>
+const monthList = [
+	'January', 'February ', 'March', 'April',
+	'May', 'June', 'July', 'August',
+	'September', 'October', 'November', 'December'
+];
 
 export default {
 	name: 'f-month-picker',
 	data() {
 		return {
 			show: {
-				year: null,
-				month: null,
+				year: new Date().getFullYear(),
+				month: new Date().getMonth(),
 			},
+			year: null,
+			month: null,
+			date: null,
 			monthPicker: true,
 			startYear: null,
-			endYear: null
+			endYear: null,
+			monthList
 		}
 	},
 	watch: {
-		year() {
-			this.show.year = this.year;
-		},
-		month() {
-			this.show.month = this.month;
+		value() {
+			this.setValue(this.value);
 		}
 	},
 	props: {
-		year: {
-			type: Number,
-			default: new Date().getFullYear()
-		},
-		month: {
-			type: Number,
-			default: new Date().getMonth()
-		},
-		monthList: {
-			type: Array
-		},
-		overlaid: {
-			type: Boolean
+		value: {
+			type: Date
 		},
 		maxDate: {
 			type: Date
@@ -177,10 +172,27 @@ export default {
 			return this.endYear >= this.maxDate.getFullYear();
 		}
 	},
+	watch: {
+		value() {
+			this.setValue(this.value);
+		}
+	},
 	methods: {
+		setValue(date) {
+			this.year = date.getFullYear();
+			this.month = date.getMonth();
+			this.date = date.getDate();
+
+			this.show.year = this.year;
+			this.show.month = this.month;
+		},
 		prev() {
 			if (this.monthPicker) {
 				this.show.year--;
+
+				this.$emit('prev', {
+					year: this.year, month: this.month
+				});
 
 				return;
 			}
@@ -192,6 +204,10 @@ export default {
 			if (this.monthPicker) {
 				this.show.year++;
 
+				this.$emit('next', {
+					year: this.year, month: this.month
+				});
+
 				return;
 			}
 
@@ -199,9 +215,9 @@ export default {
 			this.endYear = this.endYear + 12;
 		},
 		change(year, month) {
+			this.$emit('input', new Date(year, month, this.date))
 			this.$emit('change', {
-				year,
-				month
+				year, month
 			})
 		},
 		splitList(list) {
@@ -215,7 +231,7 @@ export default {
 		},
 		toggle() {
 			if (this.overlaid) {
-				return this.$emit('hide');
+				return this.$emit('handler-click');
 			}
 
 			this.monthPicker = !this.monthPicker;
@@ -225,25 +241,23 @@ export default {
 				this.endYear = 12 * Math.ceil(this.show.year / 12);
 			}
 		},
-		outBoundary(year, month) {
-			if (!month && month !== 0) {
-				return (
-					this.minDate && year < this.minDate.getFullYear()
-				) || (
-					this.maxDate && year > this.maxDate.getFullYear()
-				);
+		outBoundary(year, month = 11) {
+			let isout = false;
+
+			if (this.minDate) {
+				isout = this.minDate.getTime() > new Date(year, month).getTime();
 			}
-			
-			return (
-				this.minDate && year <= this.minDate.getFullYear() && month < this.minDate.getMonth()
-			) || (
-				this.maxDate && year >= this.maxDate.getFullYear() && month > this.maxDate.getMonth()
-			);
+
+			if (this.maxDate) {
+				isout = this.maxDate.getTime() < new Date(year, month).getTime();
+			}
+
+
+			return isout;
 		}
 	},
 	mounted() {
-		this.show.year = this.year;
-		this.show.month = this.month;
+		this.setValue(this.value);
 	}
 }
 </script>
@@ -253,29 +267,20 @@ export default {
 
 .ms-calendar-month-wrapper {
 	display: inline-block;
-	height: 100%;
 	width: auto;
 }
 
-.ms-calendar-wrapper {
-	.ms-calendar-monthpicker table tr td button.ms-data-enabled,
-	.ms-calendar-yearpicker table tr td button.ms-data-enabled{
+.ms-calendar-monthpicker table tr td button.ms-data-enabled,
+.ms-calendar-yearpicker table tr td button.ms-data-enabled{
 
-		&:hover {
-			cursor: pointer;
-			background: $ms-color-gray30;
-			color: $ms-color-gray190;
-		}
+	&:hover {
+		cursor: pointer;
+		background: $ms-color-gray30;
+		color: $ms-color-gray190;
 	}
 }
 
-.ms-calendar-md {
-	&.ms-calendar-overlaid {
-		.ms-calendar-monthpicker, .ms-calendar-yearpicker {
-			margin-left: 0px;
-		}
-	}
-
+.ms-calendar-month-wrapper-md {
 	.ms-calendar-monthpicker, .ms-calendar-yearpicker {
 		margin-left: 12px;
 

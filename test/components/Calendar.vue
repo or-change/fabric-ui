@@ -1,6 +1,15 @@
 <template>
 	<div>
 		<h2>Calendar</h2>
+
+		<f-date-picker
+			v-model="date"
+			:min-date="new Date(2019, 4, 1)" :disabledDate="disabledDate"
+		 />
+
+		<f-month-picker 
+			v-model="date"
+		/>
 		<f-calendar v-model="date" :min-date="new Date(2019, 4, 1)" :disabledDate="disabledDate" :outline="true" />
 		<f-calendar v-model="date" :min-date="new Date(2019, 4, 1)" :disabledDate="disabledDate" :month-only="true" />
 		<f-calendar v-model="range" :min-date="new Date(2019, 4, 1)" :range="true" />
@@ -15,7 +24,7 @@
 export default {
 	data() {
 		return {
-			date: new Date(),
+			date: new Date(1995, 10),
 			range: null,
 			disabledDate: [
 				new Date(2019, 5, 1),

@@ -1,22 +1,24 @@
 <template>
-	<div class="ms-calendar-datepicker"
-		
+	<div class="ms-calendar-datepicker ms-calendar-datepicker-md"
+		:class="{
+			'ms-calendar-range': range
+		}"
 	>
 		<div class="ms-calendar-header">
 			<div class="ms-header-text"
-				@click="$emit('hide')"
+				@click="$emit('handler-click')"
 			>
 				{{ monthList[month] }} {{ year }}
 			</div>
 			<div class="ms-header-tool">
 				<button class="ms-calendar-prev"
-					@click="$emit('prev')"
+					@click="prev"
 					:disabled="prevDisabled"
 				>
 					<i class="ms-Icon ms-Icon--Up"></i>
 				</button>
 				<button class="ms-calendar-next"
-					@click="$emit('next')"
+					@click="next"
 					:disabled="nextDisabled"	
 				>
 					<i class="ms-Icon ms-Icon--Down"></i>
@@ -47,12 +49,15 @@
 								'ms-date-selected': date.isSelected,
 								'ms-data-enabled': !date.isDisabled
 							}"
+							:style="{
+								padding: weekNumber ? '2px 1px' : '2px'
+							}"
 							>
 							<button
 								:class="{
 									'ms-today': date.isToday
 								}"
-								@click="$emit('input', date)"
+								@click="input(date)"
 								:disabled="date.isDisabled"
 							>{{ date.date }}</button>
 						</td>
@@ -64,53 +69,32 @@
 </template>
 
 <script>
+import mixin from './mixin';
+
 const dayList = [
 	'Sunday', 'Monday', 'Tuesday', 'Wednesday',
 	'Thursday', 'Friday', 'Saturday'
 ];
 
+const monthList = [
+	'January', 'February ', 'March', 'April',
+	'May', 'June', 'July', 'August',
+	'September', 'October', 'November', 'December'
+];
+
 export default {
 	name: 'f-date-picker',
-	props: {
-		year: {
-			type: Number,
-			default: new Date().getFullYear()
-		},
-		month: {
-			type: Number,
-			default: new Date().getMonth()
-		},
-		monthList: {
-			type: Array
-		},
-		weekNumber: {
-			type: Boolean,
-			default: false
-		},
-		disabledDate: {
-			type: Array
-		},
-		minDate: {
-			type: Date
-		},
-		maxDate: {
-			type: Date
-		},
-		startDay: {
-			type: Number
-		},
-		from: {
-			type: Date
-		},
-		to: {
-			type: Date
-		},
-		value: {
-			type: [Object, Date]
-		},
-		range: {
-			type: Boolean
+	mixins: [mixin],
+	data() {
+		return {
+			monthList,
+			date: null,
+			year: null,
+			month: null,
+			isRange: false
 		}
+	},
+	props: {
 	},
 	computed: {
 		dayList() {
@@ -163,17 +147,85 @@ export default {
 				return false;
 			}
 
-			return this.year <= this.minDate.getFullYear() && this.month <= this.minDate.getMonth();
+			return new Date(this.year, this.month, this.date).getTime() <= this.minDate.getTime();
 		},
 		nextDisabled() {
 			if (!this.maxDate) {
 				return false;
 			}
 
-			return this.year >= this.maxDate.getFullYear() && this.month >= this.maxDate.getMonth(); 
+			return new Date(this.year, this.month, this.date).getTime() >= this.maxDate.getTime(); 
+		}
+	},
+	watch: {
+		value() {
+			this.setValue(this.value);
 		}
 	},
 	methods: {
+		setValue(date) {
+			if (this.range) {
+				this.from = date && date.from ? date.from : null;
+				this.to = date && date.to ? date.to : null;
+			} else {
+				this.year = date.getFullYear();
+				this.month = date.getMonth();
+				this.date = date.getDate();
+			}
+		},
+		prev() {
+			if (this.month > 0) {
+				this.month--;
+			} else {
+				this.year--;
+				this.month = 11;
+			}
+
+			this.$emit('prev', {
+				year: this.year, month: this.month
+			});
+		},
+		next() {
+			if (this.month < 11) {
+				this.month++;
+			} else {
+				this.year++;
+				this.month = 0;
+			}
+
+			this.$emit('next', {
+				year: this.year, month: this.month
+			});
+		},
+		input(dateObj) {
+			if (!this.range) {
+				
+				this.$emit('input', new Date(dateObj.year, dateObj.month, dateObj.date));
+				this.$emit('selected');
+
+				return;
+			}
+
+			if (!this.isRange) {
+				this.from = new Date(dateObj.year, dateObj.month, dateObj.date);
+				this.to = null;
+
+				this.isRange = true;
+			} else {
+				const to = new Date(dateObj.year, dateObj.month, dateObj.date);
+				
+				this.from.getTime() < to.getTime() ? this.to = to : (this.to = this.from,this.from = to);
+
+				this.isRange = false;
+
+				this.$emit('input', {
+					from: this.from, to: this.to
+				});
+
+				this.$emit('selected');
+				return;
+			}
+		},
 		getWeekNumber(year, month, date) {
 			return Math.ceil((new Date(year, month, date) - new Date(year, 0, 1)) / 86400000 / 7);
 		},
@@ -198,7 +250,63 @@ export default {
 				isDisabled: (this.minDate && dateObj.getTime() < this.minDate.getTime()) || (this.maxDate && dateObj.getTime() > this.maxDate.getTime()) || isDisabled
 			}
 		}
+	},
+	mounted() {
+		const today = new Date();
+
+		this.setValue(this.value);
+
+		if (this.range) {
+			this.year = today.getFullYear();
+			this.month = today.getMonth();
+			this.date = today.getDate();
+		}
 	}
 }
 </script>
+
+<style lang="scss">
+@import 'scss/_References.scss';
+
+.ms-calendar-datepicker {
+	position: relative;
+	box-sizing: border-box;
+	font-family: inherit;
+	display: inline-block;
+	width: auto;
+	background-color: $ms-color-white;
+}
+
+.ms-calendar-datepicker table tr td.ms-data-enabled:hover {
+	cursor: pointer;
+	background: $ms-color-gray30;
+	color: $ms-color-gray190;
+}
+
+.ms-calendar-range .ms-calendar-zone table.ms-calendar-datepicker-table tr td {
+	border-radius: 0px;
+}
+
+.ms-calendar-datepicker-md {
+	&.ms-calendar-datepicker {
+		thead tr th, tr td {
+			width: 24px;
+			height: 24px;
+			line-height: 24px;
+			padding: 2px;
+		}
+
+		tbody tr th {
+			border-right: 1px solid $ms-color-gray30;
+		}
+
+		tr td button {
+			width: $ms-font-size-24;
+			height: $ms-font-size-24;
+			line-height: $ms-font-size-24;
+		}
+	}
+}
+</style>
+
 
