@@ -1,18 +1,18 @@
 <template>
-	<button
-		:class="{
-			'ms-button-disabled': disabled
-		}"
-		:type="attr.type" :disabled="disabled"
+	<a
+		:href="!disabled && attr.href" :target="attr.target"
 		:style="{
 			width: width
+		}"
+		:class="{
+			'ms-button-disabled': disabled
 		}"
 	>
 		<span class="ms-button-label ms-textTruncate ms-clearfix">
 			<i class="ms-icon" :class="[
 					icon,
 					{
-						'ms-button-icon': !text,
+						'ms-button-icon': !text
 					}
 				]"
 			></i>
@@ -22,24 +22,24 @@
 		<span class="ms-description">
 			{{ description }}
 		</span>
-	</button>
+	</a>
 </template>
 
 <script>
 export default {
-	name: 'f-button-default',
+	name: 'f-button-link',
 	props: {
 		attr: {
 			type: Object
-		},
-		disabled: {
-			type: Boolean
 		},
 		text: {
 			type: String
 		},
 		icon: {
 			type: String
+		},
+		disabled: {
+			type: Boolean
 		},
 		width: {
 			type: String
@@ -50,4 +50,3 @@ export default {
 	}
 }
 </script>
-

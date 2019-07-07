@@ -1,64 +1,101 @@
 @import 'scss/_References.scss';
 
-.ms-button {
+.ms-button-container {
 	display: inline-block;
 	position: relative;
 }
 
-.ms-button-md {
+.ms-button {
+	position: relative;
+	height: auto;
+	font-weight: $ms-font-weight-regular;
+	background-color: $ms-color-white;
+	border: $ms-focus-border-width $ms-focus-border-style transparent;
+	overflow: hidden;
+
 	a, button {
-		height: 100%;
-		padding: 8px;
-
-		&.ms-compound-button {
-			max-width: 280px;
-			min-height: 72px;
-			height: auto;
-			padding: 16px 12px;
-			text-align: left;
-			line-height: 100%;
-
-			.ms-button-label {
-				margin-bottom: 5px;
-			}
-		}
-	}
-
-	i.ms-icon, i.ms-icon-dropdown {
-		height: 100%;
-		line-height: 100%;
-		// vertical-align: middle;
-		// display: inline;
-	}
-
-	i.ms-icon {
-		margin: 0 6px 0 4px;
-		font-weight: $ms-font-weight-semibold;
+		position: relative;
 		display: block;
+		float: left;  //error
+		height: 100%;
+		font: inherit;
+		font-weight: $ms-font-weight-regular;
+		outline: transparent none medium;
+		text-decoration: none;
+		text-align: center;
+		cursor: pointer;
+		user-select: none;
+		border: none;
+		padding: 0px;
+		background-color: transparent;
+	}
+
+	.ms-icon {
 		float: left;
 	}
 
-	i.ms-icon-dropdown {
-		font-size: 12px;
-		margin: 0px 4px;
-	}
-
-	&.ms-bar button, &.ms-bar a, &.ms-button-border button, &.ms-button-border a {
-		font-weight: $ms-font-weight-semibold;
-	}
-
-	i.ms-button-icon {
+	.ms-button-icon.ms-icon {
 		margin: 0px;
-		float: none;
 	}
 
-	.ms-hide {
-		display: none;
+	&.ms-button-compound {
+
+		.ms-description {
+			display: block;
+		}
+
+		.ms-button-label {
+			text-align: left;
+		}
 	}
 
-	.ms-split-right {
-		padding: 8px 6px;
+	&.ms-button-no-split, &.ms-button-split {
+
+		&.ms-button-standard,
+		&.ms-button-primary,
+		&.ms-button-bar.ms-button-standard,
+		&.ms-button-border.ms-button-standard {
+			&.ms-button-disabled {
+				border-color: transparent;
+			}
+	
+			.ms-button-disabled {
+				cursor: default;
+				color: $ms-color-gray90;
+				border-color: transparent; 
+				background-color: $ms-color-white;
+			
+				a, button {
+					cursor: default;
+					color: $ms-color-gray90;
+				}
+			}
+		}
+	
+		&.ms-button-primary, &.ms-button-border.ms-button-standard {
+			&.ms-button-disabled {
+				border-color: darken($ms-color-white, 4.5%);
+			}
+	
+			.ms-button-disabled {
+				background-color: darken($ms-color-white, 4.5%);
+			}
+		}
 	}
+}
+
+.ms-description {
+	display: none;
+  width: 100%;
+	font-family: $ms-font-family-west-european;
+	font-size: $ms-font-size-12;
+	font-weight: $ms-font-weight-regular;
+	text-align: left;
+}
+
+.ms-button-label {
+	display: block;
+  width: 100%;
 }
 
 .split {
@@ -68,103 +105,6 @@
 	left: 0;
 	top: 25%;
 	background-color: $ms-color-communicationTint30;
-}
-
-a, button {
-	position: relative;
-	font: inherit;
-	font-size: $ms-font-size-14;
-	font-weight: $ms-font-weight-regular;
-	outline: transparent none medium;
-	text-decoration: none;
-	text-align: center;
-	cursor: pointer;
-	user-select: none;
-	border: 1px solid transparent;
-	padding: 0px;
-	float: left;
-	background-color: $ms-color-white;
-}
-
-.ms-button-label {
-	display: inline-block;
-	line-height: 100%;
-}
-
-.ms-description {
-	font-family: $ms-font-family-west-european;
-	font-size: $ms-font-size-12;
-	font-weight: $ms-font-weight-regular;
-	text-align: left;
-}
-
-.ms-button-standard {
-	color: $ms-color-gray160;
-
-	.ms-description {
-		color: $ms-color-gray130;
-	}
-
-	.ms-icon {
-		color: $ms-color-blue;
-	}
-
-	.split {
-		background-color: $ms-color-gray60;
-	}
-
-	&:hover {
-		color: $ms-color-communicationShade10;
-	}
-
-	&:active {
-		color: $ms-color-communicationShade20;
-	}
-}
-
-.ms-button-primary {
-	background-color: $ms-color-blue;
-	color: $ms-color-white;
-
-	&:hover {
-		background-color: $ms-color-communicationShade10;
-	}
-
-	&:active {
-		background-color: $ms-color-communicationShade20;
-	}
-}
-
-.ms-button-border {
-	a, button {
-		border-radius: 2px;
-		border: $ms-focus-border-width $ms-focus-border-style transparent;
-	}
-
-	.ms-button-standard {
-		border-color: $ms-color-gray110;
-	}
-}
-
-.ms-bar, .ms-button-border {
-	.ms-button-standard {
-		&:hover {
-			background-color: $ms-color-gray20;
-			color: $ms-color-gray190;
-
-			.ms-description {
-				color: $ms-color-gray190;
-			}
-		}
-		&:active {
-			background-color: rgb(200, 200, 200);
-			color: $ms-color-gray190;
-
-			.ms-description {
-				color: $ms-color-gray190;
-			}
-		}
-	}
 }
 
 .ms-split-button {
@@ -184,13 +124,135 @@ a, button {
 	}
 }
 
-.ms-button-disabled {
-	color: darken($ms-color-white, 35%);
-	cursor: default;
+.ms-button-border, .ms-button-primary {
+	button, a, .ms-icon {
+		font-weight: $ms-font-weight-semibold;
+	}
 }
 
-.ms-button-border, .ms-bar {
-	.ms-button-disabled {
-		background-color: darken($ms-color-white, 4.5%);
+.ms-button-border {
+	border-radius: 2px;
+
+	&.ms-button-standard {
+		border-color: $ms-color-gray110;
+	}
+}
+
+.ms-button-primary {
+	
+	button, a {
+		color: $ms-color-white;
+		background-color: $ms-color-blue;
+	}
+}
+
+.ms-button-standard {
+	button, a {
+		color: $ms-color-gray160;
+	}
+}
+
+.ms-button-sm {
+
+}
+
+.ms-button-md {
+	a, button {
+		padding: 8px;
+		font-size: $ms-font-size-14;
+	}
+
+	.ms-icon {
+		margin-right: 6px;
+	}
+
+	&.ms-button-compound {
+		a, button {
+			padding: 16px 12px;
+		}
+
+		.ms-description {
+			display: block;
+			margin-top: 5px;
+		}
+	}
+}
+
+.ms-button-lg {
+
+}
+
+
+
+.ms-button-no-split {
+	&.ms-button-primary {
+		&:hover button, &:hover a {
+			background-color: $ms-color-communicationShade10;
+		}
+	
+		&:active button, &:active a {
+			background-color: $ms-color-communicationShade20;
+		}
+	}
+	
+	&.ms-button-standard {
+	
+		&:hover button, &:hover a {
+			color: $ms-color-communicationShade10;
+		}
+	
+		&:active button, &:active a {
+			color: $ms-color-communicationShade20;
+		}
+	}
+
+	&.ms-button-bar, &.ms-button-border {
+		&.ms-button-standard {
+			&:hover button, &:hover a{
+				background-color: $ms-color-gray20;
+				color: $ms-color-gray190;
+			}
+			&:active button, &:active a {
+				background-color: rgb(200, 200, 200);
+				color: $ms-color-gray190;
+			}
+		}
+	}
+}
+
+.ms-button-split {
+	&.ms-button-primary {
+	
+		button:hover, a:hover {
+			background-color: $ms-color-communicationShade10;
+		}
+	
+		button:active, a:active {
+			background-color: $ms-color-communicationShade20;
+		}
+	}
+
+	&.ms-button-standard {
+	
+		button:hover, a:hover {
+			color: $ms-color-communicationShade10;
+		}
+	
+		button:active, a:active {
+			color: $ms-color-communicationShade20;
+		}
+	}
+
+	&.ms-button-bar, &.ms-button-border {
+		&.ms-button-standard {
+			button:hover, a:hover{
+				background-color: $ms-color-gray20;
+				color: $ms-color-gray190;
+			}
+			button:active, a:active {
+				background-color: rgb(200, 200, 200);
+				color: $ms-color-gray190;
+			}
+		}
 	}
 }

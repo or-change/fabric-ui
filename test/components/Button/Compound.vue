@@ -5,14 +5,12 @@
 		<f-button 
 			text="Create account"
 			description="You can create a new account here"
-			button-type="compound"
 		/>
 
 		<f-button 
 			text="Create account"
 			variant="primary"
 			description="You can create a new account here"
-			button-type="compound"
 		/>
 
 		<f-button
@@ -20,14 +18,41 @@
 			disabled
 			text="Create account"
 			description="You can create a new account here"
-			button-type="compound"
 		/>
 
 		<f-button
 			disabled
 			text="Create account"
 			description="You can create a new account here"
-			button-type="compound"
+		/>
+		<f-button
+			tag="a"
+			href="http://baidu.com"
+			target="_blank"
+			text="Create account"
+			description="You can create a new account here"
+		/>
+
+		<f-button 
+			tag="a"
+			text="Create account"
+			variant="primary"
+			description="You can create a new account here"
+		/>
+
+		<f-button
+			tag="a"
+			variant="primary"
+			disabled
+			text="Create account"
+			description="You can create a new account here"
+		/>
+
+		<f-button
+			tag="a"
+			disabled
+			text="Create account"
+			description="You can create a new account here"
 		/>
 	</div>
 </template>

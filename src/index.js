@@ -1,4 +1,6 @@
+import 'normalize.css';
 import './global.scss';
+import './utility.scss';
 
 import buttonPlugin from './components/Button';
 import labelPlugin from './components/Label';

@@ -6,8 +6,20 @@
 			icon="ms-Icon ms-Icon--Add"
 			:border="false"
 			text="Create account"
+			:dropdown="true"
+			:split="true"
+			@dropdown="toggleMenu('menu1')"
+			:triangle="true"
+		>
+			<f-menu slot="menu" :menu="menu" ref="menu1" style="top:100%"  />
+
+		</f-button>
+
+		<f-button
+			icon="ms-Icon ms-Icon--Add"
+			text="Create account"
+			:dropdown="true"
 			@click.native="toggleMenu('menu1')"
-			button-type="contextual"
 		>
 			<f-menu slot="menu" :menu="menu" ref="menu1" style="top:100%"  />
 
@@ -17,7 +29,79 @@
 			variant="primary"
 			icon="ms-Icon ms-Icon--Add"
 			text="Create account"
-			@click="toggleMenu('menu2')"
+			:dropdown="true"
+			@click.native="toggleMenu('menu1')"
+		>
+			<f-menu slot="menu" :menu="menu" ref="menu1" style="top:100%"  />
+
+		</f-button>
+
+		<f-button
+			icon="ms-Icon ms-Icon--Add"
+			text="Create account"
+			:dropdown="true"
+			:split="true"
+			@dropdown="toggleMenu('menu1')"
+		>
+			<f-menu slot="menu" :menu="menu" ref="menu1" style="top:100%"  />
+
+		</f-button>
+
+		<f-button
+			disabled
+			icon="ms-Icon ms-Icon--Add"
+			text="Create account"
+			:dropdown="true"
+			:split="true"
+			@dropdown="toggleMenu('menu1')"
+		>
+			<f-menu slot="menu" :menu="menu" ref="menu1" style="top:100%"  />
+
+		</f-button>
+		<f-button
+			dropdown-disabled
+			icon="ms-Icon ms-Icon--Add"
+			text="Create account"
+			:dropdown="true"
+			:split="true"
+			@dropdown="toggleMenu('menu1')"
+		>
+			<f-menu slot="menu" :menu="menu" ref="menu1" style="top:100%"  />
+
+		</f-button>
+		<f-button
+			dropdown-disabled
+			disabled
+			icon="ms-Icon ms-Icon--Add"
+			text="Create account"
+			:dropdown="true"
+			:split="true"
+			@dropdown="toggleMenu('menu1')"
+		>
+			<f-menu slot="menu" :menu="menu" ref="menu1" style="top:100%"  />
+
+		</f-button>
+		
+		<f-button
+			variant="primary"
+			icon="ms-Icon ms-Icon--Add"
+			text="Create account"
+			:dropdown="true"
+			:split="true"
+			@dropdown="toggleMenu('menu1')"
+		>
+			<f-menu slot="menu" :menu="menu" ref="menu1" style="top:100%"  />
+
+		</f-button>
+
+		<f-button
+			variant="primary"
+			icon="ms-Icon ms-Icon--Add"
+			text="Create account"
+			@dropdown="toggleMenu('menu2')"
+			:dropdown="true"
+			:split="true"
+			:disabled="true"
 			button-type="contextual"
 		>
 			<f-menu slot="menu" :menu="menu" ref="menu2" style="top:100%" />
@@ -26,10 +110,27 @@
 
 		<f-button
 			:disabled="true"
+			:dropdown-disabled="true"
 			variant="primary"
 			icon="ms-Icon ms-Icon--Add"
 			text="Create account"
-			@click="toggleMenu"
+			@dropdown="toggleMenu"
+			:dropdown="true"
+			:split="true"
+			button-type="contextual"
+		>
+			<div slot="menu"></div>
+
+		</f-button>
+
+		<f-button
+			:dropdown-disabled="true"
+			variant="primary"
+			icon="ms-Icon ms-Icon--Add"
+			text="Create account"
+			@dropdown="toggleMenu"
+			:dropdown="true"
+			:split="true"
 			button-type="contextual"
 		>
 			<div slot="menu"></div>
@@ -41,6 +142,7 @@
 			icon="ms-Icon ms-Icon--Add"
 			text="Create account"
 			@click="toggleMenu"
+			:dropdown="true"
 			button-type="contextual"
 		>
 			<div slot="menu"></div>

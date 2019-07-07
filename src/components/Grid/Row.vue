@@ -8,14 +8,14 @@
 export default {
 	name: 'f-row',
 	mounted() {
-		const isError = this.$slots.default.filter(tabItem => {
+		const isWarning = this.$slots.default.filter(tabItem => {
 			return tabItem.tag && (!tabItem.componentOptions || tabItem.componentOptions.tag !== 'f-col');
 		})
 			.length > 0;
 
 
-		if (isError) {
-			throw new Error('The child of f-row component must be f-col component.')
+		if (isWarning) {
+			console.warn('The child of f-row component must be f-col component.')
 		}
 	}
 }
