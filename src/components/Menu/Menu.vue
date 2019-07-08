@@ -28,6 +28,9 @@ import MenuDivide from './Divide';
 export default {
 	name: 'f-menu',
 	props: {
+		id: {
+			type: String
+		},
 		menu: {
 			type: Array
 		},
@@ -38,6 +41,10 @@ export default {
 		direction: {
 			type: String,
 			default: 'right'
+		},
+		auto: {
+			type: Boolean,
+			default: true
 		}
 	},
 	data() {
@@ -64,10 +71,40 @@ export default {
 		show() {
 			this.isShow = true;
 			this.$emit('shown', this);
+
+			this.$root.$emit('menu-show', this.id)
 		},
 		hide() {
 			this.isShow = false;
-			this.$emit('hidden', this);
+			this.$emit('hidden', this.id);
+		},
+		toggle() {
+			if (this.isShow) {
+				return this.hide();
+			}
+
+			this.show();
+		},
+		closeOther(id) {
+			if (id !== this.id) {
+				this.hide();
+			}
+		}
+	},
+	mounted() {
+		if (this.auto) {
+			window.addEventListener('click', this.hide);
+			this.$root.$on('menu-show', this.closeOther);
+		}
+
+		if (!this.id) {
+			console.warn('You have not define the id of menu, and the auto show will be abnormal.');
+		}
+	},
+	destroyed() {
+		if (this.auto) {
+			window.removeEventListener('click', this.hide);
+			this.$root.$off('menu-show', this.closeOther);
 		}
 	}
 }

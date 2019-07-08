@@ -3,10 +3,11 @@
 		<h2>Split Button</h2>
 
 		<f-button
+			tag="a"
 			href="http://www.baidu.com"
 			text="Create account"
 			@dropdown="toggleMenu('menu1')"
-			button-type="split"
+			dropdown split
 		>
 			<f-menu slot="menu" :menu="menu" ref="menu1" style="top:100%"  />
 
@@ -16,7 +17,7 @@
 			variant="primary"
 			text="Create account"
 			@dropdown="toggleMenu('menu2')"
-			button-type="split"
+			dropdown split
 		>
 			<f-menu slot="menu" :menu="menu" ref="menu2" style="top:100%" />
 
@@ -25,7 +26,7 @@
 			variant="primary" disabled :bar="true"
 			text="Create account"
 			@dropdown="toggleMenu('menu2')"
-			button-type="split"
+			dropdown split
 		>
 			<!-- <f-menu slot="menu" :menu="menu" ref="menu2" style="top:100%" /> -->
 
@@ -36,7 +37,7 @@
 			text="Create account"
 			dropdownDisabled @dropdown="toggleMenu('menu3')"
 			bar
-			button-type="split"
+			dropdown split
 		>
 			<f-menu slot="menu" :menu="menu" ref="menu3" style="top:100%" />
 
@@ -47,7 +48,7 @@
 			text="Create account"
 			disabled dropdownDisabled @dropdown="toggleMenu('menu3')"
 			bar
-			button-type="split"
+			dropdown split
 		>
 			<f-menu slot="menu" :menu="menu" ref="menu3" style="top:100%" />
 

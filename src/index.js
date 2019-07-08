@@ -42,7 +42,17 @@ const pluginList = [
 	tabPlugin, gridPlugin
 ];
 
-export default function install(Vue) {
+function normalize(options) {
+	if (typeof options.size !== 'string') {
+		options.size = 'md';
+	}
+
+	return options;
+}
+
+export default function install(Vue, options = {}) {
+	Vue.prototype.$fabric = normalize(options);
+
 	pluginList.forEach(plugin => Vue.use(plugin));
 };
 

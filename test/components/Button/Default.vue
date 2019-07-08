@@ -19,6 +19,16 @@
 			/>
 
 			<f-button
+				text="border-button"
+				size="sm"
+			/>
+
+			<f-button
+				text="border-button"
+				size="lg"
+			/>
+
+			<f-button
 				variant="primary"
 				:border="false"
 				text="no border and primary button"

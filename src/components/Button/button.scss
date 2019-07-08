@@ -153,7 +153,24 @@
 }
 
 .ms-button-sm {
+	a, button {
+		padding: 6px;
+		font-size: $ms-font-size-12;
+	}
 
+	.ms-icon {
+		margin-right: 4px;
+	}
+
+	&.ms-button-compound {
+		a, button {
+			padding: 14px 10px;
+		}
+
+		.ms-description {
+			margin-top: 3px;
+		}
+	}
 }
 
 .ms-button-md {
@@ -172,14 +189,30 @@
 		}
 
 		.ms-description {
-			display: block;
 			margin-top: 5px;
 		}
 	}
 }
 
 .ms-button-lg {
+	a, button {
+		padding: 11px;
+		font-size: $ms-font-size-16;
+	}
 
+	.ms-icon {
+		margin-right: 6px;
+	}
+
+	&.ms-button-compound {
+		a, button {
+			padding: 20px 16px;
+		}
+
+		.ms-description {
+			margin-top: 5px;
+		}
+	}
 }
 
 

@@ -13,6 +13,20 @@
 			description="You can create a new account here"
 		/>
 
+		<f-button 
+			text="Create account"
+			size="sm"
+			variant="primary"
+			description="You can create a new account here"
+		/>
+
+		<f-button 
+			text="Create account"
+			size="lg"
+			variant="primary"
+			description="You can create a new account here"
+		/>
+
 		<f-button
 			variant="primary"
 			disabled

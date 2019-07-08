@@ -6,10 +6,11 @@
 			icon="ms-Icon ms-Icon--Add"
 			:border="false" bar
 			text="Create account"
-			@click.native="toggleMenu('menu1')"
-				button-type="contextual"
+			@dropdown.stop="toggleMenu('menu1')"
+			dropdown
+			split
 		>
-			<f-menu slot="menu" :menu="menu" ref="menu1" style="top:100%"  />
+			<f-menu id="menu1" slot="menu" :menu="menu" ref="menu1" style="top:100%"  />
 
 		</f-button>
 
@@ -17,6 +18,9 @@
 			icon="ms-Icon ms-Icon--Add"
 			text="Create account"
 			:border="false" bar
+			dropdown
+			split
+			@dropdown.stop="toggleMenu('menu2')"
 		>
 
 		</f-button>
@@ -27,10 +31,10 @@
 			:border="false" bar
 			text="Create account"
 			dropdownDisabled
-			@dropdown="toggleMenu('menu2')"
-				button-type="split"
+			dropdown
+			split
 		>
-			<f-menu slot="menu" :menu="menu" ref="menu2" style="top:100%"  />
+			<f-menu id="menu2" slot="menu" :menu="menu" ref="menu2" style="top:100%"  />
 
 		</f-button>
 
@@ -41,7 +45,8 @@
 			:border="false" bar
 			@click="toggleMenu"
 			@dropdown="toggleMenu('menu3')"
-				button-type="split"
+			dropdown
+			split
 		>
 			<f-menu slot="menu" :menu="menu" ref="menu3" style="top:100%"  />
 

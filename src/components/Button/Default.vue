@@ -8,7 +8,11 @@
 			width: width
 		}"
 	>
-		<span class="ms-button-label ms-textTruncate ms-clearfix">
+		<span class="ms-button-label ms-clearfix"
+			:class="{
+				'ms-textTruncate': text
+			}"
+		>
 			<i class="ms-icon" :class="[
 					icon,
 					{

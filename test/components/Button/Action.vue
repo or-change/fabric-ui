@@ -18,6 +18,22 @@
 
 			<f-button
 				variant="primary"
+				size="sm"
+				icon="ms-Icon ms-Icon--AddFriend"
+				text="Create account"
+				:border="false"
+			/>
+
+			<f-button
+				variant="primary"
+				size="lg"
+				icon="ms-Icon ms-Icon--AddFriend"
+				text="Create account"
+				:border="false"
+			/>
+
+			<f-button
+				variant="primary"
 				disabled
 				icon="ms-Icon ms-Icon--AddFriend"
 				text="Create account"

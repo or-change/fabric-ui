@@ -6,7 +6,7 @@
 			icon="ms-Icon ms-Icon--Upload"
 			:border="false" bar
 			@dropdown="toggleMenu('menu1')"
-			button-type="split"
+			dropdown split
 		>
 			<f-menu slot="menu" :menu="menu" ref="menu1" style="top:100%"  />
 		</f-button>

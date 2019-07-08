@@ -3,7 +3,7 @@
 		<h2>Toggle Button</h2>
 
 		<f-button
-			@click="toggleText"
+			@click.native="toggleText"
 			:text="text"
 		/>
 	</div>

@@ -45,9 +45,9 @@ export default {
 		}
 	},
 	methods: {
-		emit() {
+		emit(event) {
 			if (this.split) {
-				this.$emit('dropdown');
+				this.$emit('dropdown', event);
 			}
 		}
 	}
@@ -112,6 +112,32 @@ button.ms-button-dropdown {
 	.ms-dropdown-triangle {
 		border-width: 5px;
 		margin-top: 3px;
+	}
+}
+
+.ms-button-sm {
+	button.ms-button-not-split {
+		margin-left: -2px;
+		padding-left: 0px;
+		padding-right: 6px;
+	}
+
+	.ms-dropdown-triangle {
+		border-width: 4px;
+		margin-top: 4px;
+	}
+}
+
+.ms-button-lg {
+	button.ms-button-not-split {
+		margin-left: -5px;
+		padding-left: 0px;
+		padding-right: 10px;
+	}
+
+	.ms-dropdown-triangle {
+		border-width: 6px;
+		margin-top: 5px;
 	}
 }
 </style>

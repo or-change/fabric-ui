@@ -6,7 +6,7 @@
 			icon="ms-Icon ms-Icon--Add"
 			text="New"
 			@click.native="toggleMenu('menu1')"
-			button-type="contextual"
+			dropdown
 		>
 			<f-menu slot="menu" :menu="menu" ref="menu1" style="top:100%"  />
 
@@ -17,8 +17,8 @@
 			icon="ms-Icon ms-Icon--Add"
 			:menu="true"
 			text="New"
-			@click="toggleMenu('menu2')"
-			button-type="contextual"
+			@click.native="toggleMenu('menu2')"
+			dropdown
 		>
 			<f-menu slot="menu" :menu="menu" ref="menu2" style="top:100%" />
 
@@ -31,7 +31,7 @@
 			:menu="true"
 			text="New"
 			@click="toggleMenu"
-			button-type="contextual"
+			dropdown
 		>
 			<div slot="menu"></div>
 
@@ -43,7 +43,7 @@
 			:menu="true"
 			text="New"
 			@click="toggleMenu"
-			button-type="contextual"
+			dropdown
 		>
 			<div slot="menu"></div>
 

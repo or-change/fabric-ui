@@ -5,7 +5,7 @@
 	>
 		<div class="ms-button"
 			:class="[
-				`ms-button-${size}`,
+				`ms-button-${computedSize}`,
 				`ms-button-${variant}`,
 				{
 					'ms-button-border': border,
@@ -35,7 +35,7 @@
 				:triangle="triangle"
 				:disabled="split ? dropdownDisabled : disabled"
 				:height="dropdownHeight"
-				@dropdown="$emit('dropdown')"
+				@dropdown="$emit('dropdown', $event)"
 			/>
 		</div>
 		<slot name="menu"></slot>
@@ -47,8 +47,9 @@ import FButtonLink from './Link';
 import FButtonDefault from './Default';
 import FButtonDropdown from './Dropdown';
 
+import mixin from '../mixin';
+
 const TAG_REG = /(button|a)/;
-const SIZE_REG = /(sm|md|lg)/;
 const VARIANT_REG = /(standard|primary)/;
 
 export default {
@@ -58,24 +59,12 @@ export default {
 			dropdownHeight: 'auto'
 		}
 	},
+	mixins: [mixin],
 	components: {
 		FButtonLink, FButtonDefault,
 		FButtonDropdown
 	},
 	props: {
-		size: {
-			type: String,
-			default: 'md',
-			validator(value) {
-				const result = SIZE_REG.test(value)
-
-				if (!result) {
-					console.warn('The value of size should be one of sm, md, lg');
-				}
-
-				return result;
-			}
-		},
 		type: {
 			type: String,
 			default: 'button'
@@ -151,7 +140,7 @@ export default {
 		}
 	},
 	watch: {
-		size() {
+		computedSize() {
 			this.getDropdownHeight();
 		},
 		width() {
@@ -184,7 +173,7 @@ export default {
 				return true;
 			}
 
-			return false;
+			return ( this.bar && !this.border && this.variant !== 'primary') || false;
 		},
 		renderText() {
 			return this.tag === 'a' ? {

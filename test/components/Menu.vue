@@ -2,7 +2,7 @@
 	<div>
 		<h2>menu</h2>
 		<div style="position: relative;height: 300px">
-			<f-menu :menu="menu" style="display:block">
+			<f-menu :menu="menu" style="display:block" :auto="false">
 				
 			</f-menu>
 		</div>

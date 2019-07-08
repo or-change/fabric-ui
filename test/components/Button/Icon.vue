@@ -4,6 +4,45 @@
 
 		<f-button
 			icon="ms-Icon ms-Icon--Emoji2"
+			dropdown
+			triangle
+			split
+			size="sm"
+		/>
+
+		<f-button
+			icon="ms-Icon ms-Icon--Emoji2"
+			dropdown
+			triangle
+			size="sm"
+		/>
+
+		<f-button
+			icon="ms-Icon ms-Icon--Emoji2"
+			dropdown
+			triangle
+			split
+		/>
+
+		<f-button
+			icon="ms-Icon ms-Icon--Emoji2"
+			dropdown
+			triangle
+		/>
+
+		<f-button
+			icon="ms-Icon ms-Icon--Emoji2"
+			dropdown
+			triangle
+			split
+			size="lg"
+		/>
+
+		<f-button
+			icon="ms-Icon ms-Icon--Emoji2"
+			dropdown
+			triangle
+			size="lg"
 		/>
 
 		<f-button

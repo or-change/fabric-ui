@@ -20,7 +20,7 @@ export default {
 			if (menu.isShow) {
 				menu.hide();
 			} else {
-				menu.show()
+				menu.show();
 			}
 		}
 	}
