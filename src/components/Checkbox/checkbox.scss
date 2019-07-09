@@ -4,27 +4,78 @@
 	color: $ms-color-gray160;
 	height: 100%;
 
-	&.ms-checkbox-md {
-		margin-top: 10px;
-		
+	.ms-toggle-md .ms-toggle-label, .ms-toggle-md .ms-toggle-end {
+		margin: 0px;
+	}
+
+	label {
+		display: inline-block;
+		height: 100%;
+
+		.ms-virtual-checkbox {
+			margin-right: 10px;
+			border-width: $ms-focus-border-width;
+			text-align: center;
+			float: left;
+		}
+	}
+
+	&.ms-checkbox-sm {
 		label {
-			display: inline-block;
-			font-size: $ms-font-size-14;
-			line-height: 20px;
-			height: 100%;
+			font-size: $ms-font-size-12;
+			line-height: 12px;
 	
 			.ms-virtual-checkbox {
-				height: $ms-icon-size-l;
-				width: $ms-icon-size-l;
-				margin-right: 10px;
-				border-width: $ms-focus-border-width;
-				text-align: center;
-				float: left;
+				height: $ms-icon-size-s;
+				width: $ms-icon-size-s;
+
+				i {
+					line-height: 10px;
+				}
+			}
+	
+			span {
+				font-size: $ms-font-size-12;
+			}
+		}
+	}
+
+	&.ms-checkbox-md {
+		label {
+			font-size: $ms-font-size-14;
+			line-height: 16px;
+	
+			.ms-virtual-checkbox {
+				height: $ms-icon-size-m;
+				width: $ms-icon-size-m;
+
+				i {
+					line-height: 14px;
+				}
 			}
 	
 			span {
 				font-size: $ms-font-size-14;
-				// margin-left: 4px;
+			}
+		}
+	}
+
+	&.ms-checkbox-lg {
+		label {
+			font-size: $ms-font-size-16;
+			line-height: 20px;
+	
+			.ms-virtual-checkbox {
+				height: $ms-icon-size-l;
+				width: $ms-icon-size-l;
+
+				i {
+					line-height: 18px;
+				}
+			}
+	
+			span {
+				font-size: $ms-font-size-16;
 			}
 		}
 	}
@@ -73,13 +124,13 @@
 			}
 
 			i {
-				display: inline-block;
+				display: block;
 				box-sizing: border-box;
-				vertical-align: middle;
 				-webkit-font-smoothing: antialiased;
 				font-style: normal;
 				font-weight: normal;
 				font-family: FabricMDL2Icons;
+				height: 100%;
 			}
 		}
 

@@ -17,13 +17,34 @@
 			v-model="selected"
 			right
 			@change="test"
-			toggle
+			size="sm"
+		/>
+
+		<f-checkbox
+			label="Standard checkbox"
+			value="test"
+			name="test1"
+			v-model="selected"
+			right
+			@change="test"
+			size="lg"
+		/>
+
+		<f-checkbox
+			label="Standard checkbox"
+			value="test"
+			name="test1"
+			v-model="selected"
+			right
+			@change="test"
+			type="toggle"
 		/>
 		<f-checkbox
 			name="test1"
 			value="test2"
 			v-model="selected"
 			label="Standard checkbox"
+			type="toggle"
 		/>
 		<f-checkbox
 			label="Standard checkbox"

@@ -16,6 +16,8 @@ import Calendar from './components/Calendar';
 import Datepicker from './components/Datepicker'
 
 import Callout from './components/Callout';
+import Checkbox from './components/CheckBox';
+import Contextual from './components/ContextualMenu';
 
 export default [
 	LabelTest,
@@ -32,5 +34,7 @@ export default [
 	Calendar,
 	MenuTest,
 	// Datepicker
-	Callout
+	Callout,
+	Checkbox,
+	Contextual
 ];

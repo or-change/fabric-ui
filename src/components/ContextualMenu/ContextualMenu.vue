@@ -8,13 +8,17 @@
 			:direction="direction"
 			ref="menu"
 			style="display: block"
+			:size="comptedSize"
 		/>
 	</div>
 </template>
 
 <script>
+import mixin from '../mixin';
+
 export default {
 	name: 'f-contextual-menu',
+	mixins: [mixin],
 	data() {
 		return {
 			outer: null,
@@ -86,8 +90,6 @@ export default {
 			if (width - x <= 2 * info.width) {
 				this.direction = 'left';
 			}
-
-			console.log(height, info.height, height - info.height)
 
 			if (height - y < info.height && y >= info.height) {
 				contextualMenu.style.top = `${height - info.height}px`;
