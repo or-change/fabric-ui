@@ -4,12 +4,9 @@ ul {
 	list-style-type: none; 
 	margin: 0;
 	padding: 0;
-	min-width: 180px;
-	max-height: 959px;
 
 	&.ms-menu {
 		font: inherit;
-		font-size: $ms-font-size-14;
 		font-weight: $ms-font-weight-regular;
 		position: absolute;
 		z-index: $ms-zIndex-1;
@@ -55,27 +52,20 @@ ul {
 		vertical-align: middle;
 	}
 
-	.ms-menu-item {
-		padding: 0 8px 0 4px;
-
-		.secondary-text {
-			color: $ms-color-gray130;
-			padding-left: 20px;
-			float: right;
-			text-overflow: ellipsis;
-			white-space: nowrap;
-			overflow: hidden;
-			width: 40%;
-		}
+	.ms-menu-item .secondary-text {
+		width: 40%;
+		color: $ms-color-gray130;
+		float: right;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+		overflow: hidden;
 	}
 
-	.ms-menu-sub {
-		i.ms-ChevronRight {
-			font-size: 12px;
+	&.ms-menu-sm, &.ms-menu-md, &.ms-menu-lg {
+		.ms-menu-sub i.ms-ChevronRight {
 			color: $ms-color-gray130;
 			float: right;
 			margin: 0;
-			padding: 0 8px;
 			width: auto;
 		}
 	}
@@ -83,21 +73,14 @@ ul {
 	.ms-menu-item, .ms-menu-sub {
 		display: block;
 		width: 100%;
-		height: 36px;
 		color: $ms-color-gray160;
-		line-height: 36px;
 
 		i {
-			width: 16px;
-			min-height: 1px;
-			margin: 0 4px;
-			font-size: 16px;
 			color: $ms-color-blue;
 		}
 
 		.text {
 			display: inline-block;
-			margin: 0 4px;
 			vertical-align: middle;
 			text-overflow: ellipsis;
 			white-space: nowrap;
@@ -118,6 +101,99 @@ ul {
 	
 			i, .text, .secondary-text {
 				color: $ms-color-gray90;
+			}
+		}
+	}
+
+	&.ms-menu-sm {
+		min-width: 100px;
+		max-height: 880px;
+		font-size: $ms-font-size-12;
+
+		.ms-menu-item {
+			padding: 0 6px 0 2px;
+
+			.secondary-text {
+				padding-left: 15px;
+			}
+		}
+
+		.ms-menu-sub i.ms-ChevronRight {
+			font-size: 12px;
+			padding: 0 4px;
+		}
+
+		.ms-menu-item, .ms-menu-sub {
+			height: 30px;
+			line-height: 30px;
+
+			i {
+				width: 12px;
+				min-height: 1px;
+				margin: 0 4px;
+				font-size: $ms-font-size-12;
+			}
+		}
+	}
+
+	&.ms-menu-md {
+		min-width: 180px;
+		max-height: 959px;
+		font-size: $ms-font-size-14;
+
+		.ms-menu-item {
+			padding: 0 8px 0 4px;
+
+			.secondary-text {
+				padding-left: 20px;
+			}
+		}
+
+		.ms-menu-sub i.ms-ChevronRight {
+			font-size: 12px;
+			padding: 0 8px;
+		}
+
+		.ms-menu-item, .ms-menu-sub {
+			height: 36px;
+			line-height: 36px;
+
+			i {
+				width: 16px;
+				min-height: 1px;
+				margin: 0 4px;
+				font-size: 16px;
+			}
+		}
+	}
+
+	&.ms-menu-lg {
+		min-width: 260px;
+		max-height: 1000px;
+		font-size: $ms-font-size-16;
+
+		.ms-menu-item {
+			padding: 0 12px 0 6px;
+
+			.secondary-text {
+				padding-left: 25px;
+			}
+		}
+
+		.ms-menu-sub i.ms-ChevronRight {
+			font-size: 14px;
+			padding: 0 12px;
+		}
+
+		.ms-menu-item, .ms-menu-sub {
+			height: 42px;
+			line-height: 42px;
+
+			i {
+				width: 16px;
+				min-height: 1px;
+				margin: 0 4px;
+				font-size: 16px;
 			}
 		}
 	}

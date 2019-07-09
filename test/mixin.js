@@ -1,6 +1,5 @@
 import LabelTest from './components/Label';
 import MenuTest from './components/Menu';
-import Datepicker from './components/Datepicker'
 
 import DefaultButton from './components/Button/Default';
 import CompoundButton from './components/Button/Compound';
@@ -14,6 +13,9 @@ import CustomSplitButton from './components/Button/CustomSplit';
 import ToggleButton from './components/Button/Toggle.vue';
 
 import Calendar from './components/Calendar';
+import Datepicker from './components/Datepicker'
+
+import Callout from './components/Callout';
 
 export default [
 	LabelTest,
@@ -29,5 +31,6 @@ export default [
 	ToggleButton,
 	Calendar,
 	MenuTest,
-	Datepicker
+	// Datepicker
+	Callout
 ];

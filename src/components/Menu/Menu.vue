@@ -3,9 +3,12 @@
 		v-show="isShow"
 		@mouseover="show"
 		class="ms-menu"
-		:class="{
-			'ms-menu-left': direction === 'left'
-		}"
+		:class="[
+			`ms-menu-${computedSize}`,
+			{
+				'ms-menu-left': direction === 'left'
+			}
+		]"
 		>
 		<slot name="menu-header"></slot>
 		<slot name="menu-body">
@@ -25,8 +28,11 @@ import MenuSubItem from './Sub';
 import MenuSubSplitItem from './SubSplit';
 import MenuDivide from './Divide';
 
+import mixin from '../mixin';
+
 export default {
 	name: 'f-menu',
+	mixins: [mixin],
 	props: {
 		id: {
 			type: String

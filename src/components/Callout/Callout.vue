@@ -1,9 +1,12 @@
 <template>
 	<div
-		class="ms-callout ms-callout-md"
-		:class="{
-			'ms-callout-show': value
-		}"
+		class="ms-callout"
+		:class="[
+			`ms-callout-${computedSize}`,
+			{
+				'ms-callout-show': value
+			}
+		]"
 		:style="{
 			'width': width
 		}"
@@ -23,8 +26,11 @@
 </template>
 
 <script>
+import mixin from '../mixin';
+
 export default {
 	name: 'f-callout',
+	mixins: [mixin],
 	props: {
 		value: {
 			type: Boolean,

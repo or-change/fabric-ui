@@ -72,7 +72,6 @@ export default {
 	}
 
 	.split-wrapper {
-		width: 28px;
 		display: block;
 		float: right;
 		position: relative;

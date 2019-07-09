@@ -1,10 +1,18 @@
 <template>
 	<div>
 		<h2>menu</h2>
-		<div style="position: relative;height: 300px">
-			<f-menu :menu="menu" style="display:block" :auto="false">
-				
-			</f-menu>
+		<div>
+			<div style="position: relative;height: 300px">
+				<f-menu :menu="menu" style="display:block" :auto="false" />
+			</div>
+
+			<div style="position: relative;height: 300px">
+				<f-menu size="sm" :menu="menu" style="display:block" :auto="false" />
+			</div>
+
+			<div style="position: relative;height: 300px">
+				<f-menu size="lg" :menu="menu" style="display:block" :auto="false" />
+			</div>
 		</div>
 	</div>
 </template>
@@ -18,7 +26,7 @@ export default {
 				{
 					text: '1111111111111',
 					secondaryText: '111111111111',
-					icon: 'Emoji',
+					icon: 'ms-Icon ms-Icon--Emoji',
 					href: 'http://www.baidu.com',
 					disabled: true
 				},
