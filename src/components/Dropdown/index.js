@@ -1,6 +1,6 @@
 import './dropdown.scss';
 
-import Dropdown from './index.vue';
+import Dropdown from './Dropdown.vue';
 import DropdownItem from './Item';
 
 import ToggleDirective from './directive';

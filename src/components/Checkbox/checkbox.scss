@@ -13,7 +13,6 @@
 		height: 100%;
 
 		.ms-virtual-checkbox {
-			margin-right: 10px;
 			border-width: $ms-focus-border-width;
 			text-align: center;
 			float: left;
@@ -26,11 +25,16 @@
 			line-height: 12px;
 	
 			.ms-virtual-checkbox {
+				margin-right: 4px;
 				height: $ms-icon-size-s;
 				width: $ms-icon-size-s;
 
 				i {
 					line-height: 10px;
+				}
+
+				&.box-right {
+					margin-left: 4px;
 				}
 			}
 	
@@ -46,11 +50,16 @@
 			line-height: 16px;
 	
 			.ms-virtual-checkbox {
+				margin-right: 6px;
 				height: $ms-icon-size-m;
 				width: $ms-icon-size-m;
 
 				i {
 					line-height: 14px;
+				}
+
+				&.box-right {
+					margin-left: 6px;
 				}
 			}
 	
@@ -66,11 +75,16 @@
 			line-height: 20px;
 	
 			.ms-virtual-checkbox {
+				margin-right: 8px;
 				height: $ms-icon-size-l;
 				width: $ms-icon-size-l;
 
 				i {
 					line-height: 18px;
+				}
+
+				&.box-right {
+					margin-left: 8px;
 				}
 			}
 	

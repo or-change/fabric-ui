@@ -2,7 +2,6 @@
 
 .ms-radio {
 	font-family: inherit;
-	font-size: $ms-font-size-14;
 	font-weight: $ms-font-weight-regular;
 	color: $ms-color-gray160;
 
@@ -31,7 +30,6 @@
 		}
 
 		span {
-			font-size: $ms-font-size-14;
 			display: inline-block;
 		}
 
@@ -39,6 +37,7 @@
 
 	&.ms-radio-default {
 		display: block;
+		margin-top: 8px;
 
 		label {
 			&::before {
@@ -56,6 +55,8 @@
 
 	&.ms-radio-icon {
 		display: inline-block;
+		margin: 8px 4px 4px 0px;
+		padding: 0px;
 		background-color: $ms-color-gray20;
 
 		img, i {
@@ -74,6 +75,8 @@
 			border-color: transparent;
 
 			&::before {
+				top: 3px;
+				right: 3px;
 				border-color: transparent;
 			}
 	
@@ -113,30 +116,153 @@
 	}
 }
 
-.ms-radio-md {
-	
-	&.ms-radio-default {
-		margin-top: 8px;
-		height: 20px;
+.ms-radio-sm {
+	font-size: $ms-font-size-12;
 
+	&.ms-radio-default {
 		label span {
-			padding-left: 26px;
+			padding-left: $ms-icon-size-s + 6;
 			height: 100%;
-			line-height: 20px;
+			line-height: $ms-icon-size-s;
 		}
 
 		label {
 			&::after {
-				left: 5px;
-				top: 5px;
+				left: $ms-icon-size-s / 4;
+				top: $ms-icon-size-s / 4;
 			}
 		}
 	}
 
 	&.ms-radio-icon {
-		margin: 8px 4px 4px 0px;
-		padding: 0px;
+		img, i {
+			height: 24px;
+			width: 24px;	
+		}
 
+		.ms-radio-content {
+			padding-left: 22px;
+			padding-right: 22px;
+			font-size: $ms-font-size-24;
+			line-height: $ms-font-size-24;
+		}
+
+		.ms-icon-description {
+			margin: 4px 8px;
+			height: 18px;
+			line-height: 18px;
+		}
+
+		label {
+			padding-top: 18px;
+			text-align: center;
+			border-style: solid;
+			border-width: $ms-focus-border-width;
+
+			&::after {
+				top: $ms-icon-size-s / 4 + 3;
+				right: $ms-icon-size-s / 4 + 3;
+			}
+		}
+	}
+
+	label {
+		&::before {
+			width: $ms-icon-size-s;
+			height: $ms-icon-size-s;
+		}
+
+		&::after {
+			width: $ms-icon-size-s / 2;
+			height: $ms-icon-size-s / 2;
+			border-width: $ms-icon-size-s / 4;
+		}
+	}
+}
+
+.ms-radio-md {
+	font-size: $ms-font-size-14;
+
+	&.ms-radio-default {
+		label span {
+			padding-left: $ms-icon-size-m + 6;
+			height: 100%;
+			line-height: $ms-icon-size-m;
+		}
+
+		label {
+			&::after {
+				left: $ms-icon-size-m / 4;
+				top: $ms-icon-size-m / 4;
+			}
+		}
+	}
+
+	&.ms-radio-icon {
+		img, i {
+			height: 28px;
+			width: 28px;	
+		}
+
+		.ms-radio-content {
+			padding-left: 25px;
+			padding-right: 25px;
+			font-size: $ms-font-size-28;
+			line-height: $ms-font-size-28;
+		}
+
+		.ms-icon-description {
+			margin: 4px 8px;
+			height: 20px;
+			line-height: 20px;
+		}
+
+		label {
+			padding-top: 22px;
+			text-align: center;
+			border-style: solid;
+			border-width: $ms-focus-border-width;
+
+			&::after {
+				top: $ms-icon-size-m / 4 + 3;
+				right: $ms-icon-size-m / 4 + 3;
+			}
+		}
+	}
+
+	label {
+		&::before {
+			width: $ms-icon-size-m;
+			height: $ms-icon-size-m;
+		}
+
+		&::after {
+			width: $ms-icon-size-m / 2;
+			height: $ms-icon-size-m / 2;
+			border-width: $ms-icon-size-m / 4;
+		}
+	}
+}
+
+.ms-radio-lg {
+	font-size: $ms-font-size-16;
+
+	&.ms-radio-default {
+		label span {
+			padding-left: 26px;
+			height: 100%;
+			line-height: $ms-icon-size-l;
+		}
+
+		label {
+			&::after {
+				left: $ms-icon-size-l / 4;
+				top: $ms-icon-size-l / 4;
+			}
+		}
+	}
+
+	&.ms-radio-icon {
 		img, i {
 			height: 32px;
 			width: 32px;	
@@ -152,7 +278,7 @@
 		.ms-icon-description {
 			margin: 4px 8px;
 			height: 30px;
-			line-height: 15px;
+			line-height: 30px;
 		}
 
 		label {
@@ -161,14 +287,9 @@
 			border-style: solid;
 			border-width: $ms-focus-border-width;
 
-			&::before {
-				top: 3px;
-				right: 3px;
-			}
-
 			&::after {
-				top: 8px;
-				right: 8px;
+				top: $ms-icon-size-l / 4 + 3;
+				right: $ms-icon-size-l / 4 + 3;
 			}
 		}
 	}
@@ -180,9 +301,9 @@
 		}
 
 		&::after {
-			width: 10px;
-			height: 10px;
-			border-width: 5px;
+			width: $ms-icon-size-l / 2;
+			height: $ms-icon-size-l / 2;
+			border-width: $ms-icon-size-l / 4;
 		}
 	}
 }

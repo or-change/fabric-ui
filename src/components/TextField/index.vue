@@ -15,11 +15,7 @@
 
 		<div class="ms-text-field-label">
 			<slot name="ms-text-field-label">
-				<label class="ms-label"
-					:class="{
-						'ms-label-required': required
-					}"
-				>{{ label }}</label>
+				<f-label :required="required">{{ label }}</f-label>
 			</slot>
 		</div>
 

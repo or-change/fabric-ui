@@ -6,6 +6,7 @@
 			label="Option A"
 			value="test1"
 			v-model="selected"
+			size="sm"
 		/>
 
 		<f-radio
@@ -16,10 +17,18 @@
 		/>
 
 		<f-radio
+			label="Option A"
+			value="test2"
+			v-model="selected"
+			size="lg"
+		/>
+
+		<f-radio
 			image="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/choicegroup-bar-selected.png"
 			label="Option A"
 			value="test3"
 			v-model="selected"
+			size="sm"
 		/>
 
 		<f-radio
@@ -30,11 +39,11 @@
 		/>
 
 		<f-radio
-			disabled
 			icon="ms-Icon ms-Icon--CalendarDay"
 			label="Option A"
 			value="test4"
 			v-model="selected"
+			size="lg"
 		/>
 	</div>
 </template>

@@ -16,7 +16,7 @@ import togglePlugin from './components/Toggle';
 import sliderPlugin from './components/Slider';
 import calendarPlugin from './components/Calendar';
 import textFieldPlugin from './components/TextField';
-import datePickerPlugin from './components/DatePicker';
+import datePickerPlugin from './components/Datepicker';
 import progressPlugin from './components/Progress';
 import modalPlugin from './components/modal';
 import listPlugin from './components/List';

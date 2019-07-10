@@ -13,11 +13,12 @@ import CustomSplitButton from './components/Button/CustomSplit';
 import ToggleButton from './components/Button/Toggle.vue';
 
 import Calendar from './components/Calendar';
-import Datepicker from './components/Datepicker'
 
 import Callout from './components/Callout';
 import Checkbox from './components/CheckBox';
+import Radio from './components/Radio';
 import Contextual from './components/ContextualMenu';
+// import Datepicker from './components/Datepicker';
 
 export default [
 	LabelTest,
@@ -33,8 +34,9 @@ export default [
 	ToggleButton,
 	Calendar,
 	MenuTest,
-	// Datepicker
 	Callout,
 	Checkbox,
-	Contextual
+	Radio,
+	// Contextual,
+	// Datepicker
 ];
