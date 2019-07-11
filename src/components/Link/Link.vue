@@ -1,27 +1,26 @@
 <template>
-	<button v-if="isButton"
-		:disabled="disabled"
-		class="ms-link"
-		:class="{
-			'ms-link-disabled': disabled
-		}"
-		@click="link">
-		{{ text }}
-	</button>
-	<a v-else
+	<a
 		:href="!disabled && href"
 		class="ms-link"
-		:class="{
-			'ms-link-disabled': disabled
-		}"
+		:class="[
+			`ms-link-${computedSize}`,
+			{
+				'ms-link-disabled': disabled
+			}
+		]"
 		:target="target">
-		{{ text }}
+		<slot>
+			{{ text }}
+		</slot>
 	</a>
 </template>
 
 <script>
+import mixin from '../mixin';
+
 export default {
 	name: 'f-link',
+	mixins: [mixin],
 	props: {
 		href: {
 			type: String
@@ -31,10 +30,6 @@ export default {
 			default: '_self'
 		},
 		disabled: {
-			type: Boolean,
-			default: false
-		},
-		isButton: {
 			type: Boolean,
 			default: false
 		},

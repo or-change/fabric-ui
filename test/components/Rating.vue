@@ -4,6 +4,9 @@
 		<f-rating
 			:max="45" v-model="value1" :unit="10" :step="5" />
 
+		<f-rating :max="5" size="md"
+			v-model="value2" />
+
 		<f-rating :max="5" size="lg"
 			v-model="value2" />
 

@@ -47,11 +47,7 @@ module.exports = {
 		]
 	},
 	resolve: {
-		extensions: ['.js', '.vue'],
-		alias: {
-			'scss': path.resolve(__dirname, '../node_modules/office-ui-fabric-core/src/sass'),
-			'@': path.resolve('src/components')
-		}
+		extensions: ['.js', '.vue']
 	},
 	plugins: [
 		new ExtractTextPlugin('style.css'),

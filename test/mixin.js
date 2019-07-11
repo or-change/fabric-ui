@@ -18,7 +18,10 @@ import Callout from './components/Callout';
 import Checkbox from './components/CheckBox';
 import Radio from './components/Radio';
 import Contextual from './components/ContextualMenu';
-// import Datepicker from './components/Datepicker';
+import Datepicker from './components/Datepicker';
+import Toggle from './components/Toggle';
+import Link from './components/Link';
+import Rating from './components/Rating';
 
 export default [
 	LabelTest,
@@ -37,6 +40,9 @@ export default [
 	Callout,
 	Checkbox,
 	Radio,
-	// Contextual,
-	// Datepicker
+	Contextual,
+	// Datepicker,
+	Toggle,
+	Link,
+	Rating
 ];

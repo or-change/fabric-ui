@@ -22,7 +22,7 @@ export default {
 </script>
 
 <style lang="scss">
-@import 'scss/_References.scss';
+@import 'office-ui-fabric-core/src/sass/_References.scss';
 
 .ms-row {
 	display: block;

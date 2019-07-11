@@ -1,6 +1,6 @@
-@import 'scss/_References.scss';
-@import 'scss/_Icon.scss';
-@import 'scss/_Icon.Definitions.scss';
+@import 'office-ui-fabric-core/src/sass/_References.scss';
+@import 'office-ui-fabric-core/src/sass/_Utility.scss';
+@import './font.scss';
 
 html {
 	box-sizing: border-box;

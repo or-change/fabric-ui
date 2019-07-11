@@ -1,0 +1,11 @@
+@import 'office-ui-fabric-core/src/sass/_Icon.scss';
+@import 'office-ui-fabric-core/src/sass/_Font.scss';
+
+@font-face {
+  font-family: 'FabricMDL2Icons';
+  src: url('../../static/font/fabricmdl2icons-2.68.woff2') format('woff2'),
+       url('../../static/font/fabricmdl2icons-2.68.woff') format('woff'),
+       url('../../static/font/fabricmdl2icons-2.68.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}

@@ -1,4 +1,4 @@
-@import 'scss/_References.scss';
+@import 'office-ui-fabric-core/src/sass/_References.scss';
 
 .ms-toggle {
 	font-family: inherit;
@@ -11,6 +11,10 @@
 		font-family: inherit;
 		font-size: inherit;
 		color: inherit;
+
+		label {
+			padding: 0px;
+		}
 	}
 
 	.ms-toggle-label {
@@ -41,20 +45,17 @@
 	.ms-toggle-status {
 		display: inline-block;
 		padding: 0px;
-    user-select: none;
+		user-select: none;
+		
+		label {
+			font-weight: $ms-font-weight-regular;
+		}
 	}
 
 	&.ms-toggle-off {
 		.ms-toggle-button {
 			background: $ms-color-white;
 		}
-	}
-}
-
-.ms-toggle-md {
-	.ms-toggle-label, .ms-toggle-status {
-		height: 20px;
-		line-height: 20px;
 	}
 
 	.ms-toggle-lable-end {
@@ -63,6 +64,94 @@
 
 	.ms-toggle-label {
 		margin: 7px 16px 7px 0px;
+	}
+
+	.ms-toggle-status {
+		margin: 0px 4px;
+	}
+}
+
+.ms-toggle-sm {
+	.ms-toggle-label, .ms-toggle-status {
+		height: 16px;
+		line-height: 16px;
+	}
+
+	.ms-toggle-lable-inline {
+		margin-top: 0px;
+		margin-bottom: 0px;
+	}
+
+	.ms-toggle-button {
+		width: 32px;
+		height: 16px;
+		border-radius: 8px;
+
+		&::after {
+			width: 8px;
+			height: 8px;
+			top: 3px;
+			border-radius: 8px;
+			box-sizing: border-box;
+			border: 4px solid transparent;
+		}
+	}
+
+	&.ms-toggle-off .ms-toggle-button {
+		&::after {
+			left: 3px;
+		}
+	}
+
+	&.ms-toggle-on .ms-toggle-button {
+		&::after {
+			right: 3px;
+		}
+	}
+}
+.ms-toggle-md {
+	.ms-toggle-label, .ms-toggle-status {
+		height: 18px;
+		line-height: 18px;
+	}
+
+	.ms-toggle-lable-inline {
+		margin-top: 0px;
+		margin-bottom: 0px;
+	}
+
+	.ms-toggle-button {
+		width: 36px;
+		height: 18px;
+		border-radius: 10px;
+
+		&::after {
+			width: 10px;
+			height: 10px;
+			top: 3px;
+			border-radius: 10px;
+			box-sizing: border-box;
+			border: 5px solid transparent;
+		}
+	}
+
+	&.ms-toggle-off .ms-toggle-button {
+		&::after {
+			left: 3px;
+		}
+	}
+
+	&.ms-toggle-on .ms-toggle-button {
+		&::after {
+			right: 3px;
+		}
+	}
+}
+
+.ms-toggle-lg {
+	.ms-toggle-label, .ms-toggle-status {
+		height: 20px;
+		line-height: 20px;
 	}
 
 	.ms-toggle-lable-inline {
@@ -81,7 +170,7 @@
 			top: 3px;
 			border-radius: 12px;
 			box-sizing: border-box;
-			border: 0.28em solid transparent;
+			border: 6px solid transparent;
 		}
 	}
 
@@ -95,10 +184,6 @@
 		&::after {
 			right: 3px;
 		}
-	}
-
-	.ms-toggle-status {
-		margin: 0px 8px;
 	}
 }
 

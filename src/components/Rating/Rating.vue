@@ -1,13 +1,14 @@
 <template>
 	<div
 		class="ms-rating"
-		:class="{
-			'ms-rating-enabled': !disabled && !readonly,
-			'ms-rating-disabled': disabled,
-			'ms-rating-readonly': readonly,
-			'ms-rating-sm': size === 'sm',
-			'ms-rating-lg': size === 'lg',
-		}">
+		:class="[
+			`ms-rating-${computedSize}`,
+			{
+				'ms-rating-enabled': !disabled && !readonly,
+				'ms-rating-disabled': disabled,
+				'ms-rating-readonly': readonly
+			}
+		]">
 			<button
 				type="button"
 				:disabled="disabled"
@@ -34,8 +35,11 @@
 </template>
 
 <script>
+import mixin from '../mixin';
+
 export default {
 	name: 'f-rating',
+	mixins: [mixin],
 	data() {
 		return {
 			hover: null
@@ -49,10 +53,6 @@ export default {
 		readonly: {
 			type: Boolean,
 			default: false
-		},
-		size: {
-			type: String,
-			default: 'sm'
 		},
 		icon: {
 			type: String,

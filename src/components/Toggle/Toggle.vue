@@ -1,50 +1,56 @@
 <template>
-	<div class="ms-toggle ms-toggle-md"
+	<div class="ms-toggle"
 		@click="input"
-		:class="{
-			'ms-toggle-enabled': !disabled,
-			'ms-toggle-disabled': disabled,
-			'ms-toggle-on': value,
-			'ms-toggle-off': !value
-		}"
+		:class="[
+			`ms-toggle-${computedSize}`,
+			{
+				'ms-toggle-enabled': !disabled,
+				'ms-toggle-disabled': disabled,
+				'ms-toggle-on': value,
+				'ms-toggle-off': !value
+			}
+		]"
 	>
-		<label class="ms-toggle-label"
+		<div class="ms-toggle-label"
 			:class="{
 				'ms-toggle-lable-inline': inline
 			}"	
 			v-if="label && !end">
 			<slot name="ms-toggle-label">
-				{{ label }}
+				<f-label :size="computedSize">{{ label }}</f-label>
 			</slot>
-		</label>
+		</div>
 
 		<button
 			class="ms-toggle-button"
 			:disabled="disabled"
 		></button>
 
-		<label class="ms-toggle-status"
+		<div class="ms-toggle-status"
 			v-if="statusText">
 			<slot name="ms-toggle-status">
-				{{ statusText }}
+				<f-label :size="computedSize">{{ statusText }}</f-label>
 			</slot>
-		</label>
+		</div>
 
-		<label class="ms-toggle-label ms-toggle-lable-end"
+		<div class="ms-toggle-label ms-toggle-lable-end"
 			:class="{
 				'ms-toggle-lable-inline': inline
 			}"	
 			v-if="label && end">
 			<slot name="ms-toggle-label">
-				{{ label }}
+				<f-label :size="computedSize">{{ label }}</f-label>
 			</slot>
-		</label>
+		</div>
 	</div>
 </template>
 
 <script>
+import mixin from '../mixin';
+
 export default {
 	name: 'f-toggle',
+	mixins: [mixin],
 	props: {
 		value: {
 			type: Boolean,

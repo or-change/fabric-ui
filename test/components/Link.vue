@@ -6,10 +6,21 @@
 			text="test"
 			:href="href"
 			target="_self"
+			size="sm"
+		 />
+		<f-link
+			text="test"
+			:href="href"
+			target="_self"
+		 />
+		<f-link
+			text="test"
+			:href="href"
+			target="_self"
+			size="lg"
 		 />
 
 		<f-link
-		  :is-button="true"
 			text="button test"
 			:href="href"
 			target="_blank"
@@ -22,7 +33,6 @@
 			disabled />
 
 		<f-link
-		  :is-button="true"
 			text="button test"
 			:href="href"
 			target="_blank"

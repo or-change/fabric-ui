@@ -1,4 +1,4 @@
-@import 'scss/_References.scss';
+@import 'office-ui-fabric-core/src/sass/_References.scss';
 
 .ms-rating {
 	font-family: inherit;
@@ -40,17 +40,25 @@
 
 .ms-rating-lg {
 	button {
-		font-size: $ms-font-size-20;
-    line-height: $ms-font-size-20;
-    height: $ms-font-size-20;
+		font-size: $ms-icon-size-l;
+    line-height: $ms-icon-size-l;
+    height: $ms-icon-size-l;
+	}
+}
+
+.ms-rating-md {
+	button {
+		font-size: $ms-icon-size-m;
+    line-height: $ms-icon-size-m;
+    height: $ms-icon-size-m;
 	}
 }
 
 .ms-rating-sm {
 	button {
-		font-size: $ms-font-size-16;
-    line-height: $ms-font-size-16;
-    height: $ms-font-size-16;
+		font-size: $ms-icon-size-s;
+    line-height: $ms-icon-size-s;
+    height: $ms-icon-size-s;
 	}
 }
 

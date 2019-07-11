@@ -5,7 +5,13 @@
 		</h2>
 
 		<f-toggle label="With inline label" text-on="on" text-off="off"
+			v-model="value" size="sm" />
+
+		<f-toggle label="With inline label" text-on="on" text-off="off"
 			v-model="value" />
+
+		<f-toggle label="With inline label" text-on="on" text-off="off"
+			v-model="value" size="lg"/>
 
 		<f-toggle label="With inline label" text-on="on" text-off="off"
 			v-model="value" disabled />

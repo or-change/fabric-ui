@@ -1,5 +1,3 @@
-import 'scss/Fabric.scss';
-
 import Column from './Column.vue';
 import Row from './Row.vue';
 

@@ -1,8 +1,7 @@
-@import 'scss/_References.scss';
+@import 'office-ui-fabric-core/src/sass/_References.scss';
 
 .ms-link {
 	font-family: inherit;
-	font-size: $ms-font-size-16;
 	font-weight: $ms-font-weight-regular;
 	color: $ms-color-blue;
 	display: inline;
@@ -27,4 +26,16 @@
 			text-decoration: none;
 		}
 	}
+}
+
+.ms-link-sm {
+	font-size: $ms-font-size-12;
+}
+
+.ms-link-md {
+	font-size: $ms-font-size-14;
+}
+
+.ms-link-lg {
+	font-size: $ms-font-size-16;
 }
