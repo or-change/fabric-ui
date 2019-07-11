@@ -20,11 +20,6 @@
 		height: 100%;
     background: $ms-color-white;
 		box-sizing: border-box;
-
-		.ms-text-field-icon {
-			font-size: $ms-font-size-16;
-		}
-
 	}
 
 	.ms-text-field-group-multi {
@@ -39,7 +34,6 @@
 
 
 	textarea, input {
-		font-size: $ms-font-size-14;
 		font-weight: $ms-font-weight-regular;
 		font-family: inherit;
 		width: 100%;
@@ -60,6 +54,7 @@
 		white-space: nowrap;
 		text-overflow: ellipsis;
 		overflow: hidden;
+		padding: 0 6px;
 	}
 
 	textarea {
@@ -74,89 +69,122 @@
 	}
 }
 
-.ms-text-field-md {
+.ms-text-field-sm {
+	textarea, input, .ms-text-field-fix, .ms-text-field-icon{
+		font-size: $ms-font-size-12;
+	}
+
 	&.ms-text-field-standard{
 		.ms-text-field-group-inline {
-			height: 30px;
-			
 			.ms-text-field-fix {
-				span {
-					display: inline-block;
-					height: 30px;
-					line-height: 30px;
-					vertical-align: middle;
-				}
+				line-height: 24px;
 			}
 	
 			.ms-text-field-icon i {
-				display: inline-block;
-				height: 100%;
-				line-height: 30px;
+				font-size: $ms-font-size-14;
+				line-height: 24px;
 			}
-	
-			.ms-text-field-fix, .ms-text-field-icon {
-				padding: 0px 10px;
-			}
-		}
-	
-		input {
-			display: inline-block;
-			padding: 0px 8px;
-			vertical-align: middle;
-			line-height: 30px;
-			height: 30px;
-		}
-	
-		.ms-text-field-msg {
-			margin: 0px;
-			padding-top: 5px;
 		}
 	}
 
 	&.ms-text-field-underline {
+		.ms-text-field-label label {
+			line-height: 24px;
+		}
+	}
+
+	input {
+		line-height: 24px;
+		height: 24px;
+	}
+}
+
+.ms-text-field-md {
+	textarea, input, .ms-text-field-fix, .ms-text-field-icon{
+		font-size: $ms-font-size-14;
+	}
+
+	&.ms-text-field-standard{
+		.ms-text-field-group-inline {
+			.ms-text-field-fix span {
+				line-height: 32px;
+			}
+	
+			.ms-text-field-icon i {
+				font-size: $ms-font-size-16;
+				line-height: 32px;
+			}
+		}
+	}
+
+	&.ms-text-field-underline {
+		.ms-text-field-label label {
+			line-height: 32px;
+		}
+	}
+
+	input {
+		line-height: 32px;
 		height: 32px;
+	}
+}
 
-		.ms-text-field-label,
-		.ms-text-field-group-inline,
-		.ms-text-field-input input {
-			height: 32px;
-		}
+.ms-text-field-lg {
+	textarea, input, .ms-text-field-fix, .ms-text-field-icon{
+		font-size: $ms-font-size-16;
+	}
 
-		.ms-text-field-input input {
-			line-height: 22px;
-		}
-
-		.ms-text-field-label {
-			height: 32px;
-			width: auto;
-			padding: 4px 0;
-
-			label {
-				min-width: 1em;
-				margin: 0px 8px 0 0;
-				padding: 5px 12px 5px 12px;
-				position: relative;
+	&.ms-text-field-standard {
+		.ms-text-field-group-inline {
+			.ms-text-field-fix {
+				line-height: 40px;
+			}
+	
+			.ms-text-field-icon i {
+				font-size: $ms-font-size-18;
+				line-height: 40px;
 			}
 
-			.ms-label-required::after {
-				position: absolute;
-				top: 0;
-				right: 0
+			.ms-text-field-fix, .ms-text-field-icon {
+				padding: 0px 5px;
 			}
 		}
+	}
+
+	&.ms-text-field-underline {
+		.ms-text-field-label label {
+			line-height: 40px;
+		}
+	}
+
+	input {
+		line-height: 40px;
+		height: 40px;
 	}
 }
 
 .ms-text-field-standard {
+
 	.ms-text-field-group-inline {
 		display: table;
 		border: 1px solid $ms-color-gray110;
 		border-radius: 2px;
 
 		.ms-text-field-fix {
+			height: 100%;
 			color: $ms-color-gray130;
 			white-space: nowrap;
 			background: $ms-color-gray20;
+
+			span {
+				display: inline-block;
+				height: 100%;
+			}
+		}
+
+		.ms-text-field-icon i {
+			display: inline-block;
+			height: 100%;
 		}
 
 		.ms-text-field-fix, .ms-text-field-input {
@@ -166,12 +194,7 @@
 		.ms-text-field-fix, .ms-text-field-icon {
 			display: table-cell;
 			height: 100%;
-			font-size: $ms-font-size-14;
 			padding: 0px 10px;
-		}
-
-		.ms-text-field-icon {
-			font-size: $ms-font-size-16;
 		}
 
 		.ms-text-field-input {
@@ -179,6 +202,10 @@
 			width: 100%;
 			height: 100%;
 			cursor: text;
+		}
+
+		input {
+			display: inline-block;
 		}
 	}
 
@@ -250,10 +277,25 @@
 	width: 100%;
 	display: table;
 
+	.ms-text-field-label {
+		width: auto;
+
+		label {
+			min-width: 1em;
+			padding: 0px 12px;
+			position: relative;
+		}
+
+		.ms-label-required::after {
+			position: absolute;
+			top: 0;
+			right: 6px;
+		}
+	}
+
 	.ms-text-field-label, .ms-text-field-group-inline, .ms-text-field-group-multi {
 		display: table-cell;
 		height: 100%;
-		vertical-align: top;
 	}
 
 	&.ms-text-field-disabled input, .ms-text-field-disabled textarea {

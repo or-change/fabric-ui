@@ -55,6 +55,8 @@
 <script>
 const EVENT_TOGGLE = 'fv::toggle::dropdown';
 
+import mixin from '../mixin';
+
 export default {
 	name: 'f-dropdown',
 	data() {
@@ -103,6 +105,9 @@ export default {
 		}
 	},
 	methods: {
+		isHeader(item) {
+			return !item.value;
+		},
 		show() {
 			if (this.disabled) {
 				return;

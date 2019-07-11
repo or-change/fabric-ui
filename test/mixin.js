@@ -22,6 +22,9 @@ import Datepicker from './components/Datepicker';
 import Toggle from './components/Toggle';
 import Link from './components/Link';
 import Rating from './components/Rating';
+import SearchBox from './components/SearchBox';
+import Dropdown from './components/Dropdown';
+import TextField from './components/TextField';
 
 export default [
 	LabelTest,
@@ -41,8 +44,11 @@ export default [
 	Checkbox,
 	Radio,
 	Contextual,
-	// Datepicker,
+	Datepicker,
 	Toggle,
 	Link,
-	Rating
+	Rating,
+	SearchBox,
+	Dropdown,
+	TextField
 ];

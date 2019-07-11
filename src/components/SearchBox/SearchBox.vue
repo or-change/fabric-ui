@@ -1,12 +1,15 @@
 <template>
 	<div
-		class="ms-search-box ms-search-box-md content"
-		:class="{
-			'ms-search-box-enabled': !disabled,
-			'ms-search-box-disabled': disabled,
-			'ms-search-box-active': active,
-			'ms-search-box-border': border
-		}"
+		class="ms-search-box content"
+		:class="[
+			`ms-search-box-${computedSize}`,
+			{
+				'ms-search-box-enabled': !disabled,
+				'ms-search-box-disabled': disabled,
+				'ms-search-box-active': active,
+				'ms-search-box-border': border
+			}
+		]"
 		@click="active = true; $refs.input.focus()"
 		@mouseover="isSearch = true"
 		@mouseout="isSearch = false">
@@ -42,6 +45,8 @@
 </template>
 
 <script>
+import mixin from '../mixin';
+
 export default {
 	name: 'f-search-box',
 	data() {
@@ -51,6 +56,7 @@ export default {
 			isSearch: false
 		}
 	},
+	mixins: [mixin],
 	watch:{
 		value(newValue, oldValue) {
 			this.text = newValue;

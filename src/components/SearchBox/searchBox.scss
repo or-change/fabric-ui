@@ -5,7 +5,6 @@
 	display: table;
 	width: 100%;
 	font-family: inherit;
-	font-size: $ms-font-size-14;
 	font-weight: $ms-font-weight-regular;
 	box-shadow: none;
 	margin: 0px;
@@ -18,7 +17,6 @@
 	border-bottom-width: 1px;
 
 	i {
-    font-size: $ms-font-size-16;
     text-align: center;
 	}
 
@@ -84,28 +82,69 @@
 	}
 }
 
-.ms-search-box-md {
-	height: 32px;
-	padding: 1px 0px 1px 4px;
+.ms-search-box-sm {
+	font-size: $ms-font-size-12;
 
 	i, button {
-		height: 28px;
-		line-height: 28px;
+		font-size: $ms-icon-size-s;
+		height: $ms-icon-size-s;
+		line-height: $ms-icon-size-s;
+		padding: 6px 0 6px 6px;
 	}
 
 	.icon-search, .icon-clear {
-		width: 32px;
+		width: $ms-icon-size-s;
 	}
 
-	input[type=text], .input-wrapper span {
-		height: 28px;
-		line-height: 28px;
+	.input-wrapper, .input-wrapper span {
+		line-height: $ms-icon-size-s;
+		padding: 5px;
+	}
+}
+
+.ms-search-box-md {
+	font-size: $ms-font-size-14;
+
+	i, button {
+		font-size: $ms-icon-size-m;
+		height: $ms-icon-size-m;
+		line-height: $ms-icon-size-m;
+		padding: 8px 0 8px 8px;
 	}
 
-	&.ms-search-box-enabled.ms-search-box-active {
-		input[type="text"] {
-			padding-left: 4px;
-		}
+	.icon-search, .icon-clear {
+		width: $ms-icon-size-m;
+	}
+
+	.input-wrapper, .input-wrapper span {
+		line-height: $ms-icon-size-m;
+		padding: 8px;
+	}
+}
+
+.ms-search-box-lg {
+	font-size: $ms-font-size-16;
+
+	i {
+		font-size: $ms-icon-size-l;
+		height: $ms-icon-size-l;
+		line-height: $ms-icon-size-l;
+		padding: 10px 0 10px 10px;
+	}
+
+	.icon-search, .icon-clear {
+		width: $ms-icon-size-l;
+	}
+
+	.input-wrapper, .input-wrapper span {
+		line-height: $ms-icon-size-l;
+		padding: 10px;
+	}
+}
+
+.ms-search-box-enabled.ms-search-box-active {
+	.input-wrapper {
+		padding-left: 4px;
 	}
 }
 
