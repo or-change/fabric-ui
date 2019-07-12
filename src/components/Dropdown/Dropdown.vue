@@ -10,6 +10,7 @@
 				'ms-dropdown-required': !disabled && required
 			}
 		]"
+		@click.stop
 	>
 		<slot name="dropdown-controller">
 			<f-text-field
@@ -78,6 +79,9 @@ export default {
 		FDropdownItem, FDropdownItemMulti
 	},
 	props: {
+		id: {
+			type: String
+		},
 		dataDropdownName: {
 			type: String
 		},
@@ -145,6 +149,8 @@ export default {
 			this.isShow = true;
 			this.$emit('shown');
 
+			this.$root.$emit('f::dropdown::show', this.id);
+
 			this.$nextTick(() => {
 				this.computedPosition();
 			});
@@ -156,6 +162,11 @@ export default {
 
 			this.isShow = false;
 			this.$emit('hidden');
+		},
+		hideSelf(id) {
+			if (id !== this.id) {
+				this.hide();
+			}
 		},
 		toggle() {
 			if (this.isShow) {
@@ -244,10 +255,12 @@ export default {
 		}
 	},
 	mounted() {
-		this.$root.$on(EVENT_TOGGLE, this.toggleHandler);
+		document.body.addEventListener('click', this.hide);
+		this.$root.$on('f::dropdown::show', this.hideSelf);
 	},
 	beforeDestroy() {
-		this.$root.$off(EVENT_TOGGLE, this.toggleHandler);
+		document.body.removeEventListener('click', this.hide);
+		this.$root.$off('f::dropdown::show', this.hideSelf);
 	}
 }
 </script>

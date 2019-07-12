@@ -6,10 +6,12 @@
 			:options="options"
 			v-model="value"
 			size="sm"
+			id="d1"
 		/>
 		<f-button
 			text="show dropdown"
 			v-f-dropdown.test
+			id="d2"
 		/>
 
 		<f-dropdown

@@ -128,7 +128,6 @@
 .ms-message-bar-multi {
 	.ms-message-bar-text {
 		white-space: normal;
-    word-break: break-all;
     overflow: hidden;
 	}
 }
@@ -154,6 +153,15 @@
 }
 
 .ms-message-bar-md {
+	&.ms-message-bar-single {
+		.ms-message-bar-content {
+			.ms-message-bar-text {
+				max-width: 100px;
+				min-height: 32px;
+			}
+		}
+	}
+
 	.ms-message-bar-action-button {
 		button {
 			min-width: 80px;
@@ -171,8 +179,7 @@
 		padding-left: $ms-icon-size-m;
 	}
 
-	.ms-message-bar-multi-button, .ms-message-bar-close-button
-	{
+	.ms-message-bar-multi-button, .ms-message-bar-close-button {
 		width: 40px;
 		height: $ms-font-size-32;
 	}

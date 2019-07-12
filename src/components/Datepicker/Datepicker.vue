@@ -136,13 +136,14 @@ export default {
 			this.$emit('show');
 			this.$root.$emit('f::datepicker::show', this.id);
 		},
-		hide(id) {
-			if (!id || this.id === id) {
-				return;
-			}
-
+		hide() {
 			this.isShow = false;
 			this.$emit('hide');
+		},
+		hideSelf(id) {
+			if (id !== this.id) {
+				this.hide();
+			}
 		},
 		toggle() {
 			this.isShow ? this.hide() : this.show()
@@ -166,11 +167,11 @@ export default {
 		this.setDate();
 
 		document.body.addEventListener('click', this.hide);
-		this.$root.$on('f::datepicker::show', this.hide);
+		this.$root.$on('f::datepicker::show', this.hideSelf);
 	},
 	destroyed() {
 		document.body.removeEventListener('click', this.hide);
-		this.$root.$off('f::datepicker::show', this.hide);
+		this.$root.$off('f::datepicker::show', this.hideSelf);
 	}
 }
 </script>
