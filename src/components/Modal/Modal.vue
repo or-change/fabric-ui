@@ -1,95 +1,44 @@
 <template>
-	<div :id="id" v-if="visible"
-		@mousemove="dragging"
-		:class="[
-			`ms-panel-${size}`,
-			`ms-panel-${position}`,
-			{
-				'ms-modal': !type,
-				'ms-modal-md': !type,
-				'ms-dialog': type === 'dialog',
-				'ms-dialog-md': type === 'dialog',
-				'ms-panel': type === 'panel'
-			}
-		]"
-	>
-		<div
-			ref="f-modal"
-			class="ms-modal-main"
-			:class="[
-				{
-					'ms-modal-center': centered
-				}
-			]"
-			:style="{
-				'width': computedWidth
-			}"
-			@mousedown.prevent="dragStart"
-			@mouseup="dragEnd"
-		>
-			<slot name="ms-modal-header">
-				<div class="ms-modal-header"
-					:class="[
-						`ms-variant-${variant}`
-					]"
-				>
-					<p v-if="type !== 'panel'">{{ title }}</p>
-					<div class="button-close" v-if="closeButton && type">
-						<f-button icon="ms-Icon ms-Icon--Cancel" :border="false"
-							@click="close"
-						/>
-					</div>
-				</div>
-
-				<div
-					class="ms-panel-title"
-					v-if="type === 'panel'">
-					<p>
-						{{ title }}
-					</p>
-				</div>
-			</slot>
-
-			<slot name="ms-modal-body">
-				<div class="ms-modal-body">
-					<f-button 
-						:text="closeTitle"
-						@click="close"
-						v-if="!type"
-					/>
-
-					<p class="ms-modal-content">{{ text }}</p>
-				</div>
-			</slot>
-
-			<slot name="ms-modal-footer">
-				<div class="ms-modal-footer" v-if="type">
-					<div class="ms-modal-action">
-						<f-button 
-							theme="primary"
-							:text="okText"
-							@click="ok" />
-						<f-button
-							:text="cancelText"
-							@click="cancel" />
-					</div>
-				</div>
-			</slot>
-		</div>
-
-		<button v-if="overlay"
-			@click="backdropClose"
-			class="ms-modal-overlay"
-			:class="{
-				'ms-modal-overlay-dark': overlayTheme === 'dark',
-				'ms-modal-overlay-light': overlayTheme === 'light'
-			}"
-		></button>
-	</div>
+	<component
+		:id="id"
+		ref="f-modal-container"
+		v-if="visible"
+		:is="component"
+		:width="computedWidth"
+		:size="computedSize"
+		:position="position"
+		:draggable="draggable"
+		:overlay="overlay"
+		:overlayTheme="overlayTheme"
+		:closeOnBackdrop="closeOnBackdrop"
+		:title="title"
+		:text="text"
+		:centered="centered"
+		:variant="variant"
+		:closeTitle="closeTitle"
+		:closeButton="closeButton"
+		:okText="okText"
+		:cancelText="cancelText"
+		:fluid="fluid"
+		@mousemove.native="dragging"
+		@dragStart="customDragStart"
+		@dragEnd="customDragEnd"
+		@close="customClose"
+		@ok="customOk"
+		@cancel="customCancel"
+		@backdropClose="customBackdropClose"
+	/>
 </template>
 
 <script>
 import parameter from './parameter';
+
+import mixin from './mixin';
+import globalMixin from '../mixin';
+
+import FModalDefault from './Default';
+import FDialog from './Dialog';
+import FPanel from './Panel';
 
 export default {
 	name: 'f-modal',
@@ -100,6 +49,12 @@ export default {
 			visible: false
 		}
 	},
+	components: {
+		FModalDefault,
+		FDialog,
+		FPanel
+	},
+	mixins: [mixin, globalMixin],
 	props: {
 		id: {
 			type: String,
@@ -109,73 +64,12 @@ export default {
 			type: Boolean,
 			default: false
 		},
-		width: {
-			type: String
-		},
-		size: {
-			type: String,
-			default: 'sm'
-		},
-		position: {
-			type: String,
-			default: 'right'
-		},
-		scrollable: {
-			type: Boolean,
-			default: false
-		},
 		type: {
 			type: String
-		},
-		draggable: {
-			type: Boolean,
-			default: false
-		},
-		overlay: {
-			type: Boolean,
-			default: true
-		},
-		overlayTheme: {
-			type: String,
-			default: 'dark'
-		},
-		closeOnBackdrop: {
-			type: Boolean,
-			default: true
-		},
-		title: {
-			type: String
-		},
-		text: {
-			type: String
-		},
-		centered: {
-			type: Boolean,
-			default: true
-		},
-		variant: {
-			type: String,
-			default: 'default'
 		},
 		stacking: {
 			type: Boolean,
 			default: true
-		},
-		closeTitle: {
-			type: String,
-			default: 'Close'
-		},
-		closeButton: {
-			type: Boolean,
-			default: true
-		},
-		okText: {
-			type: String,
-			default: 'Save'
-		},
-		cancelText: {
-			type: String,
-			default: 'Cancel'
 		}
 	},
 	computed: {
@@ -190,6 +84,13 @@ export default {
 			if (!this.type) {
 				return '80vw';
 			}
+		},
+		component() {
+			if (!this.type) {
+				return 'f-modal-default';
+			}
+
+			return this.type === 'dialog' ? 'f-dialog' : 'f-panel';
 		}
 	},
 	watch: {
@@ -251,19 +152,19 @@ export default {
 				this.close();
 			}
 		},
-		backdropClose() {
+		customBackdropClose() {
 			if (this.closeOnBackdrop) {
 				this.close();
 				this.$emit('backdropClick');
 			}
 		},
-		dragStart(event) {
+		customDragStart(event) {
 			if (!this.draggable) {
 				return;
 			}
 
 			const { clientX, clientY } = event;
-			const modal = this.$refs['f-modal'];
+			const modal = this.$refs['f-modal-container'].$refs['f-modal'];
 			const { left, top } = modal.getBoundingClientRect();
 
 			modal.style.margin = '0px';
@@ -280,25 +181,25 @@ export default {
 				return;
 			}
 
-			const modal = this.$refs['f-modal'];
+			const modal = this.$refs['f-modal-container'].$refs['f-modal'];
 			const { x, y } = event;
 
 			modal.style.left = `${x - this.startPosition.offsetX}px`;
 			modal.style.top = `${y - this.startPosition.offsetY}px`;
 		},
-		dragEnd() {
+		customDragEnd() {
 			this.startPosition = null;
 		},
-		close() {
+		customClose() {
 			this.$emit('input', false);
 		},
-		ok() {
+		customOk() {
 			this.$emit('ok');
-			this.close();
+			this.customClose();
 		},
-		cancel() {
+		customCancel() {
 			this.$emit('cancel');
-			this.close();
+			this.customClose();
 		}
 	},
 	mounted() {

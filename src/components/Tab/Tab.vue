@@ -2,22 +2,25 @@
 	<div class="ms-tab"
 		:class="[
 			`ms-tab-${type}`,
-			`ms-tab-${size}`
+			`ms-tab-${computedSize}`
 		]"
 	>
 		<slot name="tab-header">
 			<div class="ms-tab-header">
-				<button class="ms-tab-title" v-for="(tabTitle, index) in tabTitleList"
-					@click="changeActiveItem(index)"
+				<f-button
+					v-for="(tabTitle, index) in tabTitleList"
+					:key="index"
+					:border="false"
+					:bar="true"
+					:icon="tabTitle.icon"
+					:text="tabTitle.text"
+					:size="computedSize"
+					@click.native="changeActiveItem(index)"
+					class="ms-tab-title"
 					:class="{
 						'ms-tab-title-active': index === activeIndex
 					}"
-				>
-					<i :class="[
-						tabTitle.icon, 'ms-tab-title-icon'
-					]"></i>
-					<span class="ms-tab-title-text">{{ tabTitle.text }}</span>
-				</button>
+				/>
 			</div>
 		</slot>
 		<div class="ms-tab-content">
@@ -27,6 +30,8 @@
 </template>
 
 <script>
+import mixin from '../mixin';
+
 export default {
 	name: 'f-tabs',
 	data() {
@@ -35,14 +40,11 @@ export default {
 			tabItemList: []
 		}
 	},
+	mixins: [mixin],
 	props: {
 		type: {
 			type: String,
 			default: 'default' //default
-		},
-		size: {
-			type: String,
-			default: 'md' //md, lg
 		},
 		value: {
 			type: Number,

@@ -63,9 +63,9 @@ export default [
 	// SearchBox,
 	// TextField,
 	// Dropdown,
-	Dialog,
-	Modal,
-	Panel,
+	// Dialog,
+	// Modal,
+	// Panel,
 	List,
 	// Grid,
 	// MessageBar,
@@ -73,5 +73,5 @@ export default [
 	// Progress,
 	// Slider,
 	// spinButton,   
-	Tab
+	// Tab
 ];

@@ -1,6 +1,6 @@
 import './tab.scss';
 
-import Tabs from './Tabs.vue';
+import Tabs from './Tab.vue';
 import TabItem from './TabItem.vue';
 
 const tab = [

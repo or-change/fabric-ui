@@ -1,15 +1,15 @@
 @import 'office-ui-fabric-core/src/sass/_References.scss';
 
 .ms-list {
-	position: relative;
+	position: absolute;
+	top: 0;
+	left: 0;
 	display: table;
 	width: 100%;
 	font-family: inherit;
 	font-size: $ms-font-size-12;
 	font-weight: $ms-font-weight-regular;
 	color: $ms-color-gray160;
-	overflow-x: auto;
-	overflow-y: visible;
 	background: $ms-color-white;
 
 	.ms-list-header {
@@ -319,4 +319,22 @@
 	.ms-list-check {
 		display: none;
 	}
+}
+
+.ms-list-header-locked {
+	position: relative;
+
+	.ms-list-header {
+		position: fixed;
+		top: 0;
+		left: 0;
+	}
+
+	.ms-list-body {
+		margin-top: 33px;
+	}
+}
+
+.ms-list-placeholder {
+	background-color: transparent;
 }

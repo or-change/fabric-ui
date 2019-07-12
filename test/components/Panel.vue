@@ -18,7 +18,7 @@
 		<f-modal id="panel-3" v-model="show3" :title="title" :stacking="false"
 			:text="text"
 			type="panel" position="left"
-			size="fluid"
+			:fluid="true"
 		 />
 
 		<div @click="show4 = !show4">md + right panel</div>
