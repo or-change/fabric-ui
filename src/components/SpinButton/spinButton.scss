@@ -4,7 +4,6 @@
 	width: 100%;
 	display: table;
 	font-family: inherit;
-	font-size: $ms-font-size-14;
 	font-weight: $ms-font-weight-regular;
 
 	.ms-spin-button-label, .ms-spin-button-input {
@@ -59,7 +58,6 @@
 			padding: 0px;
 
 			i {
-				font-size: 8px;
 				display: block;
 			}
 		}
@@ -85,41 +83,102 @@
 	}
 }
 
-.ms-spin-button-md {
-	height: 32px;
+.ms-spin-button-label {
+	width: 10px;
+
+	i, span {
+		display: inline-block;
+	}
+}
+
+.ms-spin-button-label-start {
+	padding-right: 10px;
+}
+
+.ms-spin-button-label-end {
+	padding-left: 10px;
+}
+
+input[type=text] {
+	padding: 0px 8px;
+}
+
+.ms-spin-button-sm {
+	font-size: $ms-font-size-12;
+
+	.ms-spin-button-input input {
+		height: 18px;
+	}
 
 	.ms-spin-button-label {
-		width: 10px;
 
 		i, span {
-			display: inline-block;
-			height: 32px;
-			line-height: 32px;
+			height: 20px;
+			line-height: 20px;
 		}
-	}
-
-	.ms-spin-button-label-start {
-		padding-right: 10px;
-	}
-
-	.ms-spin-button-label-end {
-		padding-left: 10px;
 	}
 
 	.ms-spin-button-input-handler {
 		width: 23px;
-
 		button {
-			height: 15px;
+			height: 9px;
 			i {
-				height: 15px;
-				line-height: 15px;
+				height: 9px;
+				line-height: 9px;
 			}
 		}
 	}
+}
 
-	input[type=text] {
-    padding: 0px 8px;
+.ms-spin-button-md {
+	font-size: $ms-font-size-14;
+	
+	.ms-spin-button-input input {
+		height: 24px;
+	}
+
+	.ms-spin-button-label {
+		i, span {
+			height: 26px;
+			line-height: 26px;
+		}
+	}
+
+	.ms-spin-button-input-handler {
+		width: 26px;
+		button {
+			height: 12px;
+			i {
+				height: 12px;
+				line-height: 12px;
+			}
+		}
+	}
+}
+
+.ms-spin-button-lg {
+	font-size: $ms-font-size-16;
+	
+	.ms-spin-button-input input {
+		height: 32px;
+	}
+
+	.ms-spin-button-label {
+		i, span {
+			height: 34px;
+			line-height: 34px;
+		}
+	}
+
+	.ms-spin-button-input-handler {
+		width: 28px;
+		button {
+			height: 16px;
+			i {
+				height: 16px;
+				line-height: 16px;
+			}
+		}
 	}
 }
 

@@ -1,10 +1,13 @@
 <template>
-	<div class="ms-spin-button ms-spin-button-md"
-		:class="{
-			'ms-spin-button-enabled': !disabled,
-			'ms-spin-button-disabled': disabled,
-			'ms-spin-button-active': !disabled && active
-		}">
+	<div class="ms-spin-button"
+		:class="[
+			`ms-spin-button-${computedSize}`,
+			{
+				'ms-spin-button-enabled': !disabled,
+				'ms-spin-button-disabled': disabled,
+				'ms-spin-button-active': !disabled && active
+			}
+		]">
 		<slot name="ms-spin-button-start">
 			<div v-if="!end" class="ms-spin-button-label ms-spin-button-label-start">
 				<i :class="icon"></i>
@@ -28,7 +31,9 @@
 					@click="remove"
 					@mouseout="remove"
 				>
-					<i class="ms-Icon ms-Icon--ChevronUpSmall"></i>
+					<slot name="ms-spin-button-up">
+						<i class="ms-Icon ms-Icon--ChevronUpSmall"></i>
+					</slot>
 				</button>
 				<button
 					:disabled="disabled"
@@ -37,7 +42,9 @@
 					@click="remove"
 					@mouseout="remove"
 				>
-					<i class="ms-Icon ms-Icon--ChevronDownSmall"></i>
+					<slot name="ms-spin-button-down">
+						<i class="ms-Icon ms-Icon--ChevronDownSmall"></i>
+					</slot>
 				</button>
 			</span>
 		</div>
@@ -52,9 +59,11 @@
 </template>
 
 <script>
-import { setTimeout, clearTimeout } from 'timers';
+import mixin from '../mixin';
+
 export default {
 	name: 'f-spin-button',
+	mixins: [mixin],
 	data() {
 		return {
 			text: null,

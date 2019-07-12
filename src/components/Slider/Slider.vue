@@ -16,40 +16,12 @@
 
 		<div class="ms-slider-container">
 			<div class="ms-slider-inline">
-				<div
+				<component 
 					class="ms-slider-inline-container"
-					ref="ms-line" v-if="!vertical"
-					>
-					<span v-if="originFromZero" class="ms-slider-zero"
-						ref="ms-zero"></span>
-					<span v-if="originFromZero" class="ms-slider-inactive"
-						ref="ms-inactive-zero"></span>
-					<span
-						class="ms-slider-handler"
-						ref="ms-handler"
-					></span>
-					<span class="ms-slider-active"
-						ref="ms-active"></span>
-					<span class="ms-slider-inactive"
-						ref="ms-inactive"></span>
-				</div>
-
-				<div
-					class="ms-slider-inline-container"
-					ref="ms-line" v-if="vertical">
-					<span v-if="originFromZero" class="ms-slider-zero"
-						ref="ms-zero"></span>
-					<span class="ms-slider-inactive"
-						ref="ms-inactive"></span>
-					<span class="ms-slider-active"
-						ref="ms-active"></span>
-					<span v-if="originFromZero" class="ms-slider-inactive"
-						ref="ms-inactive-zero"></span>
-					<span
-						class="ms-slider-handler"
-						ref="ms-handler"
-					></span>
-				</div>
+					ref="ms-line"
+					:is="type"
+					:origin-from-zero="originFromZero"
+				/>
 			</div>
 
 			<label v-if="showValue" class="ms-slider-label">
@@ -60,12 +32,19 @@
 </template>
 
 <script>
+import FSliderVertical from './Vertical';
+import FSliderHorizontal from './Horizontal';
+
 export default {
 	name: 'f-slider',
 	data() {
 		return {
 			slider: false
 		}
+	},
+	components: {
+		FSliderVertical,
+		FSliderHorizontal
 	},
 	props: {
 		label: {
@@ -113,13 +92,19 @@ export default {
 			this.computedSlider();
 		}
 	},
+	computed: {
+		type() {
+			return this.vertical ? 'f-slider-vertical' : 'f-slider-horizontal';
+		}
+	},
 	methods: {
 		stop(e) {
 			if(e.stopPropagation) e.stopPropagation();
     	if(e.preventDefault) e.preventDefault();
 		},
 		focus(event) {
-			const handlerInfo = this.$refs['ms-handler'].getBoundingClientRect();
+			
+			const handlerInfo = this.$refs['ms-line'].$refs['ms-handler'].getBoundingClientRect();
 
 			this.slider = true;
 
@@ -142,8 +127,10 @@ export default {
 			this.stop(event);
 
 			const { x, y } = event;
-			const handler = this.$refs['ms-handler'];
-			const line = this.$refs['ms-line'].getBoundingClientRect();
+			const inlineEle = this.$refs['ms-line'];
+
+			const handler = inlineEle.$refs['ms-handler'];
+			const line = inlineEle.$el.getBoundingClientRect();
 			let value;
 
 			if (this.vertical) {
@@ -165,7 +152,7 @@ export default {
 			this.computedSlider(this.value);
 		},
 		setZero() {
-			const zeroInfo = this.$refs['ms-zero'];
+			const zeroInfo = this.$refs['ms-line'].$refs['ms-zero'];
 
 			if (this.min > 0) {
 				zeroInfo.style.display = 'none';
@@ -180,10 +167,12 @@ export default {
 			}
 		},
 		computedSlider(value = this.value) {
-			const inactiveZero = this.$refs['ms-inactive-zero'];
-			const handler = this.$refs['ms-handler'];
-			const active = this.$refs['ms-active'];
-			const inactive = this.$refs['ms-inactive'];
+			const inline = this.$refs['ms-line'];
+
+			const inactiveZero = inline.$refs['ms-inactive-zero'];
+			const handler = inline.$refs['ms-handler'];
+			const active = inline.$refs['ms-active'];
+			const inactive = inline.$refs['ms-inactive'];
 
 			let inactiveZeroWidth, activeWidth, inactiveWidth;
 
@@ -223,10 +212,12 @@ export default {
 			}
 		},
 		setSlider(activeWidth, inactiveWidth, inactiveZeroWidth, value = this.value) {
-			const inactiveZero = this.$refs['ms-inactive-zero'];
-			const handler = this.$refs['ms-handler'];
-			const active = this.$refs['ms-active'];
-			const inactive = this.$refs['ms-inactive'];
+			const inline = this.$refs['ms-line'];
+
+			const inactiveZero = inline.$refs['ms-inactive-zero'];
+			const handler = inline.$refs['ms-handler'];
+			const active = inline.$refs['ms-active'];
+			const inactive = inline.$refs['ms-inactive'];
 
 			if (this.vertical) {
 				if (inactiveZeroWidth || inactiveZeroWidth === 0) {

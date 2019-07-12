@@ -1,7 +1,7 @@
 <template>
 	<div
-		class="ms-datepicker ms-datepicker-md"
-	>
+		@click.stop
+		class="ms-datepicker">
 		<f-text-field
 			icon="ms-Icon ms-Icon--CalendarWeek"
 			:placeholder="placeholder"
@@ -9,8 +9,9 @@
 			:label="label"
 			:disabled="disabled"
 			:required="required"
-			@focus="show"
+			@click.native="toggle"
 			:value="text"
+			:size="computedSize"
 		/>
 		<f-calendar
 			v-show="isShow"
@@ -25,13 +26,15 @@
 			:disabled-date="disabledDate"
 			:range="range"
 			:go-to-today="goToToday"
+			@selected="input"
 			v-model="date"
-			@selected="hide"
 		/>
 	</div>
 </template>
     
 <script>
+import mixin from '../mixin';
+
 const dayList = [
 	'Sunday', 'Monday', 'Tuesday', 'Wednesday',
 	'Thursday', 'Friday', 'Saturday'
@@ -51,7 +54,11 @@ export default {
 			date: new Date()
 		}
 	},
+	mixins: [mixin],
 	props: {
+		id: {
+			type: String
+		},
 		value: {
 			type: Date,
 			default: new Date()
@@ -127,11 +134,18 @@ export default {
 		show() {
 			this.isShow = true;
 			this.$emit('show');
+			this.$root.$emit('f::datepicker::show', this.id);
 		},
-		hide() {
+		hide(id) {
+			if (!id || this.id === id) {
+				return;
+			}
+
 			this.isShow = false;
 			this.$emit('hide');
-			this.input();
+		},
+		toggle() {
+			this.isShow ? this.hide() : this.show()
 		},
 		setDate() {
 			if (this.value) {
@@ -150,6 +164,13 @@ export default {
 	},
 	mounted() {
 		this.setDate();
+
+		document.body.addEventListener('click', this.hide);
+		this.$root.$on('f::datepicker::show', this.hide);
+	},
+	destroyed() {
+		document.body.removeEventListener('click', this.hide);
+		this.$root.$off('f::datepicker::show', this.hide);
 	}
 }
 </script>

@@ -127,7 +127,10 @@ export default {
 		},
 		minDate: {
 			type: Date
-		}
+		},
+		overlaid: {
+			type: Boolean
+		},
 	},
 	computed: {
 		renderMonth() {

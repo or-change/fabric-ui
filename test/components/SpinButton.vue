@@ -8,6 +8,7 @@
 			v-model="value"
 			:min="-5"
 			:max="100"
+			size="sm"
 			end/>
 
 		<f-spin-button 
@@ -15,6 +16,41 @@
 			icon="ms-Icon ms-Icon--IncreaseIndentLegacy"
 			v-model="value"
 			:min="-5"
+			:max="100"
+			size="sm"
+			disabled
+			/>
+		<f-spin-button 
+			label="Decimal SpinButton"
+			icon="ms-Icon ms-Icon--IncreaseIndentLegacy"
+			v-model="value"
+			:min="-5"
+			:max="100"
+			end/>
+
+		<f-spin-button 
+			label="Decimal SpinButton"
+			icon="ms-Icon ms-Icon--IncreaseIndentLegacy"
+			v-model="value"
+			:min="-5"
+			:max="100"
+			disabled
+			/>
+		<f-spin-button 
+			label="Decimal SpinButton"
+			icon="ms-Icon ms-Icon--IncreaseIndentLegacy"
+			v-model="value"
+			:min="-5"
+			size="lg"
+			:max="100"
+			end/>
+
+		<f-spin-button 
+			label="Decimal SpinButton"
+			icon="ms-Icon ms-Icon--IncreaseIndentLegacy"
+			v-model="value"
+			:min="-5"
+			size="lg"
 			:max="100"
 			disabled
 			/>

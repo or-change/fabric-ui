@@ -1,6 +1,6 @@
 import './spinButton.scss';
 
-import SpinButton from './index.vue';
+import SpinButton from './SpinButton.vue';
 
 export default function install(Vue) {
 	Vue.component(SpinButton.name, SpinButton);

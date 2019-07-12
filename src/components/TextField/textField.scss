@@ -77,25 +77,25 @@
 	&.ms-text-field-standard{
 		.ms-text-field-group-inline {
 			.ms-text-field-fix {
-				line-height: 24px;
+				line-height: 18px;
 			}
 	
 			.ms-text-field-icon i {
 				font-size: $ms-font-size-14;
-				line-height: 24px;
+				line-height: 18px;
 			}
 		}
 	}
 
 	&.ms-text-field-underline {
 		.ms-text-field-label label {
-			line-height: 24px;
+			line-height: 18px;
 		}
 	}
 
 	input {
-		line-height: 24px;
-		height: 24px;
+		line-height: 18px;
+		height: 18px;
 	}
 }
 
@@ -107,12 +107,46 @@
 	&.ms-text-field-standard{
 		.ms-text-field-group-inline {
 			.ms-text-field-fix span {
-				line-height: 32px;
+				line-height: 24px;
 			}
 	
 			.ms-text-field-icon i {
 				font-size: $ms-font-size-16;
+				line-height: 24px;
+			}
+		}
+	}
+
+	&.ms-text-field-underline {
+		.ms-text-field-label label {
+			line-height: 24x;
+		}
+	}
+
+	input {
+		line-height: 24px;
+		height: 24px;
+	}
+}
+
+.ms-text-field-lg {
+	textarea, input, .ms-text-field-fix, .ms-text-field-icon{
+		font-size: $ms-font-size-16;
+	}
+
+	&.ms-text-field-standard {
+		.ms-text-field-group-inline {
+			.ms-text-field-fix {
 				line-height: 32px;
+			}
+	
+			.ms-text-field-icon i {
+				font-size: $ms-font-size-18;
+				line-height: 32px;
+			}
+
+			.ms-text-field-fix, .ms-text-field-icon {
+				padding: 0px 5px;
 			}
 		}
 	}
@@ -126,40 +160,6 @@
 	input {
 		line-height: 32px;
 		height: 32px;
-	}
-}
-
-.ms-text-field-lg {
-	textarea, input, .ms-text-field-fix, .ms-text-field-icon{
-		font-size: $ms-font-size-16;
-	}
-
-	&.ms-text-field-standard {
-		.ms-text-field-group-inline {
-			.ms-text-field-fix {
-				line-height: 40px;
-			}
-	
-			.ms-text-field-icon i {
-				font-size: $ms-font-size-18;
-				line-height: 40px;
-			}
-
-			.ms-text-field-fix, .ms-text-field-icon {
-				padding: 0px 5px;
-			}
-		}
-	}
-
-	&.ms-text-field-underline {
-		.ms-text-field-label label {
-			line-height: 40px;
-		}
-	}
-
-	input {
-		line-height: 40px;
-		height: 40px;
 	}
 }
 

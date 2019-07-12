@@ -91,14 +91,14 @@
 	font-size: $ms-font-size-12;
 
 	i {
-		font-size: $ms-icon-size-s;
-		height: $ms-icon-size-s;
-		line-height: $ms-icon-size-s;
-		padding: 6px 0 6px 6px;
+		font-size: $ms-font-size-14;
+		height: $ms-font-size-14;
+		line-height: $ms-font-size-14;
+		padding: 2px 4px 2px 2px;
 	}
 
 	.icon-clear i {
-		padding-right: 6px;
+		padding-right: 2px;
 	}
 
 	.icon-search, .icon-clear {
@@ -106,8 +106,8 @@
 	}
 
 	.input-wrapper, .input-wrapper span {
-		line-height: $ms-icon-size-s;
-		padding: 5px;
+		line-height: $ms-font-size-14;
+		padding: 2px;
 	}
 }
 
@@ -118,11 +118,11 @@
 		font-size: $ms-icon-size-m;
 		height: $ms-icon-size-m;
 		line-height: $ms-icon-size-m;
-		padding: 8px 0 8px 8px;
+		padding: 4px 2px 4px 4px;
 	}
 
 	.icon-clear i {
-		padding-right: 8px;
+		padding-right: 4px;
 	}
 
 	.icon-search, .icon-clear {
@@ -131,7 +131,7 @@
 
 	.input-wrapper, .input-wrapper span {
 		line-height: $ms-icon-size-m;
-		padding: 8px;
+		padding: 4px;
 	}
 }
 
@@ -142,11 +142,11 @@
 		font-size: $ms-icon-size-l;
 		height: $ms-icon-size-l;
 		line-height: $ms-icon-size-l;
-		padding: 10px 0 10px 10px;
+		padding: 6px 0 6px 6px;
 	}
 
 	.icon-clear i {
-		padding-right: 10px;
+		padding-right: 6px;
 	}
 
 	.icon-search, .icon-clear {
@@ -155,7 +155,7 @@
 
 	.input-wrapper, .input-wrapper span {
 		line-height: $ms-icon-size-l;
-		padding: 10px;
+		padding: 6px;
 	}
 }
 
