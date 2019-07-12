@@ -5,14 +5,14 @@
 		</h2>
 
 		<f-progress title="Example title" description="Example description" bar
-			:data="data" height="1.2em"
+			:data="data" height="1.2em" size="sm"
 		 />
 		<f-progress title="Example title" description="Example description"
 			:data="value"
 		 />
 
 		<f-progress title="Example title" description="Example description"
-			indeterminate height="1em"
+			indeterminate height="1em" size="lg"
 		 />
 
 		<f-progress title="Example title" description="Example description"

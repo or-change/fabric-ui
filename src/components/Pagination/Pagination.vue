@@ -1,10 +1,13 @@
 <template>
 	<ul
-		class="ms-pagination ms-pagination-md"
-		:class="{
-			'ms-pagination-border': border && !bar,
-			'ms-pagination-bar': bar && !border
-		}"
+		class="ms-pagination"
+		:class="[
+			`ms-pagination-${computedSize}`,
+			{
+				'ms-pagination-border': border && !bar,
+				'ms-pagination-bar': bar && !border
+			}
+		]"
 	>
 		<li
 			class="ms-button-prev"
@@ -35,6 +38,8 @@
 </template>
 
 <script>
+import mixin from '../mixin';
+
 export default {
 	name: 'f-pagination',
 	data() {
@@ -42,6 +47,7 @@ export default {
 			number: 1
 		}
 	},
+	mixins: [mixin],
 	props: {
 		disabled: {
 			type: Boolean,

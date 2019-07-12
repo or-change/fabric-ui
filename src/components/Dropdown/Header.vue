@@ -1,16 +1,14 @@
 <template>
 	<div class="ms-dropdown-header">
-		{{ text }}
+		{{ item.text }}
 	</div>
 </template>
 
 <script>
+import mixin from './mixin';
+
 export default {
 	name: 'f-dropdown-header',
-	props: {
-		text: {
-			type: String
-		}
-	}
+	mixins: [mixin]
 }
 </script>

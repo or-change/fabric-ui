@@ -1,19 +1,27 @@
 <template>
 	<div
-		class="ms-dropdown ms-dropdown-md"
-		:class="{
-			'ms-dropdown-disabled': disabled,
-			'ms-dropdown-error': !disabled && error,
-			'ms-dropdown-active': !disabled && isShow,
-			'ms-dropdown-required': !disabled && required
-		}"
+		class="ms-dropdown"
+		:class="[
+			`ms-dropdown-${computedSize}`,
+			{
+				'ms-dropdown-disabled': disabled,
+				'ms-dropdown-error': !disabled && error,
+				'ms-dropdown-active': !disabled && isShow,
+				'ms-dropdown-required': !disabled && required
+			}
+		]"
 	>
 		<slot name="dropdown-controller">
-			<div class="ms-dropdown-controller"
-				@click="toggle"
+			<f-text-field
 				ref="dropdownController"
+				class="ms-dropdown-controller"
+				:size="computedSize"
+				:placeholder="placeholder"
+				readonly
+				:disabled="disabled"
+				icon="ms-Icon ms-Icon--ChevronDown"
 			>
-				<div class="ms-dropdown-content">
+				<div class="ms-dropdown-content" @click="toggle">
 					<span
 						v-for="(item, index) in result" :key="index"
 					>
@@ -27,11 +35,7 @@
 						<span v-if="result[index + 1]">,</span>
 					</span>
 				</div>
-
-				<span class="ms-dropdown-icon">
-					<i class="ms-Icon ms-Icon--ChevronDown"></i>
-				</span>
-			</div>
+			</f-text-field>
 			<div
 				v-if="error && !isShow"
 				class="ms-dropdown-error-message">{{ errorMessage }}</div>
@@ -39,12 +43,12 @@
 
 		<slot name="dropdown-options">	
 			<div class="ms-dropdown-options" ref="dropdownOptions">
-				<f-dropdown-item
+				<component
 					v-for="(item, index) in options"
 					:key="index"
 					:item="item"
-					:multi-select="multiSelect"
 					:value="value"
+					:is="getType(item)"
 					@change="select"
 				/>
 			</div>
@@ -56,6 +60,10 @@
 const EVENT_TOGGLE = 'fv::toggle::dropdown';
 
 import mixin from '../mixin';
+import FDropdownDivider from './Divider';
+import FDropdownHeader from './Header';
+import FDropdownItem from './Item';
+import FDropdownItemMulti from './MultiSelectItem';
 
 export default {
 	name: 'f-dropdown',
@@ -63,6 +71,11 @@ export default {
 		return {
 			isShow: false
 		}
+	},
+	mixins: [mixin],
+	components: {
+		FDropdownDivider, FDropdownHeader,
+		FDropdownItem, FDropdownItemMulti
 	},
 	props: {
 		dataDropdownName: {
@@ -107,6 +120,21 @@ export default {
 	methods: {
 		isHeader(item) {
 			return !item.value;
+		},
+		getType(item) {
+			if (!item) {
+				return 'f-dropdown-divider';
+			}
+
+			if (!item.value) {
+				return 'f-dropdown-header';
+			}
+
+			if (this.multiSelect) {
+				return 'f-dropdown-item-multi';
+			}
+
+			return 'f-dropdown-item';
 		},
 		show() {
 			if (this.disabled) {
@@ -168,7 +196,7 @@ export default {
 		},
 		computedPosition() {
 			const optionsEle = this.$refs.dropdownOptions;
-			const controllerEle = this.$refs.dropdownController;
+			const controllerEle = this.$refs.dropdownController.$el;
 
 			if (!this.ajustable) {
 					return;

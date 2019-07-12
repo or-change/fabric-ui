@@ -15,7 +15,7 @@
 			}
 		]"
 	>
-		<div class="ms-text-field-label">
+		<div class="ms-text-field-label" v-if="label">
 			<slot name="ms-text-field-label">
 				<f-label :required="required" :size="computedSize">{{ label }}</f-label>
 			</slot>

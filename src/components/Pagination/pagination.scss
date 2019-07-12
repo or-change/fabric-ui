@@ -13,7 +13,6 @@
 		button {
 			font-family: inherit;
 			font-weight: $ms-font-weight-semibold;
-			font-size: $ms-font-size-14;
 			color: $ms-color-gray160;
 			background: transparent;
 			outline: none;
@@ -23,6 +22,7 @@
 			text-align: center;
 			cursor: pointer;
 			border-radius: 2px;
+			padding: 0 2px;
 			
 			&:hover {
 				color: $ms-color-blue;
@@ -41,19 +41,35 @@
 	}
 }
 
+.ms-pagination-sm {
+	li {
+		button {
+			font-size: $ms-font-size-12;
+			min-width: $ms-font-size-16;
+			height: $ms-font-size-16;
+			line-height: $ms-font-size-16;
+		}
+	}
+}
+
 .ms-pagination-md {
 	li {
 		button {
+			font-size: $ms-font-size-14;
 			min-width: $ms-font-size-24;
 			height: $ms-font-size-24;
 			line-height: $ms-font-size-24;
-			padding: 0 2px;
 		}
 	}
+}
 
-	&.ms-pagination-bar {
-		li {
-			padding: 0 2px;
+.ms-pagination-lg {
+	li {
+		button {
+			font-size: $ms-font-size-16;
+			min-width: $ms-font-size-32;
+			height: $ms-font-size-32;
+			line-height: $ms-font-size-32;
 		}
 	}
 }
@@ -80,6 +96,10 @@
 }
 
 .ms-pagination-bar {
+	li {
+		padding: 0 4px;
+	}
+
 	li button {
 		background-color: $ms-color-gray20;
 	}

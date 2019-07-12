@@ -15,14 +15,7 @@
   outline: 0px;
 
 	.ms-dropdown-controller {
-    position: relative;
-		background-color: $ms-color-white;
-		width: 100%;
-    cursor: pointer;
-    border-width: 1px;
-    border-style: solid;
-    border-color: $ms-color-gray110;
-		border-radius: 2px;
+		position: relative;
 		
 		.ms-dropdown-icon {
 			position: absolute;
@@ -31,13 +24,16 @@
 		}
 		
 		.ms-dropdown-content {
+			width: 100%;
 			white-space: nowrap;
     	text-overflow: ellipsis;
 			overflow: hidden;
+			cursor: pointer;
 		}
 	}
 
 	.ms-dropdown-options {
+		width: 300px;
 		position: absolute;
 		display: none;
 		border-radius: 0px 0px 2px 2px;
@@ -69,6 +65,10 @@
 			font-weight: $ms-font-weight-semibold;
 		}
 
+		.ms-dropdown-item-icon { 
+			display: inline;
+		}
+
 		.ms-dropdown-item {
 			outline: none;
 			border: none;
@@ -78,10 +78,7 @@
 				white-space: nowrap;
 				text-overflow: ellipsis;
 				overflow: hidden;
-			}
-
-			img {
-				vertical-align: middle;
+				vertical-align: top;
 			}
 
 			&:hover {
@@ -102,57 +99,64 @@
 			}
 		}
 	}
+	
+	.ms-text-field-group-inline {
+		table-layout: fixed;
+
+		.ms-text-field-icon {
+			width: 32px;
+		}
+	}
 }
 
 .ms-dropdown-sm {
-	
+	.ms-dropdown-controller {
+		span {
+			height: 24px;
+			line-height: 24px;
+		}
+	}
 }
 
 .ms-dropdown-lg {
-
+	.ms-dropdown-controller {
+		span {
+			height: 40px;
+			line-height: 40px;
+		}
+	}
 }
 
 .ms-dropdown-md {
 	.ms-dropdown-controller {
-		width: 100%;
-		height: 32px;
-    line-height: 30px;
-		padding-right: 28px;
-		padding-left: 8px;
-
 		span {
 			height: 32px;
 			line-height: 32px;
 		}
-		
-		.ms-dropdown-icon {
-			top: 1px;
-			right: 8px;
-			line-height: 30px;
-		}
 	}
 
 	.ms-dropdown-options {
-		width: 300px;
-
 		.ms-dropdown-header, .ms-dropdown-item {
-			height: 36px;
-			line-height: 36px;
+			height: 32px;
+			line-height: 32px;
 			padding: 0px 8px;
 		}
 
 		.ms-dropdown-item {
 			span {
-				height: 32px;
-				line-height: 32px;
 				width: 230px;
+			}
+
+			.ms-dropdown-item-icon {
+				top: 8px;
+				right: 8px;
 			}
 
 			.ms-checkbox.ms-checkbox-md {
 				margin-top: 0;
 
 				span {
-					margin: 2px 0;
+					line-height: 32px;
 				}
 				label .ms-virtual-checkbox {
 					margin: 8px 8px 8px 0;
@@ -162,23 +166,31 @@
 	}
 
 	.ms-dropdown-controller, .ms-dropdown-item {
-		.ms-dropdown-item-icon {
-			margin-right: 4px;
-			width: 15px;
-			height: 15px;
-			line-height: 15px;
-		}
 
 		.ms-dropdown-item-icon {
-			top: 10px;
-			right: 8px;
+			width: 16px;
+			margin-left: 5px;
 		}
 	}
 }
 
+.ms-dropdown-controller {
+	.ms-dropdown-content {
+		padding-left: 8px;
+
+		span {
+			vertical-align: top;
+		}
+	}
+
+	&.ms-text-field-enabled .ms-text-field-group-inline:hover {
+		border-color: $ms-color-blue;
+	}
+}
+
+
 .ms-dropdown-disabled {
-	.ms-dropdown-controller {
-		border-color: transparent;
+	.ms-dropdown-content {
 		color: $ms-color-gray90;
 		background-color: $ms-color-gray20;
 		cursor: default;
@@ -186,7 +198,7 @@
 }
 
 .ms-dropdown-error {
-	.ms-dropdown-controller {
+	.ms-dropdown-controller .ms-text-field-group-inline {
 		border-color: $ms-color-sharedRed10;
 	}
 
@@ -200,7 +212,7 @@
 }
 
 .ms-dropdown-active {
-	.ms-dropdown-controller {
+	.ms-dropdown-controller .ms-text-field-group-inline {
 		border-color: $ms-color-blue;
 	}
 

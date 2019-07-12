@@ -26,29 +26,52 @@ import SearchBox from './components/SearchBox';
 import Dropdown from './components/Dropdown';
 import TextField from './components/TextField';
 
+import Dialog from './components/Dialog';
+// import Grid from './components/Grid';
+import List from './components/List';
+import MessageBar from './components/MessageBar';
+import Modal from './components/Modal';
+import Pagination from './components/Pagination';
+import Panel from './components/Panel';
+import Progress from './components/Progress';
+import Slider from './components/Slider';
+import spinButton from './components/spinButton';
+import Tab from './components/Tab';
+
 export default [
-	LabelTest,
-	DefaultButton,
-	CompoundButton,
-	IconButton,
-	ActionButton,
-	CommandButton,
-	ContextualButton,
-	SplitButton,
-	CommandBar,
-	CustomSplitButton,
-	ToggleButton,
-	Calendar,
-	MenuTest,
-	Callout,
-	Checkbox,
-	Radio,
-	Contextual,
-	Datepicker,
-	Toggle,
-	Link,
-	Rating,
-	SearchBox,
+	// LabelTest,
+	// DefaultButton,
+	// CompoundButton,
+	// IconButton,
+	// ActionButton,
+	// CommandButton,
+	// ContextualButton,
+	// SplitButton,
+	// CommandBar,
+	// CustomSplitButton,
+	// ToggleButton,
+	// Calendar,
+	// MenuTest,
+	// Callout,
+	// Checkbox,
+	// Radio,
+	// Contextual,
+	// Datepicker,
+	// Toggle,
+	// Link,
+	// Rating,
+	// SearchBox,
+	// TextField,
 	Dropdown,
-	TextField
+	Dialog,
+	Modal,
+	Panel,
+	List,
+	// Grid,
+	MessageBar,
+	// Pagination,
+	// Progress,
+	Slider,
+	spinButton,
+	Tab
 ];

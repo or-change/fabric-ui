@@ -37,7 +37,12 @@
 	}
 
 	i, button {
+		display: inline-block;
 		width: 100%;
+	}
+
+	.icon-clear {
+		text-align: center;
 	}
 
 	.icon-search, .icon-clear, .input-wrapper {
@@ -85,11 +90,15 @@
 .ms-search-box-sm {
 	font-size: $ms-font-size-12;
 
-	i, button {
+	i {
 		font-size: $ms-icon-size-s;
 		height: $ms-icon-size-s;
 		line-height: $ms-icon-size-s;
 		padding: 6px 0 6px 6px;
+	}
+
+	.icon-clear i {
+		padding-right: 6px;
 	}
 
 	.icon-search, .icon-clear {
@@ -105,11 +114,15 @@
 .ms-search-box-md {
 	font-size: $ms-font-size-14;
 
-	i, button {
+	i {
 		font-size: $ms-icon-size-m;
 		height: $ms-icon-size-m;
 		line-height: $ms-icon-size-m;
 		padding: 8px 0 8px 8px;
+	}
+
+	.icon-clear i {
+		padding-right: 8px;
 	}
 
 	.icon-search, .icon-clear {
@@ -130,6 +143,10 @@
 		height: $ms-icon-size-l;
 		line-height: $ms-icon-size-l;
 		padding: 10px 0 10px 10px;
+	}
+
+	.icon-clear i {
+		padding-right: 10px;
 	}
 
 	.icon-search, .icon-clear {

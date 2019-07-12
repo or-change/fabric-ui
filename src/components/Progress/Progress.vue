@@ -1,6 +1,8 @@
 <template>
-	<div class="ms-progress ms-progress-md">
-		<div class="ms-progress-title" v-if="title">
+	<div class="ms-progress"
+		:class="[`ms-progress-${computedSize}`]"
+	>
+		<div class="ms-progress-title" v-show="title">
 			{{ title }}
 		</div>
 
@@ -10,42 +12,27 @@
 				'height': height
 			}"
 		>	
-			<div v-if="!indeterminate" style="height: 100%">
-				<div
-					v-for="(progress, index) in progressbar"
-					class="ms-progress-default"
-					:class="[
-						`ms-variant-${progress.variant}`
-					]"
-					:style="{
-						'width': `${progress.precision * 100}%`,
-						'line-height': height
-					}"
-				>{{ labelShow ? progress.label : '' }}</div>
-			</div>
-
-			<div v-if="indeterminate"
+			<component
 				ref="ms-progress-indeterminate"
-				class="ms-progress-default ms-progress-indicator-progress"
-				:class="[
-					`ms-variant-${progressbar.variant}`
-				]"
-				:style="{
-					'width': `${progressbar.precision * 100}%`,
-					'line-height': height
-				}"
-			>
-				{{ labelShow ? progressbar.label : '' }}
-			</div>
+				:is="type"
+				:progressbar="progressbar"
+				:height="height"
+				:label-show="labelShow"
+			/>
 		</div>
 
-		<div class="ms-progress-description" v-if="description">
+		<div class="ms-progress-description" v-show="description">
 			{{ description }}
 		</div>
 	</div>
 </template>
 
 <script>
+import FProgressDefault from './Default';
+import FProgressIndeterminate from './Indeterminate';
+
+import mixin from '../mixin';
+
 export default {
 	name: 'f-progress',
 	data() {
@@ -53,6 +40,11 @@ export default {
 			labelShow: true,
 			timer: null
 		}
+	},
+	mixins: [mixin],
+	components: {
+		FProgressDefault,
+		FProgressIndeterminate
 	},
 	props: {
 		data: {
@@ -92,6 +84,9 @@ export default {
 		}
 	},
 	computed: {
+		type() {
+			return this.indeterminate ? 'f-progress-indeterminate' : 'f-progress-default';
+		},
 		progressbar() {
 			let result;
 
@@ -126,7 +121,7 @@ export default {
 				return;
 			}
 
-			const progress = this.$refs['ms-progress-indeterminate'];
+			const progress = this.$refs['ms-progress-indeterminate'].$el;
 
 			const {width, left} = progress.getBoundingClientRect();
 			const bar = this.$refs['ms-progress-bar'].getBoundingClientRect();

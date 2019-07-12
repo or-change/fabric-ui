@@ -5,6 +5,7 @@
 		<f-dropdown
 			:options="options"
 			v-model="value"
+			size="sm"
 		/>
 		<f-button
 			text="show dropdown"
