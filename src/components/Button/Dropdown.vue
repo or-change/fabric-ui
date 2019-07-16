@@ -7,9 +7,6 @@
 			'ms-button-disabled': disabled,
 			'ms-button-not-split': !split
 		}"
-		:style="{
-			height: height
-		}"
 		@click="emit"
 	>
 
@@ -36,9 +33,6 @@ export default {
 		disabled: {
 			type: Boolean
 		},
-		height: {
-			type: String
-		},
 		showSplit: {
 			type: Boolean,
 			default: false
@@ -60,6 +54,7 @@ button.ms-button-dropdown {
 	position: relative;
 	font-size: 12px;
 	overflow: hidden;
+	margin-left: -1px;
 }
 
 .ms-dropdown-icon {
@@ -104,7 +99,6 @@ button.ms-button-dropdown {
 
 .ms-button-md {
 	button.ms-button-not-split {
-		margin-left: -2px;
 		padding-left: 0px;
 		padding-right: 8px;
 	}
@@ -117,7 +111,6 @@ button.ms-button-dropdown {
 
 .ms-button-sm {
 	button.ms-button-not-split {
-		margin-left: -2px;
 		padding-left: 0px;
 		padding-right: 6px;
 	}

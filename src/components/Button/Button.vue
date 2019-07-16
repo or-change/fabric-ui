@@ -1,6 +1,5 @@
 <template>
 	<div
-		ref="container"
 		class="ms-button-container"
 	>
 		<div class="ms-button"
@@ -12,12 +11,14 @@
 					'ms-button-bar': bar,
 					'ms-button-compound': description,
 					'ms-button-disabled': disabled,
+					'ms-button-dropdown': dropdown,
 					'ms-button-split': split,
 					'ms-button-no-split': !split
 				}
 			]">	
 
 			<component
+				ref="button"
 				:is="renderText.component"
 				:attr="renderText.attr"
 				:disabled="disabled"
@@ -34,7 +35,6 @@
 				:show-split="showSplit"
 				:triangle="triangle"
 				:disabled="split ? dropdownDisabled : disabled"
-				:height="dropdownHeight"
 				@dropdown="$emit('dropdown', $event)"
 			/>
 		</div>
@@ -54,11 +54,6 @@ const VARIANT_REG = /(standard|primary)/;
 
 export default {
 	name: 'f-button',
-	data() {
-		return {
-			dropdownHeight: 'auto'
-		}
-	},
 	mixins: [mixin],
 	components: {
 		FButtonLink, FButtonDefault,
@@ -192,18 +187,20 @@ export default {
 	},
 	methods: {
 		getDropdownHeight() {
-			const container = this.$refs.container;
+			const button = this.$refs.button.$el;
 			const dropdown = this.$refs['button-dropdown'];
 
-			this.dropdownHeight = 'auto';
+			let dropdownHeight = 'auto';
 
 			if (dropdown) {
-				this.dropdownHeight = `${container.clientHeight - 2}px`;
+				dropdown.$el.style.height = `${button.clientHeight + 2}px`
 			}
 		}
 	},
 	mounted() {
-		this.getDropdownHeight();
+		this.$nextTick(() => {
+			this.getDropdownHeight();
+		});
 	}
 }
 </script>

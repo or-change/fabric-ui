@@ -22,7 +22,8 @@
 		</div>
 
 		<component
-			:is="type"
+			:is="componentType"
+			:type="type"
 			:readonly="readonly"
 			:disabled="disabled"
 			:rows="rows"
@@ -99,7 +100,7 @@ export default {
 		}
 	},
 	computed: {
-		type() {
+		componentType() {
 			return !this.multi || this.underline ? 'f-text-field-inline' : 'f-text-field-multi';
 		}
 	},

@@ -2,7 +2,7 @@
 	<div>
 		<h2>TextField</h2>
 
-		<f-text-field label="Standard" prefix="http://" suffix=".com" icon="ms-Icon ms-Icon--CalendarDay" v-model="value" size="sm"/>
+		<f-text-field type="password" label="Standard" prefix="http://" suffix=".com" icon="ms-Icon ms-Icon--CalendarDay" v-model="value" size="sm"/>
 		<f-text-field label="Standard" prefix="http://" suffix=".com" icon="ms-Icon ms-Icon--CalendarDay" v-model="value" />
 		<f-text-field label="Standard" prefix="http://" suffix=".com" icon="ms-Icon ms-Icon--CalendarDay" v-model="value"  size="lg"/>
 		<f-text-field label="Readonly" prefix="http://" suffix=".com" icon="ms-Icon ms-Icon--CalendarDay" v-model="value" readonly size="sm" />
@@ -39,7 +39,7 @@
 			placeholder="test" underline required v-model="value"
 			size="sm"
 		/>
-		<f-text-field label="underlineSStandard"
+		<f-text-field label="测试测试测试"
 			placeholder="test" underline v-model="value"
 			prefix="http://"
 		/>

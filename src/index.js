@@ -1,6 +1,5 @@
 import 'normalize.css';
 import './style/global.scss';
-import './style/utility.scss';
 
 import buttonPlugin from './components/Button';
 import labelPlugin from './components/Label';
@@ -53,7 +52,7 @@ function normalize(options) {
 export default function install(Vue, options = {}) {
 	Vue.prototype.$fabric = normalize(options);
 
+	// 组件命名空间可以配置
+
 	pluginList.forEach(plugin => Vue.use(plugin));
 };
-
-// Disassembly component

@@ -3,6 +3,10 @@ export default {
 		value: {
 			type: String
 		},
+		type: {
+			type: String,
+			default: 'text'
+		},
 		readonly: {
 			type: Boolean,
 			default: false

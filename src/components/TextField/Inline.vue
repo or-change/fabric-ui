@@ -8,7 +8,8 @@
 		</div>
 		<div class="ms-text-field-input">
 			<slot>
-				<input type="text"
+				<input
+					:type="type"
 					:readonly="readonly"
 					:disabled="disabled"
 					:placeholder="placeholder"

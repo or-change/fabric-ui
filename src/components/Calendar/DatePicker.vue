@@ -69,6 +69,8 @@
 </template>
 
 <script>
+// 直接拿Date对象，然后开始computed，就还好
+
 import mixin from './mixin';
 
 const dayList = [

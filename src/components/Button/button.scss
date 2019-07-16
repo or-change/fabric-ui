@@ -3,6 +3,7 @@
 .ms-button-container {
 	display: inline-block;
 	position: relative;
+	line-height: 100%;
 }
 
 .ms-button {
@@ -10,7 +11,6 @@
 	height: auto;
 	font-weight: $ms-font-weight-regular;
 	background-color: $ms-color-white;
-	border: $ms-focus-border-width $ms-focus-border-style transparent;
 	overflow: hidden;
 
 	a, button {
@@ -25,7 +25,7 @@
 		text-align: center;
 		cursor: pointer;
 		user-select: none;
-		border: none;
+		border: $ms-focus-border-width $ms-focus-border-style transparent;
 		padding: 0px;
 		background-color: transparent;
 	}
@@ -55,16 +55,11 @@
 		&.ms-button-primary,
 		&.ms-button-bar.ms-button-standard,
 		&.ms-button-border.ms-button-standard {
-			&.ms-button-disabled {
-				border-color: transparent;
-			}
-	
 			.ms-button-disabled {
 				cursor: default;
 				color: $ms-color-gray90;
-				border-color: transparent; 
 				background-color: $ms-color-white;
-			
+				
 				a, button {
 					cursor: default;
 					color: $ms-color-gray90;
@@ -73,15 +68,22 @@
 		}
 	
 		&.ms-button-primary, &.ms-button-border.ms-button-standard {
-			&.ms-button-disabled {
-				border-color: darken($ms-color-white, 4.5%);
-			}
-	
 			.ms-button-disabled {
+				border-color: darken($ms-color-white, 4.5%);
 				background-color: darken($ms-color-white, 4.5%);
 			}
 		}
 	}
+}
+
+.ms-button-dropdown button:first-child,
+.ms-button-dropdown a:first-child  {
+	border-left-color: transparent;
+}
+
+.ms-button-dropdown button:last-child,
+.ms-button-dropdown a:last-child {
+	border-left: none;
 }
 
 .ms-description {
@@ -124,17 +126,18 @@
 	}
 }
 
-.ms-button-border, .ms-button-primary {
-	button, a, .ms-icon {
-		font-weight: $ms-font-weight-semibold;
-	}
-}
-
 .ms-button-border {
 	border-radius: 2px;
 
 	&.ms-button-standard {
-		border-color: $ms-color-gray110;
+		button, a {
+			border-color: $ms-color-gray110;
+		}
+
+		&.ms-button-dropdown button:first-child,
+		&.ms-button-dropdown a:first-child {
+			border-right-color: transparent;
+		}
 	}
 }
 
@@ -143,6 +146,7 @@
 	button, a {
 		color: $ms-color-white;
 		background-color: $ms-color-blue;
+		border-color: $ms-color-blue;
 	}
 }
 

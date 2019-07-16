@@ -1,3 +1,107 @@
+$spacer: 16px;
+
 .ms-hide {
 	display: none !important;
 }
+
+.ms-border-0 {
+	border: none !important;
+}
+
+.ms-round {
+	border-radius: 2px !important;
+}
+
+.ms-round-0 {
+	border-radius: 0px !important;
+}
+
+@each $display in (block),
+	(inline-block),
+	(inline),
+	(table),
+	(table-cell),
+	{
+	.ms-d-#{$display} {
+		display: $display !important;
+	}
+}
+
+.ms-float-left {
+  float: left !important;
+}
+
+.ms-float-right {
+  float: right !important;
+}
+
+@each $className, $attr in (w, width),
+(h, height) {
+	@each $name, $width in (25, 25%),
+		(50, 50%),
+		(75, 75%),
+		(100, 100%),
+		(auto, auto),
+		{
+		.ms-#{$className}-#{$name} {
+			#{$attr}: $width !important;
+		}
+	}
+}
+
+@each $className, $attr in (m, margin),
+	(mt, margin-top),
+	(mr, margin-right),
+	(ml, margin-left),
+	(mb, margin-bottom),
+	(p, padding),
+	(pt, padding-top),
+	(pr, padding-right),
+	(pl, padding-left),
+	(pb, padding-bottom),
+	{
+		@each $name, $margin in (0, 0 * $spacer),
+			(1, 0.25 * $spacer),
+			(2, 0.5 * $spacer),
+			(3 , 1 * $spacer),
+			(4, 1.5 * $spacer),
+			(5, 3 * $spacer),
+			(auto, auto),
+			{
+				.ms-#{$className}-#{$name} {
+					#{$attr}: $margin !important;
+				}
+		}
+	}
+
+@each $className, $attr in (m, margin),
+	(p, padding) {
+		@each $name, $margin in (0, 0 * $spacer),
+			(1, 0.25 * $spacer),
+			(2, 0.5 * $spacer),
+			(3 , 1 * $spacer),
+			(4, 1.5 * $spacer),
+			(5, 3 * $spacer),
+			(auto, auto),
+			{
+				.ms-#{$className}x-#{$name} {
+					#{$attr}-left: $margin !important;
+					#{$attr}-right: $margin !important;
+				}
+			}
+		
+		@each $name, $margin in (0, 0 * $spacer),
+			(1, 0.25 * $spacer),
+			(2, 0.5 * $spacer),
+			(3 , 1 * $spacer),
+			(4, 1.5 * $spacer),
+			(5, 3 * $spacer),
+			(auto, auto),
+			{
+				.ms-#{$className}y-#{$name} {
+					#{$attr}-top: $margin !important;
+					#{$attr}-bottom: $margin !important;
+				}
+			}
+	}
+
