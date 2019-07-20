@@ -45,9 +45,9 @@
 	li {
 		button {
 			font-size: $ms-font-size-12;
-			min-width: $ms-font-size-16;
-			height: $ms-font-size-16;
-			line-height: $ms-font-size-16;
+			min-width: $ms-font-size-24;
+			height: $ms-font-size-24;
+			line-height: $ms-font-size-24;
 		}
 	}
 }
@@ -56,9 +56,9 @@
 	li {
 		button {
 			font-size: $ms-font-size-14;
-			min-width: $ms-font-size-24;
-			height: $ms-font-size-24;
-			line-height: $ms-font-size-24;
+			min-width: $ms-font-size-32 - 2;
+			height: $ms-font-size-32 - 2;
+			line-height: $ms-font-size-32 - 2;
 		}
 	}
 }
@@ -67,9 +67,9 @@
 	li {
 		button {
 			font-size: $ms-font-size-16;
-			min-width: $ms-font-size-32;
-			height: $ms-font-size-32;
-			line-height: $ms-font-size-32;
+			min-width: $ms-font-size-32 + 4;
+			height: $ms-font-size-32 + 4;
+			line-height: $ms-font-size-32 + 4;
 		}
 	}
 }

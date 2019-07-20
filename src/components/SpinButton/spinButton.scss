@@ -107,37 +107,11 @@ input[type=text] {
 	font-size: $ms-font-size-12;
 
 	.ms-spin-button-input input {
-		height: 18px;
-	}
-
-	.ms-spin-button-label {
-
-		i, span {
-			height: 20px;
-			line-height: 20px;
-		}
-	}
-
-	.ms-spin-button-input-handler {
-		width: 23px;
-		button {
-			height: 9px;
-			i {
-				height: 9px;
-				line-height: 9px;
-			}
-		}
-	}
-}
-
-.ms-spin-button-md {
-	font-size: $ms-font-size-14;
-	
-	.ms-spin-button-input input {
 		height: 24px;
 	}
 
 	.ms-spin-button-label {
+
 		i, span {
 			height: 26px;
 			line-height: 26px;
@@ -145,7 +119,7 @@ input[type=text] {
 	}
 
 	.ms-spin-button-input-handler {
-		width: 26px;
+		width: 23px;
 		button {
 			height: 12px;
 			i {
@@ -156,27 +130,53 @@ input[type=text] {
 	}
 }
 
-.ms-spin-button-lg {
-	font-size: $ms-font-size-16;
+.ms-spin-button-md {
+	font-size: $ms-font-size-14;
 	
 	.ms-spin-button-input input {
-		height: 32px;
+		height: 30px;
 	}
 
 	.ms-spin-button-label {
 		i, span {
-			height: 34px;
-			line-height: 34px;
+			height: 32px;
+			line-height: 32px;
+		}
+	}
+
+	.ms-spin-button-input-handler {
+		width: 26px;
+		button {
+			height: 15px;
+			i {
+				height: 15px;
+				line-height: 15px;
+			}
+		}
+	}
+}
+
+.ms-spin-button-lg {
+	font-size: $ms-font-size-16;
+	
+	.ms-spin-button-input input {
+		height: 36px;
+	}
+
+	.ms-spin-button-label {
+		i, span {
+			height: 38px;
+			line-height: 38px;
 		}
 	}
 
 	.ms-spin-button-input-handler {
 		width: 28px;
 		button {
-			height: 16px;
+			height: 18px;
 			i {
-				height: 16px;
-				line-height: 16px;
+				height: 18px;
+				line-height: 18px;
 			}
 		}
 	}

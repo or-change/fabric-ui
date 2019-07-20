@@ -158,7 +158,7 @@
 
 .ms-button-sm {
 	a, button {
-		padding: 6px;
+		padding: 4px;
 		font-size: $ms-font-size-12;
 	}
 
@@ -168,7 +168,7 @@
 
 	&.ms-button-compound {
 		a, button {
-			padding: 14px 10px;
+			padding: 12px 8px;
 		}
 
 		.ms-description {
@@ -179,7 +179,7 @@
 
 .ms-button-md {
 	a, button {
-		padding: 8px;
+		padding: 7px;
 		font-size: $ms-font-size-14;
 	}
 
@@ -189,18 +189,18 @@
 
 	&.ms-button-compound {
 		a, button {
-			padding: 16px 12px;
+			padding: 15px 11px;
 		}
 
 		.ms-description {
-			margin-top: 5px;
+			margin-top: 3px;
 		}
 	}
 }
 
 .ms-button-lg {
 	a, button {
-		padding: 11px;
+		padding: 10px;
 		font-size: $ms-font-size-16;
 	}
 
@@ -210,11 +210,11 @@
 
 	&.ms-button-compound {
 		a, button {
-			padding: 20px 16px;
+			padding: 18px 14px;
 		}
 
 		.ms-description {
-			margin-top: 5px;
+			margin-top: 3px;
 		}
 	}
 }

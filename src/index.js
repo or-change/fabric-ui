@@ -52,7 +52,7 @@ function normalize(options) {
 export default function install(Vue, options = {}) {
 	Vue.prototype.$fabric = normalize(options);
 
-	// 组件命名空间可以配置
-
 	pluginList.forEach(plugin => Vue.use(plugin));
 };
+
+// 尺寸系统 24 30 36

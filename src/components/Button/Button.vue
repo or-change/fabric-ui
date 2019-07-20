@@ -134,23 +134,6 @@ export default {
 			default: false
 		}
 	},
-	watch: {
-		computedSize() {
-			this.getDropdownHeight();
-		},
-		width() {
-			this.getDropdownHeight();
-		},
-		text() {
-			this.getDropdownHeight();
-		},
-		description() {
-			this.getDropdownHeight();
-		},
-		border() {
-			this.getDropdownHeight();
-		}
-	},
 	computed: {
 		outlook() {
 			return this.disabled ? 'disabled' : this.variant;
@@ -184,23 +167,6 @@ export default {
 				}
 			};
 		}
-	},
-	methods: {
-		getDropdownHeight() {
-			const button = this.$refs.button.$el;
-			const dropdown = this.$refs['button-dropdown'];
-
-			let dropdownHeight = 'auto';
-
-			if (dropdown) {
-				dropdown.$el.style.height = `${button.clientHeight + 2}px`
-			}
-		}
-	},
-	mounted() {
-		this.$nextTick(() => {
-			this.getDropdownHeight();
-		});
 	}
 }
 </script>

@@ -19,6 +19,7 @@
 			icon="ms-Icon ms-Icon--Add"
 			text="Create account"
 			:dropdown="true"
+			triangle
 			@click.native="toggleMenu('menu1')"
 		>
 			<f-menu slot="menu" :menu="menu" ref="menu1" style="top:100%"  />
@@ -30,6 +31,7 @@
 			icon="ms-Icon ms-Icon--Add"
 			text="Create account"
 			:dropdown="true"
+			triangle
 			@click.native="toggleMenu('menu1')"
 		>
 			<f-menu slot="menu" :menu="menu" ref="menu1" style="top:100%"  />
@@ -41,6 +43,7 @@
 			text="Create account"
 			:dropdown="true"
 			:split="true"
+			triangle
 			@dropdown="toggleMenu('menu1')"
 		>
 			<f-menu slot="menu" :menu="menu" ref="menu1" style="top:100%"  />

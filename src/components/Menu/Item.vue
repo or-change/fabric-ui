@@ -4,19 +4,21 @@
 		@mouseout="unSelect"
 		@mousedown="active"
 		@mouseup="unActive">
-		<a
-			:href="link" :target="target"
-			class="ms-menu-item"
-			:class="{
-				'ms-menu-item-disabled': disabled,
-				'select': isSelect,
-				'active': isActive
-			}">
+		<slot>
+			<a
+				:href="link" :target="target"
+				class="ms-menu-item"
+				:class="{
+					'ms-menu-item-disabled': disabled,
+					'select': isSelect,
+					'active': isActive
+				}">
 
-			<i v-if="icon !== null" :class="icon"></i>
-			<span class="text">{{ text }}</span>
-			<span v-if="secondaryText" class="secondary-text">{{ secondaryText }}</span>
-		</a>
+				<i v-if="icon !== null" :class="icon"></i>
+				<span class="text">{{ text }}</span>
+				<span v-if="secondaryText" class="secondary-text">{{ secondaryText }}</span>
+			</a>
+		</slot>
 	</li>
 </template>
 

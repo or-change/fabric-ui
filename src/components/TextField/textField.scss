@@ -78,25 +78,25 @@
 	&.ms-text-field-standard{
 		.ms-text-field-group-inline {
 			.ms-text-field-fix {
-				line-height: 18px;
+				line-height: 24px;
 			}
 	
 			.ms-text-field-icon i {
 				font-size: $ms-font-size-14;
-				line-height: 18px;
+				line-height: 24px;
 			}
 		}
 	}
 
 	&.ms-text-field-underline {
 		.ms-text-field-label label {
-			line-height: 18px;
+			line-height: 24px;
 		}
 	}
 
 	input {
-		line-height: 18px;
-		height: 18px;
+		line-height: 24px;
+		height: 24px;
 	}
 }
 
@@ -108,25 +108,25 @@
 	&.ms-text-field-standard{
 		.ms-text-field-group-inline {
 			.ms-text-field-fix span {
-				line-height: 24px;
+				line-height: 30px;
 			}
 	
 			.ms-text-field-icon i {
 				font-size: $ms-font-size-16;
-				line-height: 24px;
+				line-height: 30px;
 			}
 		}
 	}
 
 	&.ms-text-field-underline {
 		.ms-text-field-label label {
-			line-height: 24x;
+			line-height: 30px;
 		}
 	}
 
 	input {
-		line-height: 24px;
-		height: 24px;
+		line-height: 30px;
+		height: 30px;
 	}
 }
 
@@ -138,12 +138,12 @@
 	&.ms-text-field-standard {
 		.ms-text-field-group-inline {
 			.ms-text-field-fix {
-				line-height: 32px;
+				line-height: 36px;
 			}
 	
 			.ms-text-field-icon i {
 				font-size: $ms-font-size-18;
-				line-height: 32px;
+				line-height: 36px;
 			}
 
 			.ms-text-field-fix, .ms-text-field-icon {
@@ -154,13 +154,13 @@
 
 	&.ms-text-field-underline {
 		.ms-text-field-label label {
-			line-height: 32px;
+			line-height: 36px;
 		}
 	}
 
 	input {
-		line-height: 32px;
-		height: 32px;
+		line-height: 36px;
+		height: 36px;
 	}
 }
 

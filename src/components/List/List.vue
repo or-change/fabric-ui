@@ -25,30 +25,30 @@
 							<i class="ms-Icon ms-Icon--StatusCircleCheckmark ms-list-check-check"></i>
 						</button>
 					</div>
-					<slot name="list-header-fields">
-						<div class="ms-list-header-cell"
-							v-for="(field, index) in fields"
-							:ref="`header-${index}-${field.key}`"
-							:class="[field.class, {
-								'background': preventHover
-							}]"
-							:style="{
-								width: index == 0 ? '320px' : 'auto'
-							}"
-						>
+					<div class="ms-list-header-cell"
+						v-for="(field, index) in fields"
+						:ref="`header-${index}-${field.key}`"
+						:class="[field.class, {
+							'background': preventHover
+						}]"
+						:style="{
+							width: index == 0 ? '320px' : 'auto'
+						}"
+					>
+						<slot :name="`header-${field.key}`" :value="field.key">
 							{{ field.label }}
+						</slot>
 
-							<button class="ms-list-resize"
-								v-if="index !== fields.length - 1"
-								:ref="`header-${index}-${field.key}-handler`"
-								@mouseenter="preventHover = true"
-								@mousedown="record(index, field.key, $event)"
-								@mousemove="resize"
-								@mouseup="preventHover = false;origin = null"
-								@mouseout="preventHover = false;origin = null"
-							></button>
-						</div>
-					</slot>
+						<button class="ms-list-resize"
+							v-if="index !== fields.length - 1"
+							:ref="`header-${index}-${field.key}-handler`"
+							@mouseenter="preventHover = true"
+							@mousedown="record(index, field.key, $event)"
+							@mousemove="resize"
+							@mouseup="preventHover = false;origin = null"
+							@mouseout="preventHover = false;origin = null"
+						></button>
+					</div>
 				</div>
 			</div>
 
@@ -72,15 +72,15 @@
 						</button>
 					</div>
 
-					<slot name="list-body-row">
-						<div class="ms-list-row-cell"
-							v-for="(field, index) in fields"
-							:class="[field.class]"
-							:ref="`row-${index}-${field.key}`"
-						>
+					<div class="ms-list-row-cell"
+						v-for="(field, index) in fields"
+						:class="[field.class]"
+						:ref="`row-${index}-${field.key}`"
+					>
+						<slot :name="`row-${field.key}`" :value="item[field.key]">
 							{{ item[field.key] }}
-						</div>
-					</slot>
+						</slot>
+					</div>
 				</div>
 			</div>
 		</div>

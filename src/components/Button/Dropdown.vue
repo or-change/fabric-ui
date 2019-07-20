@@ -105,7 +105,7 @@ button.ms-button-dropdown {
 
 	.ms-dropdown-triangle {
 		border-width: 5px;
-		margin-top: 3px;
+		margin-top: 6px;
 	}
 }
 
@@ -117,7 +117,7 @@ button.ms-button-dropdown {
 
 	.ms-dropdown-triangle {
 		border-width: 4px;
-		margin-top: 4px;
+		margin-top: 8px;
 	}
 }
 
@@ -130,7 +130,7 @@ button.ms-button-dropdown {
 
 	.ms-dropdown-triangle {
 		border-width: 6px;
-		margin-top: 5px;
+		margin-top: 4px;
 	}
 }
 </style>
