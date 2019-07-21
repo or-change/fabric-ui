@@ -20,10 +20,10 @@
 					}
 				]"
 			></i>
-			{{ text }}
+			<slot></slot>
 		</span>
 
-		<span class="ms-description">
+		<span class="ms-description ms-textTruncate">
 			{{ description }}
 		</span>
 	</button>

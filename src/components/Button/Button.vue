@@ -15,7 +15,7 @@
 					'ms-button-split': split,
 					'ms-button-no-split': !split
 				}
-			]">	
+			]">
 
 			<component
 				ref="button"
@@ -26,7 +26,9 @@
 				:text="text"
 				:description="description"
 				:width="width"
-			/>
+			>
+				<slot>{{ text }}</slot>
+			</component>
 
 			<f-button-dropdown
 				ref="button-dropdown"

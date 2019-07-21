@@ -16,7 +16,7 @@
 					}
 				]"
 			></i>
-			{{ text }}
+			<slot></slot>
 		</span>
 
 		<span class="ms-description">

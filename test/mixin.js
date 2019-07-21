@@ -38,6 +38,8 @@ import Slider from './components/Slider';
 import spinButton from './components/spinButton';
 import Tab from './components/Tab';
 
+import Badge from './components/Badge';
+
 export default [
 	LabelTest,
 	DefaultButton,
@@ -73,5 +75,6 @@ export default [
 	Progress,
 	Slider,
 	spinButton,   
-	Tab
+	Tab,
+	Badge
 ];

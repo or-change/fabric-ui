@@ -1,0 +1,97 @@
+@import 'office-ui-fabric-core/src/sass/_References.scss';
+
+.ms-badge {
+	position: relative;
+	height: auto;
+	font-weight: $ms-font-weight-regular;
+}
+
+.ms-badge-sm {
+	padding: 3px;
+	font-size: $ms-font-size-12;
+}
+
+.ms-badge-md {
+	padding: 5px;
+	font-size: $ms-font-size-14;
+}
+
+.ms-badge-lg {
+	padding: 7px;
+	font-size: $ms-font-size-16;
+}
+
+.ms-badge-top-left,
+.ms-badge-top-right,
+.ms-badge-bottom-left,
+.ms-badge-bottom-right {
+	position: absolute;
+}
+
+.ms-badge-top-left {
+	&.ms-badge-sm {
+		top: -6px;
+		left: -6px;
+	}
+
+	&.ms-badge-md {
+		top: -10px;
+		left: -10px;
+	}
+
+	&.ms-badge-lg {
+		top: -14px;
+		left: -14px;
+	}
+}	
+
+.ms-badge-top-right {
+	&.ms-badge-sm {
+		top: -6px;
+		right: -6px;
+	}
+
+	&.ms-badge-md {
+		top: -10px;
+		right: -10px;
+	}
+
+	&.ms-badge-lg {
+		top: -14px;
+		right: -14px;
+	}
+}
+
+.ms-badge-bottom-left {
+	&.ms-badge-sm {
+		bottom: -6px;
+		right: -6px;
+	}
+
+	&.ms-badge-md {
+		bottom: -10px;
+		right: -10px;
+	}
+
+	&.ms-badge-lg {
+		bottom: -14px;
+		right: -14px;
+	}
+}
+
+.ms-badge-bottom-right {
+	&.ms-badge-sm {
+		bottom: -6px;
+		left: -6px;
+	}
+
+	&.ms-badge-md {
+		bottom: -10px;
+		left: -10px;
+	}
+
+	&.ms-badge-lg {
+		bottom: -14px;
+		left: -14px;
+	}
+}

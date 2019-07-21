@@ -5,6 +5,8 @@
 		<f-button 
 			text="Create account"
 			description="You can create a new account here"
+			dropdown
+			triangle
 		/>
 
 		<f-button 
@@ -18,6 +20,8 @@
 			size="sm"
 			variant="primary"
 			description="You can create a new account here"
+			dropdown
+			triangle
 		/>
 
 		<f-button 
@@ -25,6 +29,9 @@
 			size="lg"
 			variant="primary"
 			description="You can create a new account here"
+			dropdown
+			split
+			triangle
 		/>
 
 		<f-button

@@ -133,6 +133,20 @@ button.ms-button-dropdown {
 		margin-top: 4px;
 	}
 }
+
+.ms-button-compound {
+	&.ms-button-sm .ms-button-dropdown {
+		padding: 22px 8px 21px;
+	}
+
+	&.ms-button-md .ms-button-dropdown {
+		padding: 24px 11px 25px;
+	}
+
+	&.ms-button-lg .ms-button-dropdown {
+		padding: 28px 14px 27px;
+	}
+}
 </style>
 
 
