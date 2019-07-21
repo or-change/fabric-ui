@@ -14,7 +14,7 @@
 			:class="{
 				'box-right': right
 			}">
-			<i class="ms-Icon ms-Icon--CheckMark"></i>
+			<i :class="$fabric.icon.checkMark"></i>
 		</div>
 		<span>{{ label }}</span>
 	</label>

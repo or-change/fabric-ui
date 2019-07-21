@@ -1,5 +1,6 @@
 import 'normalize.css';
 import './style/global.scss';
+import defaultIcon from './icon.js';
 
 import buttonPlugin from './components/Button';
 import labelPlugin from './components/Label';
@@ -44,6 +45,10 @@ const pluginList = [
 function normalize(options) {
 	if (typeof options.size !== 'string') {
 		options.size = 'md';
+	}
+
+	if (typeof options.icon !== 'object') {
+		options.icon = defaultIcon;
 	}
 
 	return options;

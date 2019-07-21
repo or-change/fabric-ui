@@ -25,7 +25,7 @@
 				:class="{
 					'split-selected': isShow
 				}">
-				<i class="ms-Icon ms-Icon--ChevronRight ms-ChevronRight"></i>
+				<i :class="`${$fabric.icon.right} ms-ChevronRight`"></i>
 				<span class="menu-split"></span>
 			</span>
 		</div>

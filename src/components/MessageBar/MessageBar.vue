@@ -15,7 +15,7 @@
 		<div class="ms-message-bar-content">
 			<slot name="messageBar-icon">
 				<div class="ms-message-bar-icon">
-					<i :class="icon"></i>
+					<i :class="icon ? icon : $fabric.icon.info"></i>
 				</div>
 			</slot>
 
@@ -27,14 +27,14 @@
 
 			<div class="ms-message-bar-multi-button">
 				<button @click="isMulti = !isMulti;$emit('toggle', isMulti)">
-					<i v-if="!isMulti" class="ms-Icon ms-Icon--DoubleChevronDown"></i>
-					<i v-if="isMulti" class="ms-Icon ms-Icon--DoubleChevronUp"></i>
+					<i v-if="!isMulti" :class="$fabric.icon.doubleDown"></i>
+					<i v-if="isMulti" :class="$fabric.icon.doubleUp"></i>
 				</button>
 			</div>
 
 			<div class="ms-message-bar-close-button">
 				<button @click="$emit('close')">
-					<i class="ms-Icon ms-Icon--Clear"></i>
+					<i :class="$fabric.icon.clear"></i>
 				</button>
 			</div>
 			
@@ -72,8 +72,7 @@ export default {
 			type: String
 		},
 		icon: {
-			type: String,
-			default: 'ms-Icon ms-Icon--Info'
+			type: String
 		},
 		text: {
 			type: String

@@ -27,7 +27,7 @@
 				>
 					<p>{{ title }}</p>
 					<div class="button-close" v-if="closeButton">
-						<f-button icon="ms-Icon ms-Icon--Cancel" :border="false"
+						<f-button :icon="$fabric.icon.cancel" :border="false"
 							@click.native="close"
 						/>
 					</div>

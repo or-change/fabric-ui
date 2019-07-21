@@ -13,7 +13,7 @@
 		<span v-show="showSplit" class="ms-button-split-icon"></span>
 		<i
 			v-show="!triangle"
-			class="ms-Icon ms-Icon--ChevronDown ms-dropdown-icon"></i>
+			:class="`${$fabric.icon.down} ms-dropdown-icon`"></i>
 		<span
 			v-show="triangle"
 			class="ms-dropdown-triangle ms-dropdown-icon"></span>

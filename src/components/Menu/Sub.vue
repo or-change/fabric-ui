@@ -13,7 +13,7 @@
 
 			<i v-if="icon !== null" :class="icon"></i>
 			<span class="text">{{ text }}</span>
-			<i class="ms-Icon ms-Icon--ChevronRight ms-ChevronRight"></i>
+			<i :class="`${$fabric.icon.right} ms-ChevronRight`"></i>
 		</a>
 
 		<f-menu

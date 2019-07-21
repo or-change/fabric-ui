@@ -3,7 +3,7 @@
 		@click.stop
 		class="ms-datepicker">
 		<f-text-field
-			icon="ms-Icon ms-Icon--CalendarWeek"
+			:icon="$fabric.icon.calendarWeek"
 			:placeholder="placeholder"
 			readonly
 			:label="label"

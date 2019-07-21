@@ -20,7 +20,7 @@
 				:placeholder="placeholder"
 				readonly
 				:disabled="disabled"
-				icon="ms-Icon ms-Icon--ChevronDown"
+				:icon="$fabric.icon.dropdown"
 			>
 				<div class="ms-dropdown-content" @click="toggle">
 					<span

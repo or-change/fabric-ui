@@ -21,8 +21,8 @@
 						@click="selectAll"
 					>
 						<button class="ms-list-check-content" v-if="isMultiSelect">
-							<i class="ms-Icon ms-Icon--CircleRing ms-list-check-circle"></i>
-							<i class="ms-Icon ms-Icon--StatusCircleCheckmark ms-list-check-check"></i>
+							<i :class="`${$fabric.icon.circleRing} ms-list-check-circle`"></i>
+							<i :class="`${$fabric.icon.statusCircleCheckmark} ms-list-check-check`"></i>
 						</button>
 					</div>
 					<div class="ms-list-header-cell"
@@ -67,8 +67,8 @@
 						@click="select(item)"
 					>
 						<button class="ms-list-check-content">
-							<i class="ms-Icon ms-Icon--CircleRing ms-list-check-circle"></i>
-							<i class="ms-Icon ms-Icon--StatusCircleCheckmark ms-list-check-check"></i>
+							<i :class="`${$fabric.icon.circleRing} ms-list-check-circle`"></i>
+							<i :class="`${$fabric.icon.statusCircleCheckmark} ms-list-check-check`"></i>
 						</button>
 					</div>
 

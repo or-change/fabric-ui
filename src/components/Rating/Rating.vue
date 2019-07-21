@@ -19,10 +19,10 @@
 				@click="change(index)">
 				<div class="ms-rating-container">
 					<i :class="[
-						'ms-rating-back', icon,
+						'ms-rating-back', icon ? icon : $fabric.icon.star,
 						{ 'ms-rating-hover': index < hover }
 					]"></i>
-					<i :class="`ms-rating-front ${activeIcon}`"
+					<i :class="`ms-rating-front ${activeIcon ? activeIcon : $fabric.icon.starFilled}`"
 						:style="{
 							'width':  computedValue >= index + 1 ? '100%' : (
 								computedValue <= index ? '0' : `${(computedValue - index) * 100}%`
@@ -55,12 +55,10 @@ export default {
 			default: false
 		},
 		icon: {
-			type: String,
-			default: 'ms-Icon ms-Icon--FavoriteStar'
+			type: String
 		},
 		activeIcon: {
-			type: String,
-			default: 'ms-Icon ms-Icon--FavoriteStarFill'
+			type: String
 		},
 		min: {
 			type: Number,

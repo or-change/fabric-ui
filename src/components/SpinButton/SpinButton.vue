@@ -32,7 +32,7 @@
 					@mouseout="remove"
 				>
 					<slot name="ms-spin-button-up">
-						<i class="ms-Icon ms-Icon--ChevronUpSmall"></i>
+						<i :class="$fabric.icon.up"></i>
 					</slot>
 				</button>
 				<button
@@ -43,7 +43,7 @@
 					@mouseout="remove"
 				>
 					<slot name="ms-spin-button-down">
-						<i class="ms-Icon ms-Icon--ChevronDownSmall"></i>
+						<i :class="$fabric.icon.down"></i>
 					</slot>
 				</button>
 			</span>

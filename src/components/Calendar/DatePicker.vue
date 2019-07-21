@@ -15,13 +15,13 @@
 					@click="prev"
 					:disabled="prevDisabled"
 				>
-					<i class="ms-Icon ms-Icon--Up"></i>
+					<i :class="$fabric.icon.prev"></i>
 				</button>
 				<button class="ms-calendar-next"
 					@click="next"
 					:disabled="nextDisabled"	
 				>
-					<i class="ms-Icon ms-Icon--Down"></i>
+					<i :class="$fabric.icon.next"></i>
 				</button>
 			</div>
 		</div>

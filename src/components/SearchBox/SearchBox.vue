@@ -14,7 +14,7 @@
 		@mouseover="isSearch = true"
 		@mouseout="isSearch = false">
 
-		<i :class="[icon, 'icon-search']"></i>
+		<i :class="[icon ? icon : $fabric.icon.search, 'icon-search']"></i>
 		
 		<div class="input-wrapper">
 			<input
@@ -38,7 +38,7 @@
 				type="button"
 				:disabled="disabled"
 				@click="clear">
-				<i class="ms-Icon ms-Icon--Clear"></i>
+				<i :class="$fabric.icon.clear"></i>
 			</button>
 		</div>
 	</div>
@@ -72,8 +72,7 @@ export default {
 			default: true
 		},
 		icon: {
-			type: String,
-			default: 'ms-Icon ms-Icon--Search'
+			type: String
 		},
 		value: {
 			type: String
