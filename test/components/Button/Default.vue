@@ -6,6 +6,7 @@
 			<f-button
 				text="no border or bar button"
 				:border="false"
+				@click="test"
 			/>
 
 			<f-button
@@ -63,6 +64,7 @@
 				tag="a"
 				text="no border or bar link"
 				:border="false"
+				@click="test"
 			/>
 
 			<f-button
@@ -110,6 +112,11 @@ export default {
 		return {
 			buttonText: 'button Tag',
 			linkText: 'link Tag'
+		}
+	},
+	methods: {
+		test(event) {
+			console.log(event);
 		}
 	}
 }

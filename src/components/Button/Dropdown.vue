@@ -42,6 +42,8 @@ export default {
 		emit(event) {
 			if (this.split) {
 				this.$emit('dropdown', event);
+			} else {
+				this.$emit('click', event);
 			}
 		}
 	}

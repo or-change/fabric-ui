@@ -1,8 +1,8 @@
 <template>
-	<div id="app">
+	<f-container id="app">
 		<component v-for="(component, index) in componentList"
 			:key="index" :is="component" />
-	</div>
+	</f-container>
 </template>
 
 <script>

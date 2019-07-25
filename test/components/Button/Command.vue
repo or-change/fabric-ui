@@ -20,9 +20,9 @@
 			text="Create account"
 			:dropdown="true"
 			triangle
-			@click.native="toggleMenu('menu1')"
+			@click.stop="toggleMenu('menu11')"
 		>
-			<f-menu slot="menu" :menu="menu" ref="menu1" style="top:100%"  />
+			<f-menu slot="menu" :menu="menu" ref="menu11" style="top:100%"  />
 
 		</f-button>
 

@@ -26,6 +26,7 @@ import calloutPlugin from './components/Callout';
 import contextualMenuPlugin from './components/ContextualMenu';
 import tabPlugin from './components/Tab';
 import gridPlugin from './components/Grid';
+import containerPlugin from './components/Container';
 import badge from './components/Badge';
 
 const pluginList = [
@@ -41,7 +42,7 @@ const pluginList = [
 	messageBarPlugin, calloutPlugin,
 	contextualMenuPlugin,
 	tabPlugin, gridPlugin,
-	badge
+	badge, containerPlugin
 ];
 
 function normalize(options) {

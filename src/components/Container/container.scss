@@ -1,0 +1,31 @@
+@import 'office-ui-fabric-core/src/sass/variables/_Responsive.Variables.scss';
+
+.ms-container, .ms-container-fluid {
+	width: 100%;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+@media (min-width: $ms-screen-min-xxl) {
+	.ms-container {
+		max-width: $ms-screen-min-xxl;
+	}
+}
+
+@media (min-width: $ms-screen-min-xl) and (max-width: $ms-screen-max-xl) {
+	.ms-container {
+		max-width: $ms-screen-min-xl;
+	}
+}
+
+@media (min-width: $ms-screen-min-lg) and (max-width: $ms-screen-max-lg) {
+	.ms-container {
+		max-width: $ms-screen-min-lg;
+	}
+}
+
+@media (min-width: $ms-screen-min-md) and (max-width: $ms-screen-max-md) {
+	.ms-container {
+		max-width: $ms-screen-min-md;
+	}
+}

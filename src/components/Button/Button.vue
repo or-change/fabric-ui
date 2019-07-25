@@ -26,6 +26,7 @@
 				:text="text"
 				:description="description"
 				:width="width"
+				@click="$emit('click', $event)"
 			>
 				<slot>{{ text }}</slot>
 			</component>
@@ -37,6 +38,7 @@
 				:show-split="showSplit"
 				:triangle="triangle"
 				:disabled="split ? dropdownDisabled : disabled"
+				@click="$emit('click', $event)"
 				@dropdown="$emit('dropdown', $event)"
 			/>
 		</div>

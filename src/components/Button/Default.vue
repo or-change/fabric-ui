@@ -7,6 +7,7 @@
 		:style="{
 			width: width
 		}"
+		@click="$emit('click', $event)"
 	>
 		<span class="ms-button-label ms-clearfix"
 			:class="{

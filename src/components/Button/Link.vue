@@ -7,6 +7,7 @@
 		:class="{
 			'ms-button-disabled': disabled
 		}"
+		@click="$emit('click', $event)"
 	>
 		<span class="ms-button-label ms-textTruncate ms-clearfix">
 			<i class="ms-icon" :class="[
