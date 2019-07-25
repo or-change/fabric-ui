@@ -35,7 +35,7 @@
 							width: index == 0 ? '320px' : 'auto'
 						}"
 					>
-						<slot :name="`header-${field.key}`" :value="field.key">
+						<slot :name="`header-${field.key}`" :value="field">
 							{{ field.label }}
 						</slot>
 
@@ -77,7 +77,7 @@
 						:class="[field.class]"
 						:ref="`row-${index}-${field.key}`"
 					>
-						<slot :name="`row-${field.key}`" :value="item[field.key]">
+						<slot :name="`row-${field.key}`" :value="item">
 							{{ item[field.key] }}
 						</slot>
 					</div>
@@ -99,7 +99,8 @@ export default {
 			origin: null,
 			result: isMulti ? [] : null,
 			renderItem: [],
-			height: null
+			height: null,
+			list: null
 		}
 	},
 	props: {
@@ -266,7 +267,7 @@ export default {
 				return;
 			}
 
-			const list = this.$refs['ms-list'];
+			this.list = this.$refs['ms-list'];
 			const header = this.$refs['ms-list-header'];
 			const row = this.$refs['ms-list-row'][0];
 			const placeholder = this.$refs['ms-list-placeholder'];
@@ -274,13 +275,13 @@ export default {
 			const headerHeight = header.clientHeight;
 			const rowHeight = row.clientHeight;
 
-			list.style.height = `${headerHeight + rowHeight * this.visibleRows}px`;
+			this.list.style.height = `${headerHeight + rowHeight * this.visibleRows}px`;
 
 			this.height = headerHeight + rowHeight * this.items.length;
 			placeholder.style.height = `${this.height}px`;
 
 
-			list.addEventListener('scroll', this.computedRenderItem);
+			this.list.addEventListener('scroll', this.computedRenderItem);
 		}
 	},
 	mounted() {
@@ -291,7 +292,7 @@ export default {
 		});
 	},
 	destroyed() {
-		list.removeEventListener('scroll', 	this.computedRenderItem);
+		this.list.removeEventListener('scroll', 	this.computedRenderItem);
 	}
 }
 </script>

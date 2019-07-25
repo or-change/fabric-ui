@@ -2,6 +2,7 @@
 
 .ms-button-container {
 	display: inline-block;
+	vertical-align: top;
 	position: relative;
 	line-height: 100%;
 }
@@ -97,7 +98,8 @@
 
 .ms-button-label {
 	display: block;
-  width: 100%;
+	width: 100%;
+	min-height: 16px;
 }
 
 .split {

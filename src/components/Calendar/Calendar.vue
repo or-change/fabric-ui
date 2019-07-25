@@ -146,6 +146,7 @@ export default {
 
 .ms-calendar {
 	display: inline-block;
+	vertical-align: top;
 
 	&.ms-calendar-outline .ms-calendar-wrapper{
 		box-shadow: rgba(0, 0, 0, 0.133) 0px 6.4px 14.4px 0px, rgba(0, 0, 0, 0.11) 0px 1.2px 3.6px 0px;
@@ -160,6 +161,7 @@ export default {
 	
 	.ms-calendar-wrapper {
 		display: block;
+		background-color: $ms-color-white;
 		width: auto;
 		box-sizing: content-box;
 		position: relative;

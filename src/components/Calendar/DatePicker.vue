@@ -274,7 +274,6 @@ export default {
 	position: relative;
 	box-sizing: border-box;
 	font-family: inherit;
-	display: inline-block;
 	width: auto;
 	background-color: $ms-color-white;
 }

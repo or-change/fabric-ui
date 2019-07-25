@@ -23,10 +23,9 @@
 		
 		i {
 			display: inline-block;
+			vertical-align: middle;
 			font-style: normal;
 			font-weight: normal;
-			speak: none;
-			vertical-align: middle;
 		}
 	}
 
@@ -48,9 +47,9 @@
 			font-weight: $ms-font-weight-regular;
 			box-sizing: border-box;
 			display: inline-block;
+			vertical-align: top;
 			text-align: center;
 			cursor: pointer;
-			vertical-align: top;
 			background-color: transparent;
 			border: none;
 			outline: none;
@@ -68,9 +67,9 @@
 			font-weight: $ms-font-weight-regular;
 			box-sizing: border-box;
 			display: inline-block;
+			vertical-align: top;
 			text-align: center;
 			cursor: pointer;
-			vertical-align: top;
 			background-color: $ms-color-gray40;
 			color: $ms-color-gray160;
 			outline: transparent;

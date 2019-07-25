@@ -25,13 +25,15 @@
 
 	.ms-toggle-lable-inline {
 		display: inline-block;
+		vertical-align: top;
 	}
 
 	.ms-toggle-button {
 		position: relative;
     font-size: $ms-font-size-20;
     box-sizing: border-box;
-    display: inline-block;
+		display: inline-block;
+		vertical-align: top;
     cursor: pointer;
     border: 1px solid transparent;
 		outline: transparent;

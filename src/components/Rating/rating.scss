@@ -8,6 +8,7 @@
 	button {
 		position: relative;
 		display: inline-block;
+		vertical-align: top;
 		box-sizing: content-box;
     background-color: transparent;
     padding: 8px 2px;
@@ -22,7 +23,6 @@
 
 	i {
 		display: inline-block;
-    -webkit-font-smoothing: antialiased;
     font-style: normal;
     font-weight: normal;
 		overflow: hidden;

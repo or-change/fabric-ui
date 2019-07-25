@@ -28,6 +28,7 @@
 	box-sizing: content-box;
 	font-family: inherit;
 	display: inline-block;
+	vertical-align: top;
 	width: auto;
 	background-color: $ms-color-white;
 }
@@ -72,6 +73,7 @@
 
 	i {
 		display: inline-block;
+		vertical-align: middle;
 		font-weight: $ms-font-weight-regular;
 	}
 }

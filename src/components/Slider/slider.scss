@@ -105,7 +105,6 @@
 		}
 
 		.ms-slider-container .ms-slider-label {
-			display: inline-block;
 			line-height: $ms-font-size-28;
 			height: $ms-font-size-28;
 			width: 40px;
@@ -117,6 +116,7 @@
 
 .ms-slider-vertical {
 	display: inline-block;
+	vertical-align: top;
 	width: auto;
 	height: 100%;
 

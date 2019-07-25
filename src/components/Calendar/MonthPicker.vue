@@ -269,7 +269,6 @@ export default {
 @import 'office-ui-fabric-core/src/sass/_References.scss';
 
 .ms-calendar-month-wrapper {
-	display: inline-block;
 	width: auto;
 }
 

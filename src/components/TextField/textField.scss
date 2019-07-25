@@ -178,12 +178,14 @@
 
 			span {
 				display: inline-block;
+				vertical-align: top;
 				height: 100%;
 			}
 		}
 
 		.ms-text-field-icon i {
 			display: inline-block;
+			vertical-align: top;
 			height: 100%;
 		}
 
@@ -206,6 +208,7 @@
 
 		input {
 			display: inline-block;
+			vertical-align: top;
 		}
 	}
 

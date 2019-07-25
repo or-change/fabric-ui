@@ -16,7 +16,6 @@
 		&::before {
 			content: "";
 			position: absolute;
-			display: inline-block;
 			border-width: $ms-focus-border-width;
 			border-style: solid;
 			border-radius: 50%;
@@ -28,11 +27,6 @@
 			border-radius: 50%;
 			border-style: solid;
 		}
-
-		span {
-			display: inline-block;
-		}
-
 	}
 
 	&.ms-radio-default {
@@ -55,6 +49,7 @@
 
 	&.ms-radio-icon {
 		display: inline-block;
+		vertical-align: top;
 		margin: 8px 4px 4px 0px;
 		padding: 0px;
 		background-color: $ms-color-gray20;
@@ -122,7 +117,6 @@
 	&.ms-radio-default {
 		label span {
 			padding-left: $ms-icon-size-s + 6;
-			height: 100%;
 			line-height: $ms-icon-size-s;
 		}
 
@@ -186,7 +180,6 @@
 	&.ms-radio-default {
 		label span {
 			padding-left: $ms-icon-size-m + 6;
-			height: 100%;
 			line-height: $ms-icon-size-m;
 		}
 
@@ -250,7 +243,6 @@
 	&.ms-radio-default {
 		label span {
 			padding-left: 26px;
-			height: 100%;
 			line-height: $ms-icon-size-l;
 		}
 
