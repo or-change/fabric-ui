@@ -1,5 +1,6 @@
 .ms-contextual-menu {
 	position: fixed;
+	z-index: 500;
 
 	ul.ms-menu {
 		position: relative;
@@ -9,4 +10,6 @@
 			top: 0;
 		}
 	}
+
+	
 }

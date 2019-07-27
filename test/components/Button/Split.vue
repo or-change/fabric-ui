@@ -6,7 +6,6 @@
 			tag="a"
 			href="http://www.baidu.com"
 			text="Create account"
-			@dropdown="toggleMenu('menu1')"
 			dropdown split
 		>
 			<f-menu slot="menu" :menu="menu" ref="menu1" style="top:100%"  />
@@ -16,7 +15,6 @@
 		<f-button
 			variant="primary"
 			text="Create account"
-			@dropdown="toggleMenu('menu2')"
 			dropdown split
 		>
 			<f-menu slot="menu" :menu="menu" ref="menu2" style="top:100%" />
@@ -25,7 +23,6 @@
 		<f-button
 			variant="primary" disabled :bar="true"
 			text="Create account"
-			@dropdown="toggleMenu('menu2')"
 			dropdown split
 		>
 			<!-- <f-menu slot="menu" :menu="menu" ref="menu2" style="top:100%" /> -->
@@ -35,7 +32,7 @@
 		<f-button
 			:border="false"
 			text="Create account"
-			dropdownDisabled @dropdown="toggleMenu('menu3')"
+			dropdownDisabled
 			bar
 			dropdown split
 		>
@@ -46,7 +43,7 @@
 		<f-button
 			:border="false"
 			text="Create account"
-			disabled dropdownDisabled @dropdown="toggleMenu('menu3')"
+			disabled dropdownDisabled
 			bar
 			dropdown split
 		>

@@ -6,7 +6,6 @@
 			icon="ms-Icon ms-Icon--Add"
 			:border="false" bar
 			text="Create account"
-			@dropdown.stop="toggleMenu('menu1')"
 			dropdown
 			split
 		>
@@ -20,7 +19,6 @@
 			:border="false" bar
 			dropdown
 			split
-			@dropdown.stop="toggleMenu('menu2')"
 		>
 
 		</f-button>
@@ -44,7 +42,6 @@
 			text="Create account"
 			:border="false" bar
 			@click="toggleMenu"
-			@dropdown="toggleMenu('menu3')"
 			dropdown
 			split
 		>

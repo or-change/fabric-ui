@@ -11,7 +11,7 @@
 				'active': isActive
 			}">
 
-			<i v-if="icon !== null" :class="icon"></i>
+			<i v-if="icon !== null" :class="[icon, 'ms-menu-item-icon']"></i>
 			<span class="text">{{ text }}</span>
 			<i :class="`${$fabric.icon.right} ms-ChevronRight`"></i>
 		</a>

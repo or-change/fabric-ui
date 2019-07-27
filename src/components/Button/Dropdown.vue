@@ -7,7 +7,7 @@
 			'ms-button-disabled': disabled,
 			'ms-button-not-split': !split
 		}"
-		@click="emit"
+		@click="$emit('click', $event)"
 	>
 
 		<span v-show="showSplit" class="ms-button-split-icon"></span>
@@ -36,15 +36,6 @@ export default {
 		showSplit: {
 			type: Boolean,
 			default: false
-		}
-	},
-	methods: {
-		emit(event) {
-			if (this.split) {
-				this.$emit('dropdown', event);
-			} else {
-				this.$emit('click', event);
-			}
 		}
 	}
 }

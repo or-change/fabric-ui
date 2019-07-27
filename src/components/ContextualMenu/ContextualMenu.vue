@@ -3,13 +3,16 @@
 		class="ms-contextual-menu"
 		ref="contextual-menu"
 	>
-		<f-menu
-			:menu="menu"
-			:direction="direction"
-			ref="menu"
-			style="display: block"
-			:size="comptedSize"
-		/>
+		<slot>
+			<f-menu
+				:menu="menu"
+				:direction="direction"
+				ref="menu"
+				style="display: block"
+				:size="computedSize"
+			/>
+		</slot>
+		<!-- menu样式有漏洞 -->
 	</div>
 </template>
 

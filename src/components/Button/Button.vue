@@ -26,7 +26,7 @@
 				:text="text"
 				:description="description"
 				:width="width"
-				@click="$emit('click', $event)"
+				@click.stop="clickEmit"
 			>
 				<slot>{{ text }}</slot>
 			</component>
@@ -38,8 +38,7 @@
 				:show-split="showSplit"
 				:triangle="triangle"
 				:disabled="split ? dropdownDisabled : disabled"
-				@click="$emit('click', $event)"
-				@dropdown="$emit('dropdown', $event)"
+				@click.stop="dropdownEmit"
 			/>
 		</div>
 		<slot name="menu"></slot>
@@ -59,6 +58,11 @@ const VARIANT_REG = /(standard|primary)/;
 export default {
 	name: 'f-button',
 	mixins: [mixin],
+	data() {
+		return {
+			menu: null
+		}
+	},
 	components: {
 		FButtonLink, FButtonDefault,
 		FButtonDropdown
@@ -171,6 +175,44 @@ export default {
 				}
 			};
 		}
+	},
+	methods: {
+		toggleMenu() {
+			if (this.menu) {
+				this.menu.toggle();
+			}
+		},
+		dropdownEmit(event) {
+			if (this.split) {
+				this.$emit('dropdown', event);
+			} else {
+				this.$emit('click', event);
+			}
+			console.log(this.$slots.menu)
+			this.toggleMenu();
+		},
+		clickEmit(event) {
+			this.$emit('click', event);
+
+			if (this.dropdown && !this.split) {
+				this.toggleMenu();
+			}
+		},
+		getMenu() {
+			if (!this.$slots.menu) {
+				return;
+			}
+
+			const menuList = this.$slots.menu
+				.filter(component => component.componentOptions && component.componentOptions.tag === 'f-menu');
+			
+			if (menuList.length) {
+				this.menu = menuList[0].componentInstance;
+			}
+		}
+	},
+	mounted() {
+		this.getMenu();
 	}
 }
 </script>

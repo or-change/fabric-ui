@@ -8,7 +8,6 @@
 			text="Create account"
 			:dropdown="true"
 			:split="true"
-			@dropdown="toggleMenu('menu1')"
 			:triangle="true"
 		>
 			<f-menu slot="menu" :menu="menu" ref="menu1" style="top:100%"  />
@@ -20,7 +19,6 @@
 			text="Create account"
 			:dropdown="true"
 			triangle
-			@click.stop="toggleMenu('menu11')"
 		>
 			<f-menu slot="menu" :menu="menu" ref="menu11" style="top:100%"  />
 
@@ -32,7 +30,6 @@
 			text="Create account"
 			:dropdown="true"
 			triangle
-			@click.native="toggleMenu('menu1')"
 		>
 			<f-menu slot="menu" :menu="menu" ref="menu1" style="top:100%"  />
 
@@ -44,7 +41,6 @@
 			:dropdown="true"
 			:split="true"
 			triangle
-			@dropdown="toggleMenu('menu1')"
 		>
 			<f-menu slot="menu" :menu="menu" ref="menu1" style="top:100%"  />
 
@@ -56,7 +52,6 @@
 			text="Create account"
 			:dropdown="true"
 			:split="true"
-			@dropdown="toggleMenu('menu1')"
 		>
 			<f-menu slot="menu" :menu="menu" ref="menu1" style="top:100%"  />
 
@@ -67,7 +62,6 @@
 			text="Create account"
 			:dropdown="true"
 			:split="true"
-			@dropdown="toggleMenu('menu1')"
 		>
 			<f-menu slot="menu" :menu="menu" ref="menu1" style="top:100%"  />
 
@@ -79,7 +73,6 @@
 			text="Create account"
 			:dropdown="true"
 			:split="true"
-			@dropdown="toggleMenu('menu1')"
 		>
 			<f-menu slot="menu" :menu="menu" ref="menu1" style="top:100%"  />
 
@@ -91,7 +84,6 @@
 			text="Create account"
 			:dropdown="true"
 			:split="true"
-			@dropdown="toggleMenu('menu1')"
 		>
 			<f-menu slot="menu" :menu="menu" ref="menu1" style="top:100%"  />
 
@@ -101,7 +93,6 @@
 			variant="primary"
 			icon="ms-Icon ms-Icon--Add"
 			text="Create account"
-			@dropdown="toggleMenu('menu2')"
 			:dropdown="true"
 			:split="true"
 			:disabled="true"
@@ -116,7 +107,6 @@
 			variant="primary"
 			icon="ms-Icon ms-Icon--Add"
 			text="Create account"
-			@dropdown="toggleMenu"
 			:dropdown="true"
 			:split="true"
 		>
@@ -129,7 +119,6 @@
 			variant="primary"
 			icon="ms-Icon ms-Icon--Add"
 			text="Create account"
-			@dropdown="toggleMenu"
 			:dropdown="true"
 			:split="true"
 		>
@@ -157,7 +146,6 @@
 			text="Create account"
 			:dropdown="true"
 			:split="true"
-			@dropdown="toggleMenu('menu1')"
 			:triangle="true"
 			size="sm"
 		>
@@ -169,7 +157,6 @@
 			icon="ms-Icon ms-Icon--Add"
 			text="Create account"
 			:dropdown="true"
-			@click.native="toggleMenu('menu1')"
 			size="sm"
 		>
 			<f-menu slot="menu" :menu="menu" ref="menu1" style="top:100%"  />
@@ -181,7 +168,6 @@
 			icon="ms-Icon ms-Icon--Add"
 			text="Create account"
 			:dropdown="true"
-			@click.native="toggleMenu('menu1')"
 			size="sm"
 		>
 			<f-menu slot="menu" :menu="menu" ref="menu1" style="top:100%"  />
@@ -193,7 +179,6 @@
 			text="Create account"
 			:dropdown="true"
 			:split="true"
-			@dropdown="toggleMenu('menu1')"
 			size="sm"
 		>
 			<f-menu slot="menu" :menu="menu" ref="menu1" style="top:100%"  />
@@ -206,7 +191,6 @@
 			text="Create account"
 			:dropdown="true"
 			:split="true"
-			@dropdown="toggleMenu('menu1')"
 			size="sm"
 		>
 			<f-menu slot="menu" :menu="menu" ref="menu1" style="top:100%"  />
@@ -218,7 +202,6 @@
 			text="Create account"
 			:dropdown="true"
 			:split="true"
-			@dropdown="toggleMenu('menu1')"
 			size="sm"
 		>
 			<f-menu slot="menu" :menu="menu" ref="menu1" style="top:100%"  />
@@ -231,7 +214,6 @@
 			text="Create account"
 			:dropdown="true"
 			:split="true"
-			@dropdown="toggleMenu('menu1')"
 			size="sm"
 		>
 			<f-menu slot="menu" :menu="menu" ref="menu1" style="top:100%"  />
@@ -244,7 +226,6 @@
 			text="Create account"
 			:dropdown="true"
 			:split="true"
-			@dropdown="toggleMenu('menu1')"
 			size="sm"
 		>
 			<f-menu slot="menu" :menu="menu" ref="menu1" style="top:100%"  />
@@ -255,7 +236,6 @@
 			variant="primary"
 			icon="ms-Icon ms-Icon--Add"
 			text="Create account"
-			@dropdown="toggleMenu('menu2')"
 			:dropdown="true"
 			:split="true"
 			:disabled="true"
@@ -271,7 +251,6 @@
 			variant="primary"
 			icon="ms-Icon ms-Icon--Add"
 			text="Create account"
-			@dropdown="toggleMenu"
 			:dropdown="true"
 			:split="true"
 			size="sm"
@@ -285,7 +264,6 @@
 			variant="primary"
 			icon="ms-Icon ms-Icon--Add"
 			text="Create account"
-			@dropdown="toggleMenu"
 			:dropdown="true"
 			:split="true"
 			size="sm"
@@ -314,7 +292,6 @@
 			text="Create account"
 			:dropdown="true"
 			:split="true"
-			@dropdown="toggleMenu('menu1')"
 			:triangle="true"
 			size="lg"
 		>
@@ -326,7 +303,6 @@
 			icon="ms-Icon ms-Icon--Add"
 			text="Create account"
 			:dropdown="true"
-			@click.native="toggleMenu('menu1')"
 			size="lg"
 		>
 			<f-menu slot="menu" :menu="menu" ref="menu1" style="top:100%"  />
@@ -338,7 +314,6 @@
 			icon="ms-Icon ms-Icon--Add"
 			text="Create account"
 			:dropdown="true"
-			@click.native="toggleMenu('menu1')"
 			size="lg"
 		>
 			<f-menu slot="menu" :menu="menu" ref="menu1" style="top:100%"  />
@@ -350,7 +325,6 @@
 			text="Create account"
 			:dropdown="true"
 			:split="true"
-			@dropdown="toggleMenu('menu1')"
 			size="lg"
 		>
 			<f-menu slot="menu" :menu="menu" ref="menu1" style="top:100%"  />
@@ -363,7 +337,6 @@
 			text="Create account"
 			:dropdown="true"
 			:split="true"
-			@dropdown="toggleMenu('menu1')"
 			size="lg"
 		>
 			<f-menu slot="menu" :menu="menu" ref="menu1" style="top:100%"  />
@@ -375,7 +348,6 @@
 			text="Create account"
 			:dropdown="true"
 			:split="true"
-			@dropdown="toggleMenu('menu1')"
 			size="lg"
 		>
 			<f-menu slot="menu" :menu="menu" ref="menu1" style="top:100%"  />
@@ -388,7 +360,6 @@
 			text="Create account"
 			:dropdown="true"
 			:split="true"
-			@dropdown="toggleMenu('menu1')"
 			size="lg"
 		>
 			<f-menu slot="menu" :menu="menu" ref="menu1" style="top:100%"  />
@@ -401,7 +372,6 @@
 			text="Create account"
 			:dropdown="true"
 			:split="true"
-			@dropdown="toggleMenu('menu1')"
 			size="lg"
 		>
 			<f-menu slot="menu" :menu="menu" ref="menu1" style="top:100%"  />
@@ -412,7 +382,6 @@
 			variant="primary"
 			icon="ms-Icon ms-Icon--Add"
 			text="Create account"
-			@dropdown="toggleMenu('menu2')"
 			:dropdown="true"
 			:split="true"
 			:disabled="true"
@@ -428,7 +397,6 @@
 			variant="primary"
 			icon="ms-Icon ms-Icon--Add"
 			text="Create account"
-			@dropdown="toggleMenu"
 			:dropdown="true"
 			:split="true"
 			size="lg"
@@ -442,7 +410,6 @@
 			variant="primary"
 			icon="ms-Icon ms-Icon--Add"
 			text="Create account"
-			@dropdown="toggleMenu"
 			:dropdown="true"
 			:split="true"
 			size="lg"
