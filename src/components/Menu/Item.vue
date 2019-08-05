@@ -14,7 +14,7 @@
 					'active': isActive
 				}">
 
-				<i v-if="icon !== null" :class="[icon, 'ms-menu-item-icon']"></i>
+				<i v-if="icon !== null" :class="icon"></i>
 				<span class="text">{{ text }}</span>
 				<span v-if="secondaryText" class="secondary-text">{{ secondaryText }}</span>
 			</a>

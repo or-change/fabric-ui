@@ -1,5 +1,10 @@
 <template>
-	<div ref="ms-list" style="overflow-y: scroll;position: relative">
+	<div ref="ms-list"
+		class="ms-list-container"
+		:class="{
+			'ms-list-scroll':  visibleRows
+		}"
+	>
 		<div
 			ref="ms-list-table"
 			class="ms-list ms-list-md"
@@ -156,6 +161,9 @@ export default {
 	watch: {
 		value() {
 			this.result = this.value;
+		},
+		items() {
+			this.getRenderItems();
 		}
 	},
 	methods: {
@@ -260,7 +268,7 @@ export default {
 
 			table.style.marginTop = `${scrollTop}px`;
 
-			this.getRenderItems(Math.floor((scrollTop / this.height) * this.items.length));
+			this.getRenderItems(Math.ceil((scrollTop / this.height) * this.items.length));
 		},
 		setHeight() {
 			if (!this.visibleRows) {
@@ -269,11 +277,10 @@ export default {
 
 			this.list = this.$refs['ms-list'];
 			const header = this.$refs['ms-list-header'];
-			const row = this.$refs['ms-list-row'][0];
 			const placeholder = this.$refs['ms-list-placeholder'];
 
 			const headerHeight = header.clientHeight;
-			const rowHeight = row.clientHeight;
+			const rowHeight = this.compact ? 32 : 43;
 
 			this.list.style.height = `${headerHeight + rowHeight * this.visibleRows}px`;
 
@@ -292,6 +299,10 @@ export default {
 		});
 	},
 	destroyed() {
+		if (!this.visibleRows) {
+			return;
+		}
+
 		this.list.removeEventListener('scroll', 	this.computedRenderItem);
 	}
 }

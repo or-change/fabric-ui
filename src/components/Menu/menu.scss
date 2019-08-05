@@ -20,7 +20,7 @@ ul {
 		left: 0;
 	}
 
-	&.ms-menu-left {
+	&.ms-menu.ms-menu-left {
 		li .ms-menu {
 			right: 99%;
 			left: auto;
@@ -48,39 +48,13 @@ ul {
 		display: inline-block;
 		font-style: normal;
 		font-weight: normal;
-	}
-
-	.ms-menu-item {
-		display: table;
-		width: 100%;
-		table-layout: fixed;
-
-		.ms-menu-item-icon, .text, .secondary-text {
-			display: table-cell;
-			vertical-align: top;
-		}
-
-		.text {
-			width: 50%;
-			padding-left: 5px;
-		}
-	}
-
-	.ms-menu-sub {
-		.text {
-			display: inline-block;
-		}
-		.ms-menu-item-icon {
-			vertical-align: top;
-		}
-	}
-
-	.secondary-text {
-		text-align: right;
+		vertical-align: middle;
 	}
 
 	.ms-menu-item .secondary-text {
+		width: 40%;
 		color: $ms-color-gray130;
+		float: right;
 		text-overflow: ellipsis;
 		white-space: nowrap;
 		overflow: hidden;
@@ -95,11 +69,8 @@ ul {
 		}
 	}
 
-	.ms-menu-sub {
-		display: block;
-	}
-
 	.ms-menu-item, .ms-menu-sub {
+		display: block;
 		width: 100%;
 		color: $ms-color-gray160;
 
@@ -108,6 +79,8 @@ ul {
 		}
 
 		.text {
+			display: inline-block;
+			vertical-align: middle;
 			text-overflow: ellipsis;
 			white-space: nowrap;
 			overflow: hidden;
@@ -153,15 +126,11 @@ ul {
 		.ms-menu-item, .ms-menu-sub {
 			height: 24px;
 			line-height: 24px;
-			.ms-menu-item-icon, .text, .secondary-text {
-				height: 24px;
-				line-height: 24px;
-			}
 
 			i {
 				width: 12px;
 				min-height: 1px;
-				min-width: 8px;
+				margin: 0 4px;
 				font-size: $ms-font-size-12;
 			}
 		}
@@ -189,15 +158,10 @@ ul {
 			height: 30px;
 			line-height: 30px;
 
-			.ms-menu-item-icon, .text, .secondary-text {
-				height: 30px;
-				line-height: 30px;
-			}
-
 			i {
 				width: 16px;
 				min-height: 1px;
-				min-width: 8px;
+				margin: 0 4px;
 				font-size: 16px;
 			}
 		}
@@ -225,15 +189,10 @@ ul {
 			height: 36px;
 			line-height: 36px;
 
-			.ms-menu-item-icon, .text, .secondary-text {
-				height: 36px;
-				line-height: 36px;
-			}
-
 			i {
 				width: 16px;
 				min-height: 1px;
-				min-width: 8px;
+				margin: 0 4px;
 				font-size: 16px;
 			}
 		}

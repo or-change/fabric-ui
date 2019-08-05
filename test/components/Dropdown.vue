@@ -53,12 +53,12 @@ export default {
 				},
 				{
 					text: 'Banana',
-					value: 'test item1',
+					value: 0,
 					icon: 'ms-Icon ms-Icon--ShoppingCart'
 				},
 				{
 					text: 'Apple11111111111111111111111111111111111111111111111111111111',
-					value: 'test item21111111111111',
+					value: 1,
 					image: 'https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/choicegroup-bar-selected.png'
 				},
 				{

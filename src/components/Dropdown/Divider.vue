@@ -3,11 +3,8 @@
 </template>
 
 <script>
-import mixin from './mixin';
-
 export default {
-	name: 'f-dropdown-divider',
-	mixins: [mixin]
+	name: 'f-dropdown-divider'
 }
 </script>
 

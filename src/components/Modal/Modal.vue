@@ -27,7 +27,11 @@
 		@ok="customOk"
 		@cancel="customCancel"
 		@backdropClose="customBackdropClose"
-	/>
+	>
+		<slot  name="ms-modal-header" slot="ms-modal-header"></slot>
+		<slot name="ms-modal-body" slot="ms-modal-body"></slot>
+		<slot name="ms-modal-footer" slot="ms-modal-footer"></slot>
+	</component>
 </template>
 
 <script>

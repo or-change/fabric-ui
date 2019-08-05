@@ -86,7 +86,7 @@ export default {
 			type: String
 		},
 		value: {
-			type: [String, Array],
+			type: [String, Array, Number],
 			default: null
 		},
 		options: {
@@ -122,15 +122,12 @@ export default {
 		}
 	},
 	methods: {
-		isHeader(item) {
-			return !item.value;
-		},
 		getType(item) {
 			if (!item) {
 				return 'f-dropdown-divider';
 			}
 
-			if (!item.value) {
+			if (typeof item.value === 'undefined') {
 				return 'f-dropdown-header';
 			}
 

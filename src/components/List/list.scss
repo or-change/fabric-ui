@@ -1,9 +1,20 @@
 @import 'office-ui-fabric-core/src/sass/_References.scss';
 
+.ms-list-container {
+	position: relative;
+}
+
+.ms-list-scroll {
+	overflow-y: scroll;
+
+	.ms-list {
+		position: absolute;
+		top: 0;
+		left: 0;
+	}
+}
+
 .ms-list {
-	position: absolute;
-	top: 0;
-	left: 0;
 	display: table;
 	width: 100%;
 	font-family: inherit;

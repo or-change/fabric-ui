@@ -2,7 +2,19 @@
 	<div>
 		<h2>Modal</h2>
 		<div @click="show1 = !show1">default modal</div>
-		<f-modal id="modal-1" v-model="show1" title="123" :stacking="false"/>
+		<f-modal id="modal-1" v-model="show1" title="123" :stacking="false" :draggable="true">
+			<div
+				slot="ms-modal-body"
+				class="ms-modal-body"
+			>
+				<f-text-field
+					label="名称："
+					placeholder="project 1"
+					underline
+				/>
+			</div>
+
+		</f-modal>
 
 		<div @click="show2 = !show2">primary and center modal</div>
 		<f-modal id="modal-2" v-model="show2" title="123"

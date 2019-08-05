@@ -16,6 +16,7 @@
 				v-for="(item, index) in menu"
 				:key="index"
 				:is="getComponent(item)"
+				:size="computedSize"
 				:options="item">
 			</component>
 		</slot>
@@ -110,7 +111,7 @@ export default {
 	destroyed() {
 		if (this.auto) {
 			window.removeEventListener('click', this.hide);
-			this.$root.$off('menu-show', this.closeOther);
+			this.$root.$off('menu-show', this.closeOther); 
 		}
 	}
 }

@@ -16,7 +16,7 @@
 			:style="{
 				'width': width
 			}"
-			@mousedown.prevent="dragStart"
+			@mousedown="dragStart"
 			@mouseup="dragEnd"
 		>
 			<slot name="ms-modal-header">
@@ -33,7 +33,7 @@
 				<div class="ms-modal-body">
 					<f-button 
 						:text="closeTitle"
-						@click.native="close"
+						@click="close"
 					/>
 
 					<p class="ms-modal-content">{{ text }}</p>

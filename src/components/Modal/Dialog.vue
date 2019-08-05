@@ -16,7 +16,7 @@
 			:style="{
 				'width': width
 			}"
-			@mousedown.prevent="dragStart"
+			@mousedown="dragStart"
 			@mouseup="dragEnd"
 		>
 			<slot name="ms-modal-header">
@@ -28,7 +28,7 @@
 					<p>{{ title }}</p>
 					<div class="button-close" v-if="closeButton">
 						<f-button :icon="$fabric.icon.cancel" :border="false"
-							@click.native="close"
+							@click="close"
 						/>
 					</div>
 				</div>
@@ -46,10 +46,10 @@
 						<f-button 
 							theme="primary"
 							:text="okText"
-							@click.native="ok" />
+							@click="ok" />
 						<f-button
 							:text="cancelText"
-							@click.native="cancel" />
+							@click="cancel" />
 					</div>
 				</div>
 			</slot>

@@ -31,16 +31,18 @@
 		</div>
 		<f-menu
 			ref="splitSubMenu"
+			:size="computedSize"
 			:menu="subMenu"></f-menu>
 	</li>
 </template>
 
 <script>
 import mixin from './mixin';
+import globalMxin from '../mixin';
 
 export default {
 	name: 'f-menu-sub-split-item',
-	mixins: [mixin],
+	mixins: [mixin, globalMxin],
 	data() {
 		return {
 			isShow:false

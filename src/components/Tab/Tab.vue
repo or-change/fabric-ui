@@ -15,7 +15,7 @@
 					:icon="tabTitle.icon"
 					:text="tabTitle.text"
 					:size="computedSize"
-					@click.native="changeActiveItem(index)"
+					@click="changeActiveItem(index)"
 					class="ms-tab-title"
 					:class="{
 						'ms-tab-title-active': index === activeIndex

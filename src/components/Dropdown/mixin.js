@@ -4,7 +4,7 @@ export default {
 			type: Object
 		},
 		value: {
-			type: [String, Array],
+			type: [String, Array, Number],
 			default: null
 		}
 	}

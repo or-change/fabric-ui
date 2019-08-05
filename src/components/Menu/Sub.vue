@@ -11,7 +11,7 @@
 				'active': isActive
 			}">
 
-			<i v-if="icon !== null" :class="[icon, 'ms-menu-item-icon']"></i>
+			<i v-if="icon !== null" :class="icon"></i>
 			<span class="text">{{ text }}</span>
 			<i :class="`${$fabric.icon.right} ms-ChevronRight`"></i>
 		</a>
@@ -19,16 +19,18 @@
 		<f-menu
 			ref="subMenu"
 			:menu="subMenu"
+			:size="computedSize"
 		></f-menu>
 	</li>
 </template>
 
 <script>
 import mixin from './mixin';
+import globalMxin from '../mixin';
 
 export default {
 	name: 'f-menu-sub-item',
-	mixins: [mixin],
+	mixins: [mixin, globalMxin],
 	methods: {
 		show() {
 			if (this.disabled) {
